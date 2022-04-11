@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <PackageId>inRiverCommunity.Rest.Client</PackageId>
+    <Version>0.0.3</Version>
+    <Authors>Robert Bialy</Authors>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <Description>Unofficial client for inRiver Rest API</Description>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/robert-bialy/inriver-rest-client</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/robert-bialy/inriver-rest-client</RepositoryUrl>
+    <PackageReleaseNotes>(fix): issues with serializing body data</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CSharp" Version="4.7.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="RestSharp" Version="107.3.0" />
+  </ItemGroup>
+
+</Project>
