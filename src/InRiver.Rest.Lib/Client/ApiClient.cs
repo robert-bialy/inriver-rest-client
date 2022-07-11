@@ -29,7 +29,7 @@ namespace InRiver.Rest.Lib.Client
         public ApiClient(string basePath = "https://apieuw.productmarketingcloud.com")
         {
            if (string.IsNullOrEmpty(basePath))
-                throw new ArgumentException("basePath cannot be empty"); 
+                throw new ArgumentException("basePath cannot be empty");
            Configuration = Client.Configuration.Default;
            _basePath = basePath;
         }
@@ -118,7 +118,6 @@ namespace InRiver.Rest.Lib.Client
             var configuration = new RestClientOptions
             {
                 Timeout = Configuration.Timeout,
-                UserAgent = Configuration.UserAgent,
                 BaseUrl = new Uri(_basePath)
             };
             var restClient = new RestClient(configuration);
@@ -238,30 +237,6 @@ namespace InRiver.Rest.Lib.Client
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
-            }
-
-            // TODO: ? if (type.IsAssignableFrom(typeof(Stream)))
-            if (type == typeof(Stream))
-            {
-                if (headers != null)
-                {
-                    var filePath = String.IsNullOrEmpty(Configuration.TempFolderPath)
-                        ? Path.GetTempPath()
-                        : Configuration.TempFolderPath;
-                    var regex = new Regex(@"Content-Disposition=.*filename=['""]?([^'""\s]+)['""]?$");
-                    foreach (var header in headers)
-                    {
-                        var match = regex.Match(header.ToString());
-                        if (match.Success)
-                        {
-                            string fileName = filePath + SanitizeFilename(match.Groups[1].Value.Replace("\"", "").Replace("'", ""));
-                            File.WriteAllBytes(fileName, response.RawBytes);
-                            return new FileStream(fileName, FileMode.Open);
-                        }
-                    }
-                }
-                var stream = new MemoryStream(response.RawBytes);
-                return stream;
             }
 
             if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object

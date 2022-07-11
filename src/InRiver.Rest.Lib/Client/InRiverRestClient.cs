@@ -1,27 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using InRiver.Rest.Lib.Api;
 
 namespace InRiver.Rest.Lib.Client
 {
     public class InRiverRestClient : IinRiverClient
     {
-        private readonly string _basePath;
-        private readonly string _apiKey;
         private readonly Configuration _configuration;
+        private IReadableConfiguration CurrentSettings => _configuration;
 
         public InRiverRestClient(string apiKey, string basePath = "https://apieuw.productmarketingcloud.com")
         {
-            _basePath = basePath ?? throw new ArgumentNullException(nameof(basePath));
-            _apiKey = apiKey ?? throw new ArgumentNullException(nameof(apiKey));
+            if (string.IsNullOrWhiteSpace(apiKey))
+                throw new InvalidDataException("Api key is required and cannot be null or empty");
+            if (string.IsNullOrWhiteSpace(basePath))
+                throw new InvalidDataException("Base path is required and cannot be null or empty");
             _configuration = new Configuration
             {
-                BasePath = _basePath,
+                BasePath = basePath,
                 DefaultHeader = new Dictionary<string, string>
                 {
-                    { "X-inRiver-APIKey", _apiKey }
+                    { Configuration.InRiverAPIKeyHeader, apiKey }
                 }
             };
+        }
+
+        public InRiverRestClient(Action<Configuration> configuration)
+        {
+            _configuration = new Configuration();
+            configuration.Invoke(_configuration);
+            if(string.IsNullOrWhiteSpace(_configuration.BasePath))
+                throw new InvalidDataException("Base path is required and cannot be null or empty");
+            if (_configuration.DefaultHeader == null || !_configuration.DefaultHeader.ContainsKey("X-inRiver-APIKey") || string.IsNullOrWhiteSpace(_configuration.DefaultHeader["X-inRiver-APIKey"]))
+                throw new InvalidDataException("Api key is required and cannot be null or empty. Please include default X-inRiver-APIKey header.");
         }
 
         public IChannelApi ChannelApi => new ChannelApi(_configuration);
