@@ -195,7 +195,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>EntitySummaryModel</returns>
-        EntitySummaryModel FieldHistory (int? entityId, string fieldTypeId);
+        EntitySummaryModel[] FieldHistory (int? entityId, string fieldTypeId);
 
         /// <summary>
         /// Field value revisions
@@ -207,7 +207,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>ApiResponse of EntitySummaryModel</returns>
-        ApiResponse<EntitySummaryModel> FieldHistoryWithHttpInfo (int? entityId, string fieldTypeId);
+        ApiResponse<EntitySummaryModel[]> FieldHistoryWithHttpInfo (int? entityId, string fieldTypeId);
         /// <summary>
         /// Returns a read only list of entity media
         /// </summary>
@@ -869,7 +869,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>Task of EntitySummaryModel</returns>
-        System.Threading.Tasks.Task<EntitySummaryModel> FieldHistoryAsync (int? entityId, string fieldTypeId);
+        System.Threading.Tasks.Task<EntitySummaryModel[]> FieldHistoryAsync (int? entityId, string fieldTypeId);
 
         /// <summary>
         /// Field value revisions
@@ -881,7 +881,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> FieldHistoryAsyncWithHttpInfo (int? entityId, string fieldTypeId);
+        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel[]>> FieldHistoryAsyncWithHttpInfo (int? entityId, string fieldTypeId);
         /// <summary>
         /// Returns a read only list of entity media
         /// </summary>

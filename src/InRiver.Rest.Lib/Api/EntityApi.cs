@@ -1287,9 +1287,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>EntitySummaryModel</returns>
-        public EntitySummaryModel FieldHistory (int? entityId, string fieldTypeId)
+        public EntitySummaryModel[] FieldHistory (int? entityId, string fieldTypeId)
         {
-             ApiResponse<EntitySummaryModel> localVarResponse = FieldHistoryWithHttpInfo(entityId, fieldTypeId);
+             ApiResponse<EntitySummaryModel[]> localVarResponse = FieldHistoryWithHttpInfo(entityId, fieldTypeId);
              return localVarResponse.Data;
         }
 
@@ -1300,7 +1300,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>ApiResponse of EntitySummaryModel</returns>
-        public ApiResponse< EntitySummaryModel > FieldHistoryWithHttpInfo (int? entityId, string fieldTypeId)
+        public ApiResponse<EntitySummaryModel[]> FieldHistoryWithHttpInfo (int? entityId, string fieldTypeId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -1348,9 +1348,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
+            return new ApiResponse<EntitySummaryModel[]>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel[])));
         }
 
         /// <summary>
@@ -1360,9 +1360,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>Task of EntitySummaryModel</returns>
-        public async System.Threading.Tasks.Task<EntitySummaryModel> FieldHistoryAsync (int? entityId, string fieldTypeId)
+        public async System.Threading.Tasks.Task<EntitySummaryModel[]> FieldHistoryAsync (int? entityId, string fieldTypeId)
         {
-             ApiResponse<EntitySummaryModel> localVarResponse = await FieldHistoryAsyncWithHttpInfo(entityId, fieldTypeId);
+             ApiResponse<EntitySummaryModel[]> localVarResponse = await FieldHistoryAsyncWithHttpInfo(entityId, fieldTypeId);
              return localVarResponse.Data;
 
         }
@@ -1374,7 +1374,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
         /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> FieldHistoryAsyncWithHttpInfo (int? entityId, string fieldTypeId)
+        public async System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel[]>> FieldHistoryAsyncWithHttpInfo (int? entityId, string fieldTypeId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -1422,9 +1422,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
+            return new ApiResponse<EntitySummaryModel[]>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel[])));
         }
 
         /// <summary>
