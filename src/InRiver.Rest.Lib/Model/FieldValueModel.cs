@@ -46,7 +46,7 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Gets or Sets Value
         /// </summary>
-        [DataMember(Name="value", EmitDefaultValue=false)]
+        [DataMember(Name="value")]
         public Object Value { get; set; }
 
         /// <summary>
