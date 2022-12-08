@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Net.Http;
 using System.Text;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
@@ -20,18 +21,21 @@ namespace InRiver.Rest.Lib.Client
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
         };
         private readonly string _basePath;
+        private readonly HttpClient _httpClient;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        public ApiClient(string basePath = "https://apieuw.productmarketingcloud.com")
+        /// <param name="httpClient">Preconfigured httpClient</param>
+        public ApiClient(string basePath = "https://apieuw.productmarketingcloud.com", HttpClient httpClient = null)
         {
            if (string.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
            Configuration = Client.Configuration.Default;
            _basePath = basePath;
+           _httpClient = httpClient;
         }
 
         /// <summary>
@@ -120,7 +124,7 @@ namespace InRiver.Rest.Lib.Client
                 Timeout = Configuration.Timeout,
                 BaseUrl = new Uri(_basePath)
             };
-            var restClient = new RestClient(configuration);
+            var restClient = CreateRestClient(configuration);
             var response = restClient.ExecuteAsync(request).Result;
 
             return (Object) response;
@@ -159,7 +163,7 @@ namespace InRiver.Rest.Lib.Client
                 Timeout = Configuration.Timeout,
                 BaseUrl = new Uri(_basePath)
             };
-            var restClient = new RestClient(configuration);
+            var restClient = CreateRestClient(configuration);
             var response = await restClient.ExecuteAsync(request);
 
             return (Object)response;
@@ -458,6 +462,11 @@ namespace InRiver.Rest.Lib.Client
         private static bool IsCollection(object value)
         {
             return value is IList || value is ICollection;
+        }
+
+        private RestClient CreateRestClient(RestClientOptions configuration)
+        {
+            return _httpClient != null ? new RestClient(_httpClient, configuration) : new RestClient(configuration);
         }
     }
 }
