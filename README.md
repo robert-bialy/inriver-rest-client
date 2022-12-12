@@ -1,3 +1,4 @@
+[![Downloads](https://img.shields.io/nuget/dt/inRiverCommunity.Rest.Client.svg)](https://www.nuget.org/packages/inRiverCommunity.Rest.Client/)[![SonarCloud](https://github.com/robert-bialy/inriver-rest-client/actions/workflows/build.yml/badge.svg)](https://github.com/robert-bialy/inriver-rest-client/actions/workflows/build.yml)
 # inriver-rest-client
 .NET client for InRiver PIM Rest API. Client targets .NET Standard 2.0. <br/> <br/>
 Created off inRiver [Swagger](https://apieuw.productmarketingcloud.com/swagger/ui/index#/) with [Swagger tools](https://swagger.io/)
