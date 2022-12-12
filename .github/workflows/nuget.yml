@@ -23,6 +23,6 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} ./src/InRiver.Rest.Lib/InRiver.Rest.Lib.csproj --no-build --output .
     - name: Push
-      run: dotnet nuget push NuGet.Workflow.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${NUGET_API_KEY}
+      run: dotnet nuget push InRiver.Rest.Lib.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${NUGET_API_KEY}
       env:
         NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
