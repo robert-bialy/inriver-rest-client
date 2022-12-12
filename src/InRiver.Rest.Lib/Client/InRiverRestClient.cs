@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 using InRiver.Rest.Lib.Api;
 
 namespace InRiver.Rest.Lib.Client
@@ -34,6 +35,13 @@ namespace InRiver.Rest.Lib.Client
                 throw new InvalidDataException("Base path is required and cannot be null or empty");
             if (_configuration.DefaultHeader == null || !_configuration.DefaultHeader.ContainsKey("X-inRiver-APIKey") || string.IsNullOrWhiteSpace(_configuration.DefaultHeader["X-inRiver-APIKey"]))
                 throw new InvalidDataException("Api key is required and cannot be null or empty. Please include default X-inRiver-APIKey header.");
+        }
+
+        public InRiverRestClient(string apiKey, HttpClient httpClient, Action<Configuration> configuration = null, string basePath = "https://apieuw.productmarketingcloud.com")
+            : this(apiKey, basePath)
+        {
+            _configuration.HttpClient = httpClient;
+            configuration?.Invoke(_configuration);
         }
 
         public IChannelApi ChannelApi => new ChannelApi(_configuration);

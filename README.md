@@ -39,3 +39,26 @@ var query = new QueryModel
 
 var products = await client.QueryApi.QueryAsync(query);
 ```
+## Creating rest client with retry policy
+```csharp
+using InRiver.Rest.Lib.Client;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Polly;
+using Polly.Contrib.WaitAndRetry;
+using Polly.Extensions.Http;
+
+# Configuring named HttpClient with retry policy
+var host = Host.CreateDefaultBuilder(args)
+    .ConfigureServices(services => services.AddHttpClient("inriver")
+        .AddPolicyHandler(HttpPolicyExtensions
+            .HandleTransientHttpError()
+            .WaitAndRetryAsync(Backoff.DecorrelatedJitterBackoffV2(medianFirstRetryDelay: TimeSpan.FromSeconds(1), retryCount: 5))))
+    .Build();
+
+var httpClient = host.Services.GetRequiredService<IHttpClientFactory>().CreateClient("inriver");
+
+# Creating a rest client with appropriate REST API key and pre-configured HttpClient
+var client = new InRiverRestClient("your-api-key", httpClient);
+
+```

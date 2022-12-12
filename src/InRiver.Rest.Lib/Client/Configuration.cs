@@ -2,6 +2,7 @@ using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
+using System.Net.Http;
 
 namespace InRiver.Rest.Lib.Client
 {
@@ -110,6 +111,8 @@ namespace InRiver.Rest.Lib.Client
 
         #region Properties
 
+        public HttpClient HttpClient { get; set; }
+
         private ApiClient _apiClient = null;
         /// <summary>
         /// Gets an instance of an ApiClient for this configuration
@@ -199,7 +202,7 @@ namespace InRiver.Rest.Lib.Client
         /// <returns></returns>
         public ApiClient CreateApiClient()
         {
-            return new ApiClient(BasePath) { Configuration = this };
+            return new ApiClient(BasePath, HttpClient) { Configuration = this };
         }
         #endregion Methods
 
