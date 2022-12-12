@@ -19,4 +19,4 @@ jobs:
     - name: Push
       run: dotnet nuget push inRiverCommunity.Rest.Client.${VERSION}.nupkg --source https://nuget.pkg.github.com/robert-bialy/index.json --api-key ${GITHUB_TOKEN}
       env:
-        NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
