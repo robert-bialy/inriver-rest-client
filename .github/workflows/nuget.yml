@@ -17,6 +17,6 @@ jobs:
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} ./src/InRiver.Rest.Lib/InRiver.Rest.Lib.csproj --no-build --output .
     - name: Push
-      run: dotnet nuget push inRiverCommunity.Rest.Client.${VERSION}.nupkg --source https://nuget.pkg.github.com/acraven/index.json --api-key ${NUGET_API_KEY}
+      run: dotnet nuget push inRiverCommunity.Rest.Client.${VERSION}.nupkg --source https://nuget.pkg.github.com/robert-bialy/index.json --api-key ${GITHUB_TOKEN}
       env:
-        NUGET_API_KEY: ${{ secrets.NUGET_API_KEY }}
+        NUGET_API_KEY: ${{ secrets.GITHUB_TOKEN }}
