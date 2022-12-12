@@ -37,14 +37,7 @@ namespace InRiver.Rest.Lib.Client
            _basePath = basePath;
            _httpClient = httpClient;
         }
-
-        /// <summary>
-        /// Gets or sets the default API client for making HTTP calls.
-        /// </summary>
-        /// <value>The default API client.</value>
-        [Obsolete("ApiClient.Default is deprecated, please use 'Configuration.Default.ApiClient' instead.")]
-        public static ApiClient Default;
-
+        
         /// <summary>
         /// Gets or sets an instance of the IReadableConfiguration.
         /// </summary>
@@ -58,9 +51,13 @@ namespace InRiver.Rest.Lib.Client
         
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
-            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            IEnumerable<KeyValuePair<string, string>> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
+            String path, RestSharp.Method method,
+            List<KeyValuePair<String, String>> queryParams,
+            Object postBody,
+            IEnumerable<KeyValuePair<string, string>> headerParams,
+            Dictionary<String, String> formParams,
+            Dictionary<String, FileParameter> fileParams,
+            Dictionary<String, String> pathParams,
             String contentType)
         {
             var request = new RestRequest(path, method);

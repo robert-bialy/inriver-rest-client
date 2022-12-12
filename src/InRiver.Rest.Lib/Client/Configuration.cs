@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
-using System.IO;
 using System.Net.Http;
 
 namespace InRiver.Rest.Lib.Client
@@ -41,13 +40,13 @@ namespace InRiver.Rest.Lib.Client
             if (status >= 400)
             {
                 return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.Content),
+                    $"Error calling {methodName}: {response.Content}",
                     response.Content);
             }
             if (status == 0)
             {
                 return new ApiException(status,
-                    string.Format("Error calling {0}: {1}", methodName, response.ErrorMessage), response.ErrorMessage);
+                    $"Error calling {methodName}: {response.ErrorMessage}", response.ErrorMessage);
             }
             return null;
         };
@@ -71,22 +70,17 @@ namespace InRiver.Rest.Lib.Client
         #endregion Static Members
 
         #region Private Members
-
-        /// <summary>
-        /// Gets or sets the API key based on the authentication name.
-        /// </summary>
-        /// <value>The API key.</value>
-        private IDictionary<string, string> _apiKey = null;
-
-        /// <summary>
-        /// Gets or sets the prefix (e.g. Token) of the API key based on the authentication name.
-        /// </summary>
-        /// <value>The prefix of the API key.</value>
-        private IDictionary<string, string> _apiKeyPrefix = null;
-
         private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
-        private string _tempFolderPath = Path.GetTempPath();
 
+        /// <summary>
+        /// HTTP client wrapper
+        /// </summary>
+        private ApiClient _apiClient = null;
+
+        /// <summary>
+        /// HTTP client override
+        /// </summary>
+        private HttpClient _httpClientOverride = null;
         #endregion Private Members
 
         #region Constructors
@@ -111,9 +105,6 @@ namespace InRiver.Rest.Lib.Client
 
         #region Properties
 
-        public HttpClient HttpClient { get; set; }
-
-        private ApiClient _apiClient = null;
         /// <summary>
         /// Gets an instance of an ApiClient for this configuration
         /// </summary>
@@ -181,6 +172,12 @@ namespace InRiver.Rest.Lib.Client
             }
         }
 
+        public virtual HttpClient HttpClientOverride
+        {
+            get => _httpClientOverride;
+            set => _httpClientOverride = value;
+        }
+
         #endregion Properties
 
         #region Methods
@@ -202,7 +199,7 @@ namespace InRiver.Rest.Lib.Client
         /// <returns></returns>
         public ApiClient CreateApiClient()
         {
-            return new ApiClient(BasePath, HttpClient) { Configuration = this };
+            return new ApiClient(BasePath, _httpClientOverride) { Configuration = this };
         }
         #endregion Methods
 
