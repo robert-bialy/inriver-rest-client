@@ -59,6 +59,6 @@ var host = Host.CreateDefaultBuilder(args)
 var httpClient = host.Services.GetRequiredService<IHttpClientFactory>().CreateClient("inriver");
 
 # Creating a rest client with appropriate REST API key and pre-configured HttpClient
-var client = new InRiverRestClient("your-api-key", httpClient);
+var client = new InRiverRestClient("your-api-key", conf => { conf.HttpClientOverride = httpClient });
 
 ```

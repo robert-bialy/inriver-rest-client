@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
@@ -19,7 +18,7 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="name">name.</param>
         /// <param name="isCompleted">isCompleted.</param>
         /// <param name="rules">rules.</param>
-        public CompletenessDetailsRuleModel(string name = default, bool isCompleted = default)
+        public CompletenessDetailsRuleModel(string name, bool isCompleted)
         {
             Name = name;
             IsCompleted = isCompleted;
