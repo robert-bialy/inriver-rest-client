@@ -403,10 +403,10 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>List&lt;FieldSummaryModel&gt;</returns>
-        public List<FieldSummaryModel> CompletenessDetails (int? entityId)
+        /// <returns>List&lt;CompletenessDetailsModel&gt;</returns>
+        public List<CompletenessDetailsModel> CompletenessDetails(int? entityId)
         {
-             ApiResponse<List<FieldSummaryModel>> localVarResponse = CompletenessDetailsWithHttpInfo(entityId);
+             ApiResponse<List<CompletenessDetailsModel>> localVarResponse = CompletenessDetailsWithHttpInfo(entityId);
              return localVarResponse.Data;
         }
 
@@ -415,8 +415,8 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>ApiResponse of List&lt;FieldSummaryModel&gt;</returns>
-        public ApiResponse< List<FieldSummaryModel> > CompletenessDetailsWithHttpInfo (int? entityId)
+        /// <returns>ApiResponse of List&lt;CompletenessDetailsModel&gt;</returns>
+        public ApiResponse< List<CompletenessDetailsModel>> CompletenessDetailsWithHttpInfo(int? entityId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -460,9 +460,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<FieldSummaryModel>>(localVarStatusCode,
+            return new ApiResponse<List<CompletenessDetailsModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
+                (List<CompletenessDetailsModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
         }
 
         /// <summary>
@@ -470,10 +470,10 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of List&lt;FieldSummaryModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<FieldSummaryModel>> CompletenessDetailsAsync (int? entityId)
+        /// <returns>Task of List&lt;CompletenessDetailsModel&gt;</returns>
+        public async System.Threading.Tasks.Task<List<CompletenessDetailsModel>> CompletenessDetailsAsync (int? entityId)
         {
-             ApiResponse<List<FieldSummaryModel>> localVarResponse = await CompletenessDetailsAsyncWithHttpInfo(entityId);
+             ApiResponse<List<CompletenessDetailsModel>> localVarResponse = await CompletenessDetailsAsyncWithHttpInfo(entityId);
              return localVarResponse.Data;
 
         }
@@ -483,8 +483,8 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of ApiResponse (List&lt;FieldSummaryModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<FieldSummaryModel>>> CompletenessDetailsAsyncWithHttpInfo (int? entityId)
+        /// <returns>Task of ApiResponse (List&lt;CompletenessDetailsModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<CompletenessDetailsModel>>> CompletenessDetailsAsyncWithHttpInfo (int? entityId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -528,9 +528,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<List<FieldSummaryModel>>(localVarStatusCode,
+            return new ApiResponse<List<CompletenessDetailsModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
+                (List<CompletenessDetailsModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
         }
 
         /// <summary>
@@ -1286,10 +1286,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>EntitySummaryModel</returns>
-        public EntitySummaryModel[] FieldHistory (int? entityId, string fieldTypeId)
+        /// <returns>FieldRevisionModel</returns>
+        public FieldRevisionModel[] FieldHistory(int? entityId, string fieldTypeId)
         {
-             ApiResponse<EntitySummaryModel[]> localVarResponse = FieldHistoryWithHttpInfo(entityId, fieldTypeId);
+             ApiResponse<FieldRevisionModel[]> localVarResponse = FieldHistoryWithHttpInfo(entityId, fieldTypeId);
              return localVarResponse.Data;
         }
 
@@ -1299,15 +1299,15 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>ApiResponse of EntitySummaryModel</returns>
-        public ApiResponse<EntitySummaryModel[]> FieldHistoryWithHttpInfo (int? entityId, string fieldTypeId)
+        /// <returns>ApiResponse of FieldRevisionModel</returns>
+        public ApiResponse<FieldRevisionModel[]> FieldHistoryWithHttpInfo(int? entityId, string fieldTypeId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
-                throw new ApiException(400, "Missing required parameter 'entityId' when calling EntityApi->EntityFieldHistory");
+                throw new ApiException(400, "Missing required parameter 'entityId' when calling EntityApi->FieldRevisionModel");
             // verify the required parameter 'fieldTypeId' is set
             if (fieldTypeId == null)
-                throw new ApiException(400, "Missing required parameter 'fieldTypeId' when calling EntityApi->EntityFieldHistory");
+                throw new ApiException(400, "Missing required parameter 'fieldTypeId' when calling EntityApi->FieldRevisionModel");
 
             var localVarPath = "/api/v1.0.0/entities/{entityId}/fieldvalues/{fieldTypeId}/revisions";
             var localVarPathParams = new Dictionary<String, String>();
@@ -1348,9 +1348,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<EntitySummaryModel[]>(localVarStatusCode,
+            return new ApiResponse<FieldRevisionModel[]>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel[])));
+                (FieldRevisionModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
         }
 
         /// <summary>
@@ -1359,10 +1359,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>Task of EntitySummaryModel</returns>
-        public async System.Threading.Tasks.Task<EntitySummaryModel[]> FieldHistoryAsync (int? entityId, string fieldTypeId)
+        /// <returns>Task of FieldRevisionModel</returns>
+        public async System.Threading.Tasks.Task<FieldRevisionModel[]> FieldHistoryAsync (int? entityId, string fieldTypeId)
         {
-             ApiResponse<EntitySummaryModel[]> localVarResponse = await FieldHistoryAsyncWithHttpInfo(entityId, fieldTypeId);
+             ApiResponse<FieldRevisionModel[]> localVarResponse = await FieldHistoryAsyncWithHttpInfo(entityId, fieldTypeId);
              return localVarResponse.Data;
 
         }
@@ -1373,8 +1373,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel[]>> FieldHistoryAsyncWithHttpInfo (int? entityId, string fieldTypeId)
+        /// <returns>Task of ApiResponse (FieldRevisionModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<FieldRevisionModel[]>> FieldHistoryAsyncWithHttpInfo (int? entityId, string fieldTypeId)
         {
             // verify the required parameter 'entityId' is set
             if (entityId == null)
@@ -1422,9 +1422,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<EntitySummaryModel[]>(localVarStatusCode,
+            return new ApiResponse<FieldRevisionModel[]>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel[])));
+                (FieldRevisionModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
         }
 
         /// <summary>

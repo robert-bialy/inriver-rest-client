@@ -20,7 +20,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
         /// <returns>LinkModel</returns>
-        LinkModel CreateLink (LinkModel linkModel);
+        LinkModel CreateLink(LinkModel linkModel);
 
         /// <summary>
         /// Create a new link
@@ -31,7 +31,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
         /// <returns>ApiResponse of LinkModel</returns>
-        ApiResponse<LinkModel> CreateLinkWithHttpInfo (LinkModel linkModel);
+        ApiResponse<LinkModel> CreateLinkWithHttpInfo(LinkModel linkModel);
         /// <summary>
         /// Delete link
         /// </summary>
@@ -52,7 +52,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteLinkWithHttpInfo (int? linkId);
+        ApiResponse<Object> DeleteLinkWithHttpInfo(int? linkId);
         /// <summary>
         /// Returns a link
         /// </summary>
@@ -73,7 +73,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>ApiResponse of LinkModel</returns>
-        ApiResponse<LinkModel> GetLinkWithHttpInfo (int? linkId);
+        ApiResponse<LinkModel> GetLinkWithHttpInfo(int? linkId);
         /// <summary>
         /// Update sort order of links
         /// </summary>
@@ -83,7 +83,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
         /// <returns>List&lt;LinkModel&gt;</returns>
-        List<LinkModel> UpdateLink (List<LinkModel> linkModels);
+        List<LinkModel> UpdateLink(List<LinkModel> linkModels);
 
         /// <summary>
         /// Update sort order of links
@@ -94,7 +94,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
         /// <returns>ApiResponse of List&lt;LinkModel&gt;</returns>
-        ApiResponse<List<LinkModel>> UpdateLinkWithHttpInfo (List<LinkModel> linkModels);
+        ApiResponse<List<LinkModel>> UpdateLinkWithHttpInfo(List<LinkModel> linkModels);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -106,7 +106,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
         /// <returns>Task of LinkModel</returns>
-        System.Threading.Tasks.Task<LinkModel> CreateLinkAsync (LinkModel linkModel);
+        System.Threading.Tasks.Task<LinkModel> CreateLinkAsync(LinkModel linkModel);
 
         /// <summary>
         /// Create a new link
@@ -117,7 +117,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
         /// <returns>Task of ApiResponse (LinkModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LinkModel>> CreateLinkAsyncWithHttpInfo (LinkModel linkModel);
+        System.Threading.Tasks.Task<ApiResponse<LinkModel>> CreateLinkAsyncWithHttpInfo(LinkModel linkModel);
         /// <summary>
         /// Delete link
         /// </summary>
@@ -127,7 +127,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteLinkAsync (int? linkId);
+        System.Threading.Tasks.Task DeleteLinkAsync(int? linkId);
 
         /// <summary>
         /// Delete link
@@ -138,7 +138,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteLinkAsyncWithHttpInfo (int? linkId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteLinkAsyncWithHttpInfo(int? linkId);
         /// <summary>
         /// Returns a link
         /// </summary>
@@ -148,7 +148,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of LinkModel</returns>
-        System.Threading.Tasks.Task<LinkModel> GetLinkAsync (int? linkId);
+        System.Threading.Tasks.Task<LinkModel> GetLinkAsync(int? linkId);
 
         /// <summary>
         /// Returns a link
@@ -159,7 +159,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of ApiResponse (LinkModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<LinkModel>> GetLinkAsyncWithHttpInfo (int? linkId);
+        System.Threading.Tasks.Task<ApiResponse<LinkModel>> GetLinkAsyncWithHttpInfo(int? linkId);
         /// <summary>
         /// Update sort order of links
         /// </summary>
@@ -169,7 +169,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
         /// <returns>Task of List&lt;LinkModel&gt;</returns>
-        System.Threading.Tasks.Task<List<LinkModel>> UpdateLinkAsync (List<LinkModel> linkModels);
+        System.Threading.Tasks.Task<List<LinkModel>> UpdateLinkAsync(List<LinkModel> linkModels);
 
         /// <summary>
         /// Update sort order of links
@@ -180,7 +180,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
         /// <returns>Task of ApiResponse (List&lt;LinkModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LinkModel>>> UpdateLinkAsyncWithHttpInfo (List<LinkModel> linkModels);
+        System.Threading.Tasks.Task<ApiResponse<List<LinkModel>>> UpdateLinkAsyncWithHttpInfo(List<LinkModel> linkModels);
         #endregion Asynchronous Operations
     }
 }

@@ -696,7 +696,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
         /// <returns>ApiResponse of Dictionary&lt;string, StructureNode&gt;</returns>
-        public ApiResponse< Dictionary<string, StructureNode> > GetChannelNodeTreeWithHttpInfo (int? channelId)
+        public ApiResponse<Dictionary<string, StructureNode>> GetChannelNodeTreeWithHttpInfo(int? channelId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -751,7 +751,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
         /// <returns>Task of Dictionary&lt;string, StructureNode&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, StructureNode>> GetChannelNodeTreeAsync (int? channelId)
+        public async System.Threading.Tasks.Task<Dictionary<string, StructureNode>> GetChannelNodeTreeAsync(int? channelId)
         {
              ApiResponse<Dictionary<string, StructureNode>> localVarResponse = await GetChannelNodeTreeAsyncWithHttpInfo(channelId);
              return localVarResponse.Data;
@@ -764,7 +764,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, StructureNode&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, StructureNode>>> GetChannelNodeTreeAsyncWithHttpInfo (int? channelId)
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, StructureNode>>> GetChannelNodeTreeAsyncWithHttpInfo(int? channelId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -818,10 +818,10 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
-        /// <returns>Dictionary&lt;string, StructureNode&gt;</returns>
-        public Dictionary<string, StructureNode> GetChannelNodes (int? channelId)
+        /// <returns>List&lt;string&gt;</returns>
+        public List<string> GetChannelNodes (int? channelId)
         {
-             ApiResponse<Dictionary<string, StructureNode>> localVarResponse = GetChannelNodesWithHttpInfo(channelId);
+             ApiResponse<List<string>> localVarResponse = GetChannelNodesWithHttpInfo(channelId);
              return localVarResponse.Data;
         }
 
@@ -830,8 +830,8 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
-        /// <returns>ApiResponse of Dictionary&lt;string, StructureNode&gt;</returns>
-        public ApiResponse< Dictionary<string, StructureNode> > GetChannelNodesWithHttpInfo (int? channelId)
+        /// <returns>ApiResponse of List&lt;string&gt;</returns>
+        public ApiResponse<List<string>> GetChannelNodesWithHttpInfo (int? channelId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -875,9 +875,10 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
+            return new ApiResponse<List<string>>(
+                localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, StructureNode>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
+                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -885,10 +886,10 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
-        /// <returns>Task of Dictionary&lt;string, StructureNode&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, StructureNode>> GetChannelNodesAsync (int? channelId)
+        /// <returns>Task of List&lt;string&gt;</returns>
+        public async System.Threading.Tasks.Task<List<string>> GetChannelNodesAsync (int? channelId)
         {
-             ApiResponse<Dictionary<string, StructureNode>> localVarResponse = await GetChannelNodesAsyncWithHttpInfo(channelId);
+             ApiResponse<List<string>> localVarResponse = await GetChannelNodesAsyncWithHttpInfo(channelId);
              return localVarResponse.Data;
 
         }
@@ -898,8 +899,8 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, StructureNode&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, StructureNode>>> GetChannelNodesAsyncWithHttpInfo (int? channelId)
+        /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetChannelNodesAsyncWithHttpInfo (int? channelId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -943,9 +944,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
+            return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, StructureNode>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
+                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>

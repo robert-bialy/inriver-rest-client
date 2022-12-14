@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
@@ -28,7 +27,14 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="targetEntityId">targetEntityId (required).</param>
         /// <param name="linkEntityId">linkEntityId.</param>
         /// <param name="index">index.</param>
-        public LinkModel(int? id = default(int?), bool? isActive = default(bool?), string linkTypeId = default(string), int? sourceEntityId = default(int?), int? targetEntityId = default(int?), int? linkEntityId = default(int?), int? index = default(int?))
+        public LinkModel(
+            int? id = default(int?),
+            bool? isActive = default(bool?),
+            string linkTypeId = default(string),
+            int? sourceEntityId = default(int?),
+            int? targetEntityId = default(int?),
+            int? linkEntityId = default(int?),
+            int? index = default(int?))
         {
             // to ensure "linkTypeId" is required (not null)
             if (linkTypeId == null)
@@ -37,7 +43,7 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.LinkTypeId = linkTypeId;
+                LinkTypeId = linkTypeId;
             }
             // to ensure "sourceEntityId" is required (not null)
             if (sourceEntityId == null)
@@ -46,7 +52,7 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.SourceEntityId = sourceEntityId;
+                SourceEntityId = sourceEntityId;
             }
             // to ensure "targetEntityId" is required (not null)
             if (targetEntityId == null)
@@ -55,12 +61,12 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.TargetEntityId = targetEntityId;
+                TargetEntityId = targetEntityId;
             }
-            this.Id = id;
-            this.IsActive = isActive;
-            this.LinkEntityId = linkEntityId;
-            this.Index = index;
+            Id = id;
+            IsActive = isActive;
+            LinkEntityId = linkEntityId;
+            Index = index;
         }
         
         /// <summary>
