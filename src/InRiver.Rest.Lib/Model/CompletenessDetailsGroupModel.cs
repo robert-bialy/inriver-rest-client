@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace InRiver.Rest.Lib.Model
 {
-    public class CompletenessDetailsGroupModel : IEquatable<CompletenessDetailsGroupModel>
+    public class CompletenessDetailsGroupModel : IEqualityComparer<CompletenessDetailsGroupModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CompletenessDetailsGroupModel" /> class.
@@ -18,7 +19,7 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="name">name.</param>
         /// <param name="isCompleted">isCompleted.</param>
         /// <param name="rules">rules.</param>
-        public CompletenessDetailsGroupModel(string name = default, bool isCompleted = default, CompletenessDetailsRuleModel[] rules = default)
+        public CompletenessDetailsGroupModel(string name, bool isCompleted, CompletenessDetailsRuleModel[] rules)
         {
             Name = name;
             IsCompleted = isCompleted;
@@ -43,28 +44,22 @@ namespace InRiver.Rest.Lib.Model
         [DataMember(Name = "rules", EmitDefaultValue = false)]
         public CompletenessDetailsRuleModel[] Rules { get; set; }
 
-        public bool Equals(CompletenessDetailsGroupModel other)
+        public bool Equals(CompletenessDetailsGroupModel x, CompletenessDetailsGroupModel y)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Name == other.Name && IsCompleted == other.IsCompleted && Equals(Rules, other.Rules);
+            if (ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, null)) return false;
+            if (ReferenceEquals(y, null)) return false;
+            if (x.GetType() != y.GetType()) return false;
+            return x.Name == y.Name && x.IsCompleted == y.IsCompleted && Equals(x.Rules, y.Rules);
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((CompletenessDetailsGroupModel)obj);
-        }
-
-        public override int GetHashCode()
+        public int GetHashCode(CompletenessDetailsGroupModel obj)
         {
             unchecked
             {
-                var localHashCode = (Name != null ? Name.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ IsCompleted.GetHashCode();
-                localHashCode = (localHashCode * 397) ^ (Rules != null ? Rules.GetHashCode() : 0);
+                var localHashCode = (obj.Name != null ? obj.Name.GetHashCode() : 0);
+                localHashCode = (localHashCode * 397) ^ obj.IsCompleted.GetHashCode();
+                localHashCode = (localHashCode * 397) ^ (obj.Rules != null ? obj.Rules.GetHashCode() : 0);
                 return localHashCode;
             }
         }

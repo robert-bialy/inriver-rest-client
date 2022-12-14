@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -9,7 +10,7 @@ namespace InRiver.Rest.Lib.Model
     /// CompletenessDetailsModel
     /// </summary>
     [DataContract]
-    public class CompletenessDetailsModel : IEquatable<CompletenessDetailsModel>
+    public class CompletenessDetailsModel : IEqualityComparer<CompletenessDetailsModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CompletenessDetailsModel" /> class.
@@ -22,7 +23,7 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="completeness">completeness.</param>
         /// <param name="groups">groups.</param>
-        public CompletenessDetailsModel(int completeness = default, CompletenessDetailsGroupModel[] groups = default)
+        public CompletenessDetailsModel(int completeness, CompletenessDetailsGroupModel[] groups)
         {
             Completeness = completeness;
             Groups = groups;
@@ -39,29 +40,6 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         [DataMember(Name = "groups", EmitDefaultValue = false)]
         public CompletenessDetailsGroupModel[] Groups { get; set; }
-
-        public bool Equals(CompletenessDetailsModel other)
-        {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Completeness == other.Completeness && Equals(Groups, other.Groups);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((CompletenessDetailsModel)obj);
-        }
-
-        public override int GetHashCode()
-        {
-            unchecked
-            {
-                return (Completeness * 397) ^ (Groups != null ? Groups.GetHashCode() : 0);
-            }
-        }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,6 +62,23 @@ namespace InRiver.Rest.Lib.Model
         public virtual string ToJson()
         {
             return JsonConvert.SerializeObject(this, Formatting.Indented);
+        }
+
+        public bool Equals(CompletenessDetailsModel x, CompletenessDetailsModel y)
+        {
+            if (ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, null)) return false;
+            if (ReferenceEquals(y, null)) return false;
+            if (x.GetType() != y.GetType()) return false;
+            return x.Completeness == y.Completeness && Equals(x.Groups, y.Groups);
+        }
+
+        public int GetHashCode(CompletenessDetailsModel obj)
+        {
+            unchecked
+            {
+                return (obj.Completeness * 397) ^ (obj.Groups != null ? obj.Groups.GetHashCode() : 0);
+            }
         }
     }
 }

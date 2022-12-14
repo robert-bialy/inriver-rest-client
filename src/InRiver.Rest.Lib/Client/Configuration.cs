@@ -76,11 +76,6 @@ namespace InRiver.Rest.Lib.Client
         /// HTTP client wrapper
         /// </summary>
         private ApiClient _apiClient = null;
-
-        /// <summary>
-        /// HTTP client override
-        /// </summary>
-        private HttpClient _httpClientOverride = null;
         #endregion Private Members
 
         #region Constructors
@@ -172,11 +167,7 @@ namespace InRiver.Rest.Lib.Client
             }
         }
 
-        public virtual HttpClient HttpClientOverride
-        {
-            get => _httpClientOverride;
-            set => _httpClientOverride = value;
-        }
+        public virtual HttpClient HttpClientOverride { get; set; }
 
         #endregion Properties
 
@@ -199,7 +190,7 @@ namespace InRiver.Rest.Lib.Client
         /// <returns></returns>
         public ApiClient CreateApiClient()
         {
-            return new ApiClient(BasePath, _httpClientOverride) { Configuration = this };
+            return new ApiClient(BasePath, HttpClientOverride) { Configuration = this };
         }
         #endregion Methods
 

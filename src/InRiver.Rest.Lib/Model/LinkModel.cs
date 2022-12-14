@@ -28,13 +28,13 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="linkEntityId">linkEntityId.</param>
         /// <param name="index">index.</param>
         public LinkModel(
-            int? id = default(int?),
-            bool? isActive = default(bool?),
-            string linkTypeId = default(string),
-            int? sourceEntityId = default(int?),
-            int? targetEntityId = default(int?),
-            int? linkEntityId = default(int?),
-            int? index = default(int?))
+            int? id,
+            bool? isActive,
+            string linkTypeId,
+            int? sourceEntityId,
+            int? targetEntityId,
+            int? linkEntityId,
+            int? index)
         {
             // to ensure "linkTypeId" is required (not null)
             if (linkTypeId == null)

@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -9,7 +9,7 @@ namespace InRiver.Rest.Lib.Model
     /// FieldRevisionModel
     /// </summary>
     [DataContract]
-    public class FieldRevisionModel : IEquatable<FieldRevisionModel>
+    public class FieldRevisionModel : IEqualityComparer<FieldRevisionModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldRevisionModel" /> class.
@@ -122,33 +122,27 @@ namespace InRiver.Rest.Lib.Model
             return JsonConvert.SerializeObject(this, Formatting.Indented);
         }
 
-        public bool Equals(FieldRevisionModel other)
+        public bool Equals(FieldRevisionModel x, FieldRevisionModel y)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return FieldTypeId == other.FieldTypeId && Equals(Value, other.Value) && Language == other.Language && Revision == other.Revision && ModifiedBy == other.ModifiedBy && ModifiedDate == other.ModifiedDate && FormattedModifiedDate == other.FormattedModifiedDate && EntityId == other.EntityId;
+            if (ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, null)) return false;
+            if (ReferenceEquals(y, null)) return false;
+            if (x.GetType() != y.GetType()) return false;
+            return x.FieldTypeId == y.FieldTypeId && Equals(x.Value, y.Value) && x.Language == y.Language && x.Revision == y.Revision && x.ModifiedBy == y.ModifiedBy && x.ModifiedDate == y.ModifiedDate && x.FormattedModifiedDate == y.FormattedModifiedDate && x.EntityId == y.EntityId;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((FieldRevisionModel)obj);
-        }
-
-        public override int GetHashCode()
+        public int GetHashCode(FieldRevisionModel obj)
         {
             unchecked
             {
-                var localHashCode = (FieldTypeId != null ? FieldTypeId.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (Value != null ? Value.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (Language != null ? Language.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ Revision;
-                localHashCode = (localHashCode * 397) ^ (ModifiedBy != null ? ModifiedBy.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (ModifiedDate != null ? ModifiedDate.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (FormattedModifiedDate != null ? FormattedModifiedDate.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ EntityId;
+                var localHashCode = (obj.FieldTypeId != null ? obj.FieldTypeId.GetHashCode() : 0);
+                localHashCode = (localHashCode * 397) ^ (obj.Value != null ? obj.Value.GetHashCode() : 0);
+                localHashCode = (localHashCode * 397) ^ (obj.Language != null ? obj.Language.GetHashCode() : 0);
+                localHashCode = (localHashCode * 397) ^ obj.Revision;
+                localHashCode = (localHashCode * 397) ^ (obj.ModifiedBy != null ? obj.ModifiedBy.GetHashCode() : 0);
+                localHashCode = (localHashCode * 397) ^ (obj.ModifiedDate != null ? obj.ModifiedDate.GetHashCode() : 0);
+                localHashCode = (localHashCode * 397) ^ (obj.FormattedModifiedDate != null ? obj.FormattedModifiedDate.GetHashCode() : 0);
+                localHashCode = (localHashCode * 397) ^ obj.EntityId;
                 return localHashCode;
             }
         }

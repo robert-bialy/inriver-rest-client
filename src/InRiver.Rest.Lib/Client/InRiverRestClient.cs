@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Net.Http;
 using InRiver.Rest.Lib.Api;
 
 namespace InRiver.Rest.Lib.Client
 {
-    public class Test
-    {
-        void test()
-        {
-            var client = new InRiverRestClient("siema", e =>
-            {
-                e.HttpClientOverride = new HttpClient();
-            });
-        }
-    }
-
     public class InRiverRestClient : IinRiverClient
     {
         private readonly Configuration _configuration;

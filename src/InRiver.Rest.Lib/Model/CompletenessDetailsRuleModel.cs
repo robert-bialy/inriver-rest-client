@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.Serialization;
 using Newtonsoft.Json;
 
 namespace InRiver.Rest.Lib.Model
 {
-    public class CompletenessDetailsRuleModel : IEquatable<CompletenessDetailsRuleModel>
+    public class CompletenessDetailsRuleModel : IEqualityComparer<CompletenessDetailsRuleModel>
     {
         /// <summary>
         /// Initializes a new instance of the <see cref="CompletenessDetailsRuleModel" /> class.
@@ -36,26 +37,20 @@ namespace InRiver.Rest.Lib.Model
         [DataMember(Name = "isCompleted", EmitDefaultValue = false)]
         public bool IsCompleted { get; set; }
 
-        public bool Equals(CompletenessDetailsRuleModel other)
+        public bool Equals(CompletenessDetailsRuleModel x, CompletenessDetailsRuleModel y)
         {
-            if (ReferenceEquals(null, other)) return false;
-            if (ReferenceEquals(this, other)) return true;
-            return Name == other.Name && IsCompleted == other.IsCompleted;
+            if (ReferenceEquals(x, y)) return true;
+            if (ReferenceEquals(x, null)) return false;
+            if (ReferenceEquals(y, null)) return false;
+            if (x.GetType() != y.GetType()) return false;
+            return x.Name == y.Name && x.IsCompleted == y.IsCompleted;
         }
 
-        public override bool Equals(object obj)
-        {
-            if (ReferenceEquals(null, obj)) return false;
-            if (ReferenceEquals(this, obj)) return true;
-            if (obj.GetType() != this.GetType()) return false;
-            return Equals((CompletenessDetailsRuleModel)obj);
-        }
-
-        public override int GetHashCode()
+        public int GetHashCode(CompletenessDetailsRuleModel obj)
         {
             unchecked
             {
-                return ((Name != null ? Name.GetHashCode() : 0) * 397) ^ IsCompleted.GetHashCode();
+                return ((obj.Name != null ? obj.Name.GetHashCode() : 0) * 397) ^ obj.IsCompleted.GetHashCode();
             }
         }
     }
