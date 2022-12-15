@@ -14,15 +14,13 @@ namespace InRiver.Rest.Lib.Api
     internal class EntityApi : IEntityApi
     {
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityApi"/> class.
         /// </summary>
         /// <returns></returns>
         public EntityApi(String basePath)
         {
-            this.Configuration = new Configuration { BasePath = basePath };
-
+            Configuration = new Configuration { BasePath = basePath };
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
@@ -34,11 +32,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns></returns>
         public EntityApi(Configuration configuration = null)
         {
-            if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
-            else
-                this.Configuration = configuration;
-
+            Configuration = configuration ?? Configuration.Default;
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
@@ -71,7 +65,7 @@ namespace InRiver.Rest.Lib.Api
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
 
         /// <summary>
