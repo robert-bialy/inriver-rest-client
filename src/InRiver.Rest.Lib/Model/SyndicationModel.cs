@@ -25,14 +25,14 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="workareaId">workareaId.</param>
         public SyndicationModel(string extensionDisplayName = default(string), string extensionId = default(string), int? id = default(int?), string mappingName = default(string), string name = default(string), string outputFormat = default(string), string workareaName = default(string), string workareaId = default(string))
         {
-            this.ExtensionDisplayName = extensionDisplayName;
-            this.ExtensionId = extensionId;
-            this.Id = id;
-            this.MappingName = mappingName;
-            this.Name = name;
-            this.OutputFormat = outputFormat;
-            this.WorkareaName = workareaName;
-            this.WorkareaId = workareaId;
+            ExtensionDisplayName = extensionDisplayName;
+            ExtensionId = extensionId;
+            Id = id;
+            MappingName = mappingName;
+            Name = name;
+            OutputFormat = outputFormat;
+            WorkareaName = workareaName;
+            WorkareaId = workareaId;
         }
         
         /// <summary>

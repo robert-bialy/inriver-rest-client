@@ -21,30 +21,23 @@ namespace InRiver.Rest.Lib.Client
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
         };
         private readonly string _basePath;
-        private readonly HttpClient _httpClient;
+        private readonly HttpClient _httpClientOverride;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
         /// with default configuration.
         /// </summary>
         /// <param name="basePath">The base path.</param>
-        /// <param name="httpClient">Preconfigured httpClient</param>
-        public ApiClient(string basePath = "https://apieuw.productmarketingcloud.com", HttpClient httpClient = null)
+        /// <param name="httpClientOverride">Preconfigured httpClient</param>
+        public ApiClient(string basePath = "https://apieuw.productmarketingcloud.com", HttpClient httpClientOverride = null)
         {
            if (string.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
            Configuration = Client.Configuration.Default;
            _basePath = basePath;
-           _httpClient = httpClient;
+           _httpClientOverride = httpClientOverride;
         }
-
-        /// <summary>
-        /// Gets or sets the default API client for making HTTP calls.
-        /// </summary>
-        /// <value>The default API client.</value>
-        [Obsolete("ApiClient.Default is deprecated, please use 'Configuration.Default.ApiClient' instead.")]
-        public static ApiClient Default;
-
+        
         /// <summary>
         /// Gets or sets an instance of the IReadableConfiguration.
         /// </summary>
@@ -58,9 +51,13 @@ namespace InRiver.Rest.Lib.Client
         
         // Creates and sets up a RestRequest prior to a call.
         private RestRequest PrepareRequest(
-            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            IEnumerable<KeyValuePair<string, string>> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
+            String path, RestSharp.Method method,
+            List<KeyValuePair<String, String>> queryParams,
+            Object postBody,
+            IEnumerable<KeyValuePair<string, string>> headerParams,
+            Dictionary<String, String> formParams,
+            Dictionary<String, FileParameter> fileParams,
+            Dictionary<String, String> pathParams,
             String contentType)
         {
             var request = new RestRequest(path, method);
@@ -466,7 +463,7 @@ namespace InRiver.Rest.Lib.Client
 
         private RestClient CreateRestClient(RestClientOptions configuration)
         {
-            return _httpClient != null ? new RestClient(_httpClient, configuration) : new RestClient(configuration);
+            return _httpClientOverride != null ? new RestClient(_httpClientOverride, configuration) : new RestClient(configuration);
         }
     }
 }

@@ -21,7 +21,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        MediaInfoModel AddExternalUrl (int? entityId, ExeternalUrlFileModel urlFileModel);
+        MediaInfoModel AddExternalUrl(int? entityId, ExeternalUrlFileModel urlFileModel);
 
         /// <summary>
         /// Add external media url
@@ -33,7 +33,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        ApiResponse<MediaInfoModel> AddExternalUrlWithHttpInfo (int? entityId, ExeternalUrlFileModel urlFileModel);
+        ApiResponse<MediaInfoModel> AddExternalUrlWithHttpInfo(int? entityId, ExeternalUrlFileModel urlFileModel);
         /// <summary>
         /// Entity comments
         /// </summary>
@@ -43,7 +43,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>List&lt;CommentModel&gt;</returns>
-        List<CommentModel> Comments (int? entityId);
+        List<CommentModel> Comments(int? entityId);
 
         /// <summary>
         /// Entity comments
@@ -54,7 +54,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>ApiResponse of List&lt;CommentModel&gt;</returns>
-        ApiResponse<List<CommentModel>> CommentsWithHttpInfo (int? entityId);
+        ApiResponse<List<CommentModel>> CommentsWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns a read only list of field values
         /// </summary>
@@ -63,8 +63,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>List&lt;FieldSummaryModel&gt;</returns>
-        List<FieldSummaryModel> CompletenessDetails (int? entityId);
+        /// <returns>List&lt;CompletenessDetailsModel&gt;</returns>
+        List<CompletenessDetailsModel> CompletenessDetails(int? entityId);
 
         /// <summary>
         /// Returns a read only list of field values
@@ -74,8 +74,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>ApiResponse of List&lt;FieldSummaryModel&gt;</returns>
-        ApiResponse<List<FieldSummaryModel>> CompletenessDetailsWithHttpInfo (int? entityId);
+        /// <returns>ApiResponse of List&lt;CompletenessDetailsModel&gt;</returns>
+        ApiResponse<List<CompletenessDetailsModel>> CompletenessDetailsWithHttpInfo(int? entityId);
         /// <summary>
         /// Post entity comment
         /// </summary>
@@ -86,7 +86,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentModel"></param>
         /// <returns>List&lt;CommentModel&gt;</returns>
-        List<CommentModel> CreateComment (int? entityId, CommentModel commentModel);
+        List<CommentModel> CreateComment(int? entityId, CommentModel commentModel);
 
         /// <summary>
         /// Post entity comment
@@ -98,7 +98,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentModel"></param>
         /// <returns>ApiResponse of List&lt;CommentModel&gt;</returns>
-        ApiResponse<List<CommentModel>> CreateCommentWithHttpInfo (int? entityId, CommentModel commentModel);
+        ApiResponse<List<CommentModel>> CreateCommentWithHttpInfo(int? entityId, CommentModel commentModel);
         /// <summary>
         /// Create a new entity
         /// </summary>
@@ -108,7 +108,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityCreationModel"></param>
         /// <returns>EntitySummaryModel</returns>
-        EntitySummaryModel CreateEntity (EntityCreationModel entityCreationModel);
+        EntitySummaryModel CreateEntity(EntityCreationModel entityCreationModel);
 
         /// <summary>
         /// Create a new entity
@@ -119,7 +119,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityCreationModel"></param>
         /// <returns>ApiResponse of EntitySummaryModel</returns>
-        ApiResponse<EntitySummaryModel> CreateEntityWithHttpInfo (EntityCreationModel entityCreationModel);
+        ApiResponse<EntitySummaryModel> CreateEntityWithHttpInfo(EntityCreationModel entityCreationModel);
         /// <summary>
         /// Delete entity comment
         /// </summary>
@@ -130,7 +130,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentId"></param>
         /// <returns></returns>
-        void DeleteComment (int? entityId, int? commentId);
+        void DeleteComment(int? entityId, int? commentId);
 
         /// <summary>
         /// Delete entity comment
@@ -142,7 +142,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteCommentWithHttpInfo (int? entityId, int? commentId);
+        ApiResponse<Object> DeleteCommentWithHttpInfo(int? entityId, int? commentId);
         /// <summary>
         /// Delete an entity
         /// </summary>
@@ -152,7 +152,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns></returns>
-        void DeleteEntity (int? entityId);
+        void DeleteEntity(int? entityId);
 
         /// <summary>
         /// Delete an entity
@@ -163,7 +163,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteEntityWithHttpInfo (int? entityId);
+        ApiResponse<Object> DeleteEntityWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns various types of entity data
         /// </summary>
@@ -173,7 +173,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
         /// <returns>List&lt;EntityDataModel&gt;</returns>
-        List<EntityDataModel> FetchData (FetchObjectsModel fetchObjectsModel);
+        List<EntityDataModel> FetchData(FetchObjectsModel fetchObjectsModel);
 
         /// <summary>
         /// Returns various types of entity data
@@ -184,7 +184,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
         /// <returns>ApiResponse of List&lt;EntityDataModel&gt;</returns>
-        ApiResponse<List<EntityDataModel>> FetchDataWithHttpInfo (FetchObjectsModel fetchObjectsModel);
+        ApiResponse<List<EntityDataModel>> FetchDataWithHttpInfo(FetchObjectsModel fetchObjectsModel);
         /// <summary>
         /// Field value revisions
         /// </summary>
@@ -194,8 +194,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>EntitySummaryModel</returns>
-        EntitySummaryModel[] FieldHistory (int? entityId, string fieldTypeId);
+        /// <returns>FieldRevisionModel</returns>
+        FieldRevisionModel[] FieldHistory(int? entityId, string fieldTypeId);
 
         /// <summary>
         /// Field value revisions
@@ -206,8 +206,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>ApiResponse of EntitySummaryModel</returns>
-        ApiResponse<EntitySummaryModel[]> FieldHistoryWithHttpInfo (int? entityId, string fieldTypeId);
+        /// <returns>ApiResponse of FieldRevisionModel</returns>
+        ApiResponse<FieldRevisionModel[]> FieldHistoryWithHttpInfo(int? entityId, string fieldTypeId);
         /// <summary>
         /// Returns a read only list of entity media
         /// </summary>
@@ -228,7 +228,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>ApiResponse of List&lt;MediaInfoModel&gt;</returns>
-        ApiResponse<List<MediaInfoModel>> GetAllMediaWithHttpInfo (int? entityId);
+        ApiResponse<List<MediaInfoModel>> GetAllMediaWithHttpInfo(int? entityId);
         /// <summary>
         /// Get All Segments
         /// </summary>
@@ -343,7 +343,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>ApiResponse of List&lt;FieldValueModel&gt;</returns>
-        ApiResponse<List<FieldValueModel>> GetFieldValuesWithHttpInfo (int? entityId, string fieldTypeIds = null);
+        ApiResponse<List<FieldValueModel>> GetFieldValuesWithHttpInfo(int? entityId, string fieldTypeIds = null);
         /// <summary>
         /// Returns a read only list of field values
         /// </summary>
@@ -582,7 +582,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;int?&gt;</returns>
-        List<int?> StarredEntities ();
+        List<int?> StarredEntities();
 
         /// <summary>
         /// Get list of starred entities
@@ -592,7 +592,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;int?&gt;</returns>
-        ApiResponse<List<int?>> StarredEntitiesWithHttpInfo ();
+        ApiResponse<List<int?>> StarredEntitiesWithHttpInfo();
         /// <summary>
         /// Update specification field values
         /// </summary>
@@ -603,7 +603,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="specificationValueModels"></param>
         /// <returns>List&lt;SpecificationValueModel&gt;</returns>
-        List<SpecificationValueModel> UpdateSpecificationValues (int? entityId, List<SpecificationValueModel> specificationValueModels);
+        List<SpecificationValueModel> UpdateSpecificationValues(int? entityId, List<SpecificationValueModel> specificationValueModels);
 
         /// <summary>
         /// Update specification field values
@@ -615,7 +615,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="specificationValueModels"></param>
         /// <returns>ApiResponse of List&lt;SpecificationValueModel&gt;</returns>
-        ApiResponse<List<SpecificationValueModel>> UpdateSpecificationValuesWithHttpInfo (int? entityId, List<SpecificationValueModel> specificationValueModels);
+        ApiResponse<List<SpecificationValueModel>> UpdateSpecificationValuesWithHttpInfo(int? entityId, List<SpecificationValueModel> specificationValueModels);
         /// <summary>
         /// Update list of starred entities
         /// </summary>
@@ -625,7 +625,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityIds"></param>
         /// <returns>List&lt;int?&gt;</returns>
-        List<int?> UpdateStarredEntities (List<int?> entityIds);
+        List<int?> UpdateStarredEntities(List<int?> entityIds);
 
         /// <summary>
         /// Update list of starred entities
@@ -636,7 +636,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityIds"></param>
         /// <returns>ApiResponse of List&lt;int?&gt;</returns>
-        ApiResponse<List<int?>> UpdateStarredEntitiesWithHttpInfo (List<int?> entityIds);
+        ApiResponse<List<int?>> UpdateStarredEntitiesWithHttpInfo(List<int?> entityIds);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -647,7 +647,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="base64FileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        MediaInfoModel UploadBase64File (int? entityId, Base64FileModel base64FileModel);
+        MediaInfoModel UploadBase64File(int? entityId, Base64FileModel base64FileModel);
 
         /// <summary>
         /// Add Media
@@ -659,7 +659,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="base64FileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        ApiResponse<MediaInfoModel> UploadBase64FileWithHttpInfo (int? entityId, Base64FileModel base64FileModel);
+        ApiResponse<MediaInfoModel> UploadBase64FileWithHttpInfo(int? entityId, Base64FileModel base64FileModel);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -670,7 +670,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        MediaInfoModel UploadMediaFromUrl (int? entityId, UrlFileModel urlFileModel);
+        MediaInfoModel UploadMediaFromUrl(int? entityId, UrlFileModel urlFileModel);
 
         /// <summary>
         /// Add Media
@@ -682,7 +682,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        ApiResponse<MediaInfoModel> EntityUploadMediaFromUrlWithHttpInfo (int? entityId, UrlFileModel urlFileModel);
+        ApiResponse<MediaInfoModel> EntityUploadMediaFromUrlWithHttpInfo(int? entityId, UrlFileModel urlFileModel);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -695,7 +695,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        System.Threading.Tasks.Task<MediaInfoModel> AddExternalUrlAsync (int? entityId, ExeternalUrlFileModel urlFileModel);
+        System.Threading.Tasks.Task<MediaInfoModel> AddExternalUrlAsync(int? entityId, ExeternalUrlFileModel urlFileModel);
 
         /// <summary>
         /// Add external media url
@@ -707,7 +707,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> AddExternalUrlAsyncWithHttpInfo (int? entityId, ExeternalUrlFileModel urlFileModel);
+        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> AddExternalUrlAsyncWithHttpInfo(int? entityId, ExeternalUrlFileModel urlFileModel);
         /// <summary>
         /// Entity comments
         /// </summary>
@@ -717,7 +717,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of List&lt;CommentModel&gt;</returns>
-        System.Threading.Tasks.Task<List<CommentModel>> CommentsAsync (int? entityId);
+        System.Threading.Tasks.Task<List<CommentModel>> CommentsAsync(int? entityId);
 
         /// <summary>
         /// Entity comments
@@ -728,7 +728,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of ApiResponse (List&lt;CommentModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<CommentModel>>> CommentsAsyncWithHttpInfo (int? entityId);
+        System.Threading.Tasks.Task<ApiResponse<List<CommentModel>>> CommentsAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns a read only list of field values
         /// </summary>
@@ -737,8 +737,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of List&lt;FieldSummaryModel&gt;</returns>
-        System.Threading.Tasks.Task<List<FieldSummaryModel>> CompletenessDetailsAsync (int? entityId);
+        /// <returns>Task of List&lt;CompletenessDetailsModel&gt;</returns>
+        System.Threading.Tasks.Task<List<CompletenessDetailsModel>> CompletenessDetailsAsync(int? entityId);
 
         /// <summary>
         /// Returns a read only list of field values
@@ -748,8 +748,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of ApiResponse (List&lt;FieldSummaryModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<FieldSummaryModel>>> CompletenessDetailsAsyncWithHttpInfo (int? entityId);
+        /// <returns>Task of ApiResponse (List&lt;CompletenessDetailsModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<CompletenessDetailsModel>>> CompletenessDetailsAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Post entity comment
         /// </summary>
@@ -760,7 +760,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentModel"></param>
         /// <returns>Task of List&lt;CommentModel&gt;</returns>
-        System.Threading.Tasks.Task<List<CommentModel>> CreateCommentAsync (int? entityId, CommentModel commentModel);
+        System.Threading.Tasks.Task<List<CommentModel>> CreateCommentAsync(int? entityId, CommentModel commentModel);
 
         /// <summary>
         /// Post entity comment
@@ -772,7 +772,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentModel"></param>
         /// <returns>Task of ApiResponse (List&lt;CommentModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<CommentModel>>> CreateCommentAsyncWithHttpInfo (int? entityId, CommentModel commentModel);
+        System.Threading.Tasks.Task<ApiResponse<List<CommentModel>>> CreateCommentAsyncWithHttpInfo(int? entityId, CommentModel commentModel);
         /// <summary>
         /// Create a new entity
         /// </summary>
@@ -782,7 +782,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityCreationModel"></param>
         /// <returns>Task of EntitySummaryModel</returns>
-        System.Threading.Tasks.Task<EntitySummaryModel> CreateEntityAsync (EntityCreationModel entityCreationModel);
+        System.Threading.Tasks.Task<EntitySummaryModel> CreateEntityAsync(EntityCreationModel entityCreationModel);
 
         /// <summary>
         /// Create a new entity
@@ -793,7 +793,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityCreationModel"></param>
         /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> CreateEntityAsyncWithHttpInfo (EntityCreationModel entityCreationModel);
+        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> CreateEntityAsyncWithHttpInfo(EntityCreationModel entityCreationModel);
         /// <summary>
         /// Delete entity comment
         /// </summary>
@@ -804,7 +804,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteCommentAsync (int? entityId, int? commentId);
+        System.Threading.Tasks.Task DeleteCommentAsync(int? entityId, int? commentId);
 
         /// <summary>
         /// Delete entity comment
@@ -816,7 +816,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCommentAsyncWithHttpInfo (int? entityId, int? commentId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCommentAsyncWithHttpInfo(int? entityId, int? commentId);
         /// <summary>
         /// Delete an entity
         /// </summary>
@@ -826,7 +826,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteEntityAsync (int? entityId);
+        System.Threading.Tasks.Task DeleteEntityAsync(int? entityId);
 
         /// <summary>
         /// Delete an entity
@@ -837,7 +837,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEntityAsyncWithHttpInfo (int? entityId);
+        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEntityAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns various types of entity data
         /// </summary>
@@ -847,7 +847,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
         /// <returns>Task of List&lt;EntityDataModel&gt;</returns>
-        System.Threading.Tasks.Task<List<EntityDataModel>> FetchDataAsync (FetchObjectsModel fetchObjectsModel);
+        System.Threading.Tasks.Task<List<EntityDataModel>> FetchDataAsync(FetchObjectsModel fetchObjectsModel);
 
         /// <summary>
         /// Returns various types of entity data
@@ -858,7 +858,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
         /// <returns>Task of ApiResponse (List&lt;EntityDataModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<EntityDataModel>>> FetchDataAsyncWithHttpInfo (FetchObjectsModel fetchObjectsModel);
+        System.Threading.Tasks.Task<ApiResponse<List<EntityDataModel>>> FetchDataAsyncWithHttpInfo(FetchObjectsModel fetchObjectsModel);
         /// <summary>
         /// Field value revisions
         /// </summary>
@@ -868,8 +868,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>Task of EntitySummaryModel</returns>
-        System.Threading.Tasks.Task<EntitySummaryModel[]> FieldHistoryAsync (int? entityId, string fieldTypeId);
+        /// <returns>Task of FieldRevisionModel</returns>
+        System.Threading.Tasks.Task<FieldRevisionModel[]> FieldHistoryAsync(int? entityId, string fieldTypeId);
 
         /// <summary>
         /// Field value revisions
@@ -880,8 +880,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel[]>> FieldHistoryAsyncWithHttpInfo (int? entityId, string fieldTypeId);
+        /// <returns>Task of ApiResponse (FieldRevisionModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<FieldRevisionModel[]>> FieldHistoryAsyncWithHttpInfo(int? entityId, string fieldTypeId);
         /// <summary>
         /// Returns a read only list of entity media
         /// </summary>
@@ -891,7 +891,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of List&lt;MediaInfoModel&gt;</returns>
-        System.Threading.Tasks.Task<List<MediaInfoModel>> GetAllMediaAsync (int? entityId);
+        System.Threading.Tasks.Task<List<MediaInfoModel>> GetAllMediaAsync(int? entityId);
 
         /// <summary>
         /// Returns a read only list of entity media
@@ -902,7 +902,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of ApiResponse (List&lt;MediaInfoModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<MediaInfoModel>>> GetAllMediaAsyncWithHttpInfo (int? entityId);
+        System.Threading.Tasks.Task<ApiResponse<List<MediaInfoModel>>> GetAllMediaAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Get All Segments
         /// </summary>
@@ -973,7 +973,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
         /// <param name="linkTypeId">optional, filter by link type (optional)</param>
         /// <returns>Task of ApiResponse (EntityBundleModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntityBundleModel>> GetEntityBundleAsyncWithHttpInfo (int? entityId, string fieldTypeIds = null, string linkDirection = null, string linkTypeId = null);
+        System.Threading.Tasks.Task<ApiResponse<EntityBundleModel>> GetEntityBundleAsyncWithHttpInfo(int? entityId, string fieldTypeIds = null, string linkDirection = null, string linkTypeId = null);
         /// <summary>
         /// Returns a read only entity summary
         /// </summary>
@@ -983,7 +983,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of EntitySummaryModel</returns>
-        System.Threading.Tasks.Task<EntitySummaryModel> GetEntitySummaryAsync (int? entityId);
+        System.Threading.Tasks.Task<EntitySummaryModel> GetEntitySummaryAsync(int? entityId);
 
         /// <summary>
         /// Returns a read only entity summary
@@ -994,7 +994,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> GetEntitySummaryAsyncWithHttpInfo (int? entityId);
+        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> GetEntitySummaryAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns a list of field values
         /// </summary>
@@ -1005,7 +1005,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>Task of List&lt;FieldValueModel&gt;</returns>
-        System.Threading.Tasks.Task<List<FieldValueModel>> GetFieldValuesAsync (int? entityId, string fieldTypeIds = null);
+        System.Threading.Tasks.Task<List<FieldValueModel>> GetFieldValuesAsync(int? entityId, string fieldTypeIds = null);
 
         /// <summary>
         /// Returns a list of field values
@@ -1017,7 +1017,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;FieldValueModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<FieldValueModel>>> GetFieldValuesAsyncWithHttpInfo (int? entityId, string fieldTypeIds = null);
+        System.Threading.Tasks.Task<ApiResponse<List<FieldValueModel>>> GetFieldValuesAsyncWithHttpInfo(int? entityId, string fieldTypeIds = null);
         /// <summary>
         /// Returns a read only list of field values
         /// </summary>
@@ -1028,7 +1028,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>Task of List&lt;FieldSummaryModel&gt;</returns>
-        System.Threading.Tasks.Task<List<FieldSummaryModel>> GetFieldsAsync (int? entityId, string fieldTypeIds = null);
+        System.Threading.Tasks.Task<List<FieldSummaryModel>> GetFieldsAsync(int? entityId, string fieldTypeIds = null);
 
         /// <summary>
         /// Returns a read only list of field values
@@ -1040,7 +1040,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;FieldSummaryModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<FieldSummaryModel>>> GetFieldsAsyncWithHttpInfo (int? entityId, string fieldTypeIds = null);
+        System.Threading.Tasks.Task<ApiResponse<List<FieldSummaryModel>>> GetFieldsAsyncWithHttpInfo(int? entityId, string fieldTypeIds = null);
         /// <summary>
         /// Returns a list of links
         /// </summary>
@@ -1052,7 +1052,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
         /// <param name="linkTypeId">optional, filter by link type (optional)</param>
         /// <returns>Task of List&lt;LinkModel&gt;</returns>
-        System.Threading.Tasks.Task<List<LinkModel>> GetLinksForEntityAsync (int? entityId, string linkDirection = null, string linkTypeId = null);
+        System.Threading.Tasks.Task<List<LinkModel>> GetLinksForEntityAsync(int? entityId, string linkDirection = null, string linkTypeId = null);
 
         /// <summary>
         /// Returns a list of links
@@ -1065,7 +1065,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
         /// <param name="linkTypeId">optional, filter by link type (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;LinkModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LinkModel>>> GetLinksForEntityAsyncWithHttpInfo (int? entityId, string linkDirection = null, string linkTypeId = null);
+        System.Threading.Tasks.Task<ApiResponse<List<LinkModel>>> GetLinksForEntityAsyncWithHttpInfo(int? entityId, string linkDirection = null, string linkTypeId = null);
         /// <summary>
         /// Returns a read only list of entity media details
         /// </summary>
@@ -1075,7 +1075,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of List&lt;MediaInfoModel&gt;</returns>
-        System.Threading.Tasks.Task<List<MediaInfoModel>> GetMediaDetailsAsync (int? entityId);
+        System.Threading.Tasks.Task<List<MediaInfoModel>> GetMediaDetailsAsync(int? entityId);
 
         /// <summary>
         /// Returns a read only list of entity media details
@@ -1086,7 +1086,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of ApiResponse (List&lt;MediaInfoModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<MediaInfoModel>>> EntityGetMediaDetailsAsyncWithHttpInfo (int? entityId);
+        System.Threading.Tasks.Task<ApiResponse<List<MediaInfoModel>>> EntityGetMediaDetailsAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns a read only list of specification field values
         /// </summary>
@@ -1097,7 +1097,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>Task of List&lt;SpecificationValueSummaryModel&gt;</returns>
-        System.Threading.Tasks.Task<List<SpecificationValueSummaryModel>> GetSpecificationSummaryAsync (int? entityId, string specificationFieldTypeIds = null);
+        System.Threading.Tasks.Task<List<SpecificationValueSummaryModel>> GetSpecificationSummaryAsync(int? entityId, string specificationFieldTypeIds = null);
 
         /// <summary>
         /// Returns a read only list of specification field values
@@ -1109,7 +1109,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;SpecificationValueSummaryModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueSummaryModel>>> GetSpecificationSummaryAsyncWithHttpInfo (int? entityId, string specificationFieldTypeIds = null);
+        System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueSummaryModel>>> GetSpecificationSummaryAsyncWithHttpInfo(int? entityId, string specificationFieldTypeIds = null);
         /// <summary>
         /// Returns a list of specification field values
         /// </summary>
@@ -1121,7 +1121,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <param name="mandatoryOnly">optional (optional)</param>
         /// <returns>Task of List&lt;SpecificationValueModel&gt;</returns>
-        System.Threading.Tasks.Task<List<SpecificationValueModel>> GetSpecificationValuesAsync (int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
+        System.Threading.Tasks.Task<List<SpecificationValueModel>> GetSpecificationValuesAsync(int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
 
         /// <summary>
         /// Returns a list of specification field values
@@ -1134,7 +1134,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <param name="mandatoryOnly">optional (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;SpecificationValueModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueModel>>> GetSpecificationValuesAsyncWithHttpInfo (int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
+        System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueModel>>> GetSpecificationValuesAsyncWithHttpInfo(int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
         /// <summary>
         /// Returns a dictionary of unique values and entity id&#39;s
         /// </summary>
@@ -1144,7 +1144,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="mapUniqueValuesModel"></param>
         /// <returns>Task of Dictionary&lt;string, int?&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, int?>> MapUniqueValuesAsync (MapUniqueValuesModel mapUniqueValuesModel);
+        System.Threading.Tasks.Task<Dictionary<string, int?>> MapUniqueValuesAsync(MapUniqueValuesModel mapUniqueValuesModel);
 
         /// <summary>
         /// Returns a dictionary of unique values and entity id&#39;s
@@ -1155,7 +1155,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="mapUniqueValuesModel"></param>
         /// <returns>Task of ApiResponse (Dictionary&lt;string, int?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> MapUniqueValuesAsyncWithHttpInfo (MapUniqueValuesModel mapUniqueValuesModel);
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> MapUniqueValuesAsyncWithHttpInfo(MapUniqueValuesModel mapUniqueValuesModel);
         /// <summary>
         /// Set field set
         /// </summary>
@@ -1166,7 +1166,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="setFieldSetModel"></param>
         /// <returns>Task of EntitySummaryModel</returns>
-        System.Threading.Tasks.Task<EntitySummaryModel> SetFieldSetAsync (int? entityId, SetFieldSetModel setFieldSetModel);
+        System.Threading.Tasks.Task<EntitySummaryModel> SetFieldSetAsync(int? entityId, SetFieldSetModel setFieldSetModel);
 
         /// <summary>
         /// Set field set
@@ -1178,7 +1178,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="setFieldSetModel"></param>
         /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetFieldSetAsyncWithHttpInfo (int? entityId, SetFieldSetModel setFieldSetModel);
+        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetFieldSetAsyncWithHttpInfo(int? entityId, SetFieldSetModel setFieldSetModel);
         /// <summary>
         /// Update field values
         /// </summary>
@@ -1189,7 +1189,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldValueModels"></param>
         /// <returns>Task of List&lt;FieldValueModel&gt;</returns>
-        System.Threading.Tasks.Task<List<FieldValueModel>> SetFieldValuesAsync (int? entityId, List<FieldValueModel> fieldValueModels);
+        System.Threading.Tasks.Task<List<FieldValueModel>> SetFieldValuesAsync(int? entityId, List<FieldValueModel> fieldValueModels);
 
         /// <summary>
         /// Update field values
@@ -1201,7 +1201,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="fieldValueModels"></param>
         /// <returns>Task of ApiResponse (List&lt;FieldValueModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<FieldValueModel>>> SetFieldValuesAsyncWithHttpInfo (int? entityId, List<FieldValueModel> fieldValueModels);
+        System.Threading.Tasks.Task<ApiResponse<List<FieldValueModel>>> SetFieldValuesAsyncWithHttpInfo(int? entityId, List<FieldValueModel> fieldValueModels);
         /// <summary>
         /// Set entity segment
         /// </summary>
@@ -1212,7 +1212,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="setSegmentModel"></param>
         /// <returns>Task of EntitySummaryModel</returns>
-        System.Threading.Tasks.Task<EntitySummaryModel> SetSegmentAsync (int? entityId, SetSegmentModel setSegmentModel);
+        System.Threading.Tasks.Task<EntitySummaryModel> SetSegmentAsync(int? entityId, SetSegmentModel setSegmentModel);
 
         /// <summary>
         /// Set entity segment
@@ -1224,7 +1224,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="setSegmentModel"></param>
         /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetSegmentAsyncWithHttpInfo (int? entityId, SetSegmentModel setSegmentModel);
+        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetSegmentAsyncWithHttpInfo(int? entityId, SetSegmentModel setSegmentModel);
         /// <summary>
         /// Set specification template
         /// </summary>
@@ -1235,7 +1235,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="setSpecificationTemplateModel"></param>
         /// <returns>Task of EntitySummaryModel</returns>
-        System.Threading.Tasks.Task<EntitySummaryModel> SetSpecificationTemplateAsync (int? entityId, SetSpecificationTemplateModel setSpecificationTemplateModel);
+        System.Threading.Tasks.Task<EntitySummaryModel> SetSpecificationTemplateAsync(int? entityId, SetSpecificationTemplateModel setSpecificationTemplateModel);
 
         /// <summary>
         /// Set specification template
@@ -1247,7 +1247,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="setSpecificationTemplateModel"></param>
         /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetSpecificationTemplateAsyncWithHttpInfo (int? entityId, SetSpecificationTemplateModel setSpecificationTemplateModel);
+        System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetSpecificationTemplateAsyncWithHttpInfo(int? entityId, SetSpecificationTemplateModel setSpecificationTemplateModel);
         /// <summary>
         /// Get list of starred entities
         /// </summary>
@@ -1256,7 +1256,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;int?&gt;</returns>
-        System.Threading.Tasks.Task<List<int?>> StarredEntitiesAsync ();
+        System.Threading.Tasks.Task<List<int?>> StarredEntitiesAsync();
 
         /// <summary>
         /// Get list of starred entities
@@ -1266,7 +1266,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<int?>>> StarredEntitiesAsyncWithHttpInfo ();
+        System.Threading.Tasks.Task<ApiResponse<List<int?>>> StarredEntitiesAsyncWithHttpInfo();
         /// <summary>
         /// Update specification field values
         /// </summary>
@@ -1277,7 +1277,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="specificationValueModels"></param>
         /// <returns>Task of List&lt;SpecificationValueModel&gt;</returns>
-        System.Threading.Tasks.Task<List<SpecificationValueModel>> UpdateSpecificationValuesAsync (int? entityId, List<SpecificationValueModel> specificationValueModels);
+        System.Threading.Tasks.Task<List<SpecificationValueModel>> UpdateSpecificationValuesAsync(int? entityId, List<SpecificationValueModel> specificationValueModels);
 
         /// <summary>
         /// Update specification field values
@@ -1289,7 +1289,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="specificationValueModels"></param>
         /// <returns>Task of ApiResponse (List&lt;SpecificationValueModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueModel>>> UpdateSpecificationValuesAsyncWithHttpInfo (int? entityId, List<SpecificationValueModel> specificationValueModels);
+        System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueModel>>> UpdateSpecificationValuesAsyncWithHttpInfo(int? entityId, List<SpecificationValueModel> specificationValueModels);
         /// <summary>
         /// Update list of starred entities
         /// </summary>
@@ -1299,7 +1299,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityIds"></param>
         /// <returns>Task of List&lt;int?&gt;</returns>
-        System.Threading.Tasks.Task<List<int?>> UpdateStarredEntitiesAsync (List<int?> entityIds);
+        System.Threading.Tasks.Task<List<int?>> UpdateStarredEntitiesAsync(List<int?> entityIds);
 
         /// <summary>
         /// Update list of starred entities
@@ -1310,7 +1310,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityIds"></param>
         /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<int?>>> UpdateStarredEntitiesAsyncWithHttpInfo (List<int?> entityIds);
+        System.Threading.Tasks.Task<ApiResponse<List<int?>>> UpdateStarredEntitiesAsyncWithHttpInfo(List<int?> entityIds);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -1321,7 +1321,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="base64FileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        System.Threading.Tasks.Task<MediaInfoModel> UploadBase64FileAsync (int? entityId, Base64FileModel base64FileModel);
+        System.Threading.Tasks.Task<MediaInfoModel> UploadBase64FileAsync(int? entityId, Base64FileModel base64FileModel);
 
         /// <summary>
         /// Add Media
@@ -1333,7 +1333,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="base64FileModel"></param>
         /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadBase64FileAsyncWithHttpInfo (int? entityId, Base64FileModel base64FileModel);
+        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadBase64FileAsyncWithHttpInfo(int? entityId, Base64FileModel base64FileModel);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -1344,7 +1344,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        System.Threading.Tasks.Task<MediaInfoModel> UploadMediaFromUrlAsync (int? entityId, UrlFileModel urlFileModel);
+        System.Threading.Tasks.Task<MediaInfoModel> UploadMediaFromUrlAsync(int? entityId, UrlFileModel urlFileModel);
 
         /// <summary>
         /// Add Media
@@ -1356,7 +1356,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadMediaFromUrlAsyncWithHttpInfo (int? entityId, UrlFileModel urlFileModel);
+        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadMediaFromUrlAsyncWithHttpInfo(int? entityId, UrlFileModel urlFileModel);
         #endregion Asynchronous Operations
     }
 }

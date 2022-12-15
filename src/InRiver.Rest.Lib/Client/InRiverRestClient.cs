@@ -9,8 +9,12 @@ namespace InRiver.Rest.Lib.Client
     public class InRiverRestClient : IinRiverClient
     {
         private readonly Configuration _configuration;
-        private IReadableConfiguration CurrentSettings => _configuration;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InRiverRestClient" /> class.
+        /// </summary>
+        /// <param name="apiKey">inRiver's key used to authenticate.</param>
+        /// <param name="basePath">REST API's endpoint.</param>
         public InRiverRestClient(string apiKey, string basePath = "https://apieuw.productmarketingcloud.com")
         {
             if (string.IsNullOrWhiteSpace(apiKey))
@@ -27,6 +31,10 @@ namespace InRiver.Rest.Lib.Client
             };
         }
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InRiverRestClient" /> class.
+        /// </summary>
+        /// <param name="configuration">Configuration class.</param>
         public InRiverRestClient(Action<Configuration> configuration)
         {
             _configuration = new Configuration();
@@ -37,10 +45,36 @@ namespace InRiver.Rest.Lib.Client
                 throw new InvalidDataException("Api key is required and cannot be null or empty. Please include default X-inRiver-APIKey header.");
         }
 
-        public InRiverRestClient(string apiKey, HttpClient httpClient, Action<Configuration> configuration = null, string basePath = "https://apieuw.productmarketingcloud.com")
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InRiverRestClient" /> class.
+        /// </summary>
+        /// <param name="apiKey">inRiver's key used to authenticate.</param>
+        /// <param name="configuration">Configuration class.</param>
+        /// <param name="basePath">REST API's endpoint.</param>
+        public InRiverRestClient(
+            string apiKey,
+            string basePath = "https://apieuw.productmarketingcloud.com",
+            Action<Configuration> configuration = null)
             : this(apiKey, basePath)
         {
-            _configuration.HttpClient = httpClient;
+            configuration?.Invoke(_configuration);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="InRiverRestClient" /> class.
+        /// </summary>
+        /// <param name="apiKey">inRiver's key used to authenticate.</param>
+        /// <param name="httpClient">httpClient override.</param>
+        /// <param name="configuration">Configuration class.</param>
+        /// <param name="basePath">REST API's endpoint.</param>
+        public InRiverRestClient(
+            string apiKey,
+            string basePath = "https://apieuw.productmarketingcloud.com",
+            HttpClient httpClient = null, 
+            Action<Configuration> configuration = null) 
+            : this(apiKey, basePath)
+        {
+            _configuration.HttpClientOverride = httpClient;
             configuration?.Invoke(_configuration);
         }
 
