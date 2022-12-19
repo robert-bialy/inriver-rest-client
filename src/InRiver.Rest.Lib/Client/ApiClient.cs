@@ -21,7 +21,7 @@ namespace InRiver.Rest.Lib.Client
             ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
         };
         private readonly string _basePath;
-        private readonly HttpClient _httpClientOverride;
+        private readonly IRestClientFactory _restClientFactory;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ApiClient" /> class
@@ -31,11 +31,11 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="httpClientOverride">Preconfigured httpClient</param>
         public ApiClient(string basePath = "https://apieuw.productmarketingcloud.com", HttpClient httpClientOverride = null)
         {
-           if (string.IsNullOrEmpty(basePath))
+            if (string.IsNullOrEmpty(basePath))
                 throw new ArgumentException("basePath cannot be empty");
            Configuration = Client.Configuration.Default;
            _basePath = basePath;
-           _httpClientOverride = httpClientOverride;
+           _restClientFactory = new RestClientFactory(httpClientOverride);
         }
         
         /// <summary>
@@ -126,7 +126,7 @@ namespace InRiver.Rest.Lib.Client
                 Timeout = Configuration.Timeout,
                 BaseUrl = new Uri(_basePath)
             };
-            var restClient = CreateRestClient(configuration);
+            var restClient = _restClientFactory.Create(configuration);
             var response = restClient.ExecuteAsync(request).Result;
 
             return (Object) response;
@@ -170,7 +170,7 @@ namespace InRiver.Rest.Lib.Client
                 Timeout = Configuration.Timeout,
                 BaseUrl = new Uri(_basePath)
             };
-            var restClient = CreateRestClient(configuration);
+            var restClient = _restClientFactory.Create(configuration);
             var response = await restClient.ExecuteAsync(request);
 
             return (Object)response;
@@ -469,11 +469,6 @@ namespace InRiver.Rest.Lib.Client
         private static bool IsCollection(object value)
         {
             return value is IList || value is ICollection;
-        }
-
-        private RestClient CreateRestClient(RestClientOptions configuration)
-        {
-            return _httpClientOverride != null ? new RestClient(_httpClientOverride, configuration) : new RestClient(configuration);
         }
     }
 }
