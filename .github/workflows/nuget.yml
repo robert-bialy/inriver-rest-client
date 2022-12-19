@@ -16,7 +16,7 @@ jobs:
     - name: Build
       run: dotnet build --configuration Release /p:Version=${VERSION} ./src
     - name: Test
-      run: dotnet test --configuration Release /p:Version=${VERSION} ./src
+      run: dotnet test --configuration Release ./src
     - name: Pack
       run: dotnet pack --configuration Release /p:Version=${VERSION} ./src/InRiver.Rest.Lib/InRiver.Rest.Lib.csproj --no-build --output .
     - name: Push to the github repository
