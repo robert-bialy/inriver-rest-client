@@ -106,9 +106,14 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="contentType">Content Type of the request</param>
         /// <returns>Object</returns>
         public Object CallApi(
-            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
+            String path, 
+            RestSharp.Method method, 
+            List<KeyValuePair<String, String>> queryParams,
+            Object postBody,
+            Dictionary<String, String> headerParams, 
+            Dictionary<String, String> formParams,
+            Dictionary<String, FileParameter> fileParams, 
+            Dictionary<String, String> pathParams,
             String contentType)
         {
             var request = PrepareRequest(
@@ -139,11 +144,16 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="pathParams">Path parameters.</param>
         /// <param name="contentType">Content type.</param>
         /// <returns>The Task instance.</returns>
-        public async System.Threading.Tasks.Task<Object> CallApiAsync(
-            String path, RestSharp.Method method, List<KeyValuePair<String, String>> queryParams, Object postBody,
-            Dictionary<String, String> headerParams, Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, Dictionary<String, String> pathParams,
-            String contentType)
+        public async System.Threading.Tasks.Task<object> CallApiAsync(
+            string path,
+            RestSharp.Method method,
+            List<KeyValuePair<string, string>> queryParams, 
+            object postBody,
+            Dictionary<string, string> headerParams,
+            Dictionary<string, string> formParams,
+            Dictionary<string, FileParameter> fileParams,
+            Dictionary<string, string> pathParams,
+            string contentType)
         {
             var request = PrepareRequest(
                 path,
