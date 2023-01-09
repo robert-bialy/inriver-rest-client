@@ -53,7 +53,7 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="basePath">REST API's endpoint.</param>
         public InRiverRestClient(
             string apiKey,
-            string basePath = "https://apieuw.productmarketingcloud.com",
+            string basePath,
             Action<Configuration> configuration = null)
             : this(apiKey, basePath)
         {
@@ -69,7 +69,7 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="basePath">REST API's endpoint.</param>
         public InRiverRestClient(
             string apiKey,
-            string basePath = "https://apieuw.productmarketingcloud.com",
+            string basePath,
             HttpClient httpClient = null, 
             Action<Configuration> configuration = null) 
             : this(apiKey, basePath)
