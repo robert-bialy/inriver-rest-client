@@ -187,8 +187,8 @@ namespace InRiver.Rest.Lib.Client
         /// <summary>
         /// Creates a new <see cref="ApiClient" /> based on this <see cref="Configuration" /> instance.
         /// </summary>
-        /// <returns></returns>
-        public ApiClient CreateApiClient()
+        /// <returns>ApiClient</returns>
+        private ApiClient CreateApiClient()
         {
             return new ApiClient(BasePath, HttpClientOverride) { Configuration = this };
         }
