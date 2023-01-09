@@ -184,3 +184,6 @@ $RECYCLE.BIN/
 
 # Visual Studio 2014 CTP
 **/*.sln.ide
+
+# Visual Studio 2015/2017 cache/options directory
+.vs/
