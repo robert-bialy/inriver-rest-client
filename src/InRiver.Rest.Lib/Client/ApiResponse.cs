@@ -5,7 +5,7 @@ namespace InRiver.Rest.Lib.Client
     /// <summary>
     /// API Response
     /// </summary>
-    public class ApiResponse<T>
+    public sealed class ApiResponse<T>
     {
         /// <summary>
         /// Gets or sets the status code (HTTP status code)

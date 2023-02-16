@@ -6,7 +6,7 @@ using InRiver.Rest.Lib.Api;
 
 namespace InRiver.Rest.Lib.Client
 {
-    public class InRiverRestClient : IinRiverClient
+    public sealed class InRiverRestClient : IinRiverClient
     {
         private readonly Configuration _configuration;
 

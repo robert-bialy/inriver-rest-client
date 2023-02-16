@@ -11,21 +11,10 @@ namespace InRiver.Rest.Lib.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    internal class MediaApi : IMediaApi
+    internal sealed class MediaApi : IMediaApi
     {
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="MediaApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public MediaApi(String basePath)
-        {
-            this.Configuration = new Configuration { BasePath = basePath };
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
-        }
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="MediaApi"/> class
         /// using Configuration object
@@ -41,17 +30,7 @@ namespace InRiver.Rest.Lib.Api
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
+        
         /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
@@ -73,29 +52,7 @@ namespace InRiver.Rest.Lib.Api
             }
             set { _exceptionFactory = value; }
         }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
-        }
-
+        
         /// <summary>
         /// Add external media url If the resourceLink object is omitted a resource entity will be created without a link. If resourceLink.linkTypeId is omitted inRiver will automatically find the most suitable link type.     Example:                Original external file URL that is added with this REST endpoint                https://yourexternalresourceservice.com/imagename.jpg                Your external image service then need to support the standard inRiver image configuration formats(Original, Preview, Thumbnail and SmallThumbnail) as a suffix on the URL that you uploaded or have a proxy that redirect to the right image format, else the inRiver web portal will not work correct.                https://yourexternalresourceservice.com/imagename.jpg/Original &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/Preview &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/Thumbnail &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/SmallThumbnail &lt;br /&gt;
         /// </summary>

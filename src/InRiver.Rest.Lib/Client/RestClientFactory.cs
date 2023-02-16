@@ -3,12 +3,12 @@ using System.Net.Http;
 
 namespace InRiver.Rest.Lib.Client
 {
-    public interface IRestClientFactory
+    internal interface IRestClientFactory
     {
         RestClient Create(RestClientOptions configuration);
     }
 
-    public class RestClientFactory : IRestClientFactory
+    internal sealed class RestClientFactory : IRestClientFactory
     {
         private static readonly object Lock = new object();
 

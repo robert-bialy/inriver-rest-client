@@ -14,7 +14,7 @@ namespace InRiver.Rest.Lib.Client
     /// <summary>
     /// API client is mainly responsible for making the HTTP call to the API backend.
     /// </summary>
-    public class ApiClient
+    public sealed class ApiClient
     {
         private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
@@ -32,12 +32,12 @@ namespace InRiver.Rest.Lib.Client
         public ApiClient(string basePath = "https://apieuw.productmarketingcloud.com", HttpClient httpClientOverride = null)
         {
             if (string.IsNullOrEmpty(basePath))
-                throw new ArgumentException("basePath cannot be empty");
-           Configuration = Client.Configuration.Default;
+                throw new ArgumentException("basePath cannot be empty"); 
+            Configuration = Client.Configuration.Default;
            _basePath = basePath;
            _restClientFactory = new RestClientFactory(httpClientOverride);
         }
-        
+
         /// <summary>
         /// Gets or sets an instance of the IReadableConfiguration.
         /// </summary>
@@ -48,17 +48,18 @@ namespace InRiver.Rest.Lib.Client
         /// of the <see cref="Configuration"/> instance in any way.
         /// </remarks>
         public IReadableConfiguration Configuration { get; set; }
-        
+
         // Creates and sets up a RestRequest prior to a call.
-        private RestRequest PrepareRequest(
-            String path, RestSharp.Method method,
-            List<KeyValuePair<String, String>> queryParams,
-            Object postBody,
+        private static RestRequest PrepareRequest(
+            string path, 
+            Method method,
+            List<KeyValuePair<string, string>> queryParams,
+            object postBody,
             IEnumerable<KeyValuePair<string, string>> headerParams,
-            Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams,
-            Dictionary<String, String> pathParams,
-            String contentType)
+            Dictionary<string, string> formParams,
+            Dictionary<string, FileParameter> fileParams,
+            Dictionary<string, string> pathParams,
+            string contentType)
         {
             var request = new RestRequest(path, method);
 
@@ -105,16 +106,16 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="pathParams">Path parameters.</param>
         /// <param name="contentType">Content Type of the request</param>
         /// <returns>Object</returns>
-        public Object CallApi(
-            String path, 
-            RestSharp.Method method, 
-            List<KeyValuePair<String, String>> queryParams,
-            Object postBody,
-            Dictionary<String, String> headerParams, 
-            Dictionary<String, String> formParams,
-            Dictionary<String, FileParameter> fileParams, 
-            Dictionary<String, String> pathParams,
-            String contentType)
+        public object CallApi(
+            string path,
+            Method method,
+            List<KeyValuePair<string, string>> queryParams,
+            object postBody,
+            Dictionary<string, string> headerParams,
+            Dictionary<string, string> formParams,
+            Dictionary<string, FileParameter> fileParams,
+            Dictionary<string, string> pathParams,
+            string contentType)
         {
             var request = PrepareRequest(
                 path, method, queryParams, postBody, headerParams, formParams, fileParams,
@@ -129,7 +130,7 @@ namespace InRiver.Rest.Lib.Client
             var restClient = _restClientFactory.Create(configuration);
             var response = restClient.ExecuteAsync(request).Result;
 
-            return (Object) response;
+            return response;
         }
         /// <summary>
         /// Makes the asynchronous HTTP request.
@@ -173,31 +174,7 @@ namespace InRiver.Rest.Lib.Client
             var restClient = _restClientFactory.Create(configuration);
             var response = await restClient.ExecuteAsync(request);
 
-            return (Object)response;
-        }
-
-        /// <summary>
-        /// Escape string (url-encoded).
-        /// </summary>
-        /// <param name="str">String to be escaped.</param>
-        /// <returns>Escaped string.</returns>
-        public string EscapeString(string str)
-        {
-            return UrlEncode(str);
-        }
-
-        /// <summary>
-        /// Create FileParameter based on Stream.
-        /// </summary>
-        /// <param name="name">Parameter name.</param>
-        /// <param name="stream">Input stream.</param>
-        /// <returns>FileParameter.</returns>
-        public FileParameter ParameterToFile(string name, Stream stream)
-        {
-            if (stream is FileStream)
-                return FileParameter.Create(name, ReadAsBytes(stream), Path.GetFileName(((FileStream)stream).Name));
-            else
-                return FileParameter.Create(name, ReadAsBytes(stream), "no_file_name_provided");
+            return (object)response;
         }
 
         /// <summary>
@@ -311,7 +288,7 @@ namespace InRiver.Rest.Lib.Client
         /// </summary>
         /// <param name="contentTypes">The Content-Type array to select from.</param>
         /// <returns>The Content-Type header to use.</returns>
-        public String SelectHeaderContentType(String[] contentTypes)
+        public string SelectHeaderContentType(string[] contentTypes)
         {
             if (contentTypes.Length == 0)
                 return "application/json";
@@ -332,7 +309,7 @@ namespace InRiver.Rest.Lib.Client
         /// </summary>
         /// <param name="accepts">The accepts array to select from.</param>
         /// <returns>The Accept header to use.</returns>
-        public String SelectHeaderAccept(String[] accepts)
+        public string SelectHeaderAccept(string[] accepts)
         {
             if (accepts.Length == 0)
                 return null;
@@ -340,17 +317,7 @@ namespace InRiver.Rest.Lib.Client
             if (accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
                 return "application/json";
 
-            return String.Join(",", accepts);
-        }
-
-        /// <summary>
-        /// Encode string in base64 format.
-        /// </summary>
-        /// <param name="text">String to be encoded.</param>
-        /// <returns>Encoded string.</returns>
-        public static string Base64Encode(string text)
-        {
-            return System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(text));
+            return string.Join(",", accepts);
         }
 
         /// <summary>
@@ -395,7 +362,7 @@ namespace InRiver.Rest.Lib.Client
 
             if (input == null)
             {
-                throw new ArgumentNullException("input");
+                throw new ArgumentNullException(nameof(input));
             }
 
             if (input.Length <= maxLength)
@@ -416,25 +383,6 @@ namespace InRiver.Rest.Lib.Client
             }
 
             return sb.ToString();
-        }
-
-        /// <summary>
-        /// Sanitize filename by removing the path
-        /// </summary>
-        /// <param name="filename">Filename</param>
-        /// <returns>Filename</returns>
-        public static string SanitizeFilename(string filename)
-        {
-            Match match = Regex.Match(filename, @".*[/\\](.*)$");
-
-            if (match.Success)
-            {
-                return match.Groups[1].Value;
-            }
-            else
-            {
-                return filename;
-            }
         }
 
         /// <summary>

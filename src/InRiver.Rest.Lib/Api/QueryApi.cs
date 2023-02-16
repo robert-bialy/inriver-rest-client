@@ -11,21 +11,10 @@ namespace InRiver.Rest.Lib.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    internal class QueryApi : IQueryApi
+    internal sealed class QueryApi : IQueryApi
     {
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="QueryApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public QueryApi(String basePath)
-        {
-            this.Configuration = new Configuration { BasePath = basePath };
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
-        }
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryApi"/> class
         /// using Configuration object
@@ -41,17 +30,7 @@ namespace InRiver.Rest.Lib.Api
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
+        
         /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
@@ -73,29 +52,7 @@ namespace InRiver.Rest.Lib.Api
             }
             set { _exceptionFactory = value; }
         }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
-        }
-
+        
         /// <summary>
         /// Search for entity id&#39;s Available system criterion types and their supported operators&lt;br /&gt;   - -- --  &lt;b&gt;FieldSetId&lt;/b&gt;: (string) Equal, NotEqual, IsEmpty, IsNotEmpty&lt;br /&gt;&lt;b&gt;SegmentIds&lt;/b&gt;: (Integer array) ContainsAny, NotContainsAny&lt;br /&gt;&lt;b&gt;CreatedBy&lt;/b&gt;: (email, string) Equal, NotEqual&lt;br /&gt;&lt;b&gt;ModifiedBy&lt;/b&gt;: (email, string) Equal, NotEqual&lt;br /&gt;&lt;b&gt;Created&lt;/b&gt;: (DateTime) Equal, NotEqual, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual&lt;br /&gt;&lt;b&gt;LastModified&lt;/b&gt;: (DateTime) Equal, NotEqual, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual&lt;br /&gt;&lt;b&gt;EntityTypeId&lt;/b&gt;: (string) Equal, NotEqual&lt;br /&gt;&lt;b&gt;Completeness&lt;/b&gt;: (Integer) Equal, NotEqual, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual&lt;br /&gt;&lt;b&gt;ChannelId&lt;/b&gt;: (Integer) Equal&lt;br /&gt;&lt;b&gt;PublicationId&lt;/b&gt;: (Integer) Equal                Operators for each field datatype in dataCriteria&lt;br /&gt;   - -- --  &lt;b&gt;String&lt;/b&gt;: Equal, NotEqual, BeginsWith, IsEmpty, IsNotEmpty, Contains&lt;br /&gt;&lt;b&gt;LocaleString&lt;/b&gt;: Equal, NotEqual, BeginsWith, IsEmpty, IsNotEmpty, Contains&lt;br /&gt;&lt;b&gt;Boolean&lt;/b&gt;: IsTrue, IsFalse, IsEmpty IsNotEmpty,&lt;br /&gt;&lt;b&gt;CVL(singlevalue)&lt;/b&gt;: Equal, NotEqual, IsEmpty IsNotEmpty,&lt;br /&gt;&lt;b&gt;CVL(multivalue)&lt;/b&gt;: ContainsAll, ContainsAny, NotContainsAll, NotContainsAny, IsEmpty IsNotEmpty,&lt;br /&gt;&lt;b&gt;Date time&lt;/b&gt;: Equal, NotEqual, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual, IsEmpty IsNotEmpty,&lt;br /&gt;&lt;b&gt;Integer and Double&lt;/b&gt;: Equal, NotEqual, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual, IsEmpty IsNotEmpty,&lt;br /&gt;&lt;b&gt;Xml&lt;/b&gt;: Equal, NotEqual, BeginsWith, IsEmpty, IsNotEmpty, Contains&lt;br /&gt;&lt;b&gt;File&lt;/b&gt;: Equal, NotEqual, GreaterThan, GreaterThanOrEqual, LessThan, LessThanOrEqual, IsEmpty IsNotEmpty,                Language  - -- --  &lt;b&gt;LocaleString&lt;/b&gt; is the only data type that supports language.                 Link Criterion&lt;br /&gt;   - -- --  Direction determines if the source or target entity of the link will be included in the result.&lt;br /&gt;  - If direction is \&quot;outbound\&quot;, the link source entity is included in the result&lt;br /&gt;  - If direction is \&quot;inbound\&quot;, the link target entity is included in the result&lt;br /&gt;    If linkCriterion.dataCriteria is omitted the search will simply check if a link exists.&lt;br /&gt;    The boolean linkExists defaults to true and may be omitted. Setting linkExists to false searches for entities without links and can&#39;t be combined with data criteria (in the link criterion).&lt;br /&gt;    Note: Keep your queries as simple as possible. More complex queries take longer time to perform.&lt;br /&gt;
         /// </summary>

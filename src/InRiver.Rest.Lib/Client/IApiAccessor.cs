@@ -10,7 +10,7 @@ namespace InRiver.Rest.Lib.Client
         /// </summary>
         /// <value>An instance of the Configuration</value>
         Configuration Configuration {get; set;}
-        
+
         /// <summary>
         /// Provides a factory method hook for the creation of exceptions.
         /// </summary>

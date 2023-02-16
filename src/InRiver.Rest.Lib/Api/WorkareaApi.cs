@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
@@ -11,20 +10,9 @@ namespace InRiver.Rest.Lib.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    internal class WorkareaApi : IWorkareaApi
+    internal sealed class WorkareaApi : IWorkareaApi
     {
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="WorkareaApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public WorkareaApi(String basePath)
-        {
-            this.Configuration = new Configuration { BasePath = basePath };
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
-        }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkareaApi"/> class
@@ -40,16 +28,6 @@ namespace InRiver.Rest.Lib.Api
                 this.Configuration = configuration;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
-        }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
         }
 
         /// <summary>
@@ -73,29 +51,7 @@ namespace InRiver.Rest.Lib.Api
             }
             set { _exceptionFactory = value; }
         }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
-        }
-
+        
         /// <summary>
         /// Create a new workarea Supply either entityIds or query. This determines if the workarea is static or based on a query.    Check the description for the /query endpoint on how to constuct a query.
         /// </summary>

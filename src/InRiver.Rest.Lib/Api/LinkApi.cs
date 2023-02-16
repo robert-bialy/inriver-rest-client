@@ -11,21 +11,10 @@ namespace InRiver.Rest.Lib.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    internal class LinkApi : ILinkApi
+    internal sealed class LinkApi : ILinkApi
     {
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LinkApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public LinkApi(String basePath)
-        {
-            this.Configuration = new Configuration { BasePath = basePath };
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
-        }
-
+        
         /// <summary>
         /// Initializes a new instance of the <see cref="LinkApi"/> class
         /// using Configuration object
@@ -41,17 +30,7 @@ namespace InRiver.Rest.Lib.Api
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
+        
         /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
