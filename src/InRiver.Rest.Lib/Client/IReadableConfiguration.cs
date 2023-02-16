@@ -30,11 +30,5 @@ namespace InRiver.Rest.Lib.Client
         /// </summary>
         /// <value>HTTP connection timeout.</value>
         int Timeout { get; set; }
-
-        /// <summary>
-        /// Gets the user agent.
-        /// </summary>
-        /// <value>User agent.</value>
-        string UserAgent { get; }
     }
 }

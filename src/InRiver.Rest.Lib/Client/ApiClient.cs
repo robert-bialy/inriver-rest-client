@@ -147,8 +147,8 @@ namespace InRiver.Rest.Lib.Client
         /// <returns>The Task instance.</returns>
         public async System.Threading.Tasks.Task<object> CallApiAsync(
             string path,
-            RestSharp.Method method,
-            List<KeyValuePair<string, string>> queryParams, 
+            Method method,
+            List<KeyValuePair<string, string>> queryParams,
             object postBody,
             Dictionary<string, string> headerParams,
             Dictionary<string, string> formParams,
@@ -174,7 +174,7 @@ namespace InRiver.Rest.Lib.Client
             var restClient = _restClientFactory.Create(configuration);
             var response = await restClient.ExecuteAsync(request);
 
-            return (object)response;
+            return response;
         }
 
         /// <summary>
@@ -253,7 +253,7 @@ namespace InRiver.Rest.Lib.Client
         /// </summary>
         /// <param name="obj">Object.</param>
         /// <returns>JSON string.</returns>
-        public String Serialize(object obj)
+        public string Serialize(object obj)
         {
             try
             {

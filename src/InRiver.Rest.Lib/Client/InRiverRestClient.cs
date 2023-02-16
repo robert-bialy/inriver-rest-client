@@ -8,7 +8,20 @@ namespace InRiver.Rest.Lib.Client
 {
     public sealed class InRiverRestClient : IinRiverClient
     {
+        #region Private Members
+
         private readonly Configuration _configuration;
+        private IChannelApi _channelApi;
+        private IEntityApi _entityApi;
+        private ILinkApi _linkApi;
+        private IMediaApi _mediaApi;
+        private IModelApi _modelApi;
+        private IQueryApi _queryApi;
+        private ISyndicateApi _syndicateApi;
+        private ISystemApi _systemApi;
+        private IWorkareaApi _workareaApi;
+
+        #endregion
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InRiverRestClient" /> class.
@@ -70,30 +83,30 @@ namespace InRiver.Rest.Lib.Client
         public InRiverRestClient(
             string apiKey,
             string basePath,
-            HttpClient httpClient = null, 
-            Action<Configuration> configuration = null) 
+            HttpClient httpClient = null,
+            Action<Configuration> configuration = null)
             : this(apiKey, basePath)
         {
             _configuration.HttpClientOverride = httpClient;
             configuration?.Invoke(_configuration);
         }
 
-        public IChannelApi ChannelApi => new ChannelApi(_configuration);
+        public IChannelApi ChannelApi => _channelApi ?? (_channelApi = new ChannelApi(_configuration));
 
-        public IEntityApi EntityApi => new EntityApi(_configuration);
+        public IEntityApi EntityApi => _entityApi ?? (_entityApi = new EntityApi(_configuration));
 
-        public ILinkApi LinkApi => new LinkApi(_configuration);
+        public ILinkApi LinkApi => _linkApi ?? (_linkApi = new LinkApi(_configuration));
 
-        public IMediaApi MediaApi => new MediaApi(_configuration);
+        public IMediaApi MediaApi => _mediaApi ?? (_mediaApi = new MediaApi(_configuration));
 
-        public IModelApi ModelApi => new ModelApi(_configuration);
+        public IModelApi ModelApi => _modelApi ?? (_modelApi = new ModelApi(_configuration));
 
-        public IQueryApi QueryApi => new QueryApi(_configuration);
+        public IQueryApi QueryApi => _queryApi ?? (_queryApi = new QueryApi(_configuration));
 
-        public ISyndicateApi SyndicateApi => new SyndicateApi(_configuration);
+        public ISyndicateApi SyndicateApi => _syndicateApi ?? (_syndicateApi =  new SyndicateApi(_configuration));
 
-        public ISystemApi SystemApi => new SystemApi(_configuration);
+        public ISystemApi SystemApi => _systemApi ?? (_systemApi = new SystemApi(_configuration));
 
-        public IWorkareaApi WorkareaApi => new WorkareaApi(_configuration);
+        public IWorkareaApi WorkareaApi => _workareaApi ?? (_workareaApi = new WorkareaApi(_configuration));
     }
 }
