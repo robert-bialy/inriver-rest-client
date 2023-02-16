@@ -13,6 +13,8 @@ namespace InRiver.Rest.Lib.Client
 
         private readonly Configuration _configuration;
         private readonly ISerializer _serializer = new Serializer();
+        private object Lock = new object();
+        private IApiClient _apiClient;
         private IChannelApi _channelApi;
         private IEntityApi _entityApi;
         private ILinkApi _linkApi;
@@ -93,22 +95,124 @@ namespace InRiver.Rest.Lib.Client
             configuration?.Invoke(_configuration);
         }
 
-        public IChannelApi ChannelApi => _channelApi ?? (_channelApi = new ChannelApi(_serializer,_configuration));
+        public IChannelApi ChannelApi
+        {
+            get
+            {
+                if (_channelApi != null) return _channelApi;
+                lock (Lock)
+                {
+                    return _channelApi = new ChannelApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IEntityApi EntityApi => _entityApi ?? (_entityApi = new EntityApi(_serializer,_configuration));
+        public IEntityApi EntityApi
+        {
+            get
+            {
+                if (_entityApi != null) return _entityApi;
+                lock (Lock)
+                {
+                    return _entityApi = new EntityApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public ILinkApi LinkApi => _linkApi ?? (_linkApi = new LinkApi(_serializer,_configuration));
+        public ILinkApi LinkApi
+        {
+            get
+            {
+                if (_entityApi != null) return _linkApi;
+                lock (Lock)
+                {
+                    return _linkApi = new LinkApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IMediaApi MediaApi => _mediaApi ?? (_mediaApi = new MediaApi(_serializer,_configuration));
+        public IMediaApi MediaApi
+        {
+            get
+            {
+                if (_mediaApi != null) return _mediaApi;
+                lock (Lock)
+                {
+                    return _mediaApi = new MediaApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IModelApi ModelApi => _modelApi ?? (_modelApi = new ModelApi(_serializer,_configuration));
+        public IModelApi ModelApi
+        {
+            get 
+            {
+                if (_modelApi != null) return _modelApi;
+                lock (Lock)
+                {
+                    return _modelApi = new ModelApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IQueryApi QueryApi => _queryApi ?? (_queryApi = new QueryApi(_serializer,_configuration));
+        public IQueryApi QueryApi
+        {
+            get 
+            {
+                if (_queryApi != null) return _queryApi;
+                lock (Lock)
+                {
+                    return _queryApi = new QueryApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public ISyndicateApi SyndicateApi => _syndicateApi ?? (_syndicateApi =  new SyndicateApi(_serializer,_configuration));
+        public ISyndicateApi SyndicateApi
+        {
+            get
+            {
+                if (_syndicateApi != null) return _syndicateApi;
+                lock (Lock)
+                {
+                    return _syndicateApi = new SyndicateApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public ISystemApi SystemApi => _systemApi ?? (_systemApi = new SystemApi(_serializer, _configuration));
+        public ISystemApi SystemApi
+        {
+            get
+            {
+                if (_systemApi != null) return _systemApi;
+                lock (Lock)
+                {
+                    return _systemApi = new SystemApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IWorkareaApi WorkareaApi => _workareaApi ?? (_workareaApi = new WorkareaApi(_serializer, _configuration));
+        public IWorkareaApi WorkareaApi
+        {
+            get
+            {
+                if (_systemApi != null) return _workareaApi;
+                lock (Lock)
+                {
+                    return _workareaApi = new WorkareaApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
+
+        private IApiClient ApiClient
+        {
+            get
+            {
+                if (_systemApi != null) return _apiClient;
+                lock (Lock)
+                {
+                    return _apiClient = new ApiClient(_configuration);
+                }
+            }
+        }
     }
 }

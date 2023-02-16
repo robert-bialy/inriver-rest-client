@@ -71,11 +71,6 @@ namespace InRiver.Rest.Lib.Client
 
         #region Private Members
         private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
-
-        /// <summary>
-        /// HTTP client wrapper
-        /// </summary>
-        private ApiClient _apiClient = null;
         #endregion Private Members
 
         #region Constructors
@@ -99,18 +94,6 @@ namespace InRiver.Rest.Lib.Client
         #endregion Constructors
 
         #region Properties
-
-        /// <summary>
-        /// Gets an instance of an ApiClient for this configuration
-        /// </summary>
-        public virtual ApiClient ApiClient
-        {
-            get
-            {
-                if (_apiClient == null) _apiClient = CreateApiClient();
-                return _apiClient;
-            }
-        }
 
         /// <summary>
         /// Gets or sets the base path for API access.
@@ -183,15 +166,7 @@ namespace InRiver.Rest.Lib.Client
         {
             DefaultHeader[key] = value;
         }
-
-        /// <summary>
-        /// Creates a new <see cref="ApiClient" /> based on this <see cref="Configuration" /> instance.
-        /// </summary>
-        /// <returns>ApiClient</returns>
-        private ApiClient CreateApiClient()
-        {
-            return new ApiClient(BasePath, HttpClientOverride) { Configuration = this };
-        }
+        
         #endregion Methods
 
         public object Clone()
