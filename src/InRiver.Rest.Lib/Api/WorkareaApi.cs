@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -13,15 +14,18 @@ namespace InRiver.Rest.Lib.Api
     internal sealed class WorkareaApi : IWorkareaApi
     {
         private ExceptionFactory _exceptionFactory = (name, response) => null;
+        private readonly ISerializer _serializer;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkareaApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer">An instance of Serializer</param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public WorkareaApi(Configuration configuration = null)
+        public WorkareaApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
@@ -103,7 +107,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (creationModel != null && creationModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(creationModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(creationModel); // http body (model) parameter
             }
             else
             {
@@ -126,7 +130,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -181,7 +185,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (creationModel != null && creationModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(creationModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(creationModel); // http body (model) parameter
             }
             else
             {
@@ -204,7 +208,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -400,7 +404,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -468,7 +472,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -528,7 +532,7 @@ namespace InRiver.Rest.Lib.Api
             if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", this.Configuration.ApiClient.ParameterToString(workareaFolderId)); // path parameter
             if (entityIds != null && entityIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(entityIds); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityIds); // http body (model) parameter
             }
             else
             {
@@ -551,7 +555,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -612,7 +616,7 @@ namespace InRiver.Rest.Lib.Api
             if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", this.Configuration.ApiClient.ParameterToString(workareaFolderId)); // path parameter
             if (entityIds != null && entityIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(entityIds); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityIds); // http body (model) parameter
             }
             else
             {
@@ -635,7 +639,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -695,7 +699,7 @@ namespace InRiver.Rest.Lib.Api
             if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", this.Configuration.ApiClient.ParameterToString(workareaFolderId)); // path parameter
             if (workareaFolderModel != null && workareaFolderModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(workareaFolderModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(workareaFolderModel); // http body (model) parameter
             }
             else
             {
@@ -718,7 +722,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -779,7 +783,7 @@ namespace InRiver.Rest.Lib.Api
             if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", this.Configuration.ApiClient.ParameterToString(workareaFolderId)); // path parameter
             if (workareaFolderModel != null && workareaFolderModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(workareaFolderModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(workareaFolderModel); // http body (model) parameter
             }
             else
             {
@@ -802,7 +806,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -862,7 +866,7 @@ namespace InRiver.Rest.Lib.Api
             if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", this.Configuration.ApiClient.ParameterToString(workareaFolderId)); // path parameter
             if (queryModel != null && queryModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(queryModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(queryModel); // http body (model) parameter
             }
             else
             {
@@ -885,7 +889,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -946,7 +950,7 @@ namespace InRiver.Rest.Lib.Api
             if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", this.Configuration.ApiClient.ParameterToString(workareaFolderId)); // path parameter
             if (queryModel != null && queryModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(queryModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(queryModel); // http body (model) parameter
             }
             else
             {
@@ -969,7 +973,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -1039,7 +1043,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<WorkareaTreeFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaTreeFolderModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
+                (List<WorkareaTreeFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
         }
 
         /// <summary>
@@ -1110,7 +1114,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<WorkareaTreeFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaTreeFolderModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
+                (List<WorkareaTreeFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
         }
 
         /// <summary>
@@ -1180,7 +1184,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<WorkareaFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaFolderModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
+                (List<WorkareaFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
         }
 
         /// <summary>
@@ -1251,7 +1255,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<WorkareaFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaFolderModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
+                (List<WorkareaFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
         }
 
         /// <summary>
@@ -1318,7 +1322,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
         /// <summary>
@@ -1386,7 +1390,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
     }

@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -13,16 +14,19 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class QueryApi : IQueryApi
     {
+        private readonly ISerializer _serializer;
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="QueryApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer"></param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public QueryApi(Configuration configuration = null)
+        public QueryApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
@@ -104,7 +108,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (queryModel != null && queryModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(queryModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(queryModel); // http body (model) parameter
             }
             else
             {
@@ -127,7 +131,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
         /// <summary>
@@ -182,7 +186,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (queryModel != null && queryModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(queryModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(queryModel); // http body (model) parameter
             }
             else
             {
@@ -205,7 +209,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
     }

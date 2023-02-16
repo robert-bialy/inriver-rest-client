@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -13,16 +14,19 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal class ChannelApi : IChannelApi
     {
+        private readonly ISerializer _serializer;
         private ExceptionFactory _exceptionFactory = (name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer"></param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public ChannelApi(Configuration configuration = null)
+        public ChannelApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
@@ -120,7 +124,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<ChannelPathContentModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ChannelPathContentModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ChannelPathContentModel)));
+                (ChannelPathContentModel) _serializer.Deserialize(localVarResponse, typeof(ChannelPathContentModel)));
         }
 
         /// <summary>
@@ -191,7 +195,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<ChannelPathContentModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ChannelPathContentModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ChannelPathContentModel)));
+                (ChannelPathContentModel) _serializer.Deserialize(localVarResponse, typeof(ChannelPathContentModel)));
         }
 
         /// <summary>
@@ -258,7 +262,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -326,7 +330,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -408,7 +412,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
         /// <summary>
@@ -491,7 +495,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
         /// <summary>
@@ -561,7 +565,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
         /// <summary>
@@ -632,7 +636,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityListModel)));
+                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
         /// <summary>
@@ -699,7 +703,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, StructureNode>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
+                (Dictionary<string, StructureNode>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
         }
 
         /// <summary>
@@ -767,7 +771,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, StructureNode>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
+                (Dictionary<string, StructureNode>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
         }
 
         /// <summary>
@@ -835,7 +839,7 @@ namespace InRiver.Rest.Lib.Api
             return new ApiResponse<List<string>>(
                 localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -903,7 +907,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -976,7 +980,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<StructureEntityModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<StructureEntityModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<StructureEntityModel>)));
+                (List<StructureEntityModel>) _serializer.Deserialize(localVarResponse, typeof(List<StructureEntityModel>)));
         }
 
         /// <summary>
@@ -1050,7 +1054,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<StructureEntityModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<StructureEntityModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<StructureEntityModel>)));
+                (List<StructureEntityModel>) _serializer.Deserialize(localVarResponse, typeof(List<StructureEntityModel>)));
         }
 
         /// <summary>
@@ -1120,7 +1124,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<ChannelSummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ChannelSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ChannelSummaryModel>)));
+                (List<ChannelSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<ChannelSummaryModel>)));
         }
 
         /// <summary>
@@ -1191,7 +1195,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<ChannelSummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<ChannelSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<ChannelSummaryModel>)));
+                (List<ChannelSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<ChannelSummaryModel>)));
         }
 
     }

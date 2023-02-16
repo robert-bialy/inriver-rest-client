@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using InRiver.Rest.Lib.Api;
+using InRiver.Rest.Lib.Services;
 
 namespace InRiver.Rest.Lib.Client
 {
@@ -11,6 +12,7 @@ namespace InRiver.Rest.Lib.Client
         #region Private Members
 
         private readonly Configuration _configuration;
+        private readonly ISerializer _serializer = new Serializer();
         private IChannelApi _channelApi;
         private IEntityApi _entityApi;
         private ILinkApi _linkApi;
@@ -91,22 +93,22 @@ namespace InRiver.Rest.Lib.Client
             configuration?.Invoke(_configuration);
         }
 
-        public IChannelApi ChannelApi => _channelApi ?? (_channelApi = new ChannelApi(_configuration));
+        public IChannelApi ChannelApi => _channelApi ?? (_channelApi = new ChannelApi(_serializer,_configuration));
 
-        public IEntityApi EntityApi => _entityApi ?? (_entityApi = new EntityApi(_configuration));
+        public IEntityApi EntityApi => _entityApi ?? (_entityApi = new EntityApi(_serializer,_configuration));
 
-        public ILinkApi LinkApi => _linkApi ?? (_linkApi = new LinkApi(_configuration));
+        public ILinkApi LinkApi => _linkApi ?? (_linkApi = new LinkApi(_serializer,_configuration));
 
-        public IMediaApi MediaApi => _mediaApi ?? (_mediaApi = new MediaApi(_configuration));
+        public IMediaApi MediaApi => _mediaApi ?? (_mediaApi = new MediaApi(_serializer,_configuration));
 
-        public IModelApi ModelApi => _modelApi ?? (_modelApi = new ModelApi(_configuration));
+        public IModelApi ModelApi => _modelApi ?? (_modelApi = new ModelApi(_serializer,_configuration));
 
-        public IQueryApi QueryApi => _queryApi ?? (_queryApi = new QueryApi(_configuration));
+        public IQueryApi QueryApi => _queryApi ?? (_queryApi = new QueryApi(_serializer,_configuration));
 
-        public ISyndicateApi SyndicateApi => _syndicateApi ?? (_syndicateApi =  new SyndicateApi(_configuration));
+        public ISyndicateApi SyndicateApi => _syndicateApi ?? (_syndicateApi =  new SyndicateApi(_serializer,_configuration));
 
-        public ISystemApi SystemApi => _systemApi ?? (_systemApi = new SystemApi(_configuration));
+        public ISystemApi SystemApi => _systemApi ?? (_systemApi = new SystemApi(_serializer, _configuration));
 
-        public IWorkareaApi WorkareaApi => _workareaApi ?? (_workareaApi = new WorkareaApi(_configuration));
+        public IWorkareaApi WorkareaApi => _workareaApi ?? (_workareaApi = new WorkareaApi(_serializer, _configuration));
     }
 }

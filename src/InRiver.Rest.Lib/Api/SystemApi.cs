@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -13,6 +14,7 @@ namespace InRiver.Rest.Lib.Api
     internal sealed class SystemApi : ISystemApi
     {
         private ExceptionFactory _exceptionFactory = (name, response) => null;
+        private readonly ISerializer _serializer;
         
         /// <summary>
         /// Initializes a new instance of the <see cref="SystemApi"/> class
@@ -20,8 +22,9 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public SystemApi(Configuration configuration = null)
+        public SystemApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
@@ -109,7 +112,7 @@ namespace InRiver.Rest.Lib.Api
             if (segmentId != null) localVarPathParams.Add("segmentId", this.Configuration.ApiClient.ParameterToString(segmentId)); // path parameter
             if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
             }
             else
             {
@@ -132,7 +135,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserRolesModel)));
+                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -193,7 +196,7 @@ namespace InRiver.Rest.Lib.Api
             if (segmentId != null) localVarPathParams.Add("segmentId", this.Configuration.ApiClient.ParameterToString(segmentId)); // path parameter
             if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
             }
             else
             {
@@ -216,7 +219,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserRolesModel)));
+                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -277,7 +280,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -339,7 +342,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<string>)));
+                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -400,7 +403,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<ImageConfigurationDetailsModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageConfigurationDetailsModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
+                (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
         }
 
         /// <summary>
@@ -462,7 +465,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<ImageConfigurationDetailsModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageConfigurationDetailsModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
+                (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
         }
 
         /// <summary>
@@ -526,7 +529,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -591,7 +594,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, string>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+                (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -651,7 +654,7 @@ namespace InRiver.Rest.Lib.Api
             if (segmentId != null) localVarPathParams.Add("segmentId", this.Configuration.ApiClient.ParameterToString(segmentId)); // path parameter
             if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
             }
             else
             {
@@ -674,7 +677,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserRolesModel)));
+                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -735,7 +738,7 @@ namespace InRiver.Rest.Lib.Api
             if (segmentId != null) localVarPathParams.Add("segmentId", this.Configuration.ApiClient.ParameterToString(segmentId)); // path parameter
             if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
             }
             else
             {
@@ -758,7 +761,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserRolesModel)));
+                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -822,7 +825,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<RoleModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<RoleModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<RoleModel>)));
+                (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
         }
 
         /// <summary>
@@ -887,7 +890,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<RoleModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<RoleModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<RoleModel>)));
+                (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
         }
 
         /// <summary>
@@ -951,7 +954,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SegmentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SegmentModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
+                (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
         }
 
         /// <summary>
@@ -1016,7 +1019,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SegmentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SegmentModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
+                (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
         }
 
         /// <summary>
@@ -1076,7 +1079,7 @@ namespace InRiver.Rest.Lib.Api
             if (segmentId != null) localVarPathParams.Add("segmentId", this.Configuration.ApiClient.ParameterToString(segmentId)); // path parameter
             if (userRolesModel != null && userRolesModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(userRolesModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRolesModel); // http body (model) parameter
             }
             else
             {
@@ -1099,7 +1102,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserRolesModel)));
+                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -1160,7 +1163,7 @@ namespace InRiver.Rest.Lib.Api
             if (segmentId != null) localVarPathParams.Add("segmentId", this.Configuration.ApiClient.ParameterToString(segmentId)); // path parameter
             if (userRolesModel != null && userRolesModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(userRolesModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRolesModel); // http body (model) parameter
             }
             else
             {
@@ -1183,7 +1186,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(UserRolesModel)));
+                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
     }

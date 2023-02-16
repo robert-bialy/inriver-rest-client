@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -13,16 +14,19 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class MediaApi : IMediaApi
     {
+        private readonly ISerializer _serializer;
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="MediaApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer"></param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public MediaApi(Configuration configuration = null)
+        public MediaApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
@@ -104,7 +108,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -127,7 +131,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -182,7 +186,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -205,7 +209,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -259,7 +263,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (base64FileModel != null && base64FileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(base64FileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(base64FileModel); // http body (model) parameter
             }
             else
             {
@@ -282,7 +286,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -337,7 +341,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (base64FileModel != null && base64FileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(base64FileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(base64FileModel); // http body (model) parameter
             }
             else
             {
@@ -360,7 +364,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -414,7 +418,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -437,7 +441,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -492,7 +496,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -515,7 +519,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
     }

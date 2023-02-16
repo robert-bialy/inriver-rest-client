@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -12,16 +13,19 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class SyndicateApi : ISyndicateApi
     {
+        private readonly ISerializer _serializer;
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="SyndicateApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer"></param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public SyndicateApi(Configuration configuration = null)
+        public SyndicateApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
@@ -116,7 +120,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object) _serializer.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -184,7 +188,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Object) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Object)));
+                (Object) _serializer.Deserialize(localVarResponse, typeof(Object)));
         }
 
         /// <summary>
@@ -245,7 +249,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SyndicationModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SyndicationModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SyndicationModel>)));
+                (List<SyndicationModel>) _serializer.Deserialize(localVarResponse, typeof(List<SyndicationModel>)));
         }
 
         /// <summary>
@@ -307,7 +311,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SyndicationModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SyndicationModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SyndicationModel>)));
+                (List<SyndicationModel>) _serializer.Deserialize(localVarResponse, typeof(List<SyndicationModel>)));
         }
 
     }

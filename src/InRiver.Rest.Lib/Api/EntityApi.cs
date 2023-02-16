@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -13,16 +14,19 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class EntityApi : IEntityApi
     {
+        private readonly ISerializer _serializer;
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer"></param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public EntityApi(Configuration configuration = null)
+        public EntityApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             Configuration = configuration ?? Configuration.Default;
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
@@ -128,7 +132,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -151,7 +155,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -212,7 +216,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -235,7 +239,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -302,7 +306,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CommentModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CommentModel>)));
+                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
         /// <summary>
@@ -370,7 +374,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CommentModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CommentModel>)));
+                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
         /// <summary>
@@ -437,7 +441,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<CompletenessDetailsModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CompletenessDetailsModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
+                (List<CompletenessDetailsModel>) _serializer.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
         }
 
         /// <summary>
@@ -505,7 +509,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<CompletenessDetailsModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CompletenessDetailsModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
+                (List<CompletenessDetailsModel>) _serializer.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
         }
 
         /// <summary>
@@ -565,7 +569,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (commentModel != null && commentModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(commentModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(commentModel); // http body (model) parameter
             }
             else
             {
@@ -588,7 +592,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CommentModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CommentModel>)));
+                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
         /// <summary>
@@ -649,7 +653,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (commentModel != null && commentModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(commentModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(commentModel); // http body (model) parameter
             }
             else
             {
@@ -672,7 +676,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CommentModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<CommentModel>)));
+                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
         /// <summary>
@@ -726,7 +730,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (entityCreationModel != null && entityCreationModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(entityCreationModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityCreationModel); // http body (model) parameter
             }
             else
             {
@@ -749,7 +753,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -804,7 +808,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (entityCreationModel != null && entityCreationModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(entityCreationModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityCreationModel); // http body (model) parameter
             }
             else
             {
@@ -827,7 +831,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -1151,7 +1155,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (fetchObjectsModel != null && fetchObjectsModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(fetchObjectsModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(fetchObjectsModel); // http body (model) parameter
             }
             else
             {
@@ -1174,7 +1178,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<EntityDataModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EntityDataModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EntityDataModel>)));
+                (List<EntityDataModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityDataModel>)));
         }
 
         /// <summary>
@@ -1229,7 +1233,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (fetchObjectsModel != null && fetchObjectsModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(fetchObjectsModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(fetchObjectsModel); // http body (model) parameter
             }
             else
             {
@@ -1252,7 +1256,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<EntityDataModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EntityDataModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<EntityDataModel>)));
+                (List<EntityDataModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityDataModel>)));
         }
 
         /// <summary>
@@ -1325,7 +1329,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<FieldRevisionModel[]>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FieldRevisionModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
+                (FieldRevisionModel[]) _serializer.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
         }
 
         /// <summary>
@@ -1399,7 +1403,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<FieldRevisionModel[]>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (FieldRevisionModel[]) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
+                (FieldRevisionModel[]) _serializer.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
         }
 
         /// <summary>
@@ -1466,7 +1470,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<MediaInfoModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
+                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
         /// <summary>
@@ -1534,7 +1538,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<MediaInfoModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
+                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
         /// <summary>
@@ -1595,7 +1599,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<Segment>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Segment>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Segment>)));
+                (List<Segment>) _serializer.Deserialize(localVarResponse, typeof(List<Segment>)));
         }
 
         /// <summary>
@@ -1657,7 +1661,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<Segment>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<Segment>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<Segment>)));
+                (List<Segment>) _serializer.Deserialize(localVarResponse, typeof(List<Segment>)));
         }
 
         /// <summary>
@@ -1730,7 +1734,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityCreationModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityCreationModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityCreationModel)));
+                (EntityCreationModel) _serializer.Deserialize(localVarResponse, typeof(EntityCreationModel)));
         }
 
         /// <summary>
@@ -1804,7 +1808,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityCreationModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityCreationModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityCreationModel)));
+                (EntityCreationModel) _serializer.Deserialize(localVarResponse, typeof(EntityCreationModel)));
         }
 
         /// <summary>
@@ -1880,7 +1884,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityBundleModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityBundleModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityBundleModel)));
+                (EntityBundleModel) _serializer.Deserialize(localVarResponse, typeof(EntityBundleModel)));
         }
 
         /// <summary>
@@ -1957,7 +1961,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntityBundleModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityBundleModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntityBundleModel)));
+                (EntityBundleModel) _serializer.Deserialize(localVarResponse, typeof(EntityBundleModel)));
         }
 
         /// <summary>
@@ -2024,7 +2028,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -2092,7 +2096,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -2162,7 +2166,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
+                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
         /// <summary>
@@ -2233,7 +2237,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
+                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
         /// <summary>
@@ -2303,7 +2307,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<FieldSummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
+                (List<FieldSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
         }
 
         /// <summary>
@@ -2374,7 +2378,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<FieldSummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
+                (List<FieldSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
         }
 
         /// <summary>
@@ -2447,7 +2451,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LinkModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LinkModel>)));
+                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
         /// <summary>
@@ -2521,7 +2525,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LinkModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LinkModel>)));
+                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
         /// <summary>
@@ -2588,7 +2592,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<MediaInfoModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
+                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
         /// <summary>
@@ -2656,7 +2660,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<MediaInfoModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
+                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
         /// <summary>
@@ -2726,7 +2730,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SpecificationValueSummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationValueSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SpecificationValueSummaryModel>)));
+                (List<SpecificationValueSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueSummaryModel>)));
         }
 
         /// <summary>
@@ -2797,7 +2801,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SpecificationValueSummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationValueSummaryModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SpecificationValueSummaryModel>)));
+                (List<SpecificationValueSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueSummaryModel>)));
         }
 
         /// <summary>
@@ -2870,7 +2874,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
+                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
         /// <summary>
@@ -2944,7 +2948,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
+                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
         /// <summary>
@@ -2998,7 +3002,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (mapUniqueValuesModel != null && mapUniqueValuesModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(mapUniqueValuesModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(mapUniqueValuesModel); // http body (model) parameter
             }
             else
             {
@@ -3021,7 +3025,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Dictionary<string, int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
+                (Dictionary<string, int?>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
         }
 
         /// <summary>
@@ -3076,7 +3080,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (mapUniqueValuesModel != null && mapUniqueValuesModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(mapUniqueValuesModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(mapUniqueValuesModel); // http body (model) parameter
             }
             else
             {
@@ -3099,7 +3103,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<Dictionary<string, int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
+                (Dictionary<string, int?>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
         }
 
         /// <summary>
@@ -3159,7 +3163,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (setFieldSetModel != null && setFieldSetModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(setFieldSetModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(setFieldSetModel); // http body (model) parameter
             }
             else
             {
@@ -3182,7 +3186,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -3243,7 +3247,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (setFieldSetModel != null && setFieldSetModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(setFieldSetModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(setFieldSetModel); // http body (model) parameter
             }
             else
             {
@@ -3266,7 +3270,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -3326,7 +3330,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (fieldValueModels != null && fieldValueModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(fieldValueModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(fieldValueModels); // http body (model) parameter
             }
             else
             {
@@ -3349,7 +3353,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
+                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
         /// <summary>
@@ -3410,7 +3414,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (fieldValueModels != null && fieldValueModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(fieldValueModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(fieldValueModels); // http body (model) parameter
             }
             else
             {
@@ -3433,7 +3437,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
+                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
         /// <summary>
@@ -3493,7 +3497,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (setSegmentModel != null && setSegmentModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(setSegmentModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(setSegmentModel); // http body (model) parameter
             }
             else
             {
@@ -3516,7 +3520,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -3577,7 +3581,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (setSegmentModel != null && setSegmentModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(setSegmentModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(setSegmentModel); // http body (model) parameter
             }
             else
             {
@@ -3600,7 +3604,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -3660,7 +3664,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (setSpecificationTemplateModel != null && setSpecificationTemplateModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(setSpecificationTemplateModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(setSpecificationTemplateModel); // http body (model) parameter
             }
             else
             {
@@ -3683,7 +3687,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -3744,7 +3748,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (setSpecificationTemplateModel != null && setSpecificationTemplateModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(setSpecificationTemplateModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(setSpecificationTemplateModel); // http body (model) parameter
             }
             else
             {
@@ -3767,7 +3771,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntitySummaryModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
+                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
         /// <summary>
@@ -3828,7 +3832,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -3890,7 +3894,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -3950,7 +3954,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (specificationValueModels != null && specificationValueModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(specificationValueModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(specificationValueModels); // http body (model) parameter
             }
             else
             {
@@ -3973,7 +3977,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
+                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
         /// <summary>
@@ -4034,7 +4038,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (specificationValueModels != null && specificationValueModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(specificationValueModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(specificationValueModels); // http body (model) parameter
             }
             else
             {
@@ -4057,7 +4061,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationValueModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
+                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
         /// <summary>
@@ -4111,7 +4115,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (entityIds != null && entityIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(entityIds); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityIds); // http body (model) parameter
             }
             else
             {
@@ -4134,7 +4138,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -4189,7 +4193,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (entityIds != null && entityIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(entityIds); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityIds); // http body (model) parameter
             }
             else
             {
@@ -4212,7 +4216,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<int?>)));
+                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -4272,7 +4276,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (base64FileModel != null && base64FileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(base64FileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(base64FileModel); // http body (model) parameter
             }
             else
             {
@@ -4295,7 +4299,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -4356,7 +4360,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (base64FileModel != null && base64FileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(base64FileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(base64FileModel); // http body (model) parameter
             }
             else
             {
@@ -4379,7 +4383,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -4439,7 +4443,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -4462,7 +4466,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
         /// <summary>
@@ -4523,7 +4527,7 @@ namespace InRiver.Rest.Lib.Api
             if (entityId != null) localVarPathParams.Add("entityId", this.Configuration.ApiClient.ParameterToString(entityId)); // path parameter
             if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(urlFileModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
             else
             {
@@ -4546,7 +4550,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (MediaInfoModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(MediaInfoModel)));
+                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
     }

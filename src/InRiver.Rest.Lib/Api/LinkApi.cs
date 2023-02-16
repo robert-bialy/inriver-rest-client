@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -13,16 +14,19 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class LinkApi : ILinkApi
     {
+        private readonly ISerializer _serializer;
         private ExceptionFactory _exceptionFactory = (name, response) => null;
-        
+
         /// <summary>
         /// Initializes a new instance of the <see cref="LinkApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer"></param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public LinkApi(Configuration configuration = null)
+        public LinkApi(ISerializer serializer, Configuration configuration = null)
         {
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             if (configuration == null) // use the default one in Configuration
                 this.Configuration = Configuration.Default;
             else
@@ -126,7 +130,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (linkModel != null && linkModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModel); // http body (model) parameter
             }
             else
             {
@@ -149,7 +153,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -204,7 +208,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (linkModel != null && linkModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModel); // http body (model) parameter
             }
             else
             {
@@ -227,7 +231,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -423,7 +427,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -491,7 +495,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -545,7 +549,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (linkModels != null && linkModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModels); // http body (model) parameter
             }
             else
             {
@@ -568,7 +572,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LinkModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LinkModel>)));
+                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
         /// <summary>
@@ -623,7 +627,7 @@ namespace InRiver.Rest.Lib.Api
 
             if (linkModels != null && linkModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModels); // http body (model) parameter
             }
             else
             {
@@ -646,7 +650,7 @@ namespace InRiver.Rest.Lib.Api
 
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LinkModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LinkModel>)));
+                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
     }
