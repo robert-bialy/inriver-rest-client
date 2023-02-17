@@ -17,14 +17,15 @@ namespace InRiver.Rest.Lib.Client
         /// with default configuration.
         /// </summary>
         /// <param name="configuration"></param>
-        public ApiClient(Configuration configuration)
+        /// <param name="restClientFactory"></param>
+        public ApiClient(Configuration configuration, IRestClientFactory restClientFactory)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            _restClientFactory = new RestClientFactory(_configuration.HttpClientOverride);
+            _restClientFactory = restClientFactory ?? throw new ArgumentNullException(nameof(restClientFactory));
         }
 
         // Creates and sets up a RestRequest prior to a call.
-        private static RestRequest PrepareRequest(
+        public RestRequest PrepareRequest(
             string path,
             Method method,
             List<KeyValuePair<string, string>> queryParams,

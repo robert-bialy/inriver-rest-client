@@ -210,7 +210,7 @@ namespace InRiver.Rest.Lib.Client
                 if (_systemApi != null) return _apiClient;
                 lock (Lock)
                 {
-                    return _apiClient = new ApiClient(_configuration);
+                    return _apiClient = new ApiClient(_configuration, new RestClientFactory(_configuration.HttpClientOverride));
                 }
             }
         }

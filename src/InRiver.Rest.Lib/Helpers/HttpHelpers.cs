@@ -2,10 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Text.RegularExpressions;
 using InRiver.Rest.Lib.Client;
 
+[assembly: InternalsVisibleTo("InRiver.Rest.Lib.Tests")]
 namespace InRiver.Rest.Lib.Helpers
 {
     internal static class HttpHelpers
@@ -121,7 +123,7 @@ namespace InRiver.Rest.Lib.Helpers
         /// <returns>Returns True if MIME type is json.</returns>
         private static bool IsJsonMime(string mime)
         {
-            var jsonRegex = new Regex("(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$");
+            var jsonRegex = new Regex("(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
             return mime != null && (jsonRegex.IsMatch(mime) || mime.Equals("application/json-patch+json"));
         }
 
