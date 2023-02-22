@@ -129,48 +129,48 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SyndicationModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     ExtensionDisplayName == input.ExtensionDisplayName ||
-                    (ExtensionDisplayName != null &&
+                   (ExtensionDisplayName != null &&
                     ExtensionDisplayName.Equals(input.ExtensionDisplayName))
                 ) && 
-                (
+               (
                     ExtensionId == input.ExtensionId ||
-                    (ExtensionId != null &&
+                   (ExtensionId != null &&
                     ExtensionId.Equals(input.ExtensionId))
                 ) && 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     MappingName == input.MappingName ||
-                    (MappingName != null &&
+                   (MappingName != null &&
                     MappingName.Equals(input.MappingName))
                 ) && 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     OutputFormat == input.OutputFormat ||
-                    (OutputFormat != null &&
+                   (OutputFormat != null &&
                     OutputFormat.Equals(input.OutputFormat))
                 ) && 
-                (
+               (
                     WorkareaName == input.WorkareaName ||
-                    (WorkareaName != null &&
+                   (WorkareaName != null &&
                     WorkareaName.Equals(input.WorkareaName))
                 ) && 
-                (
+               (
                     WorkareaId == input.WorkareaId ||
-                    (WorkareaId != null &&
+                   (WorkareaId != null &&
                     WorkareaId.Equals(input.WorkareaId))
                 );
         }
@@ -184,21 +184,21 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (ExtensionDisplayName != null)
+                if(ExtensionDisplayName != null)
                     hashCode = hashCode * 59 + ExtensionDisplayName.GetHashCode();
-                if (ExtensionId != null)
+                if(ExtensionId != null)
                     hashCode = hashCode * 59 + ExtensionId.GetHashCode();
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (MappingName != null)
+                if(MappingName != null)
                     hashCode = hashCode * 59 + MappingName.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (OutputFormat != null)
+                if(OutputFormat != null)
                     hashCode = hashCode * 59 + OutputFormat.GetHashCode();
-                if (WorkareaName != null)
+                if(WorkareaName != null)
                     hashCode = hashCode * 59 + WorkareaName.GetHashCode();
-                if (WorkareaId != null)
+                if(WorkareaId != null)
                     hashCode = hashCode * 59 + WorkareaId.GetHashCode();
                 return hashCode;
             }

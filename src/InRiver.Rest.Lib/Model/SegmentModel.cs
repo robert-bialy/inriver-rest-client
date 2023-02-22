@@ -94,26 +94,26 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SegmentModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     Description == input.Description ||
-                    (Description != null &&
+                   (Description != null &&
                     Description.Equals(input.Description))
                 ) && 
-                (
+               (
                     Roles == input.Roles ||
                     Roles != null &&
                     Roles.SequenceEqual(input.Roles)
@@ -129,13 +129,13 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (Description != null)
+                if(Description != null)
                     hashCode = hashCode * 59 + Description.GetHashCode();
-                if (Roles != null)
+                if(Roles != null)
                     hashCode = hashCode * 59 + Roles.GetHashCode();
                 return hashCode;
             }

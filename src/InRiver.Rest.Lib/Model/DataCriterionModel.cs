@@ -92,28 +92,28 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(DataCriterionModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FieldTypeId == input.FieldTypeId ||
-                    (FieldTypeId != null &&
+                   (FieldTypeId != null &&
                     FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
-                (
+               (
                     Value == input.Value ||
-                    (Value != null &&
+                   (Value != null &&
                     Value.Equals(input.Value))
                 ) && 
-                (
+               (
                     Language == input.Language ||
-                    (Language != null &&
+                   (Language != null &&
                     Language.Equals(input.Language))
                 ) && 
-                (
+               (
                     Operator == input.Operator ||
-                    (Operator != null &&
+                   (Operator != null &&
                     Operator.Equals(input.Operator))
                 );
         }
@@ -127,13 +127,13 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FieldTypeId != null)
+                if(FieldTypeId != null)
                     hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
-                if (Value != null)
+                if(Value != null)
                     hashCode = hashCode * 59 + Value.GetHashCode();
-                if (Language != null)
+                if(Language != null)
                     hashCode = hashCode * 59 + Language.GetHashCode();
-                if (Operator != null)
+                if(Operator != null)
                     hashCode = hashCode * 59 + Operator.GetHashCode();
                 return hashCode;
             }

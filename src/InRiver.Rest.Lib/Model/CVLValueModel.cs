@@ -20,14 +20,14 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="CVLValueModel" /> class.
         /// </summary>
-        /// <param name="key">key (required).</param>
+        /// <param name="key">key(required).</param>
         /// <param name="value">value.</param>
         /// <param name="index">index.</param>
         /// <param name="parentKey">parentKey.</param>
         public CVLValueModel(string key = default, object value = default(object), int? index = default(int?), string parentKey = default)
         {
-            // to ensure "key" is required (not null)
-            if (key == null)
+            // to ensure "key" is required(not null)
+            if(key == null)
             {
                 throw new InvalidDataException("key is a required property for CVLValueModel and cannot be null");
             }
@@ -106,28 +106,28 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(CVLValueModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Key == input.Key ||
-                    (Key != null &&
+                   (Key != null &&
                     Key.Equals(input.Key))
                 ) && 
-                (
+               (
                     Value == input.Value ||
-                    (Value != null &&
+                   (Value != null &&
                     Value.Equals(input.Value))
                 ) && 
-                (
+               (
                     Index == input.Index ||
-                    (Index != null &&
+                   (Index != null &&
                     Index.Equals(input.Index))
                 ) && 
-                (
+               (
                     ParentKey == input.ParentKey ||
-                    (ParentKey != null &&
+                   (ParentKey != null &&
                     ParentKey.Equals(input.ParentKey))
                 );
         }
@@ -141,13 +141,13 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Key != null)
+                if(Key != null)
                     hashCode = hashCode * 59 + Key.GetHashCode();
-                if (Value != null)
+                if(Value != null)
                     hashCode = hashCode * 59 + Value.GetHashCode();
-                if (Index != null)
+                if(Index != null)
                     hashCode = hashCode * 59 + Index.GetHashCode();
-                if (ParentKey != null)
+                if(ParentKey != null)
                     hashCode = hashCode * 59 + ParentKey.GetHashCode();
                 return hashCode;
             }

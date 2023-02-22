@@ -76,16 +76,16 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityListModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Count == input.Count ||
-                    (Count != null &&
+                   (Count != null &&
                     Count.Equals(input.Count))
                 ) && 
-                (
+               (
                     EntityIds == input.EntityIds ||
                     EntityIds != null &&
                     EntityIds.SequenceEqual(input.EntityIds)
@@ -101,9 +101,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Count != null)
+                if(Count != null)
                     hashCode = hashCode * 59 + Count.GetHashCode();
-                if (EntityIds != null)
+                if(EntityIds != null)
                     hashCode = hashCode * 59 + EntityIds.GetHashCode();
                 return hashCode;
             }

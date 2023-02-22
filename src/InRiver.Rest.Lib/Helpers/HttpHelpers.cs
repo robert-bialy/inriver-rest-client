@@ -21,12 +21,12 @@ namespace InRiver.Rest.Lib.Helpers
         /// <returns>The Content-Type header to use.</returns>
         public static string SelectHeaderContentType(string[] contentTypes)
         {
-            if (contentTypes.Length == 0)
+            if(contentTypes.Length == 0)
                 return "application/json";
 
-            foreach (var contentType in contentTypes)
+            foreach(var contentType in contentTypes)
             {
-                if (IsJsonMime(contentType.ToLower()))
+                if(IsJsonMime(contentType.ToLower()))
                     return contentType;
             }
 
@@ -36,48 +36,48 @@ namespace InRiver.Rest.Lib.Helpers
         /// <summary>
         /// Select the Accept header's value from the given accepts array:
         /// if JSON exists in the given array, use it;
-        /// otherwise use all of them (joining into a string)
+        /// otherwise use all of them(joining into a string)
         /// </summary>
         /// <param name="accepts">The accepts array to select from.</param>
         /// <returns>The Accept header to use.</returns>
         public static string SelectHeaderAccept(string[] accepts)
         {
-            if (accepts.Length == 0)
+            if(accepts.Length == 0)
                 return null;
 
-            if (accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
+            if(accepts.Contains("application/json", StringComparer.OrdinalIgnoreCase))
                 return "application/json";
 
             return string.Join(",", accepts);
         }
 
         /// <summary>
-        /// If parameter is DateTime, output in a formatted string (default ISO 8601), customizable with Configuration.DateTime.
+        /// If parameter is DateTime, output in a formatted string(default ISO 8601), customizable with Configuration.DateTime.
         /// If parameter is a list, join the list with ",".
         /// Otherwise just return the string.
         /// </summary>
-        /// <param name="obj">The parameter (header, path, query, form).</param>
+        /// <param name="obj">The parameter(header, path, query, form).</param>
         /// <returns>Formatted string.</returns>
         public static string ParameterToString(object obj, Configuration configuration)
         {
-            if (obj is DateTime)
+            if(obj is DateTime)
                 // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
-                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
+                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern("o")
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
-                return ((DateTime)obj).ToString(configuration.DateTimeFormat);
-            else if (obj is DateTimeOffset)
+                return((DateTime)obj).ToString(configuration.DateTimeFormat);
+            else if(obj is DateTimeOffset)
                 // Return a formatted date string - Can be customized with Configuration.DateTimeFormat
-                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern ("o")
+                // Defaults to an ISO 8601, using the known as a Round-trip date/time pattern("o")
                 // https://msdn.microsoft.com/en-us/library/az4se3k1(v=vs.110).aspx#Anchor_8
                 // For example: 2009-06-15T13:45:30.0000000
-                return ((DateTimeOffset)obj).ToString(configuration.DateTimeFormat);
-            else if (obj is IList)
+                return((DateTimeOffset)obj).ToString(configuration.DateTimeFormat);
+            else if(obj is IList)
             {
                 var flattenedString = new StringBuilder();
-                foreach (var param in (IList)obj)
+                foreach(var param in(IList)obj)
                 {
-                    if (flattenedString.Length > 0)
+                    if(flattenedString.Length> 0)
                         flattenedString.Append(",");
                     flattenedString.Append(param);
                 }
@@ -98,7 +98,7 @@ namespace InRiver.Rest.Lib.Helpers
         {
             var parameters = new List<KeyValuePair<string, string>>();
 
-            if (IsCollection(value) && collectionFormat == "multi")
+            if(IsCollection(value) && collectionFormat == "multi")
             {
                 var valueCollection = value as IEnumerable;
                 parameters.AddRange(from object item in valueCollection select new KeyValuePair<string, string>(name, ParameterToString(item, configuration)));
@@ -124,7 +124,7 @@ namespace InRiver.Rest.Lib.Helpers
         private static bool IsJsonMime(string mime)
         {
             var jsonRegex = new Regex("(?i)^(application/json|[^;/ \t]+/[^;/ \t]+[+]json)[ \t]*(;.*)?$", RegexOptions.Compiled, TimeSpan.FromSeconds(10));
-            return mime != null && (jsonRegex.IsMatch(mime) || mime.Equals("application/json-patch+json"));
+            return mime != null &&(jsonRegex.IsMatch(mime) || mime.Equals("application/json-patch+json"));
         }
 
         /// <summary>

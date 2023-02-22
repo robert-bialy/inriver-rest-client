@@ -83,23 +83,23 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(CVLModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     ParentId == input.ParentId ||
-                    (ParentId != null &&
+                   (ParentId != null &&
                     ParentId.Equals(input.ParentId))
                 ) && 
-                (
+               (
                     DataType == input.DataType ||
-                    (DataType != null &&
+                   (DataType != null &&
                     DataType.Equals(input.DataType))
                 );
         }
@@ -113,11 +113,11 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (ParentId != null)
+                if(ParentId != null)
                     hashCode = hashCode * 59 + ParentId.GetHashCode();
-                if (DataType != null)
+                if(DataType != null)
                     hashCode = hashCode * 59 + DataType.GetHashCode();
                 return hashCode;
             }

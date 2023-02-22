@@ -168,7 +168,7 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include(objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds(a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot;(applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
@@ -179,7 +179,7 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include(objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds(a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot;(applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
@@ -217,7 +217,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>List&lt;MediaInfoModel&gt;</returns>
-        List<MediaInfoModel> GetAllMedia (int? entityId);
+        List<MediaInfoModel> GetAllMedia(int? entityId);
 
         /// <summary>
         /// Returns a read only list of entity media
@@ -252,12 +252,12 @@ namespace InRiver.Rest.Lib.Api
         /// Returns an entity creation model
         /// </summary>
         /// <remarks>
-        /// The fieldValues array will contain all fields required to create an entity (usually all mandatory and unique fields).
+        /// The fieldValues array will contain all fields required to create an entity(usually all mandatory and unique fields).
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityTypeId"></param>
-        /// <param name="fieldSetId">optional (optional)</param>
-        /// <param name="allFields">optional, include all fields (not included in a field set) (optional)</param>
+        /// <param name="fieldSetId">optional(optional)</param>
+        /// <param name="allFields">optional, include all fields(not included in a field set)(optional)</param>
         /// <returns>EntityCreationModel</returns>
         EntityCreationModel GetEmptyEntity(string entityTypeId, string fieldSetId = null, bool? allFields = null);
 
@@ -265,12 +265,12 @@ namespace InRiver.Rest.Lib.Api
         /// Returns an entity creation model
         /// </summary>
         /// <remarks>
-        /// The fieldValues array will contain all fields required to create an entity (usually all mandatory and unique fields).
+        /// The fieldValues array will contain all fields required to create an entity(usually all mandatory and unique fields).
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityTypeId"></param>
-        /// <param name="fieldSetId">optional (optional)</param>
-        /// <param name="allFields">optional, include all fields (not included in a field set) (optional)</param>
+        /// <param name="fieldSetId">optional(optional)</param>
+        /// <param name="allFields">optional, include all fields(not included in a field set)(optional)</param>
         /// <returns>ApiResponse of EntityCreationModel</returns>
         ApiResponse<EntityCreationModel> GetEmptyEntityWithHttpInfo(string entityTypeId, string fieldSetId = null, bool? allFields = null);
         /// <summary>
@@ -281,9 +281,9 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter field types using comma separated list (optional)</param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter field types using comma separated list(optional)</param>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
         /// <returns>EntityBundleModel</returns>
         EntityBundleModel GetEntityBundle(int? entityId, string fieldTypeIds = null, string linkDirection = null, string linkTypeId = null);
 
@@ -295,9 +295,9 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter field types using comma separated list (optional)</param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter field types using comma separated list(optional)</param>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
         /// <returns>ApiResponse of EntityBundleModel</returns>
         ApiResponse<EntityBundleModel> GetEntityBundleWithHttpInfo(int? entityId, string fieldTypeIds = null, string linkDirection = null, string linkTypeId = null);
         /// <summary>
@@ -329,7 +329,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>List&lt;FieldValueModel&gt;</returns>
         List<FieldValueModel> GetFieldValues(int? entityId, string fieldTypeIds = null);
 
@@ -341,7 +341,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>ApiResponse of List&lt;FieldValueModel&gt;</returns>
         ApiResponse<List<FieldValueModel>> GetFieldValuesWithHttpInfo(int? entityId, string fieldTypeIds = null);
         /// <summary>
@@ -352,7 +352,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>List&lt;FieldSummaryModel&gt;</returns>
         List<FieldSummaryModel> GetFields(int? entityId, string fieldTypeIds = null);
 
@@ -364,7 +364,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>ApiResponse of List&lt;FieldSummaryModel&gt;</returns>
         ApiResponse<List<FieldSummaryModel>> GetFieldsWithHttpInfo(int? entityId, string fieldTypeIds = null);
         /// <summary>
@@ -375,8 +375,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
         /// <returns>List&lt;LinkModel&gt;</returns>
         List<LinkModel> GetLinksForEntity(int? entityId, string linkDirection = null, string linkTypeId = null);
 
@@ -388,8 +388,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
         /// <returns>ApiResponse of List&lt;LinkModel&gt;</returns>
         ApiResponse<List<LinkModel>> GetLinksForEntityWithHttpInfo(int? entityId, string linkDirection = null, string linkTypeId = null);
         /// <summary>
@@ -421,7 +421,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>List&lt;SpecificationValueSummaryModel&gt;</returns>
         List<SpecificationValueSummaryModel> GetSpecificationSummary(int? entityId, string specificationFieldTypeIds = null);
 
@@ -433,7 +433,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>ApiResponse of List&lt;SpecificationValueSummaryModel&gt;</returns>
         ApiResponse<List<SpecificationValueSummaryModel>> GetSpecificationSummaryWithHttpInfo(int? entityId, string specificationFieldTypeIds = null);
         /// <summary>
@@ -444,8 +444,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <param name="mandatoryOnly">optional (optional)</param>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <param name="mandatoryOnly">optional(optional)</param>
         /// <returns>List&lt;SpecificationValueModel&gt;</returns>
         List<SpecificationValueModel> GetSpecificationValues(int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
 
@@ -457,8 +457,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <param name="mandatoryOnly">optional (optional)</param>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <param name="mandatoryOnly">optional(optional)</param>
         /// <returns>ApiResponse of List&lt;SpecificationValueModel&gt;</returns>
         ApiResponse<List<SpecificationValueModel>> GetSpecificationValuesWithHttpInfo(int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
         /// <summary>
@@ -706,7 +706,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
-        /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
+        /// <returns>Task of ApiResponse(MediaInfoModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> AddExternalUrlAsyncWithHttpInfo(int? entityId, ExeternalUrlFileModel urlFileModel);
         /// <summary>
         /// Entity comments
@@ -727,7 +727,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of ApiResponse (List&lt;CommentModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;CommentModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<CommentModel>>> CommentsAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns a read only list of field values
@@ -748,7 +748,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of ApiResponse (List&lt;CompletenessDetailsModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;CompletenessDetailsModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<CompletenessDetailsModel>>> CompletenessDetailsAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Post entity comment
@@ -771,7 +771,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="commentModel"></param>
-        /// <returns>Task of ApiResponse (List&lt;CommentModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;CommentModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<CommentModel>>> CreateCommentAsyncWithHttpInfo(int? entityId, CommentModel commentModel);
         /// <summary>
         /// Create a new entity
@@ -792,7 +792,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityCreationModel"></param>
-        /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
+        /// <returns>Task of ApiResponse(EntitySummaryModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> CreateEntityAsyncWithHttpInfo(EntityCreationModel entityCreationModel);
         /// <summary>
         /// Delete entity comment
@@ -842,7 +842,7 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include(objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds(a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot;(applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
@@ -853,11 +853,11 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include(objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds(a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot;(applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="fetchObjectsModel"></param>
-        /// <returns>Task of ApiResponse (List&lt;EntityDataModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;EntityDataModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<EntityDataModel>>> FetchDataAsyncWithHttpInfo(FetchObjectsModel fetchObjectsModel);
         /// <summary>
         /// Field value revisions
@@ -880,7 +880,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldTypeId"></param>
-        /// <returns>Task of ApiResponse (FieldRevisionModel)</returns>
+        /// <returns>Task of ApiResponse(FieldRevisionModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<FieldRevisionModel[]>> FieldHistoryAsyncWithHttpInfo(int? entityId, string fieldTypeId);
         /// <summary>
         /// Returns a read only list of entity media
@@ -901,7 +901,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of ApiResponse (List&lt;MediaInfoModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;MediaInfoModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<MediaInfoModel>>> GetAllMediaAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Get All Segments
@@ -920,18 +920,18 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;Segment&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;Segment&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<Segment>>> GetAllSegmentsAsyncWithHttpInfo();
         /// <summary>
         /// Returns an entity creation model
         /// </summary>
         /// <remarks>
-        /// The fieldValues array will contain all fields required to create an entity (usually all mandatory and unique fields).
+        /// The fieldValues array will contain all fields required to create an entity(usually all mandatory and unique fields).
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityTypeId"></param>
-        /// <param name="fieldSetId">optional (optional)</param>
-        /// <param name="allFields">optional, include all fields (not included in a field set) (optional)</param>
+        /// <param name="fieldSetId">optional(optional)</param>
+        /// <param name="allFields">optional, include all fields(not included in a field set)(optional)</param>
         /// <returns>Task of EntityCreationModel</returns>
         System.Threading.Tasks.Task<EntityCreationModel> GetEmptyEntityAsync(string entityTypeId, string fieldSetId = null, bool? allFields = null);
 
@@ -939,13 +939,13 @@ namespace InRiver.Rest.Lib.Api
         /// Returns an entity creation model
         /// </summary>
         /// <remarks>
-        /// The fieldValues array will contain all fields required to create an entity (usually all mandatory and unique fields).
+        /// The fieldValues array will contain all fields required to create an entity(usually all mandatory and unique fields).
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityTypeId"></param>
-        /// <param name="fieldSetId">optional (optional)</param>
-        /// <param name="allFields">optional, include all fields (not included in a field set) (optional)</param>
-        /// <returns>Task of ApiResponse (EntityCreationModel)</returns>
+        /// <param name="fieldSetId">optional(optional)</param>
+        /// <param name="allFields">optional, include all fields(not included in a field set)(optional)</param>
+        /// <returns>Task of ApiResponse(EntityCreationModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntityCreationModel>> GetEmptyEntityAsyncWithHttpInfo(string entityTypeId, string fieldSetId = null, bool? allFields = null);
         /// <summary>
         /// Returns a bundle of the entity and all linked entities
@@ -955,9 +955,9 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter field types using comma separated list (optional)</param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter field types using comma separated list(optional)</param>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
         /// <returns>Task of EntityBundleModel</returns>
         System.Threading.Tasks.Task<EntityBundleModel> GetEntityBundleAsync(int? entityId, string fieldTypeIds = null, string linkDirection = null, string linkTypeId = null);
 
@@ -969,10 +969,10 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter field types using comma separated list (optional)</param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
-        /// <returns>Task of ApiResponse (EntityBundleModel)</returns>
+        /// <param name="fieldTypeIds">optional, filter field types using comma separated list(optional)</param>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
+        /// <returns>Task of ApiResponse(EntityBundleModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntityBundleModel>> GetEntityBundleAsyncWithHttpInfo(int? entityId, string fieldTypeIds = null, string linkDirection = null, string linkTypeId = null);
         /// <summary>
         /// Returns a read only entity summary
@@ -993,7 +993,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
+        /// <returns>Task of ApiResponse(EntitySummaryModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> GetEntitySummaryAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns a list of field values
@@ -1003,7 +1003,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>Task of List&lt;FieldValueModel&gt;</returns>
         System.Threading.Tasks.Task<List<FieldValueModel>> GetFieldValuesAsync(int? entityId, string fieldTypeIds = null);
 
@@ -1015,8 +1015,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;FieldValueModel&gt;)</returns>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;FieldValueModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<FieldValueModel>>> GetFieldValuesAsyncWithHttpInfo(int? entityId, string fieldTypeIds = null);
         /// <summary>
         /// Returns a read only list of field values
@@ -1026,7 +1026,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>Task of List&lt;FieldSummaryModel&gt;</returns>
         System.Threading.Tasks.Task<List<FieldSummaryModel>> GetFieldsAsync(int? entityId, string fieldTypeIds = null);
 
@@ -1038,8 +1038,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="fieldTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;FieldSummaryModel&gt;)</returns>
+        /// <param name="fieldTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;FieldSummaryModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<FieldSummaryModel>>> GetFieldsAsyncWithHttpInfo(int? entityId, string fieldTypeIds = null);
         /// <summary>
         /// Returns a list of links
@@ -1049,8 +1049,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
         /// <returns>Task of List&lt;LinkModel&gt;</returns>
         System.Threading.Tasks.Task<List<LinkModel>> GetLinksForEntityAsync(int? entityId, string linkDirection = null, string linkTypeId = null);
 
@@ -1062,9 +1062,9 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot; (optional)</param>
-        /// <param name="linkTypeId">optional, filter by link type (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;LinkModel&gt;)</returns>
+        /// <param name="linkDirection">optional, \&quot;inbound\&quot; or \&quot;outbound\&quot;(optional)</param>
+        /// <param name="linkTypeId">optional, filter by link type(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;LinkModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<LinkModel>>> GetLinksForEntityAsyncWithHttpInfo(int? entityId, string linkDirection = null, string linkTypeId = null);
         /// <summary>
         /// Returns a read only list of entity media details
@@ -1085,7 +1085,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>Task of ApiResponse (List&lt;MediaInfoModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;MediaInfoModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<MediaInfoModel>>> EntityGetMediaDetailsAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns a read only list of specification field values
@@ -1095,7 +1095,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>Task of List&lt;SpecificationValueSummaryModel&gt;</returns>
         System.Threading.Tasks.Task<List<SpecificationValueSummaryModel>> GetSpecificationSummaryAsync(int? entityId, string specificationFieldTypeIds = null);
 
@@ -1107,8 +1107,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;SpecificationValueSummaryModel&gt;)</returns>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;SpecificationValueSummaryModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueSummaryModel>>> GetSpecificationSummaryAsyncWithHttpInfo(int? entityId, string specificationFieldTypeIds = null);
         /// <summary>
         /// Returns a list of specification field values
@@ -1118,8 +1118,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <param name="mandatoryOnly">optional (optional)</param>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <param name="mandatoryOnly">optional(optional)</param>
         /// <returns>Task of List&lt;SpecificationValueModel&gt;</returns>
         System.Threading.Tasks.Task<List<SpecificationValueModel>> GetSpecificationValuesAsync(int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
 
@@ -1131,9 +1131,9 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <param name="mandatoryOnly">optional (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;SpecificationValueModel&gt;)</returns>
+        /// <param name="specificationFieldTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <param name="mandatoryOnly">optional(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;SpecificationValueModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueModel>>> GetSpecificationValuesAsyncWithHttpInfo(int? entityId, string specificationFieldTypeIds = null, bool? mandatoryOnly = null);
         /// <summary>
         /// Returns a dictionary of unique values and entity id&#39;s
@@ -1154,7 +1154,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="mapUniqueValuesModel"></param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, int?&gt;)</returns>
+        /// <returns>Task of ApiResponse(Dictionary&lt;string, int?&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<Dictionary<string, int?>>> MapUniqueValuesAsyncWithHttpInfo(MapUniqueValuesModel mapUniqueValuesModel);
         /// <summary>
         /// Set field set
@@ -1177,7 +1177,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="setFieldSetModel"></param>
-        /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
+        /// <returns>Task of ApiResponse(EntitySummaryModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetFieldSetAsyncWithHttpInfo(int? entityId, SetFieldSetModel setFieldSetModel);
         /// <summary>
         /// Update field values
@@ -1200,7 +1200,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="fieldValueModels"></param>
-        /// <returns>Task of ApiResponse (List&lt;FieldValueModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;FieldValueModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<FieldValueModel>>> SetFieldValuesAsyncWithHttpInfo(int? entityId, List<FieldValueModel> fieldValueModels);
         /// <summary>
         /// Set entity segment
@@ -1223,7 +1223,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="setSegmentModel"></param>
-        /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
+        /// <returns>Task of ApiResponse(EntitySummaryModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetSegmentAsyncWithHttpInfo(int? entityId, SetSegmentModel setSegmentModel);
         /// <summary>
         /// Set specification template
@@ -1246,7 +1246,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="setSpecificationTemplateModel"></param>
-        /// <returns>Task of ApiResponse (EntitySummaryModel)</returns>
+        /// <returns>Task of ApiResponse(EntitySummaryModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<EntitySummaryModel>> SetSpecificationTemplateAsyncWithHttpInfo(int? entityId, SetSpecificationTemplateModel setSpecificationTemplateModel);
         /// <summary>
         /// Get list of starred entities
@@ -1265,7 +1265,7 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;int?&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<int?>>> StarredEntitiesAsyncWithHttpInfo();
         /// <summary>
         /// Update specification field values
@@ -1288,7 +1288,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="specificationValueModels"></param>
-        /// <returns>Task of ApiResponse (List&lt;SpecificationValueModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;SpecificationValueModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<SpecificationValueModel>>> UpdateSpecificationValuesAsyncWithHttpInfo(int? entityId, List<SpecificationValueModel> specificationValueModels);
         /// <summary>
         /// Update list of starred entities
@@ -1309,7 +1309,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityIds"></param>
-        /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;int?&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<int?>>> UpdateStarredEntitiesAsyncWithHttpInfo(List<int?> entityIds);
         /// <summary>
         /// Add Media
@@ -1332,7 +1332,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="base64FileModel"></param>
-        /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
+        /// <returns>Task of ApiResponse(MediaInfoModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadBase64FileAsyncWithHttpInfo(int? entityId, Base64FileModel base64FileModel);
         /// <summary>
         /// Add Media
@@ -1355,7 +1355,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
-        /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
+        /// <returns>Task of ApiResponse(MediaInfoModel)</returns>
         System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadMediaFromUrlAsyncWithHttpInfo(int? entityId, UrlFileModel urlFileModel);
         #endregion Asynchronous Operations
     }

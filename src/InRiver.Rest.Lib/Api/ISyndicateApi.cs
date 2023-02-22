@@ -72,7 +72,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="syndicationId"></param>
-        /// <returns>Task of ApiResponse (object)</returns>
+        /// <returns>Task of ApiResponse(object)</returns>
         System.Threading.Tasks.Task<ApiResponse<object>> RunSyndicateAsyncWithHttpInfo(int? syndicationId);
         /// <summary>
         /// Get All Syndications
@@ -91,7 +91,7 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;SyndicationModel&gt;)</returns>
+        /// <returns>Task of ApiResponse(List&lt;SyndicationModel&gt;)</returns>
         System.Threading.Tasks.Task<ApiResponse<List<SyndicationModel>>> SyndicationsAsyncWithHttpInfo();
         #endregion Asynchronous Operations
     }

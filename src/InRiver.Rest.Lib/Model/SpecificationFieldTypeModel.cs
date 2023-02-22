@@ -166,68 +166,68 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SpecificationFieldTypeModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     Name == input.Name ||
                     Name != null &&
                     Name.SequenceEqual(input.Name)
                 ) && 
-                (
+               (
                     DataType == input.DataType ||
-                    (DataType != null &&
+                   (DataType != null &&
                     DataType.Equals(input.DataType))
                 ) && 
-                (
+               (
                     CategoryId == input.CategoryId ||
-                    (CategoryId != null &&
+                   (CategoryId != null &&
                     CategoryId.Equals(input.CategoryId))
                 ) && 
-                (
+               (
                     DefaultValue == input.DefaultValue ||
-                    (DefaultValue != null &&
+                   (DefaultValue != null &&
                     DefaultValue.Equals(input.DefaultValue))
                 ) && 
-                (
+               (
                     Format == input.Format ||
-                    (Format != null &&
+                   (Format != null &&
                     Format.Equals(input.Format))
                 ) && 
-                (
+               (
                     Unit == input.Unit ||
-                    (Unit != null &&
+                   (Unit != null &&
                     Unit.Equals(input.Unit))
                 ) && 
-                (
+               (
                     IsDisabled == input.IsDisabled ||
-                    (IsDisabled != null &&
+                   (IsDisabled != null &&
                     IsDisabled.Equals(input.IsDisabled))
                 ) && 
-                (
+               (
                     IsMultiValue == input.IsMultiValue ||
-                    (IsMultiValue != null &&
+                   (IsMultiValue != null &&
                     IsMultiValue.Equals(input.IsMultiValue))
                 ) && 
-                (
+               (
                     IsMandatory == input.IsMandatory ||
-                    (IsMandatory != null &&
+                   (IsMandatory != null &&
                     IsMandatory.Equals(input.IsMandatory))
                 ) && 
-                (
+               (
                     Index == input.Index ||
-                    (Index != null &&
+                   (Index != null &&
                     Index.Equals(input.Index))
                 ) && 
-                (
+               (
                     CvlId == input.CvlId ||
-                    (CvlId != null &&
+                   (CvlId != null &&
                     CvlId.Equals(input.CvlId))
                 );
         }
@@ -241,29 +241,29 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (DataType != null)
+                if(DataType != null)
                     hashCode = hashCode * 59 + DataType.GetHashCode();
-                if (CategoryId != null)
+                if(CategoryId != null)
                     hashCode = hashCode * 59 + CategoryId.GetHashCode();
-                if (DefaultValue != null)
+                if(DefaultValue != null)
                     hashCode = hashCode * 59 + DefaultValue.GetHashCode();
-                if (Format != null)
+                if(Format != null)
                     hashCode = hashCode * 59 + Format.GetHashCode();
-                if (Unit != null)
+                if(Unit != null)
                     hashCode = hashCode * 59 + Unit.GetHashCode();
-                if (IsDisabled != null)
+                if(IsDisabled != null)
                     hashCode = hashCode * 59 + IsDisabled.GetHashCode();
-                if (IsMultiValue != null)
+                if(IsMultiValue != null)
                     hashCode = hashCode * 59 + IsMultiValue.GetHashCode();
-                if (IsMandatory != null)
+                if(IsMandatory != null)
                     hashCode = hashCode * 59 + IsMandatory.GetHashCode();
-                if (Index != null)
+                if(Index != null)
                     hashCode = hashCode * 59 + Index.GetHashCode();
-                if (CvlId != null)
+                if(CvlId != null)
                     hashCode = hashCode * 59 + CvlId.GetHashCode();
                 return hashCode;
             }

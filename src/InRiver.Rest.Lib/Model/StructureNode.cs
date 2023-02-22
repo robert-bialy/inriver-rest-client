@@ -76,16 +76,16 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(StructureNode input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Path == input.Path ||
-                    (Path != null &&
+                   (Path != null &&
                     Path.Equals(input.Path))
                 ) && 
-                (
+               (
                     Nodes == input.Nodes ||
                     Nodes != null &&
                     Nodes.SequenceEqual(input.Nodes)
@@ -101,9 +101,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Path != null)
+                if(Path != null)
                     hashCode = hashCode * 59 + Path.GetHashCode();
-                if (Nodes != null)
+                if(Nodes != null)
                     hashCode = hashCode * 59 + Nodes.GetHashCode();
                 return hashCode;
             }

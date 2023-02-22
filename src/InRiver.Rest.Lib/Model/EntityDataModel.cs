@@ -175,71 +175,71 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityDataModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     EntityId == input.EntityId ||
-                    (EntityId != null &&
+                   (EntityId != null &&
                     EntityId.Equals(input.EntityId))
                 ) && 
-                (
+               (
                     LinkTypeId == input.LinkTypeId ||
-                    (LinkTypeId != null &&
+                   (LinkTypeId != null &&
                     LinkTypeId.Equals(input.LinkTypeId))
                 ) && 
-                (
+               (
                     LinkIndex == input.LinkIndex ||
-                    (LinkIndex != null &&
+                   (LinkIndex != null &&
                     LinkIndex.Equals(input.LinkIndex))
                 ) && 
-                (
+               (
                     LinkEntity == input.LinkEntity ||
-                    (LinkEntity != null &&
+                   (LinkEntity != null &&
                     LinkEntity.Equals(input.LinkEntity))
                 ) && 
-                (
+               (
                     Summary == input.Summary ||
-                    (Summary != null &&
+                   (Summary != null &&
                     Summary.Equals(input.Summary))
                 ) && 
-                (
+               (
                     Fields == input.Fields ||
                     Fields != null &&
                     Fields.SequenceEqual(input.Fields)
                 ) && 
-                (
+               (
                     FieldValues == input.FieldValues ||
                     FieldValues != null &&
                     FieldValues.SequenceEqual(input.FieldValues)
                 ) && 
-                (
+               (
                     Specification == input.Specification ||
                     Specification != null &&
                     Specification.SequenceEqual(input.Specification)
                 ) && 
-                (
+               (
                     SpecificationValues == input.SpecificationValues ||
                     SpecificationValues != null &&
                     SpecificationValues.SequenceEqual(input.SpecificationValues)
                 ) && 
-                (
+               (
                     Media == input.Media ||
                     Media != null &&
                     Media.SequenceEqual(input.Media)
                 ) && 
-                (
+               (
                     MediaDetails == input.MediaDetails ||
                     MediaDetails != null &&
                     MediaDetails.SequenceEqual(input.MediaDetails)
                 ) && 
-                (
+               (
                     Inbound == input.Inbound ||
                     Inbound != null &&
                     Inbound.SequenceEqual(input.Inbound)
                 ) && 
-                (
+               (
                     Outbound == input.Outbound ||
                     Outbound != null &&
                     Outbound.SequenceEqual(input.Outbound)
@@ -255,31 +255,31 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (EntityId != null)
+                if(EntityId != null)
                     hashCode = hashCode * 59 + EntityId.GetHashCode();
-                if (LinkTypeId != null)
+                if(LinkTypeId != null)
                     hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
-                if (LinkIndex != null)
+                if(LinkIndex != null)
                     hashCode = hashCode * 59 + LinkIndex.GetHashCode();
-                if (LinkEntity != null)
+                if(LinkEntity != null)
                     hashCode = hashCode * 59 + LinkEntity.GetHashCode();
-                if (Summary != null)
+                if(Summary != null)
                     hashCode = hashCode * 59 + Summary.GetHashCode();
-                if (Fields != null)
+                if(Fields != null)
                     hashCode = hashCode * 59 + Fields.GetHashCode();
-                if (FieldValues != null)
+                if(FieldValues != null)
                     hashCode = hashCode * 59 + FieldValues.GetHashCode();
-                if (Specification != null)
+                if(Specification != null)
                     hashCode = hashCode * 59 + Specification.GetHashCode();
-                if (SpecificationValues != null)
+                if(SpecificationValues != null)
                     hashCode = hashCode * 59 + SpecificationValues.GetHashCode();
-                if (Media != null)
+                if(Media != null)
                     hashCode = hashCode * 59 + Media.GetHashCode();
-                if (MediaDetails != null)
+                if(MediaDetails != null)
                     hashCode = hashCode * 59 + MediaDetails.GetHashCode();
-                if (Inbound != null)
+                if(Inbound != null)
                     hashCode = hashCode * 59 + Inbound.GetHashCode();
-                if (Outbound != null)
+                if(Outbound != null)
                     hashCode = hashCode * 59 + Outbound.GetHashCode();
                 return hashCode;
             }

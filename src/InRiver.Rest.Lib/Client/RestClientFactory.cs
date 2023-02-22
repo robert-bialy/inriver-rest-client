@@ -26,8 +26,8 @@ namespace InRiver.Rest.Lib.Client
 
         public IRestClient Create(RestClientOptions configuration)
         {
-            if (_restClient != null) return _restClient;
-            lock (Lock)
+            if(_restClient != null) return _restClient;
+            lock(Lock)
             {
                 _restClient = _httpClientOverride == null
                     ? new Services.RestClient(new RestClient(configuration))

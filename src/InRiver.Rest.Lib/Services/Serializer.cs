@@ -16,7 +16,7 @@ namespace InRiver.Rest.Lib.Services
         object Deserialize(RestResponse response, Type type);
 
         /// <summary>
-        /// Serialize an input (model) into JSON string
+        /// Serialize an input(model) into JSON string
         /// </summary>
         /// <param name="obj">object.</param>
         /// <returns>JSON string.</returns>
@@ -38,34 +38,34 @@ namespace InRiver.Rest.Lib.Services
         /// <returns>object representation of the JSON string.</returns>
         public object Deserialize(RestResponse response, Type type)
         {
-            if (type == typeof(byte[])) // return byte array
+            if(type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
             }
 
-            if (type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
+            if(type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
             {
                 return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
 
-            if (type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
+            if(type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
             {
                 return ConvertType(response.Content, type);
             }
 
-            // at this point, it must be a model (json)
+            // at this point, it must be a model(json)
             try
             {
                 return JsonConvert.DeserializeObject(response.Content, type, _serializerSettings);
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 throw new ApiException(500, e.Message);
             }
         }
 
         /// <summary>
-        /// Serialize an input (model) into JSON string
+        /// Serialize an input(model) into JSON string
         /// </summary>
         /// <param name="obj">object.</param>
         /// <returns>JSON string.</returns>
@@ -75,7 +75,7 @@ namespace InRiver.Rest.Lib.Services
             {
                 return obj != null ? JsonConvert.SerializeObject(obj) : null;
             }
-            catch (Exception e)
+            catch(Exception e)
             {
                 throw new ApiException(500, e.Message);
             }

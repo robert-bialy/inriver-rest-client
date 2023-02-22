@@ -129,48 +129,48 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(MediaInfoModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FileId == input.FileId ||
-                    (FileId != null &&
+                   (FileId != null &&
                     FileId.Equals(input.FileId))
                 ) && 
-                (
+               (
                     Url == input.Url ||
-                    (Url != null &&
+                   (Url != null &&
                     Url.Equals(input.Url))
                 ) && 
-                (
+               (
                     FileName == input.FileName ||
-                    (FileName != null &&
+                   (FileName != null &&
                     FileName.Equals(input.FileName))
                 ) && 
-                (
+               (
                     Extension == input.Extension ||
-                    (Extension != null &&
+                   (Extension != null &&
                     Extension.Equals(input.Extension))
                 ) && 
-                (
+               (
                     FileSize == input.FileSize ||
-                    (FileSize != null &&
+                   (FileSize != null &&
                     FileSize.Equals(input.FileSize))
                 ) && 
-                (
+               (
                     DateCreated == input.DateCreated ||
-                    (DateCreated != null &&
+                   (DateCreated != null &&
                     DateCreated.Equals(input.DateCreated))
                 ) && 
-                (
+               (
                     LastModified == input.LastModified ||
-                    (LastModified != null &&
+                   (LastModified != null &&
                     LastModified.Equals(input.LastModified))
                 ) && 
-                (
+               (
                     EntityId == input.EntityId ||
-                    (EntityId != null &&
+                   (EntityId != null &&
                     EntityId.Equals(input.EntityId))
                 );
         }
@@ -184,21 +184,21 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FileId != null)
+                if(FileId != null)
                     hashCode = hashCode * 59 + FileId.GetHashCode();
-                if (Url != null)
+                if(Url != null)
                     hashCode = hashCode * 59 + Url.GetHashCode();
-                if (FileName != null)
+                if(FileName != null)
                     hashCode = hashCode * 59 + FileName.GetHashCode();
-                if (Extension != null)
+                if(Extension != null)
                     hashCode = hashCode * 59 + Extension.GetHashCode();
-                if (FileSize != null)
+                if(FileSize != null)
                     hashCode = hashCode * 59 + FileSize.GetHashCode();
-                if (DateCreated != null)
+                if(DateCreated != null)
                     hashCode = hashCode * 59 + DateCreated.GetHashCode();
-                if (LastModified != null)
+                if(LastModified != null)
                     hashCode = hashCode * 59 + LastModified.GetHashCode();
-                if (EntityId != null)
+                if(EntityId != null)
                     hashCode = hashCode * 59 + EntityId.GetHashCode();
                 return hashCode;
             }

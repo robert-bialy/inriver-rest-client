@@ -120,43 +120,43 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(StructureEntityModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     EntityId == input.EntityId ||
-                    (EntityId != null &&
+                   (EntityId != null &&
                     EntityId.Equals(input.EntityId))
                 ) && 
-                (
+               (
                     EntityTypeId == input.EntityTypeId ||
-                    (EntityTypeId != null &&
+                   (EntityTypeId != null &&
                     EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     SortOrder == input.SortOrder ||
-                    (SortOrder != null &&
+                   (SortOrder != null &&
                     SortOrder.Equals(input.SortOrder))
                 ) && 
-                (
+               (
                     Path == input.Path ||
-                    (Path != null &&
+                   (Path != null &&
                     Path.Equals(input.Path))
                 ) && 
-                (
+               (
                     LinkEntityId == input.LinkEntityId ||
-                    (LinkEntityId != null &&
+                   (LinkEntityId != null &&
                     LinkEntityId.Equals(input.LinkEntityId))
                 ) && 
-                (
+               (
                     LinkTypeIdFromParent == input.LinkTypeIdFromParent ||
-                    (LinkTypeIdFromParent != null &&
+                   (LinkTypeIdFromParent != null &&
                     LinkTypeIdFromParent.Equals(input.LinkTypeIdFromParent))
                 );
         }
@@ -170,19 +170,19 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (EntityId != null)
+                if(EntityId != null)
                     hashCode = hashCode * 59 + EntityId.GetHashCode();
-                if (EntityTypeId != null)
+                if(EntityTypeId != null)
                     hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (SortOrder != null)
+                if(SortOrder != null)
                     hashCode = hashCode * 59 + SortOrder.GetHashCode();
-                if (Path != null)
+                if(Path != null)
                     hashCode = hashCode * 59 + Path.GetHashCode();
-                if (LinkEntityId != null)
+                if(LinkEntityId != null)
                     hashCode = hashCode * 59 + LinkEntityId.GetHashCode();
-                if (LinkTypeIdFromParent != null)
+                if(LinkTypeIdFromParent != null)
                     hashCode = hashCode * 59 + LinkTypeIdFromParent.GetHashCode();
                 return hashCode;
             }

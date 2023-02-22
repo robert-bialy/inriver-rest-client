@@ -21,12 +21,12 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldValueModel" /> class.
         /// </summary>
-        /// <param name="fieldTypeId">fieldTypeId (required).</param>
+        /// <param name="fieldTypeId">fieldTypeId(required).</param>
         /// <param name="value">value.</param>
         public FieldValueModel(string fieldTypeId = default, object value = default(object))
         {
-            // to ensure "fieldTypeId" is required (not null)
-            if (fieldTypeId == null)
+            // to ensure "fieldTypeId" is required(not null)
+            if(fieldTypeId == null)
             {
                 throw new InvalidDataException("fieldTypeId is a required property for FieldValueModel and cannot be null");
             }
@@ -89,18 +89,18 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(FieldValueModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FieldTypeId == input.FieldTypeId ||
-                    (FieldTypeId != null &&
+                   (FieldTypeId != null &&
                     FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
-                (
+               (
                     Value == input.Value ||
-                    (Value != null &&
+                   (Value != null &&
                     Value.Equals(input.Value))
                 );
         }
@@ -114,9 +114,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FieldTypeId != null)
+                if(FieldTypeId != null)
                     hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
-                if (Value != null)
+                if(Value != null)
                     hashCode = hashCode * 59 + Value.GetHashCode();
                 return hashCode;
             }

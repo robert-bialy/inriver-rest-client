@@ -20,7 +20,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
         /// <returns>WorkareaFolderModel</returns>
-        WorkareaFolderModel CreateWorkarea (WorkareaCreationModel creationModel);
+        WorkareaFolderModel CreateWorkarea(WorkareaCreationModel creationModel);
 
         /// <summary>
         /// Create a new workarea
@@ -31,7 +31,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
         /// <returns>ApiResponse of WorkareaFolderModel</returns>
-        ApiResponse<WorkareaFolderModel> CreateWorkareaWithHttpInfo (WorkareaCreationModel creationModel);
+        ApiResponse<WorkareaFolderModel> CreateWorkareaWithHttpInfo(WorkareaCreationModel creationModel);
         /// <summary>
         /// Delete workarea folder
         /// </summary>
@@ -41,7 +41,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns></returns>
-        void DeleteWorkarea (string workareaFolderId);
+        void DeleteWorkarea(string workareaFolderId);
 
         /// <summary>
         /// Delete workarea folder
@@ -52,7 +52,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>ApiResponse of object(void)</returns>
-        ApiResponse<object> DeleteWorkareaWithHttpInfo (string workareaFolderId);
+        ApiResponse<object> DeleteWorkareaWithHttpInfo(string workareaFolderId);
         /// <summary>
         /// Get entity id&#39;s in a static workarea
         /// </summary>
@@ -62,7 +62,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>List&lt;int?&gt;</returns>
-        List<int?> GetWorkareaFolderEntityIds (string workareaFolderId);
+        List<int?> GetWorkareaFolderEntityIds(string workareaFolderId);
 
         /// <summary>
         /// Get entity id&#39;s in a static workarea
@@ -73,7 +73,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>ApiResponse of List&lt;int?&gt;</returns>
-        ApiResponse<List<int?>> GetWorkareaFolderEntityIdsWithHttpInfo (string workareaFolderId);
+        ApiResponse<List<int?>> GetWorkareaFolderEntityIdsWithHttpInfo(string workareaFolderId);
         /// <summary>
         /// Set entity id&#39;s in a static workarea
         /// </summary>
@@ -84,7 +84,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
         /// <returns>List&lt;int?&gt;</returns>
-        List<int?> GetWorkareaFolderEntityIds (string workareaFolderId, List<int?> entityIds);
+        List<int?> GetWorkareaFolderEntityIds(string workareaFolderId, List<int?> entityIds);
 
         /// <summary>
         /// Set entity id&#39;s in a static workarea
@@ -96,7 +96,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
         /// <returns>ApiResponse of List&lt;int?&gt;</returns>
-        ApiResponse<List<int?>> SetWorkareaFolderEntityIdsWithHttpInfo (string workareaFolderId, List<int?> entityIds);
+        ApiResponse<List<int?>> SetWorkareaFolderEntityIdsWithHttpInfo(string workareaFolderId, List<int?> entityIds);
         /// <summary>
         /// Update workarea folder
         /// </summary>
@@ -107,7 +107,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
         /// <returns>WorkareaFolderModel</returns>
-        WorkareaFolderModel UpdateWorkarea (string workareaFolderId, WorkareaFolderModel workareaFolderModel);
+        WorkareaFolderModel UpdateWorkarea(string workareaFolderId, WorkareaFolderModel workareaFolderModel);
 
         /// <summary>
         /// Update workarea folder
@@ -119,7 +119,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
         /// <returns>ApiResponse of WorkareaFolderModel</returns>
-        ApiResponse<WorkareaFolderModel> UpdateWorkareaWithHttpInfo (string workareaFolderId, WorkareaFolderModel workareaFolderModel);
+        ApiResponse<WorkareaFolderModel> UpdateWorkareaWithHttpInfo(string workareaFolderId, WorkareaFolderModel workareaFolderModel);
         /// <summary>
         /// Update workarea query
         /// </summary>
@@ -130,7 +130,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
         /// <returns>WorkareaFolderModel</returns>
-        WorkareaFolderModel UpdateWorkareaQuery (string workareaFolderId, QueryModel queryModel);
+        WorkareaFolderModel UpdateWorkareaQuery(string workareaFolderId, QueryModel queryModel);
 
         /// <summary>
         /// Update workarea query
@@ -142,7 +142,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
         /// <returns>ApiResponse of WorkareaFolderModel</returns>
-        ApiResponse<WorkareaFolderModel> UpdateWorkareaQueryWithHttpInfo (string workareaFolderId, QueryModel queryModel);
+        ApiResponse<WorkareaFolderModel> UpdateWorkareaQueryWithHttpInfo(string workareaFolderId, QueryModel queryModel);
         /// <summary>
         /// Get workarea folder tree
         /// </summary>
@@ -150,11 +150,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>List&lt;WorkareaTreeFolderModel&gt;</returns>
-        List<WorkareaTreeFolderModel> WorkareaFolderTree (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        List<WorkareaTreeFolderModel> WorkareaFolderTree(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
 
         /// <summary>
         /// Get workarea folder tree
@@ -163,11 +163,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>ApiResponse of List&lt;WorkareaTreeFolderModel&gt;</returns>
-        ApiResponse<List<WorkareaTreeFolderModel>> WorkareaFolderTreeWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        ApiResponse<List<WorkareaTreeFolderModel>> WorkareaFolderTreeWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
         /// <summary>
         /// Get workarea folders
         /// </summary>
@@ -175,11 +175,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>List&lt;WorkareaFolderModel&gt;</returns>
-        List<WorkareaFolderModel> WorkareaFolders (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        List<WorkareaFolderModel> WorkareaFolders(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
 
         /// <summary>
         /// Get workarea folders
@@ -188,11 +188,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>ApiResponse of List&lt;WorkareaFolderModel&gt;</returns>
-        ApiResponse<List<WorkareaFolderModel>> WorkareaFoldersWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        ApiResponse<List<WorkareaFolderModel>> WorkareaFoldersWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
         /// <summary>
         /// Returns a list of entities in a workarea folder
         /// </summary>
@@ -202,7 +202,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>EntityListModel</returns>
-        EntityListModel WorkareaQueryResult (string workareaFolderId);
+        EntityListModel WorkareaQueryResult(string workareaFolderId);
 
         /// <summary>
         /// Returns a list of entities in a workarea folder
@@ -213,7 +213,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>ApiResponse of EntityListModel</returns>
-        ApiResponse<EntityListModel> WorkareaQueryResultWithHttpInfo (string workareaFolderId);
+        ApiResponse<EntityListModel> WorkareaQueryResultWithHttpInfo(string workareaFolderId);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -225,7 +225,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
         /// <returns>Task of WorkareaFolderModel</returns>
-        System.Threading.Tasks.Task<WorkareaFolderModel> CreateWorkareaAsync (WorkareaCreationModel creationModel);
+        System.Threading.Tasks.Task<WorkareaFolderModel> CreateWorkareaAsync(WorkareaCreationModel creationModel);
 
         /// <summary>
         /// Create a new workarea
@@ -235,8 +235,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
-        /// <returns>Task of ApiResponse (WorkareaFolderModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> CreateWorkareaAsyncWithHttpInfo (WorkareaCreationModel creationModel);
+        /// <returns>Task of ApiResponse(WorkareaFolderModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> CreateWorkareaAsyncWithHttpInfo(WorkareaCreationModel creationModel);
         /// <summary>
         /// Delete workarea folder
         /// </summary>
@@ -246,7 +246,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteWorkareaAsync (string workareaFolderId);
+        System.Threading.Tasks.Task DeleteWorkareaAsync(string workareaFolderId);
 
         /// <summary>
         /// Delete workarea folder
@@ -257,7 +257,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<object>> DeleteWorkareaAsyncWithHttpInfo (string workareaFolderId);
+        System.Threading.Tasks.Task<ApiResponse<object>> DeleteWorkareaAsyncWithHttpInfo(string workareaFolderId);
         /// <summary>
         /// Get entity id&#39;s in a static workarea
         /// </summary>
@@ -267,7 +267,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of List&lt;int?&gt;</returns>
-        System.Threading.Tasks.Task<List<int?>> GetWorkareaFolderEntityIdsAsync (string workareaFolderId);
+        System.Threading.Tasks.Task<List<int?>> GetWorkareaFolderEntityIdsAsync(string workareaFolderId);
 
         /// <summary>
         /// Get entity id&#39;s in a static workarea
@@ -277,8 +277,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
-        /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<int?>>> GetWorkareaFolderEntityIdsAsyncWithHttpInfo (string workareaFolderId);
+        /// <returns>Task of ApiResponse(List&lt;int?&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<int?>>> GetWorkareaFolderEntityIdsAsyncWithHttpInfo(string workareaFolderId);
         /// <summary>
         /// Set entity id&#39;s in a static workarea
         /// </summary>
@@ -289,7 +289,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
         /// <returns>Task of List&lt;int?&gt;</returns>
-        System.Threading.Tasks.Task<List<int?>> SetWorkareaFolderEntityIdsAsync (string workareaFolderId, List<int?> entityIds);
+        System.Threading.Tasks.Task<List<int?>> SetWorkareaFolderEntityIdsAsync(string workareaFolderId, List<int?> entityIds);
 
         /// <summary>
         /// Set entity id&#39;s in a static workarea
@@ -300,8 +300,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
-        /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<int?>>> SetWorkareaFolderEntityIdsAsyncWithHttpInfo (string workareaFolderId, List<int?> entityIds);
+        /// <returns>Task of ApiResponse(List&lt;int?&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<int?>>> SetWorkareaFolderEntityIdsAsyncWithHttpInfo(string workareaFolderId, List<int?> entityIds);
         /// <summary>
         /// Update workarea folder
         /// </summary>
@@ -312,7 +312,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
         /// <returns>Task of WorkareaFolderModel</returns>
-        System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaAsync (string workareaFolderId, WorkareaFolderModel workareaFolderModel);
+        System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaAsync(string workareaFolderId, WorkareaFolderModel workareaFolderModel);
 
         /// <summary>
         /// Update workarea folder
@@ -323,8 +323,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
-        /// <returns>Task of ApiResponse (WorkareaFolderModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaAsyncWithHttpInfo (string workareaFolderId, WorkareaFolderModel workareaFolderModel);
+        /// <returns>Task of ApiResponse(WorkareaFolderModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaAsyncWithHttpInfo(string workareaFolderId, WorkareaFolderModel workareaFolderModel);
         /// <summary>
         /// Update workarea query
         /// </summary>
@@ -335,7 +335,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
         /// <returns>Task of WorkareaFolderModel</returns>
-        System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaQueryAsync (string workareaFolderId, QueryModel queryModel);
+        System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaQueryAsync(string workareaFolderId, QueryModel queryModel);
 
         /// <summary>
         /// Update workarea query
@@ -346,8 +346,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
-        /// <returns>Task of ApiResponse (WorkareaFolderModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaQueryAsyncWithHttpInfo (string workareaFolderId, QueryModel queryModel);
+        /// <returns>Task of ApiResponse(WorkareaFolderModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaQueryAsyncWithHttpInfo(string workareaFolderId, QueryModel queryModel);
         /// <summary>
         /// Get workarea folder tree
         /// </summary>
@@ -355,11 +355,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>Task of List&lt;WorkareaTreeFolderModel&gt;</returns>
-        System.Threading.Tasks.Task<List<WorkareaTreeFolderModel>> WorkareaFolderTreeAsync (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        System.Threading.Tasks.Task<List<WorkareaTreeFolderModel>> WorkareaFolderTreeAsync(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
 
         /// <summary>
         /// Get workarea folder tree
@@ -368,11 +368,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;WorkareaTreeFolderModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<WorkareaTreeFolderModel>>> WorkareaFolderTreeAsyncWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;WorkareaTreeFolderModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<WorkareaTreeFolderModel>>> WorkareaFolderTreeAsyncWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
         /// <summary>
         /// Get workarea folders
         /// </summary>
@@ -380,11 +380,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>Task of List&lt;WorkareaFolderModel&gt;</returns>
-        System.Threading.Tasks.Task<List<WorkareaFolderModel>> WorkareaFoldersAsync (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        System.Threading.Tasks.Task<List<WorkareaFolderModel>> WorkareaFoldersAsync(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
 
         /// <summary>
         /// Get workarea folders
@@ -393,11 +393,11 @@ namespace InRiver.Rest.Lib.Api
         /// The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;WorkareaFolderModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<WorkareaFolderModel>>> WorkareaFoldersAsyncWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;WorkareaFolderModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<WorkareaFolderModel>>> WorkareaFoldersAsyncWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null);
         /// <summary>
         /// Returns a list of entities in a workarea folder
         /// </summary>
@@ -407,7 +407,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of EntityListModel</returns>
-        System.Threading.Tasks.Task<EntityListModel> WorkareaQueryResultAsync (string workareaFolderId);
+        System.Threading.Tasks.Task<EntityListModel> WorkareaQueryResultAsync(string workareaFolderId);
 
         /// <summary>
         /// Returns a list of entities in a workarea folder
@@ -417,8 +417,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
-        /// <returns>Task of ApiResponse (EntityListModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<EntityListModel>> WorkareaQueryResultAsyncWithHttpInfo (string workareaFolderId);
+        /// <returns>Task of ApiResponse(EntityListModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<EntityListModel>> WorkareaQueryResultAsyncWithHttpInfo(string workareaFolderId);
         #endregion Asynchronous Operations
     }
 }

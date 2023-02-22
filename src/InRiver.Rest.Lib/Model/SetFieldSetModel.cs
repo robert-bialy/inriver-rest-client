@@ -75,18 +75,18 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SetFieldSetModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FieldSetId == input.FieldSetId ||
-                    (FieldSetId != null &&
+                   (FieldSetId != null &&
                     FieldSetId.Equals(input.FieldSetId))
                 ) && 
-                (
+               (
                     WipeOtherFields == input.WipeOtherFields ||
-                    (WipeOtherFields != null &&
+                   (WipeOtherFields != null &&
                     WipeOtherFields.Equals(input.WipeOtherFields))
                 );
         }
@@ -100,9 +100,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FieldSetId != null)
+                if(FieldSetId != null)
                     hashCode = hashCode * 59 + FieldSetId.GetHashCode();
-                if (WipeOtherFields != null)
+                if(WipeOtherFields != null)
                     hashCode = hashCode * 59 + WipeOtherFields.GetHashCode();
                 return hashCode;
             }

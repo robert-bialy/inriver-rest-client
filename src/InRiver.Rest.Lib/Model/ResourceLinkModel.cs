@@ -75,18 +75,18 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ResourceLinkModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     SourceEntityId == input.SourceEntityId ||
-                    (SourceEntityId != null &&
+                   (SourceEntityId != null &&
                     SourceEntityId.Equals(input.SourceEntityId))
                 ) && 
-                (
+               (
                     LinkTypeId == input.LinkTypeId ||
-                    (LinkTypeId != null &&
+                   (LinkTypeId != null &&
                     LinkTypeId.Equals(input.LinkTypeId))
                 );
         }
@@ -100,9 +100,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (SourceEntityId != null)
+                if(SourceEntityId != null)
                     hashCode = hashCode * 59 + SourceEntityId.GetHashCode();
-                if (LinkTypeId != null)
+                if(LinkTypeId != null)
                     hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
                 return hashCode;
             }

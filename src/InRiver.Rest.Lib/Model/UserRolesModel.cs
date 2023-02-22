@@ -22,12 +22,12 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserRolesModel" /> class.
         /// </summary>
-        /// <param name="username">username (required).</param>
+        /// <param name="username">username(required).</param>
         /// <param name="roleNames">roleNames.</param>
         public UserRolesModel(string username = default, List<string> roleNames = default(List<string>))
         {
-            // to ensure "username" is required (not null)
-            if (username == null)
+            // to ensure "username" is required(not null)
+            if(username == null)
             {
                 throw new InvalidDataException("username is a required property for UserRolesModel and cannot be null");
             }
@@ -90,16 +90,16 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(UserRolesModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Username == input.Username ||
-                    (Username != null &&
+                   (Username != null &&
                     Username.Equals(input.Username))
                 ) && 
-                (
+               (
                     RoleNames == input.RoleNames ||
                     RoleNames != null &&
                     RoleNames.SequenceEqual(input.RoleNames)
@@ -115,9 +115,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Username != null)
+                if(Username != null)
                     hashCode = hashCode * 59 + Username.GetHashCode();
-                if (RoleNames != null)
+                if(RoleNames != null)
                     hashCode = hashCode * 59 + RoleNames.GetHashCode();
                 return hashCode;
             }

@@ -22,15 +22,15 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FetchObjectsModel" /> class.
         /// </summary>
-        /// <param name="entityIds">entityIds (required).</param>
-        /// <param name="objects">objects (required).</param>
+        /// <param name="entityIds">entityIds(required).</param>
+        /// <param name="objects">objects(required).</param>
         /// <param name="fieldTypeIds">fieldTypeIds.</param>
         /// <param name="inbound">inbound.</param>
         /// <param name="outbound">outbound.</param>
         public FetchObjectsModel(List<int?> entityIds = default(List<int?>), string objects = default, string fieldTypeIds = default, FetchLinkObjectsModel inbound = default(FetchLinkObjectsModel), FetchLinkObjectsModel outbound = default(FetchLinkObjectsModel))
         {
-            // to ensure "entityIds" is required (not null)
-            if (entityIds == null)
+            // to ensure "entityIds" is required(not null)
+            if(entityIds == null)
             {
                 throw new InvalidDataException("entityIds is a required property for FetchobjectsModel and cannot be null");
             }
@@ -38,8 +38,8 @@ namespace InRiver.Rest.Lib.Model
             {
                 EntityIds = entityIds;
             }
-            // to ensure "objects" is required (not null)
-            if (objects == null)
+            // to ensure "objects" is required(not null)
+            if(objects == null)
             {
                 throw new InvalidDataException("objects is a required property for FetchobjectsModel and cannot be null");
             }
@@ -125,33 +125,33 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(FetchObjectsModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     EntityIds == input.EntityIds ||
                     EntityIds != null &&
                     EntityIds.SequenceEqual(input.EntityIds)
                 ) && 
-                (
+               (
                     Objects == input.Objects ||
-                    (Objects != null &&
+                   (Objects != null &&
                      Objects.Equals(input.Objects))
                 ) && 
-                (
+               (
                     FieldTypeIds == input.FieldTypeIds ||
-                    (FieldTypeIds != null &&
+                   (FieldTypeIds != null &&
                     FieldTypeIds.Equals(input.FieldTypeIds))
                 ) && 
-                (
+               (
                     Inbound == input.Inbound ||
-                    (Inbound != null &&
+                   (Inbound != null &&
                     Inbound.Equals(input.Inbound))
                 ) && 
-                (
+               (
                     Outbound == input.Outbound ||
-                    (Outbound != null &&
+                   (Outbound != null &&
                     Outbound.Equals(input.Outbound))
                 );
         }
@@ -165,15 +165,15 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (EntityIds != null)
+                if(EntityIds != null)
                     hashCode = hashCode * 59 + EntityIds.GetHashCode();
-                if (Objects != null)
+                if(Objects != null)
                     hashCode = hashCode * 59 + Objects.GetHashCode();
-                if (FieldTypeIds != null)
+                if(FieldTypeIds != null)
                     hashCode = hashCode * 59 + FieldTypeIds.GetHashCode();
-                if (Inbound != null)
+                if(Inbound != null)
                     hashCode = hashCode * 59 + Inbound.GetHashCode();
-                if (Outbound != null)
+                if(Outbound != null)
                     hashCode = hashCode * 59 + Outbound.GetHashCode();
                 return hashCode;
             }

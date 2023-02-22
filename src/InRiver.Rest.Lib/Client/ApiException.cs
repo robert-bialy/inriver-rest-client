@@ -8,15 +8,15 @@ namespace InRiver.Rest.Lib.Client
     public sealed class ApiException : Exception
     {
         /// <summary>
-        /// Gets or sets the error code (HTTP status code)
+        /// Gets or sets the error code(HTTP status code)
         /// </summary>
-        /// <value>The error code (HTTP status code).</value>
+        /// <value>The error code(HTTP status code).</value>
         public int ErrorCode { get; set; }
 
         /// <summary>
-        /// Gets or sets the error content (body json object)
+        /// Gets or sets the error content(body json object)
         /// </summary>
-        /// <value>The error content (Http response body).</value>
+        /// <value>The error content(Http response body).</value>
         public dynamic ErrorContent { get; private set; }
 
         /// <summary>

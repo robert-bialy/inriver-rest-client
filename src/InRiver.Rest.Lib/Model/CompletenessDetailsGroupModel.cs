@@ -45,10 +45,10 @@ namespace InRiver.Rest.Lib.Model
 
         public bool Equals(CompletenessDetailsGroupModel x, CompletenessDetailsGroupModel y)
         {
-            if (ReferenceEquals(x, y)) return true;
-            if (ReferenceEquals(x, null)) return false;
-            if (ReferenceEquals(y, null)) return false;
-            if (x.GetType() != y.GetType()) return false;
+            if(ReferenceEquals(x, y)) return true;
+            if(ReferenceEquals(x, null)) return false;
+            if(ReferenceEquals(y, null)) return false;
+            if(x.GetType() != y.GetType()) return false;
             return x.Name == y.Name && x.IsCompleted == y.IsCompleted && Equals(x.Rules, y.Rules);
         }
 
@@ -56,9 +56,9 @@ namespace InRiver.Rest.Lib.Model
         {
             unchecked
             {
-                var localHashCode = (obj.Name != null ? obj.Name.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ obj.IsCompleted.GetHashCode();
-                localHashCode = (localHashCode * 397) ^ (obj.Rules != null ? obj.Rules.GetHashCode() : 0);
+                var localHashCode =(obj.Name != null ? obj.Name.GetHashCode() : 0);
+                localHashCode =(localHashCode * 397) ^ obj.IsCompleted.GetHashCode();
+                localHashCode =(localHashCode * 397) ^(obj.Rules != null ? obj.Rules.GetHashCode() : 0);
                 return localHashCode;
             }
         }

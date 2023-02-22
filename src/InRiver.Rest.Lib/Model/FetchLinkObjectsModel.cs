@@ -83,23 +83,23 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(FetchLinkObjectsModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     LinkTypeIds == input.LinkTypeIds ||
-                    (LinkTypeIds != null &&
+                   (LinkTypeIds != null &&
                     LinkTypeIds.Equals(input.LinkTypeIds))
                 ) && 
-                (
+               (
                     Objects == input.Objects ||
-                    (Objects != null &&
+                   (Objects != null &&
                      Objects.Equals(input.Objects))
                 ) && 
-                (
+               (
                     LinkEntityobjects == input.LinkEntityobjects ||
-                    (LinkEntityobjects != null &&
+                   (LinkEntityobjects != null &&
                     LinkEntityobjects.Equals(input.LinkEntityobjects))
                 );
         }
@@ -113,11 +113,11 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (LinkTypeIds != null)
+                if(LinkTypeIds != null)
                     hashCode = hashCode * 59 + LinkTypeIds.GetHashCode();
-                if (Objects != null)
+                if(Objects != null)
                     hashCode = hashCode * 59 + Objects.GetHashCode();
-                if (LinkEntityobjects != null)
+                if(LinkEntityobjects != null)
                     hashCode = hashCode * 59 + LinkEntityobjects.GetHashCode();
                 return hashCode;
             }

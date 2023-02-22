@@ -139,53 +139,53 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityTypeModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     FieldTypes == input.FieldTypes ||
                     FieldTypes != null &&
                     FieldTypes.SequenceEqual(input.FieldTypes)
                 ) && 
-                (
+               (
                     InboundLinkTypes == input.InboundLinkTypes ||
                     InboundLinkTypes != null &&
                     InboundLinkTypes.SequenceEqual(input.InboundLinkTypes)
                 ) && 
-                (
+               (
                     OutboundLinkTypes == input.OutboundLinkTypes ||
                     OutboundLinkTypes != null &&
                     OutboundLinkTypes.SequenceEqual(input.OutboundLinkTypes)
                 ) && 
-                (
+               (
                     IsLinkEntityType == input.IsLinkEntityType ||
-                    (IsLinkEntityType != null &&
+                   (IsLinkEntityType != null &&
                     IsLinkEntityType.Equals(input.IsLinkEntityType))
                 ) && 
-                (
+               (
                     FieldSetIds == input.FieldSetIds ||
                     FieldSetIds != null &&
                     FieldSetIds.SequenceEqual(input.FieldSetIds)
                 ) && 
-                (
+               (
                     DisplayNameFieldTypeId == input.DisplayNameFieldTypeId ||
-                    (DisplayNameFieldTypeId != null &&
+                   (DisplayNameFieldTypeId != null &&
                     DisplayNameFieldTypeId.Equals(input.DisplayNameFieldTypeId))
                 ) && 
-                (
+               (
                     DisplayDescriptionFieldTypeId == input.DisplayDescriptionFieldTypeId ||
-                    (DisplayDescriptionFieldTypeId != null &&
+                   (DisplayDescriptionFieldTypeId != null &&
                     DisplayDescriptionFieldTypeId.Equals(input.DisplayDescriptionFieldTypeId))
                 );
         }
@@ -199,23 +199,23 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (FieldTypes != null)
+                if(FieldTypes != null)
                     hashCode = hashCode * 59 + FieldTypes.GetHashCode();
-                if (InboundLinkTypes != null)
+                if(InboundLinkTypes != null)
                     hashCode = hashCode * 59 + InboundLinkTypes.GetHashCode();
-                if (OutboundLinkTypes != null)
+                if(OutboundLinkTypes != null)
                     hashCode = hashCode * 59 + OutboundLinkTypes.GetHashCode();
-                if (IsLinkEntityType != null)
+                if(IsLinkEntityType != null)
                     hashCode = hashCode * 59 + IsLinkEntityType.GetHashCode();
-                if (FieldSetIds != null)
+                if(FieldSetIds != null)
                     hashCode = hashCode * 59 + FieldSetIds.GetHashCode();
-                if (DisplayNameFieldTypeId != null)
+                if(DisplayNameFieldTypeId != null)
                     hashCode = hashCode * 59 + DisplayNameFieldTypeId.GetHashCode();
-                if (DisplayDescriptionFieldTypeId != null)
+                if(DisplayDescriptionFieldTypeId != null)
                     hashCode = hashCode * 59 + DisplayDescriptionFieldTypeId.GetHashCode();
                 return hashCode;
             }

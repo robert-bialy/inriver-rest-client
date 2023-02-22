@@ -103,31 +103,31 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(FieldSetModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FieldSetId == input.FieldSetId ||
-                    (FieldSetId != null &&
+                   (FieldSetId != null &&
                     FieldSetId.Equals(input.FieldSetId))
                 ) && 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     Description == input.Description ||
-                    (Description != null &&
+                   (Description != null &&
                     Description.Equals(input.Description))
                 ) && 
-                (
+               (
                     EntityTypeId == input.EntityTypeId ||
-                    (EntityTypeId != null &&
+                   (EntityTypeId != null &&
                     EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
-                (
+               (
                     FieldTypeIds == input.FieldTypeIds ||
                     FieldTypeIds != null &&
                     FieldTypeIds.SequenceEqual(input.FieldTypeIds)
@@ -143,15 +143,15 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FieldSetId != null)
+                if(FieldSetId != null)
                     hashCode = hashCode * 59 + FieldSetId.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (Description != null)
+                if(Description != null)
                     hashCode = hashCode * 59 + Description.GetHashCode();
-                if (EntityTypeId != null)
+                if(EntityTypeId != null)
                     hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
-                if (FieldTypeIds != null)
+                if(FieldTypeIds != null)
                     hashCode = hashCode * 59 + FieldTypeIds.GetHashCode();
                 return hashCode;
             }

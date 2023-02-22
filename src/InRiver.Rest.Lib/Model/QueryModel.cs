@@ -85,23 +85,23 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(QueryModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     SystemCriteria == input.SystemCriteria ||
                     SystemCriteria != null &&
                     SystemCriteria.SequenceEqual(input.SystemCriteria)
                 ) && 
-                (
+               (
                     DataCriteria == input.DataCriteria ||
                     DataCriteria != null &&
                     DataCriteria.SequenceEqual(input.DataCriteria)
                 ) && 
-                (
+               (
                     LinkCriterion == input.LinkCriterion ||
-                    (LinkCriterion != null &&
+                   (LinkCriterion != null &&
                     LinkCriterion.Equals(input.LinkCriterion))
                 );
         }
@@ -115,11 +115,11 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (SystemCriteria != null)
+                if(SystemCriteria != null)
                     hashCode = hashCode * 59 + SystemCriteria.GetHashCode();
-                if (DataCriteria != null)
+                if(DataCriteria != null)
                     hashCode = hashCode * 59 + DataCriteria.GetHashCode();
-                if (LinkCriterion != null)
+                if(LinkCriterion != null)
                     hashCode = hashCode * 59 + LinkCriterion.GetHashCode();
                 return hashCode;
             }

@@ -75,18 +75,18 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(LanguageModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     DisplayName == input.DisplayName ||
-                    (DisplayName != null &&
+                   (DisplayName != null &&
                     DisplayName.Equals(input.DisplayName))
                 );
         }
@@ -100,9 +100,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (DisplayName != null)
+                if(DisplayName != null)
                     hashCode = hashCode * 59 + DisplayName.GetHashCode();
                 return hashCode;
             }

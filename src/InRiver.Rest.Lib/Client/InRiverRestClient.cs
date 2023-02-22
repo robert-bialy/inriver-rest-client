@@ -34,9 +34,9 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="basePath">REST API's endpoint.</param>
         public InRiverRestClient(string apiKey, string basePath = "https://apieuw.productmarketingcloud.com")
         {
-            if (string.IsNullOrWhiteSpace(apiKey))
+            if(string.IsNullOrWhiteSpace(apiKey))
                 throw new InvalidDataException("Api key is required and cannot be null or empty");
-            if (string.IsNullOrWhiteSpace(basePath))
+            if(string.IsNullOrWhiteSpace(basePath))
                 throw new InvalidDataException("Base path is required and cannot be null or empty");
             _configuration = new Configuration
             {
@@ -58,7 +58,7 @@ namespace InRiver.Rest.Lib.Client
             configuration.Invoke(_configuration);
             if(string.IsNullOrWhiteSpace(_configuration.BasePath))
                 throw new InvalidDataException("Base path is required and cannot be null or empty");
-            if (_configuration.DefaultHeader == null || !_configuration.DefaultHeader.ContainsKey("X-inRiver-APIKey") || string.IsNullOrWhiteSpace(_configuration.DefaultHeader["X-inRiver-APIKey"]))
+            if(_configuration.DefaultHeader == null || !_configuration.DefaultHeader.ContainsKey("X-inRiver-APIKey") || string.IsNullOrWhiteSpace(_configuration.DefaultHeader["X-inRiver-APIKey"]))
                 throw new InvalidDataException("Api key is required and cannot be null or empty. Please include default X-inRiver-APIKey header.");
         }
 
@@ -99,8 +99,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_channelApi != null) return _channelApi;
-                lock (Lock)
+                if(_channelApi != null) return _channelApi;
+                lock(Lock)
                 {
                     return _channelApi = new ChannelApi(_serializer, ApiClient, _configuration);
                 }
@@ -111,8 +111,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_entityApi != null) return _entityApi;
-                lock (Lock)
+                if(_entityApi != null) return _entityApi;
+                lock(Lock)
                 {
                     return _entityApi = new EntityApi(_serializer, ApiClient, _configuration);
                 }
@@ -123,8 +123,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_entityApi != null) return _linkApi;
-                lock (Lock)
+                if(_entityApi != null) return _linkApi;
+                lock(Lock)
                 {
                     return _linkApi = new LinkApi(_serializer, ApiClient, _configuration);
                 }
@@ -135,8 +135,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_mediaApi != null) return _mediaApi;
-                lock (Lock)
+                if(_mediaApi != null) return _mediaApi;
+                lock(Lock)
                 {
                     return _mediaApi = new MediaApi(_serializer, ApiClient, _configuration);
                 }
@@ -147,8 +147,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get 
             {
-                if (_modelApi != null) return _modelApi;
-                lock (Lock)
+                if(_modelApi != null) return _modelApi;
+                lock(Lock)
                 {
                     return _modelApi = new ModelApi(_serializer, ApiClient, _configuration);
                 }
@@ -159,8 +159,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get 
             {
-                if (_queryApi != null) return _queryApi;
-                lock (Lock)
+                if(_queryApi != null) return _queryApi;
+                lock(Lock)
                 {
                     return _queryApi = new QueryApi(_serializer, ApiClient, _configuration);
                 }
@@ -171,8 +171,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_syndicateApi != null) return _syndicateApi;
-                lock (Lock)
+                if(_syndicateApi != null) return _syndicateApi;
+                lock(Lock)
                 {
                     return _syndicateApi = new SyndicateApi(_serializer, ApiClient, _configuration);
                 }
@@ -183,8 +183,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_systemApi != null) return _systemApi;
-                lock (Lock)
+                if(_systemApi != null) return _systemApi;
+                lock(Lock)
                 {
                     return _systemApi = new SystemApi(_serializer, ApiClient, _configuration);
                 }
@@ -195,8 +195,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_systemApi != null) return _workareaApi;
-                lock (Lock)
+                if(_systemApi != null) return _workareaApi;
+                lock(Lock)
                 {
                     return _workareaApi = new WorkareaApi(_serializer, ApiClient, _configuration);
                 }
@@ -207,8 +207,8 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if (_systemApi != null) return _apiClient;
-                lock (Lock)
+                if(_systemApi != null) return _apiClient;
+                lock(Lock)
                 {
                     return _apiClient = new ApiClient(_configuration, new RestClientFactory(_configuration.HttpClientOverride));
                 }

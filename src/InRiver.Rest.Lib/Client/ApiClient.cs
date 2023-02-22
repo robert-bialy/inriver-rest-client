@@ -60,7 +60,7 @@ namespace InRiver.Rest.Lib.Client
                 request.AddFile(param.Value.Name, param.Value.GetFile, param.Value.FileName, param.Value.ContentType);
             }
 
-            if (postBody != null) // http body (model or byte[]) parameter
+            if(postBody != null) // http body(model or byte[]) parameter
             {
                 request.AddBody(postBody, contentType);
             }
@@ -69,12 +69,12 @@ namespace InRiver.Rest.Lib.Client
         }
 
         /// <summary>
-        /// Makes the HTTP request (Sync).
+        /// Makes the HTTP request(Sync).
         /// </summary>
         /// <param name="path">URL path.</param>
         /// <param name="method">HTTP method.</param>
         /// <param name="queryParams">Query parameters.</param>
-        /// <param name="postBody">HTTP body (POST request).</param>
+        /// <param name="postBody">HTTP body(POST request).</param>
         /// <param name="headerParams">Header parameters.</param>
         /// <param name="formParams">Form parameters.</param>
         /// <param name="fileParams">File parameters.</param>
@@ -114,7 +114,7 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="path">URL path.</param>
         /// <param name="method">HTTP method.</param>
         /// <param name="queryParams">Query parameters.</param>
-        /// <param name="postBody">HTTP body (POST request).</param>
+        /// <param name="postBody">HTTP body(POST request).</param>
         /// <param name="headerParams">Header parameters.</param>
         /// <param name="formParams">Form parameters.</param>
         /// <param name="fileParams">File parameters.</param>

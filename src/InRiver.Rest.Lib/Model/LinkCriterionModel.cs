@@ -94,28 +94,28 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(LinkCriterionModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     DataCriteria == input.DataCriteria ||
                     DataCriteria != null &&
                     DataCriteria.SequenceEqual(input.DataCriteria)
                 ) && 
-                (
+               (
                     LinkTypeId == input.LinkTypeId ||
-                    (LinkTypeId != null &&
+                   (LinkTypeId != null &&
                     LinkTypeId.Equals(input.LinkTypeId))
                 ) && 
-                (
+               (
                     Direction == input.Direction ||
-                    (Direction != null &&
+                   (Direction != null &&
                     Direction.Equals(input.Direction))
                 ) && 
-                (
+               (
                     LinkExists == input.LinkExists ||
-                    (LinkExists != null &&
+                   (LinkExists != null &&
                     LinkExists.Equals(input.LinkExists))
                 );
         }
@@ -129,13 +129,13 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (DataCriteria != null)
+                if(DataCriteria != null)
                     hashCode = hashCode * 59 + DataCriteria.GetHashCode();
-                if (LinkTypeId != null)
+                if(LinkTypeId != null)
                     hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
-                if (Direction != null)
+                if(Direction != null)
                     hashCode = hashCode * 59 + Direction.GetHashCode();
-                if (LinkExists != null)
+                if(LinkExists != null)
                     hashCode = hashCode * 59 + LinkExists.GetHashCode();
                 return hashCode;
             }

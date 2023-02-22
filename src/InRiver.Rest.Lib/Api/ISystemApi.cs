@@ -20,7 +20,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>UserRolesModel</returns>
-        UserRolesModel AddUserRoleForSegment (int? segmentId, UserRoleModel userRoleModel);
+        UserRolesModel AddUserRoleForSegment(int? segmentId, UserRoleModel userRoleModel);
 
         /// <summary>
         /// Assign a role to a user and segment
@@ -32,7 +32,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>ApiResponse of UserRolesModel</returns>
-        ApiResponse<UserRolesModel> AddUserRoleForSegmentWithHttpInfo (int? segmentId, UserRoleModel userRoleModel);
+        ApiResponse<UserRolesModel> AddUserRoleForSegmentWithHttpInfo(int? segmentId, UserRoleModel userRoleModel);
         /// <summary>
         /// Returns available image configurations
         /// </summary>
@@ -41,7 +41,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        List<string> GetAllImageConfigurations ();
+        List<string> GetAllImageConfigurations();
 
         /// <summary>
         /// Returns available image configurations
@@ -51,7 +51,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        ApiResponse<List<string>> GetAllImageConfigurationsWithHttpInfo ();
+        ApiResponse<List<string>> GetAllImageConfigurationsWithHttpInfo();
         /// <summary>
         /// Return full details of available image configurations
         /// </summary>
@@ -60,7 +60,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ImageConfigurationDetailsModel</returns>
-        ImageConfigurationDetailsModel GetImageConfigurationDetails ();
+        ImageConfigurationDetailsModel GetImageConfigurationDetails();
 
         /// <summary>
         /// Return full details of available image configurations
@@ -70,7 +70,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ImageConfigurationDetailsModel</returns>
-        ApiResponse<ImageConfigurationDetailsModel> GetImageConfigurationDetailsWithHttpInfo ();
+        ApiResponse<ImageConfigurationDetailsModel> GetImageConfigurationDetailsWithHttpInfo();
         /// <summary>
         /// Get list of server settings
         /// </summary>
@@ -78,9 +78,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
-        Dictionary<string, string> GetServerSettings (string settingNames = null);
+        Dictionary<string, string> GetServerSettings(string settingNames = null);
 
         /// <summary>
         /// Get list of server settings
@@ -89,9 +89,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        ApiResponse<Dictionary<string, string>> GetServerSettingsWithHttpInfo (string settingNames = null);
+        ApiResponse<Dictionary<string, string>> GetServerSettingsWithHttpInfo(string settingNames = null);
         /// <summary>
         /// Remove a role from a user and segment
         /// </summary>
@@ -102,7 +102,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>UserRolesModel</returns>
-        UserRolesModel RemoveUserRoleForSegment (int? segmentId, UserRoleModel userRoleModel);
+        UserRolesModel RemoveUserRoleForSegment(int? segmentId, UserRoleModel userRoleModel);
 
         /// <summary>
         /// Remove a role from a user and segment
@@ -114,7 +114,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>ApiResponse of UserRolesModel</returns>
-        ApiResponse<UserRolesModel> RemoveUserRoleForSegmentWithHttpInfo (int? segmentId, UserRoleModel userRoleModel);
+        ApiResponse<UserRolesModel> RemoveUserRoleForSegmentWithHttpInfo(int? segmentId, UserRoleModel userRoleModel);
         /// <summary>
         /// Get list of user roles and permissions
         /// </summary>
@@ -122,9 +122,9 @@ namespace InRiver.Rest.Lib.Api
         /// If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
         /// <returns>List&lt;RoleModel&gt;</returns>
-        List<RoleModel> Roles (string forUsername = null);
+        List<RoleModel> Roles(string forUsername = null);
 
         /// <summary>
         /// Get list of user roles and permissions
@@ -133,9 +133,9 @@ namespace InRiver.Rest.Lib.Api
         /// If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
         /// <returns>ApiResponse of List&lt;RoleModel&gt;</returns>
-        ApiResponse<List<RoleModel>> RolesWithHttpInfo (string forUsername = null);
+        ApiResponse<List<RoleModel>> RolesWithHttpInfo(string forUsername = null);
         /// <summary>
         /// Get list of segments
         /// </summary>
@@ -143,9 +143,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
         /// <returns>List&lt;SegmentModel&gt;</returns>
-        List<SegmentModel> Segments (string forUsername = null);
+        List<SegmentModel> Segments(string forUsername = null);
 
         /// <summary>
         /// Get list of segments
@@ -154,9 +154,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
         /// <returns>ApiResponse of List&lt;SegmentModel&gt;</returns>
-        ApiResponse<List<SegmentModel>> SegmentsWithHttpInfo (string forUsername = null);
+        ApiResponse<List<SegmentModel>> SegmentsWithHttpInfo(string forUsername = null);
         /// <summary>
         /// Modify user access for segment
         /// </summary>
@@ -167,7 +167,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
         /// <returns>UserRolesModel</returns>
-        UserRolesModel SetUserRolesForSegment (int? segmentId, UserRolesModel userRolesModel);
+        UserRolesModel SetUserRolesForSegment(int? segmentId, UserRolesModel userRolesModel);
 
         /// <summary>
         /// Modify user access for segment
@@ -179,7 +179,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
         /// <returns>ApiResponse of UserRolesModel</returns>
-        ApiResponse<UserRolesModel> SetUserRolesForSegmentWithHttpInfo (int? segmentId, UserRolesModel userRolesModel);
+        ApiResponse<UserRolesModel> SetUserRolesForSegmentWithHttpInfo(int? segmentId, UserRolesModel userRolesModel);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -192,7 +192,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>Task of UserRolesModel</returns>
-        System.Threading.Tasks.Task<UserRolesModel> AddUserRoleForSegmentAsync (int? segmentId, UserRoleModel userRoleModel);
+        System.Threading.Tasks.Task<UserRolesModel> AddUserRoleForSegmentAsync(int? segmentId, UserRoleModel userRoleModel);
 
         /// <summary>
         /// Assign a role to a user and segment
@@ -203,8 +203,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
-        /// <returns>Task of ApiResponse (UserRolesModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> AddUserRoleForSegmentAsyncWithHttpInfo (int? segmentId, UserRoleModel userRoleModel);
+        /// <returns>Task of ApiResponse(UserRolesModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> AddUserRoleForSegmentAsyncWithHttpInfo(int? segmentId, UserRoleModel userRoleModel);
         /// <summary>
         /// Returns available image configurations
         /// </summary>
@@ -213,7 +213,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        System.Threading.Tasks.Task<List<string>> GetAllImageConfigurationsAsync ();
+        System.Threading.Tasks.Task<List<string>> GetAllImageConfigurationsAsync();
 
         /// <summary>
         /// Returns available image configurations
@@ -222,8 +222,8 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<string>>> GetAllImageConfigurationsAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse(List&lt;string&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<string>>> GetAllImageConfigurationsAsyncWithHttpInfo();
         /// <summary>
         /// Return full details of available image configurations
         /// </summary>
@@ -232,7 +232,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ImageConfigurationDetailsModel</returns>
-        System.Threading.Tasks.Task<ImageConfigurationDetailsModel> GetImageConfigurationDetailsAsync ();
+        System.Threading.Tasks.Task<ImageConfigurationDetailsModel> GetImageConfigurationDetailsAsync();
 
         /// <summary>
         /// Return full details of available image configurations
@@ -241,8 +241,8 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (ImageConfigurationDetailsModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<ImageConfigurationDetailsModel>> GetImageConfigurationDetailsAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse(ImageConfigurationDetailsModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<ImageConfigurationDetailsModel>> GetImageConfigurationDetailsAsyncWithHttpInfo();
         /// <summary>
         /// Get list of server settings
         /// </summary>
@@ -250,9 +250,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        System.Threading.Tasks.Task<Dictionary<string, string>> GetServerSettingsAsync (string settingNames = null);
+        System.Threading.Tasks.Task<Dictionary<string, string>> GetServerSettingsAsync(string settingNames = null);
 
         /// <summary>
         /// Get list of server settings
@@ -261,9 +261,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetServerSettingsAsyncWithHttpInfo (string settingNames = null);
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
+        /// <returns>Task of ApiResponse(Dictionary&lt;string, string&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetServerSettingsAsyncWithHttpInfo(string settingNames = null);
         /// <summary>
         /// Remove a role from a user and segment
         /// </summary>
@@ -274,7 +274,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>Task of UserRolesModel</returns>
-        System.Threading.Tasks.Task<UserRolesModel> RemoveUserRoleForSegmentAsync (int? segmentId, UserRoleModel userRoleModel);
+        System.Threading.Tasks.Task<UserRolesModel> RemoveUserRoleForSegmentAsync(int? segmentId, UserRoleModel userRoleModel);
 
         /// <summary>
         /// Remove a role from a user and segment
@@ -285,8 +285,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
-        /// <returns>Task of ApiResponse (UserRolesModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> RemoveUserRoleForSegmentAsyncWithHttpInfo (int? segmentId, UserRoleModel userRoleModel);
+        /// <returns>Task of ApiResponse(UserRolesModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> RemoveUserRoleForSegmentAsyncWithHttpInfo(int? segmentId, UserRoleModel userRoleModel);
         /// <summary>
         /// Get list of user roles and permissions
         /// </summary>
@@ -294,9 +294,9 @@ namespace InRiver.Rest.Lib.Api
         /// If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
         /// <returns>Task of List&lt;RoleModel&gt;</returns>
-        System.Threading.Tasks.Task<List<RoleModel>> RolesAsync (string forUsername = null);
+        System.Threading.Tasks.Task<List<RoleModel>> RolesAsync(string forUsername = null);
 
         /// <summary>
         /// Get list of user roles and permissions
@@ -305,9 +305,9 @@ namespace InRiver.Rest.Lib.Api
         /// If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;RoleModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<RoleModel>>> RolesAsyncWithHttpInfo (string forUsername = null);
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;RoleModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<RoleModel>>> RolesAsyncWithHttpInfo(string forUsername = null);
         /// <summary>
         /// Get list of segments
         /// </summary>
@@ -315,9 +315,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
         /// <returns>Task of List&lt;SegmentModel&gt;</returns>
-        System.Threading.Tasks.Task<List<SegmentModel>> SegmentsAsync (string forUsername = null);
+        System.Threading.Tasks.Task<List<SegmentModel>> SegmentsAsync(string forUsername = null);
 
         /// <summary>
         /// Get list of segments
@@ -326,9 +326,9 @@ namespace InRiver.Rest.Lib.Api
         /// Requires administrator role.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;SegmentModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SegmentModel>>> SegmentsAsyncWithHttpInfo (string forUsername = null);
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;SegmentModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SegmentModel>>> SegmentsAsyncWithHttpInfo(string forUsername = null);
         /// <summary>
         /// Modify user access for segment
         /// </summary>
@@ -339,7 +339,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
         /// <returns>Task of UserRolesModel</returns>
-        System.Threading.Tasks.Task<UserRolesModel> SetUserRolesForSegmentAsync (int? segmentId, UserRolesModel userRolesModel);
+        System.Threading.Tasks.Task<UserRolesModel> SetUserRolesForSegmentAsync(int? segmentId, UserRolesModel userRolesModel);
 
         /// <summary>
         /// Modify user access for segment
@@ -350,8 +350,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
-        /// <returns>Task of ApiResponse (UserRolesModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> GaetUserRolesForSegmentAsyncWithHttpInfo (int? segmentId, UserRolesModel userRolesModel);
+        /// <returns>Task of ApiResponse(UserRolesModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> GetUserRolesForSegmentAsyncWithHttpInfo(int? segmentId, UserRolesModel userRolesModel);
         #endregion Asynchronous Operations
     }
 }

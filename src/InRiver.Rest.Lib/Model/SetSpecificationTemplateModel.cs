@@ -66,13 +66,13 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SetSpecificationTemplateModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     SpecificationId == input.SpecificationId ||
-                    (SpecificationId != null &&
+                   (SpecificationId != null &&
                     SpecificationId.Equals(input.SpecificationId))
                 );
         }
@@ -86,7 +86,7 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (SpecificationId != null)
+                if(SpecificationId != null)
                     hashCode = hashCode * 59 + SpecificationId.GetHashCode();
                 return hashCode;
             }

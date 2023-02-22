@@ -119,43 +119,43 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ChannelSummaryModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     DisplayName == input.DisplayName ||
-                    (DisplayName != null &&
+                   (DisplayName != null &&
                     DisplayName.Equals(input.DisplayName))
                 ) && 
-                (
+               (
                     DisplayDescription == input.DisplayDescription ||
-                    (DisplayDescription != null &&
+                   (DisplayDescription != null &&
                     DisplayDescription.Equals(input.DisplayDescription))
                 ) && 
-                (
+               (
                     EntityTypeId == input.EntityTypeId ||
-                    (EntityTypeId != null &&
+                   (EntityTypeId != null &&
                     EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
-                (
+               (
                     CreatedDate == input.CreatedDate ||
-                    (CreatedDate != null &&
+                   (CreatedDate != null &&
                     CreatedDate.Equals(input.CreatedDate))
                 ) && 
-                (
+               (
                     ModifiedDate == input.ModifiedDate ||
-                    (ModifiedDate != null &&
+                   (ModifiedDate != null &&
                     ModifiedDate.Equals(input.ModifiedDate))
                 ) && 
-                (
+               (
                     IsPublished == input.IsPublished ||
-                    (IsPublished != null &&
+                   (IsPublished != null &&
                     IsPublished.Equals(input.IsPublished))
                 );
         }
@@ -169,19 +169,19 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (DisplayName != null)
+                if(DisplayName != null)
                     hashCode = hashCode * 59 + DisplayName.GetHashCode();
-                if (DisplayDescription != null)
+                if(DisplayDescription != null)
                     hashCode = hashCode * 59 + DisplayDescription.GetHashCode();
-                if (EntityTypeId != null)
+                if(EntityTypeId != null)
                     hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
-                if (CreatedDate != null)
+                if(CreatedDate != null)
                     hashCode = hashCode * 59 + CreatedDate.GetHashCode();
-                if (ModifiedDate != null)
+                if(ModifiedDate != null)
                     hashCode = hashCode * 59 + ModifiedDate.GetHashCode();
-                if (IsPublished != null)
+                if(IsPublished != null)
                     hashCode = hashCode * 59 + IsPublished.GetHashCode();
                 return hashCode;
             }

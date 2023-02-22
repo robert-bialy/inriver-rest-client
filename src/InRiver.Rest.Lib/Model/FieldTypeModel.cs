@@ -202,86 +202,86 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(FieldTypeModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FieldTypeId == input.FieldTypeId ||
-                    (FieldTypeId != null &&
+                   (FieldTypeId != null &&
                     FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
-                (
+               (
                     FieldTypeDisplayName == input.FieldTypeDisplayName ||
-                    (FieldTypeDisplayName != null &&
+                   (FieldTypeDisplayName != null &&
                     FieldTypeDisplayName.Equals(input.FieldTypeDisplayName))
                 ) && 
-                (
+               (
                     FieldTypeDescription == input.FieldTypeDescription ||
-                    (FieldTypeDescription != null &&
+                   (FieldTypeDescription != null &&
                     FieldTypeDescription.Equals(input.FieldTypeDescription))
                 ) && 
-                (
+               (
                     FieldDataType == input.FieldDataType ||
-                    (FieldDataType != null &&
+                   (FieldDataType != null &&
                     FieldDataType.Equals(input.FieldDataType))
                 ) && 
-                (
+               (
                     IsMultiValue == input.IsMultiValue ||
-                    (IsMultiValue != null &&
+                   (IsMultiValue != null &&
                     IsMultiValue.Equals(input.IsMultiValue))
                 ) && 
-                (
+               (
                     IsHidden == input.IsHidden ||
-                    (IsHidden != null &&
+                   (IsHidden != null &&
                     IsHidden.Equals(input.IsHidden))
                 ) && 
-                (
+               (
                     IsReadOnly == input.IsReadOnly ||
-                    (IsReadOnly != null &&
+                   (IsReadOnly != null &&
                     IsReadOnly.Equals(input.IsReadOnly))
                 ) && 
-                (
+               (
                     IsMandatory == input.IsMandatory ||
-                    (IsMandatory != null &&
+                   (IsMandatory != null &&
                     IsMandatory.Equals(input.IsMandatory))
                 ) && 
-                (
+               (
                     IsUnique == input.IsUnique ||
-                    (IsUnique != null &&
+                   (IsUnique != null &&
                     IsUnique.Equals(input.IsUnique))
                 ) && 
-                (
+               (
                     IsExcludedFromDefaultView == input.IsExcludedFromDefaultView ||
-                    (IsExcludedFromDefaultView != null &&
+                   (IsExcludedFromDefaultView != null &&
                     IsExcludedFromDefaultView.Equals(input.IsExcludedFromDefaultView))
                 ) && 
-                (
+               (
                     IncludedInFieldSets == input.IncludedInFieldSets ||
                     IncludedInFieldSets != null &&
                     IncludedInFieldSets.SequenceEqual(input.IncludedInFieldSets)
                 ) && 
-                (
+               (
                     CategoryId == input.CategoryId ||
-                    (CategoryId != null &&
+                   (CategoryId != null &&
                     CategoryId.Equals(input.CategoryId))
                 ) && 
-                (
+               (
                     Index == input.Index ||
-                    (Index != null &&
+                   (Index != null &&
                     Index.Equals(input.Index))
                 ) && 
-                (
+               (
                     CvlId == input.CvlId ||
-                    (CvlId != null &&
+                   (CvlId != null &&
                     CvlId.Equals(input.CvlId))
                 ) && 
-                (
+               (
                     ParentCvlId == input.ParentCvlId ||
-                    (ParentCvlId != null &&
+                   (ParentCvlId != null &&
                     ParentCvlId.Equals(input.ParentCvlId))
                 ) && 
-                (
+               (
                     Settings == input.Settings ||
                     Settings != null &&
                     Settings.SequenceEqual(input.Settings)
@@ -297,37 +297,37 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FieldTypeId != null)
+                if(FieldTypeId != null)
                     hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
-                if (FieldTypeDisplayName != null)
+                if(FieldTypeDisplayName != null)
                     hashCode = hashCode * 59 + FieldTypeDisplayName.GetHashCode();
-                if (FieldTypeDescription != null)
+                if(FieldTypeDescription != null)
                     hashCode = hashCode * 59 + FieldTypeDescription.GetHashCode();
-                if (FieldDataType != null)
+                if(FieldDataType != null)
                     hashCode = hashCode * 59 + FieldDataType.GetHashCode();
-                if (IsMultiValue != null)
+                if(IsMultiValue != null)
                     hashCode = hashCode * 59 + IsMultiValue.GetHashCode();
-                if (IsHidden != null)
+                if(IsHidden != null)
                     hashCode = hashCode * 59 + IsHidden.GetHashCode();
-                if (IsReadOnly != null)
+                if(IsReadOnly != null)
                     hashCode = hashCode * 59 + IsReadOnly.GetHashCode();
-                if (IsMandatory != null)
+                if(IsMandatory != null)
                     hashCode = hashCode * 59 + IsMandatory.GetHashCode();
-                if (IsUnique != null)
+                if(IsUnique != null)
                     hashCode = hashCode * 59 + IsUnique.GetHashCode();
-                if (IsExcludedFromDefaultView != null)
+                if(IsExcludedFromDefaultView != null)
                     hashCode = hashCode * 59 + IsExcludedFromDefaultView.GetHashCode();
-                if (IncludedInFieldSets != null)
+                if(IncludedInFieldSets != null)
                     hashCode = hashCode * 59 + IncludedInFieldSets.GetHashCode();
-                if (CategoryId != null)
+                if(CategoryId != null)
                     hashCode = hashCode * 59 + CategoryId.GetHashCode();
-                if (Index != null)
+                if(Index != null)
                     hashCode = hashCode * 59 + Index.GetHashCode();
-                if (CvlId != null)
+                if(CvlId != null)
                     hashCode = hashCode * 59 + CvlId.GetHashCode();
-                if (ParentCvlId != null)
+                if(ParentCvlId != null)
                     hashCode = hashCode * 59 + ParentCvlId.GetHashCode();
-                if (Settings != null)
+                if(Settings != null)
                     hashCode = hashCode * 59 + Settings.GetHashCode();
                 return hashCode;
             }

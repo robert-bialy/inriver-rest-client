@@ -34,16 +34,16 @@ namespace InRiver.Rest.Lib.Client
         /// <summary>
         /// Default creation of exceptions for a given method name and response object
         /// </summary>
-        public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, response) =>
+        public static readonly ExceptionFactory DefaultExceptionFactory =(methodName, response) =>
         {
-            var status = (int)response.StatusCode;
-            if (status >= 400)
+            var status =(int)response.StatusCode;
+            if(status>= 400)
             {
                 return new ApiException(status,
                     $"Error calling {methodName}: {response.Content}",
                     response.Content);
             }
-            if (status == 0)
+            if(status == 0)
             {
                 return new ApiException(status,
                     $"Error calling {methodName}: {response.ErrorMessage}", response.ErrorMessage);
@@ -60,7 +60,7 @@ namespace InRiver.Rest.Lib.Client
             get { return _globalConfiguration; }
             set
             {
-                lock (GlobalConfigSync)
+                lock(GlobalConfigSync)
                 {
                     _globalConfiguration = value;
                 }
@@ -110,7 +110,7 @@ namespace InRiver.Rest.Lib.Client
         public virtual IDictionary<string, string> DefaultHeader { get; set; }
 
         /// <summary>
-        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
+        /// Gets or sets the HTTP timeout(milliseconds) of ApiClient. Default to 100000 milliseconds.
         /// </summary>
         public int Timeout
         {
@@ -137,7 +137,7 @@ namespace InRiver.Rest.Lib.Client
             get => _dateTimeFormat;
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if(string.IsNullOrEmpty(value))
                 {
                     // Never allow a blank or null string, go back to the default
                     _dateTimeFormat = ISO8601_DATETIME_FORMAT;

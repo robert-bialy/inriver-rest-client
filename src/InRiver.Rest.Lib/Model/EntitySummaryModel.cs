@@ -227,103 +227,103 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntitySummaryModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     DisplayName == input.DisplayName ||
-                    (DisplayName != null &&
+                   (DisplayName != null &&
                     DisplayName.Equals(input.DisplayName))
                 ) && 
-                (
+               (
                     DisplayDescription == input.DisplayDescription ||
-                    (DisplayDescription != null &&
+                   (DisplayDescription != null &&
                     DisplayDescription.Equals(input.DisplayDescription))
                 ) && 
-                (
+               (
                     Version == input.Version ||
-                    (Version != null &&
+                   (Version != null &&
                     Version.Equals(input.Version))
                 ) && 
-                (
+               (
                     LockedBy == input.LockedBy ||
-                    (LockedBy != null &&
+                   (LockedBy != null &&
                     LockedBy.Equals(input.LockedBy))
                 ) && 
-                (
+               (
                     CreatedBy == input.CreatedBy ||
-                    (CreatedBy != null &&
+                   (CreatedBy != null &&
                     CreatedBy.Equals(input.CreatedBy))
                 ) && 
-                (
+               (
                     CreatedDate == input.CreatedDate ||
-                    (CreatedDate != null &&
+                   (CreatedDate != null &&
                     CreatedDate.Equals(input.CreatedDate))
                 ) && 
-                (
+               (
                     FormattedCreatedDate == input.FormattedCreatedDate ||
-                    (FormattedCreatedDate != null &&
+                   (FormattedCreatedDate != null &&
                     FormattedCreatedDate.Equals(input.FormattedCreatedDate))
                 ) && 
-                (
+               (
                     ModifiedBy == input.ModifiedBy ||
-                    (ModifiedBy != null &&
+                   (ModifiedBy != null &&
                     ModifiedBy.Equals(input.ModifiedBy))
                 ) && 
-                (
+               (
                     ModifiedDate == input.ModifiedDate ||
-                    (ModifiedDate != null &&
+                   (ModifiedDate != null &&
                     ModifiedDate.Equals(input.ModifiedDate))
                 ) && 
-                (
+               (
                     FormattedModifiedDate == input.FormattedModifiedDate ||
-                    (FormattedModifiedDate != null &&
+                   (FormattedModifiedDate != null &&
                     FormattedModifiedDate.Equals(input.FormattedModifiedDate))
                 ) && 
-                (
+               (
                     ResourceUrl == input.ResourceUrl ||
-                    (ResourceUrl != null &&
+                   (ResourceUrl != null &&
                     ResourceUrl.Equals(input.ResourceUrl))
                 ) && 
-                (
+               (
                     EntityTypeId == input.EntityTypeId ||
-                    (EntityTypeId != null &&
+                   (EntityTypeId != null &&
                     EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
-                (
+               (
                     EntityTypeDisplayName == input.EntityTypeDisplayName ||
-                    (EntityTypeDisplayName != null &&
+                   (EntityTypeDisplayName != null &&
                     EntityTypeDisplayName.Equals(input.EntityTypeDisplayName))
                 ) && 
-                (
+               (
                     Completeness == input.Completeness ||
-                    (Completeness != null &&
+                   (Completeness != null &&
                     Completeness.Equals(input.Completeness))
                 ) && 
-                (
+               (
                     FieldSetId == input.FieldSetId ||
-                    (FieldSetId != null &&
+                   (FieldSetId != null &&
                     FieldSetId.Equals(input.FieldSetId))
                 ) && 
-                (
+               (
                     FieldSetName == input.FieldSetName ||
-                    (FieldSetName != null &&
+                   (FieldSetName != null &&
                     FieldSetName.Equals(input.FieldSetName))
                 ) && 
-                (
+               (
                     SegmentId == input.SegmentId ||
-                    (SegmentId != null &&
+                   (SegmentId != null &&
                     SegmentId.Equals(input.SegmentId))
                 ) && 
-                (
+               (
                     SegmentName == input.SegmentName ||
-                    (SegmentName != null &&
+                   (SegmentName != null &&
                     SegmentName.Equals(input.SegmentName))
                 );
         }
@@ -337,43 +337,43 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (DisplayName != null)
+                if(DisplayName != null)
                     hashCode = hashCode * 59 + DisplayName.GetHashCode();
-                if (DisplayDescription != null)
+                if(DisplayDescription != null)
                     hashCode = hashCode * 59 + DisplayDescription.GetHashCode();
-                if (Version != null)
+                if(Version != null)
                     hashCode = hashCode * 59 + Version.GetHashCode();
-                if (LockedBy != null)
+                if(LockedBy != null)
                     hashCode = hashCode * 59 + LockedBy.GetHashCode();
-                if (CreatedBy != null)
+                if(CreatedBy != null)
                     hashCode = hashCode * 59 + CreatedBy.GetHashCode();
-                if (CreatedDate != null)
+                if(CreatedDate != null)
                     hashCode = hashCode * 59 + CreatedDate.GetHashCode();
-                if (FormattedCreatedDate != null)
+                if(FormattedCreatedDate != null)
                     hashCode = hashCode * 59 + FormattedCreatedDate.GetHashCode();
-                if (ModifiedBy != null)
+                if(ModifiedBy != null)
                     hashCode = hashCode * 59 + ModifiedBy.GetHashCode();
-                if (ModifiedDate != null)
+                if(ModifiedDate != null)
                     hashCode = hashCode * 59 + ModifiedDate.GetHashCode();
-                if (FormattedModifiedDate != null)
+                if(FormattedModifiedDate != null)
                     hashCode = hashCode * 59 + FormattedModifiedDate.GetHashCode();
-                if (ResourceUrl != null)
+                if(ResourceUrl != null)
                     hashCode = hashCode * 59 + ResourceUrl.GetHashCode();
-                if (EntityTypeId != null)
+                if(EntityTypeId != null)
                     hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
-                if (EntityTypeDisplayName != null)
+                if(EntityTypeDisplayName != null)
                     hashCode = hashCode * 59 + EntityTypeDisplayName.GetHashCode();
-                if (Completeness != null)
+                if(Completeness != null)
                     hashCode = hashCode * 59 + Completeness.GetHashCode();
-                if (FieldSetId != null)
+                if(FieldSetId != null)
                     hashCode = hashCode * 59 + FieldSetId.GetHashCode();
-                if (FieldSetName != null)
+                if(FieldSetName != null)
                     hashCode = hashCode * 59 + FieldSetName.GetHashCode();
-                if (SegmentId != null)
+                if(SegmentId != null)
                     hashCode = hashCode * 59 + SegmentId.GetHashCode();
-                if (SegmentName != null)
+                if(SegmentName != null)
                     hashCode = hashCode * 59 + SegmentName.GetHashCode();
                 return hashCode;
             }

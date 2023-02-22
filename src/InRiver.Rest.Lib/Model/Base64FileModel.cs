@@ -75,18 +75,18 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(Base64FileModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FileName == input.FileName ||
-                    (FileName != null &&
+                   (FileName != null &&
                     FileName.Equals(input.FileName))
                 ) && 
-                (
+               (
                     Data == input.Data ||
-                    (Data != null &&
+                   (Data != null &&
                     Data.Equals(input.Data))
                 );
         }
@@ -100,9 +100,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FileName != null)
+                if(FileName != null)
                     hashCode = hashCode * 59 + FileName.GetHashCode();
-                if (Data != null)
+                if(Data != null)
                     hashCode = hashCode * 59 + Data.GetHashCode();
                 return hashCode;
             }

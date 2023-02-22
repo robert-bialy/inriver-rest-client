@@ -15,7 +15,7 @@ namespace InRiver.Rest.Lib.Api
     internal sealed class ModelApi : IModelApi
     {
         private readonly ISerializer _serializer;
-        private ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory =(name, response) => null;
         private readonly IApiClient _apiClient;
 
         /// <summary>
@@ -30,10 +30,8 @@ namespace InRiver.Rest.Lib.Api
         {
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
-            if (configuration == null) // use the default one in Configuration
-                Configuration = Configuration.Default;
-            else
-                Configuration = configuration;
+            // use the default one in Configuration
+            Configuration = configuration ?? Configuration.Default;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
@@ -51,13 +49,13 @@ namespace InRiver.Rest.Lib.Api
         {
             get
             {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
                 {
                     throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
         
         /// <summary>
@@ -67,7 +65,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>CVLValueModel</returns>
-        public CVLValueModel CreateCvlValue (string cvlId, CVLValueModel cvlValueModel)
+        public CVLValueModel CreateCvlValue(string cvlId, CVLValueModel cvlValueModel)
         {
              ApiResponse<CVLValueModel> localVarResponse = CreateCvlValueWithHttpInfo(cvlId, cvlValueModel);
              return localVarResponse.Data;
@@ -80,13 +78,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>ApiResponse of CVLValueModel</returns>
-        public ApiResponse< CVLValueModel > CreateCvlValueWithHttpInfo (string cvlId, CVLValueModel cvlValueModel)
+        public ApiResponse<CVLValueModel> CreateCvlValueWithHttpInfo(string cvlId, CVLValueModel cvlValueModel)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelCreateCvlValue");
             // verify the required parameter 'cvlValueModel' is set
-            if (cvlValueModel == null)
+            if(cvlValueModel == null)
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelCreateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
@@ -111,13 +109,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (cvlValueModel != null && cvlValueModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            if(cvlValueModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body(model) parameter
             }
             else
             {
@@ -126,21 +124,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelCreateCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
+               (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
         }
 
         /// <summary>
@@ -150,7 +148,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>Task of CVLValueModel</returns>
-        public async System.Threading.Tasks.Task<CVLValueModel> CreateCvlValueAsync (string cvlId, CVLValueModel cvlValueModel)
+        public async System.Threading.Tasks.Task<CVLValueModel> CreateCvlValueAsync(string cvlId, CVLValueModel cvlValueModel)
         {
              ApiResponse<CVLValueModel> localVarResponse = await CreateCvlValueAsyncWithHttpInfo(cvlId, cvlValueModel);
              return localVarResponse.Data;
@@ -163,14 +161,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
-        /// <returns>Task of ApiResponse (CVLValueModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> CreateCvlValueAsyncWithHttpInfo (string cvlId, CVLValueModel cvlValueModel)
+        /// <returns>Task of ApiResponse(CVLValueModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> CreateCvlValueAsyncWithHttpInfo(string cvlId, CVLValueModel cvlValueModel)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelCreateCvlValue");
             // verify the required parameter 'cvlValueModel' is set
-            if (cvlValueModel == null)
+            if(cvlValueModel == null)
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelCreateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
@@ -195,13 +193,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (cvlValueModel != null && cvlValueModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            if(cvlValueModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body(model) parameter
             }
             else
             {
@@ -210,21 +208,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelCreateCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
+               (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
         }
 
         /// <summary>
@@ -234,7 +232,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns></returns>
-        public void DeleteCvlValue (string cvlId, string key)
+        public void DeleteCvlValue(string cvlId, string key)
         {
              DeleteCvlValueWithHttpInfo(cvlId, key);
         }
@@ -246,13 +244,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns>ApiResponse of object(void)</returns>
-        public ApiResponse<object> DeleteCvlValueWithHttpInfo (string cvlId, string key)
+        public ApiResponse<object> DeleteCvlValueWithHttpInfo(string cvlId, string key)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelDeleteCvlValue");
             // verify the required parameter 'key' is set
-            if (key == null)
+            if(key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelDeleteCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
@@ -272,24 +270,24 @@ namespace InRiver.Rest.Lib.Api
             String[] localVarHttpHeaderAccepts = new String[] {
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (key != null) localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelDeleteCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<object>(localVarStatusCode,
@@ -304,10 +302,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteCvlValueAsync (string cvlId, string key)
+        public async System.Threading.Tasks.Task DeleteCvlValueAsync(string cvlId, string key)
         {
-             await DeleteCvlValueAsyncWithHttpInfo(cvlId, key);
-
+            await DeleteCvlValueAsyncWithHttpInfo(cvlId, key);
         }
 
         /// <summary>
@@ -317,13 +314,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> DeleteCvlValueAsyncWithHttpInfo (string cvlId, string key)
+        public async System.Threading.Tasks.Task<ApiResponse<object>> DeleteCvlValueAsyncWithHttpInfo(string cvlId, string key)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelDeleteCvlValue");
             // verify the required parameter 'key' is set
-            if (key == null)
+            if(key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelDeleteCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
@@ -343,24 +340,23 @@ namespace InRiver.Rest.Lib.Api
             String[] localVarHttpHeaderAccepts = new String[] {
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (key != null) localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
-
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelDeleteCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<object>(localVarStatusCode,
@@ -374,7 +370,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <returns>List&lt;CVLValueModel&gt;</returns>
-        public List<CVLValueModel> GetAllCvlValues (string cvlId)
+        public List<CVLValueModel> GetAllCvlValues(string cvlId)
         {
              ApiResponse<List<CVLValueModel>> localVarResponse = GetAllCvlValuesWithHttpInfo(cvlId);
              return localVarResponse.Data;
@@ -386,10 +382,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <returns>ApiResponse of List&lt;CVLValueModel&gt;</returns>
-        public ApiResponse< List<CVLValueModel> > GetAllCvlValuesWithHttpInfo (string cvlId)
+        public ApiResponse<List<CVLValueModel>> GetAllCvlValuesWithHttpInfo(string cvlId)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelGetAllCvlValues");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
@@ -411,28 +407,27 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllCvlValues", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<CVLValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CVLValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLValueModel>)));
+               (List<CVLValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLValueModel>)));
         }
 
         /// <summary>
@@ -441,7 +436,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <returns>Task of List&lt;CVLValueModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<CVLValueModel>> GetAllCvlValuesAsync (string cvlId)
+        public async System.Threading.Tasks.Task<List<CVLValueModel>> GetAllCvlValuesAsync(string cvlId)
         {
              ApiResponse<List<CVLValueModel>> localVarResponse = await GetAllCvlValuesAsyncWithHttpInfo(cvlId);
              return localVarResponse.Data;
@@ -453,11 +448,11 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
-        /// <returns>Task of ApiResponse (List&lt;CVLValueModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<CVLValueModel>>> GetAllCvlValuesAsyncWithHttpInfo (string cvlId)
+        /// <returns>Task of ApiResponse(List&lt;CVLValueModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<CVLValueModel>>> GetAllCvlValuesAsyncWithHttpInfo(string cvlId)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelGetAllCvlValues");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
@@ -479,28 +474,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            if(cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllCvlValues", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<CVLValueModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CVLValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLValueModel>)));
+               (List<CVLValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLValueModel>)));
         }
 
         /// <summary>
@@ -508,7 +503,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;CVLModel&gt;</returns>
-        public List<CVLModel> GetAllCvls ()
+        public List<CVLModel> GetAllCvls()
         {
              ApiResponse<List<CVLModel>> localVarResponse = GetAllCvlsWithHttpInfo();
              return localVarResponse.Data;
@@ -519,7 +514,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;CVLModel&gt;</returns>
-        public ApiResponse< List<CVLModel> > GetAllCvlsWithHttpInfo ()
+        public ApiResponse<List<CVLModel>> GetAllCvlsWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/model/cvls";
@@ -541,27 +536,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllCvls", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<CVLModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CVLModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLModel>)));
+               (List<CVLModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLModel>)));
         }
 
         /// <summary>
@@ -569,19 +562,18 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;CVLModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<CVLModel>> GetAllCvlsAsync ()
+        public async System.Threading.Tasks.Task<List<CVLModel>> GetAllCvlsAsync()
         {
              ApiResponse<List<CVLModel>> localVarResponse = await GetAllCvlsAsyncWithHttpInfo();
              return localVarResponse.Data;
-
         }
 
         /// <summary>
         /// Returns all CVL&#39;s 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;CVLModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<CVLModel>>> GetAllCvlsAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse(List&lt;CVLModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<CVLModel>>> GetAllCvlsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/model/cvls";
@@ -603,36 +595,34 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllCvls", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<CVLModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<CVLModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLModel>)));
+               (List<CVLModel>) _serializer.Deserialize(localVarResponse, typeof(List<CVLModel>)));
         }
 
         /// <summary>
         /// Returns available entity types 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>List&lt;EntityTypeModel&gt;</returns>
-        public List<EntityTypeModel> GetAllEntityTypes (string entityTypeIds = null)
+        public List<EntityTypeModel> GetAllEntityTypes(string entityTypeIds = null)
         {
              ApiResponse<List<EntityTypeModel>> localVarResponse = GetAllEntityTypesWithHttpInfo(entityTypeIds);
              return localVarResponse.Data;
@@ -642,9 +632,9 @@ namespace InRiver.Rest.Lib.Api
         /// Returns available entity types 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>ApiResponse of List&lt;EntityTypeModel&gt;</returns>
-        public ApiResponse< List<EntityTypeModel> > GetAllEntityTypesWithHttpInfo (string entityTypeIds = null)
+        public ApiResponse<List<EntityTypeModel>> GetAllEntityTypesWithHttpInfo(string entityTypeIds = null)
         {
 
             var localVarPath = "/api/v1.0.0/model/entitytypes";
@@ -666,50 +656,49 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (entityTypeIds != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "entityTypeIds", entityTypeIds, Configuration)); // query parameter
+            if(entityTypeIds != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "entityTypeIds", entityTypeIds, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllEntityTypes", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<EntityTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EntityTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityTypeModel>)));
+               (List<EntityTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityTypeModel>)));
         }
 
         /// <summary>
         /// Returns available entity types 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>Task of List&lt;EntityTypeModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<EntityTypeModel>> GetAllEntityTypesAsync (string entityTypeIds = null)
+        public async System.Threading.Tasks.Task<List<EntityTypeModel>> GetAllEntityTypesAsync(string entityTypeIds = null)
         {
-             ApiResponse<List<EntityTypeModel>> localVarResponse = await GetAllEntityTypesAsyncWithHttpInfo(entityTypeIds);
-             return localVarResponse.Data;
-
+            var localVarResponse = await GetAllEntityTypesAsyncWithHttpInfo(entityTypeIds);
+            return localVarResponse.Data;
         }
 
         /// <summary>
         /// Returns available entity types 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;EntityTypeModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<EntityTypeModel>>> GetAllEntityTypesAsyncWithHttpInfo (string entityTypeIds = null)
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;EntityTypeModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<EntityTypeModel>>> GetAllEntityTypesAsyncWithHttpInfo(string entityTypeIds = null)
         {
 
             var localVarPath = "/api/v1.0.0/model/entitytypes";
@@ -731,28 +720,27 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (entityTypeIds != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "entityTypeIds", entityTypeIds, Configuration)); // query parameter
-
+            if(entityTypeIds != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "entityTypeIds", entityTypeIds, Configuration)); // query parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllEntityTypes", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<EntityTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EntityTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityTypeModel>)));
+               (List<EntityTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityTypeModel>)));
         }
 
         /// <summary>
@@ -760,9 +748,9 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;FieldSetModel&gt;</returns>
-        public List<FieldSetModel> GetAllFieldSets ()
+        public List<FieldSetModel> GetAllFieldSets()
         {
-             ApiResponse<List<FieldSetModel>> localVarResponse = GetAllFieldSetsWithHttpInfo();
+             var localVarResponse = GetAllFieldSetsWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -771,9 +759,8 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;FieldSetModel&gt;</returns>
-        public ApiResponse< List<FieldSetModel> > GetAllFieldSetsWithHttpInfo ()
+        public ApiResponse<List<FieldSetModel>> GetAllFieldSetsWithHttpInfo()
         {
-
             var localVarPath = "/api/v1.0.0/model/fieldsets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -793,27 +780,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllFieldSets", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<FieldSetModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldSetModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSetModel>)));
+               (List<FieldSetModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSetModel>)));
         }
 
         /// <summary>
@@ -821,19 +806,18 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;FieldSetModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<FieldSetModel>> GetAllFieldSetsAsync ()
+        public async System.Threading.Tasks.Task<List<FieldSetModel>> GetAllFieldSetsAsync()
         {
-             ApiResponse<List<FieldSetModel>> localVarResponse = await GetAllFieldSetsAsyncWithHttpInfo();
+             var localVarResponse = await GetAllFieldSetsAsyncWithHttpInfo();
              return localVarResponse.Data;
-
         }
 
         /// <summary>
         /// Returns available field sets 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;FieldSetModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<FieldSetModel>>> GetAllFieldSetsAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse(List&lt;FieldSetModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<FieldSetModel>>> GetAllFieldSetsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/model/fieldsets";
@@ -855,27 +839,27 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllFieldSets", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<FieldSetModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<FieldSetModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSetModel>)));
+               (List<FieldSetModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSetModel>)));
         }
 
         /// <summary>
@@ -883,7 +867,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;LanguageModel&gt;</returns>
-        public List<LanguageModel> GetAllLanguages ()
+        public List<LanguageModel> GetAllLanguages()
         {
              ApiResponse<List<LanguageModel>> localVarResponse = GetAllLanguagesWithHttpInfo();
              return localVarResponse.Data;
@@ -894,7 +878,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;LanguageModel&gt;</returns>
-        public ApiResponse< List<LanguageModel> > GetAllLanguagesWithHttpInfo ()
+        public ApiResponse<List<LanguageModel>> GetAllLanguagesWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/model/languages";
@@ -916,27 +900,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllLanguages", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<LanguageModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LanguageModel>) _serializer.Deserialize(localVarResponse, typeof(List<LanguageModel>)));
+               (List<LanguageModel>) _serializer.Deserialize(localVarResponse, typeof(List<LanguageModel>)));
         }
 
         /// <summary>
@@ -944,7 +926,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;LanguageModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<LanguageModel>> GetAllLanguagesAsync ()
+        public async System.Threading.Tasks.Task<List<LanguageModel>> GetAllLanguagesAsync()
         {
              ApiResponse<List<LanguageModel>> localVarResponse = await GetAllLanguagesAsyncWithHttpInfo();
              return localVarResponse.Data;
@@ -955,10 +937,9 @@ namespace InRiver.Rest.Lib.Api
         /// Returns available languages 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;LanguageModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<LanguageModel>>> GetAllLanguagesAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse(List&lt;LanguageModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<LanguageModel>>> GetAllLanguagesAsyncWithHttpInfo()
         {
-
             var localVarPath = "/api/v1.0.0/model/languages";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -978,27 +959,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllLanguages", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<LanguageModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LanguageModel>) _serializer.Deserialize(localVarResponse, typeof(List<LanguageModel>)));
+               (List<LanguageModel>) _serializer.Deserialize(localVarResponse, typeof(List<LanguageModel>)));
         }
 
         /// <summary>
@@ -1006,7 +985,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;EntitySummaryModel&gt;</returns>
-        public List<EntitySummaryModel> GetAllSpecificationTemplates ()
+        public List<EntitySummaryModel> GetAllSpecificationTemplates()
         {
              ApiResponse<List<EntitySummaryModel>> localVarResponse = GetAllSpecificationTemplatesWithHttpInfo();
              return localVarResponse.Data;
@@ -1017,7 +996,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;EntitySummaryModel&gt;</returns>
-        public ApiResponse< List<EntitySummaryModel> > GetAllSpecificationTemplatesWithHttpInfo ()
+        public ApiResponse<List<EntitySummaryModel>> GetAllSpecificationTemplatesWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates";
@@ -1039,27 +1018,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllSpecificationTemplates", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<EntitySummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EntitySummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntitySummaryModel>)));
+               (List<EntitySummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntitySummaryModel>)));
         }
 
         /// <summary>
@@ -1067,19 +1044,18 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;EntitySummaryModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<EntitySummaryModel>> GetAllSpecificationTemplatesAsync ()
+        public async System.Threading.Tasks.Task<List<EntitySummaryModel>> GetAllSpecificationTemplatesAsync()
         {
              ApiResponse<List<EntitySummaryModel>> localVarResponse = await GetAllSpecificationTemplatesAsyncWithHttpInfo();
              return localVarResponse.Data;
-
         }
 
         /// <summary>
         /// Returns all specification templates 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;EntitySummaryModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<EntitySummaryModel>>> GetAllSpecificationTemplatesAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse(List&lt;EntitySummaryModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<EntitySummaryModel>>> GetAllSpecificationTemplatesAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates";
@@ -1101,27 +1077,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetAllSpecificationTemplates", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<EntitySummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<EntitySummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntitySummaryModel>)));
+               (List<EntitySummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntitySummaryModel>)));
         }
 
         /// <summary>
@@ -1131,7 +1105,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
         /// <returns>CVLValueModel</returns>
-        public CVLValueModel GetCvlValue (string cvlId, string key)
+        public CVLValueModel GetCvlValue(string cvlId, string key)
         {
              ApiResponse<CVLValueModel> localVarResponse = GetCvlValueWithHttpInfo(cvlId, key);
              return localVarResponse.Data;
@@ -1144,13 +1118,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
         /// <returns>ApiResponse of CVLValueModel</returns>
-        public ApiResponse< CVLValueModel > GetCvlValueWithHttpInfo (string cvlId, string key)
+        public ApiResponse<CVLValueModel> GetCvlValueWithHttpInfo(string cvlId, string key)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelGetCvlValue");
             // verify the required parameter 'key' is set
-            if (key == null)
+            if(key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelGetCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
@@ -1172,29 +1146,29 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (key != null) localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
+               (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
         }
 
         /// <summary>
@@ -1204,11 +1178,10 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
         /// <returns>Task of CVLValueModel</returns>
-        public async System.Threading.Tasks.Task<CVLValueModel> GetCvlValueAsync (string cvlId, string key)
+        public async System.Threading.Tasks.Task<CVLValueModel> GetCvlValueAsync(string cvlId, string key)
         {
              ApiResponse<CVLValueModel> localVarResponse = await GetCvlValueAsyncWithHttpInfo(cvlId, key);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1217,14 +1190,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
-        /// <returns>Task of ApiResponse (CVLValueModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> GetCvlValueAsyncWithHttpInfo (string cvlId, string key)
+        /// <returns>Task of ApiResponse(CVLValueModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> GetCvlValueAsyncWithHttpInfo(string cvlId, string key)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelGetCvlValue");
             // verify the required parameter 'key' is set
-            if (key == null)
+            if(key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelGetCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
@@ -1246,29 +1219,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (key != null) localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
-
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
+               (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
         }
 
         /// <summary>
@@ -1277,7 +1249,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
         /// <returns>List&lt;SpecificationFieldTypeModel&gt;</returns>
-        public List<SpecificationFieldTypeModel> GetSpecificationTemplatesields (int? templateId)
+        public List<SpecificationFieldTypeModel> GetSpecificationTemplatesields(int? templateId)
         {
              ApiResponse<List<SpecificationFieldTypeModel>> localVarResponse = GetSpecificationTemplatesieldsWithHttpInfo(templateId);
              return localVarResponse.Data;
@@ -1289,10 +1261,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
         /// <returns>ApiResponse of List&lt;SpecificationFieldTypeModel&gt;</returns>
-        public ApiResponse< List<SpecificationFieldTypeModel> > GetSpecificationTemplatesieldsWithHttpInfo (int? templateId)
+        public ApiResponse<List<SpecificationFieldTypeModel>> GetSpecificationTemplatesieldsWithHttpInfo(int? templateId)
         {
             // verify the required parameter 'templateId' is set
-            if (templateId == null)
+            if(templateId == null)
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling ModelApi->ModelGetSpecificationTemplatesields");
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates/{templateId}/fieldtypes";
@@ -1314,28 +1286,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (templateId != null) localVarPathParams.Add("templateId", HttpHelpers.ParameterToString(templateId, Configuration)); // path parameter
+            if(templateId != null) localVarPathParams.Add("templateId", HttpHelpers.ParameterToString(templateId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetSpecificationTemplatesields", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<SpecificationFieldTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationFieldTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationFieldTypeModel>)));
+               (List<SpecificationFieldTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationFieldTypeModel>)));
         }
 
         /// <summary>
@@ -1344,7 +1316,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
         /// <returns>Task of List&lt;SpecificationFieldTypeModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SpecificationFieldTypeModel>> GetSpecificationTemplatesieldsAsync (int? templateId)
+        public async System.Threading.Tasks.Task<List<SpecificationFieldTypeModel>> GetSpecificationTemplatesieldsAsync(int? templateId)
         {
              ApiResponse<List<SpecificationFieldTypeModel>> localVarResponse = await GetSpecificationTemplatesieldsAsyncWithHttpInfo(templateId);
              return localVarResponse.Data;
@@ -1356,11 +1328,11 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
-        /// <returns>Task of ApiResponse (List&lt;SpecificationFieldTypeModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SpecificationFieldTypeModel>>> GetSpecificationTemplatesieldsAsyncWithHttpInfo (int? templateId)
+        /// <returns>Task of ApiResponse(List&lt;SpecificationFieldTypeModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<SpecificationFieldTypeModel>>> GetSpecificationTemplatesieldsAsyncWithHttpInfo(int? templateId)
         {
             // verify the required parameter 'templateId' is set
-            if (templateId == null)
+            if(templateId == null)
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling ModelApi->ModelGetSpecificationTemplatesields");
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates/{templateId}/fieldtypes";
@@ -1382,28 +1354,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (templateId != null) localVarPathParams.Add("templateId", HttpHelpers.ParameterToString(templateId, Configuration)); // path parameter
+            if(templateId != null) localVarPathParams.Add("templateId", HttpHelpers.ParameterToString(templateId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelGetSpecificationTemplatesields", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<SpecificationFieldTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SpecificationFieldTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationFieldTypeModel>)));
+               (List<SpecificationFieldTypeModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationFieldTypeModel>)));
         }
 
         /// <summary>
@@ -1414,7 +1386,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>CVLValueModel</returns>
-        public CVLValueModel UpdateCvlValue (string cvlId, string key, CVLValueModel cvlValueModel)
+        public CVLValueModel UpdateCvlValue(string cvlId, string key, CVLValueModel cvlValueModel)
         {
              ApiResponse<CVLValueModel> localVarResponse = UpdateCvlValueWithHttpInfo(cvlId, key, cvlValueModel);
              return localVarResponse.Data;
@@ -1428,16 +1400,16 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>ApiResponse of CVLValueModel</returns>
-        public ApiResponse< CVLValueModel > UpdateCvlValueWithHttpInfo (string cvlId, string key, CVLValueModel cvlValueModel)
+        public ApiResponse<CVLValueModel> UpdateCvlValueWithHttpInfo(string cvlId, string key, CVLValueModel cvlValueModel)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelUpdateCvlValue");
             // verify the required parameter 'key' is set
-            if (key == null)
+            if(key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelUpdateCvlValue");
             // verify the required parameter 'cvlValueModel' is set
-            if (cvlValueModel == null)
+            if(cvlValueModel == null)
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelUpdateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
@@ -1462,14 +1434,14 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (key != null) localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
-            if (cvlValueModel != null && cvlValueModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
+            if(cvlValueModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body(model) parameter
             }
             else
             {
@@ -1478,21 +1450,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelUpdateCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
+               (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
         }
 
         /// <summary>
@@ -1503,7 +1475,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>Task of CVLValueModel</returns>
-        public async System.Threading.Tasks.Task<CVLValueModel> UpdateCvlValueAsync (string cvlId, string key, CVLValueModel cvlValueModel)
+        public async System.Threading.Tasks.Task<CVLValueModel> UpdateCvlValueAsync(string cvlId, string key, CVLValueModel cvlValueModel)
         {
              ApiResponse<CVLValueModel> localVarResponse = await UpdateCvlValueAsyncWithHttpInfo(cvlId, key, cvlValueModel);
              return localVarResponse.Data;
@@ -1517,17 +1489,17 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
-        /// <returns>Task of ApiResponse (CVLValueModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> UpdateCvlValueAsyncWithHttpInfo (string cvlId, string key, CVLValueModel cvlValueModel)
+        /// <returns>Task of ApiResponse(CVLValueModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> UpdateCvlValueAsyncWithHttpInfo(string cvlId, string key, CVLValueModel cvlValueModel)
         {
             // verify the required parameter 'cvlId' is set
-            if (cvlId == null)
+            if(cvlId == null)
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelUpdateCvlValue");
             // verify the required parameter 'key' is set
-            if (key == null)
+            if(key == null)
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelUpdateCvlValue");
             // verify the required parameter 'cvlValueModel' is set
-            if (cvlValueModel == null)
+            if(cvlValueModel == null)
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelUpdateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
@@ -1552,37 +1524,36 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (cvlId != null) localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
-            if (key != null) localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
-            if (cvlValueModel != null && cvlValueModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("cvlId", HttpHelpers.ParameterToString(cvlId, Configuration)); // path parameter
+            localVarPathParams.Add("key", HttpHelpers.ParameterToString(key, Configuration)); // path parameter
+            if(cvlValueModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(cvlValueModel); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = cvlValueModel; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("ModelUpdateCvlValue", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
+               (CVLValueModel) _serializer.Deserialize(localVarResponse, typeof(CVLValueModel)));
         }
 
     }

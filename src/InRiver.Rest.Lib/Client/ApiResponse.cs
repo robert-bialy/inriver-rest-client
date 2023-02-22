@@ -8,7 +8,7 @@ namespace InRiver.Rest.Lib.Client
     public sealed class ApiResponse<T>
     {
         /// <summary>
-        /// Gets or sets the status code (HTTP status code)
+        /// Gets or sets the status code(HTTP status code)
         /// </summary>
         /// <value>The status code.</value>
         public int StatusCode { get; }
@@ -20,7 +20,7 @@ namespace InRiver.Rest.Lib.Client
         public IDictionary<string, string> Headers { get; }
 
         /// <summary>
-        /// Gets or sets the data (parsed HTTP body)
+        /// Gets or sets the data(parsed HTTP body)
         /// </summary>
         /// <value>The data.</value>
         public T Data { get; }
@@ -30,7 +30,7 @@ namespace InRiver.Rest.Lib.Client
         /// </summary>
         /// <param name="statusCode">HTTP status code.</param>
         /// <param name="headers">HTTP headers.</param>
-        /// <param name="data">Data (parsed HTTP body)</param>
+        /// <param name="data">Data(parsed HTTP body)</param>
         public ApiResponse(int statusCode, IDictionary<string, string> headers, T data)
         {
             StatusCode = statusCode;

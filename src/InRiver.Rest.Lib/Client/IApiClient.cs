@@ -6,12 +6,12 @@ namespace InRiver.Rest.Lib.Client
     internal interface IApiClient
     {
         /// <summary>
-        /// Makes the HTTP request (Sync).
+        /// Makes the HTTP request(Sync).
         /// </summary>
         /// <param name="path">URL path.</param>
         /// <param name="method">HTTP method.</param>
         /// <param name="queryParams">Query parameters.</param>
-        /// <param name="postBody">HTTP body (POST request).</param>
+        /// <param name="postBody">HTTP body(POST request).</param>
         /// <param name="headerParams">Header parameters.</param>
         /// <param name="formParams">Form parameters.</param>
         /// <param name="fileParams">File parameters.</param>
@@ -35,7 +35,7 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="path">URL path.</param>
         /// <param name="method">HTTP method.</param>
         /// <param name="queryParams">Query parameters.</param>
-        /// <param name="postBody">HTTP body (POST request).</param>
+        /// <param name="postBody">HTTP body(POST request).</param>
         /// <param name="headerParams">Header parameters.</param>
         /// <param name="formParams">Form parameters.</param>
         /// <param name="fileParams">File parameters.</param>

@@ -65,10 +65,10 @@ namespace InRiver.Rest.Lib.Model
 
         public bool Equals(CompletenessDetailsModel x, CompletenessDetailsModel y)
         {
-            if (ReferenceEquals(x, y)) return true;
-            if (ReferenceEquals(x, null)) return false;
-            if (ReferenceEquals(y, null)) return false;
-            if (x.GetType() != y.GetType()) return false;
+            if(ReferenceEquals(x, y)) return true;
+            if(ReferenceEquals(x, null)) return false;
+            if(ReferenceEquals(y, null)) return false;
+            if(x.GetType() != y.GetType()) return false;
             return x.Completeness == y.Completeness && Equals(x.Groups, y.Groups);
         }
 
@@ -76,7 +76,7 @@ namespace InRiver.Rest.Lib.Model
         {
             unchecked
             {
-                return (obj.Completeness * 397) ^ (obj.Groups != null ? obj.Groups.GetHashCode() : 0);
+                return(obj.Completeness * 397) ^(obj.Groups != null ? obj.Groups.GetHashCode() : 0);
             }
         }
     }

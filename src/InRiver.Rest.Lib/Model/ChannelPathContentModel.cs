@@ -76,16 +76,16 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ChannelPathContentModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     EntityList == input.EntityList ||
-                    (EntityList != null &&
+                   (EntityList != null &&
                     EntityList.Equals(input.EntityList))
                 ) && 
-                (
+               (
                     Content == input.Content ||
                     Content != null &&
                     Content.SequenceEqual(input.Content)
@@ -101,9 +101,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (EntityList != null)
+                if(EntityList != null)
                     hashCode = hashCode * 59 + EntityList.GetHashCode();
-                if (Content != null)
+                if(Content != null)
                     hashCode = hashCode * 59 + Content.GetHashCode();
                 return hashCode;
             }

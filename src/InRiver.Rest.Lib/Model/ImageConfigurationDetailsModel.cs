@@ -102,33 +102,33 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ImageConfigurationDetailsModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     Extension == input.Extension ||
-                    (Extension != null &&
+                   (Extension != null &&
                     Extension.Equals(input.Extension))
                 ) && 
-                (
+               (
                     OutputExtension == input.OutputExtension ||
-                    (OutputExtension != null &&
+                   (OutputExtension != null &&
                     OutputExtension.Equals(input.OutputExtension))
                 ) && 
-                (
+               (
                     Arguments == input.Arguments ||
-                    (Arguments != null &&
+                   (Arguments != null &&
                     Arguments.Equals(input.Arguments))
                 );
         }
@@ -142,15 +142,15 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (Extension != null)
+                if(Extension != null)
                     hashCode = hashCode * 59 + Extension.GetHashCode();
-                if (OutputExtension != null)
+                if(OutputExtension != null)
                     hashCode = hashCode * 59 + OutputExtension.GetHashCode();
-                if (Arguments != null)
+                if(Arguments != null)
                     hashCode = hashCode * 59 + Arguments.GetHashCode();
                 return hashCode;
             }

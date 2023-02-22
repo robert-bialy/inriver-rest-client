@@ -94,26 +94,26 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(WorkareaTreeFolderModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     IsQuery == input.IsQuery ||
-                    (IsQuery != null &&
+                   (IsQuery != null &&
                     IsQuery.Equals(input.IsQuery))
                 ) && 
-                (
+               (
                     Folders == input.Folders ||
                     Folders != null &&
                     Folders.SequenceEqual(input.Folders)
@@ -129,13 +129,13 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (IsQuery != null)
+                if(IsQuery != null)
                     hashCode = hashCode * 59 + IsQuery.GetHashCode();
-                if (Folders != null)
+                if(Folders != null)
                     hashCode = hashCode * 59 + Folders.GetHashCode();
                 return hashCode;
             }

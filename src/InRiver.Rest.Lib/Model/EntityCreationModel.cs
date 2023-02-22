@@ -22,14 +22,14 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCreationModel" /> class.
         /// </summary>
-        /// <param name="entityTypeId">entityTypeId (required).</param>
+        /// <param name="entityTypeId">entityTypeId(required).</param>
         /// <param name="fieldSetId">fieldSetId.</param>
         /// <param name="fieldValues">fieldValues.</param>
         /// <param name="segmentId">segmentId.</param>
         public EntityCreationModel(string entityTypeId = default, string fieldSetId = default, List<FieldValueModel> fieldValues = default(List<FieldValueModel>), int? segmentId = default(int?))
         {
-            // to ensure "entityTypeId" is required (not null)
-            if (entityTypeId == null)
+            // to ensure "entityTypeId" is required(not null)
+            if(entityTypeId == null)
             {
                 throw new InvalidDataException("entityTypeId is a required property for EntityCreationModel and cannot be null");
             }
@@ -108,28 +108,28 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityCreationModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     EntityTypeId == input.EntityTypeId ||
-                    (EntityTypeId != null &&
+                   (EntityTypeId != null &&
                     EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
-                (
+               (
                     FieldSetId == input.FieldSetId ||
-                    (FieldSetId != null &&
+                   (FieldSetId != null &&
                     FieldSetId.Equals(input.FieldSetId))
                 ) && 
-                (
+               (
                     FieldValues == input.FieldValues ||
                     FieldValues != null &&
                     FieldValues.SequenceEqual(input.FieldValues)
                 ) && 
-                (
+               (
                     SegmentId == input.SegmentId ||
-                    (SegmentId != null &&
+                   (SegmentId != null &&
                     SegmentId.Equals(input.SegmentId))
                 );
         }
@@ -143,13 +143,13 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (EntityTypeId != null)
+                if(EntityTypeId != null)
                     hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
-                if (FieldSetId != null)
+                if(FieldSetId != null)
                     hashCode = hashCode * 59 + FieldSetId.GetHashCode();
-                if (FieldValues != null)
+                if(FieldValues != null)
                     hashCode = hashCode * 59 + FieldValues.GetHashCode();
-                if (SegmentId != null)
+                if(SegmentId != null)
                     hashCode = hashCode * 59 + SegmentId.GetHashCode();
                 return hashCode;
             }

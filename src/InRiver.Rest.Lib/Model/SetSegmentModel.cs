@@ -21,11 +21,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SetSegmentModel" /> class.
         /// </summary>
-        /// <param name="segmentId">segmentId (required).</param>
+        /// <param name="segmentId">segmentId(required).</param>
         public SetSegmentModel(int? segmentId = default(int?))
         {
-            // to ensure "segmentId" is required (not null)
-            if (segmentId == null)
+            // to ensure "segmentId" is required(not null)
+            if(segmentId == null)
             {
                 throw new InvalidDataException("segmentId is a required property for SetSegmentModel and cannot be null");
             }
@@ -80,13 +80,13 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SetSegmentModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     SegmentId == input.SegmentId ||
-                    (SegmentId != null &&
+                   (SegmentId != null &&
                     SegmentId.Equals(input.SegmentId))
                 );
         }
@@ -100,7 +100,7 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (SegmentId != null)
+                if(SegmentId != null)
                     hashCode = hashCode * 59 + SegmentId.GetHashCode();
                 return hashCode;
             }

@@ -14,7 +14,7 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class WorkareaApi : IWorkareaApi
     {
-        private ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory =(name, response) => null;
         private readonly ISerializer _serializer;
         private readonly IApiClient _apiClient;
 
@@ -49,13 +49,13 @@ namespace InRiver.Rest.Lib.Api
         {
             get
             {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
                 {
                     throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
         
         /// <summary>
@@ -64,7 +64,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
         /// <returns>WorkareaFolderModel</returns>
-        public WorkareaFolderModel CreateWorkarea (WorkareaCreationModel creationModel)
+        public WorkareaFolderModel CreateWorkarea(WorkareaCreationModel creationModel)
         {
              ApiResponse<WorkareaFolderModel> localVarResponse = CreateWorkareaWithHttpInfo(creationModel);
              return localVarResponse.Data;
@@ -76,10 +76,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
         /// <returns>ApiResponse of WorkareaFolderModel</returns>
-        public ApiResponse< WorkareaFolderModel > CreateWorkareaWithHttpInfo (WorkareaCreationModel creationModel)
+        public ApiResponse<WorkareaFolderModel> CreateWorkareaWithHttpInfo(WorkareaCreationModel creationModel)
         {
             // verify the required parameter 'creationModel' is set
-            if (creationModel == null)
+            if(creationModel == null)
                 throw new ApiException(400, "Missing required parameter 'creationModel' when calling WorkareaApi->WorkareaCreateWorkarea");
 
             var localVarPath = "/api/v1.0.0/workareafolder:createnew";
@@ -104,12 +104,12 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (creationModel != null && creationModel.GetType() != typeof(byte[]))
+            if(creationModel != null && creationModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(creationModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(creationModel); // http body(model) parameter
             }
             else
             {
@@ -118,21 +118,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaCreateWorkarea", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+               (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -141,7 +141,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
         /// <returns>Task of WorkareaFolderModel</returns>
-        public async System.Threading.Tasks.Task<WorkareaFolderModel> CreateWorkareaAsync (WorkareaCreationModel creationModel)
+        public async System.Threading.Tasks.Task<WorkareaFolderModel> CreateWorkareaAsync(WorkareaCreationModel creationModel)
         {
              ApiResponse<WorkareaFolderModel> localVarResponse = await CreateWorkareaAsyncWithHttpInfo(creationModel);
              return localVarResponse.Data;
@@ -153,11 +153,11 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="creationModel"></param>
-        /// <returns>Task of ApiResponse (WorkareaFolderModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> CreateWorkareaAsyncWithHttpInfo (WorkareaCreationModel creationModel)
+        /// <returns>Task of ApiResponse(WorkareaFolderModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> CreateWorkareaAsyncWithHttpInfo(WorkareaCreationModel creationModel)
         {
             // verify the required parameter 'creationModel' is set
-            if (creationModel == null)
+            if(creationModel == null)
                 throw new ApiException(400, "Missing required parameter 'creationModel' when calling WorkareaApi->WorkareaCreateWorkarea");
 
             var localVarPath = "/api/v1.0.0/workareafolder:createnew";
@@ -182,12 +182,12 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (creationModel != null && creationModel.GetType() != typeof(byte[]))
+            if(creationModel != null && creationModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(creationModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(creationModel); // http body(model) parameter
             }
             else
             {
@@ -196,21 +196,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaCreateWorkarea", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+               (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns></returns>
-        public void DeleteWorkarea (string workareaFolderId)
+        public void DeleteWorkarea(string workareaFolderId)
         {
              DeleteWorkareaWithHttpInfo(workareaFolderId);
         }
@@ -230,10 +230,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>ApiResponse of object(void)</returns>
-        public ApiResponse<object> DeleteWorkareaWithHttpInfo (string workareaFolderId)
+        public ApiResponse<object> DeleteWorkareaWithHttpInfo(string workareaFolderId)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaDeleteWorkarea");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}";
@@ -253,23 +253,23 @@ namespace InRiver.Rest.Lib.Api
             String[] localVarHttpHeaderAccepts = new String[] {
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaDeleteWorkarea", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<object>(localVarStatusCode,
@@ -283,7 +283,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteWorkareaAsync (string workareaFolderId)
+        public async System.Threading.Tasks.Task DeleteWorkareaAsync(string workareaFolderId)
         {
              await DeleteWorkareaAsyncWithHttpInfo(workareaFolderId);
 
@@ -295,10 +295,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<object>> DeleteWorkareaAsyncWithHttpInfo (string workareaFolderId)
+        public async System.Threading.Tasks.Task<ApiResponse<object>> DeleteWorkareaAsyncWithHttpInfo(string workareaFolderId)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaDeleteWorkarea");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}";
@@ -318,23 +318,23 @@ namespace InRiver.Rest.Lib.Api
             String[] localVarHttpHeaderAccepts = new String[] {
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaDeleteWorkarea", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<object>(localVarStatusCode,
@@ -348,9 +348,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>List&lt;int?&gt;</returns>
-        public List<int?> GetWorkareaFolderEntityIds (string workareaFolderId)
+        public List<int?> GetWorkareaFolderEntityIds(string workareaFolderId)
         {
-             ApiResponse<List<int?>> localVarResponse = GetWorkareaFolderEntityIdsWithHttpInfo(workareaFolderId);
+             var localVarResponse = GetWorkareaFolderEntityIdsWithHttpInfo(workareaFolderId);
              return localVarResponse.Data;
         }
 
@@ -360,10 +360,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>ApiResponse of List&lt;int?&gt;</returns>
-        public ApiResponse< List<int?> > GetWorkareaFolderEntityIdsWithHttpInfo (string workareaFolderId)
+        public ApiResponse<List<int?>> GetWorkareaFolderEntityIdsWithHttpInfo(string workareaFolderId)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaGetWorkareaFolderEntityIds");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/entityIds";
@@ -385,28 +385,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaGetWorkareaFolderEntityIds", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
+               (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -415,7 +415,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of List&lt;int?&gt;</returns>
-        public async System.Threading.Tasks.Task<List<int?>> GetWorkareaFolderEntityIdsAsync (string workareaFolderId)
+        public async System.Threading.Tasks.Task<List<int?>> GetWorkareaFolderEntityIdsAsync(string workareaFolderId)
         {
              ApiResponse<List<int?>> localVarResponse = await GetWorkareaFolderEntityIdsAsyncWithHttpInfo(workareaFolderId);
              return localVarResponse.Data;
@@ -427,11 +427,11 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
-        /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<int?>>> GetWorkareaFolderEntityIdsAsyncWithHttpInfo (string workareaFolderId)
+        /// <returns>Task of ApiResponse(List&lt;int?&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<int?>>> GetWorkareaFolderEntityIdsAsyncWithHttpInfo(string workareaFolderId)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaGetWorkareaFolderEntityIds");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/entityIds";
@@ -453,28 +453,27 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
-
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaGetWorkareaFolderEntityIds", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
+               (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -484,9 +483,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
         /// <returns>List&lt;int?&gt;</returns>
-        public List<int?> GetWorkareaFolderEntityIds (string workareaFolderId, List<int?> entityIds)
+        public List<int?> GetWorkareaFolderEntityIds(string workareaFolderId, List<int?> entityIds)
         {
-             ApiResponse<List<int?>> localVarResponse = SetWorkareaFolderEntityIdsWithHttpInfo(workareaFolderId, entityIds);
+             var localVarResponse = SetWorkareaFolderEntityIdsWithHttpInfo(workareaFolderId, entityIds);
              return localVarResponse.Data;
         }
 
@@ -497,13 +496,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
         /// <returns>ApiResponse of List&lt;int?&gt;</returns>
-        public ApiResponse< List<int?> > SetWorkareaFolderEntityIdsWithHttpInfo (string workareaFolderId, List<int?> entityIds)
+        public ApiResponse<List<int?>> SetWorkareaFolderEntityIdsWithHttpInfo(string workareaFolderId, List<int?> entityIds)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaSetWorkareaFolderEntityIds");
             // verify the required parameter 'entityIds' is set
-            if (entityIds == null)
+            if(entityIds == null)
                 throw new ApiException(400, "Missing required parameter 'entityIds' when calling WorkareaApi->WorkareaSetWorkareaFolderEntityIds");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/entityIds";
@@ -528,13 +527,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
-            if (entityIds != null && entityIds.GetType() != typeof(byte[]))
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(entityIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(entityIds); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityIds); // http body(model) parameter
             }
             else
             {
@@ -543,21 +542,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaSetWorkareaFolderEntityIds", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
+               (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -567,7 +566,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
         /// <returns>Task of List&lt;int?&gt;</returns>
-        public async System.Threading.Tasks.Task<List<int?>> SetWorkareaFolderEntityIdsAsync (string workareaFolderId, List<int?> entityIds)
+        public async System.Threading.Tasks.Task<List<int?>> SetWorkareaFolderEntityIdsAsync(string workareaFolderId, List<int?> entityIds)
         {
              ApiResponse<List<int?>> localVarResponse = await SetWorkareaFolderEntityIdsAsyncWithHttpInfo(workareaFolderId, entityIds);
              return localVarResponse.Data;
@@ -580,14 +579,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <param name="entityIds"></param>
-        /// <returns>Task of ApiResponse (List&lt;int?&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<int?>>> SetWorkareaFolderEntityIdsAsyncWithHttpInfo (string workareaFolderId, List<int?> entityIds)
+        /// <returns>Task of ApiResponse(List&lt;int?&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<int?>>> SetWorkareaFolderEntityIdsAsyncWithHttpInfo(string workareaFolderId, List<int?> entityIds)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaSetWorkareaFolderEntityIds");
             // verify the required parameter 'entityIds' is set
-            if (entityIds == null)
+            if(entityIds == null)
                 throw new ApiException(400, "Missing required parameter 'entityIds' when calling WorkareaApi->WorkareaSetWorkareaFolderEntityIds");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/entityIds";
@@ -612,13 +611,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
-            if (entityIds != null && entityIds.GetType() != typeof(byte[]))
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(entityIds.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(entityIds); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(entityIds); // http body(model) parameter
             }
             else
             {
@@ -627,21 +626,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaSetWorkareaFolderEntityIds", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<int?>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
+               (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
         /// <summary>
@@ -651,9 +650,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
         /// <returns>WorkareaFolderModel</returns>
-        public WorkareaFolderModel UpdateWorkarea (string workareaFolderId, WorkareaFolderModel workareaFolderModel)
+        public WorkareaFolderModel UpdateWorkarea(string workareaFolderId, WorkareaFolderModel workareaFolderModel)
         {
-             ApiResponse<WorkareaFolderModel> localVarResponse = UpdateWorkareaWithHttpInfo(workareaFolderId, workareaFolderModel);
+             var localVarResponse = UpdateWorkareaWithHttpInfo(workareaFolderId, workareaFolderModel);
              return localVarResponse.Data;
         }
 
@@ -664,13 +663,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
         /// <returns>ApiResponse of WorkareaFolderModel</returns>
-        public ApiResponse< WorkareaFolderModel > UpdateWorkareaWithHttpInfo (string workareaFolderId, WorkareaFolderModel workareaFolderModel)
+        public ApiResponse<WorkareaFolderModel> UpdateWorkareaWithHttpInfo(string workareaFolderId, WorkareaFolderModel workareaFolderModel)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaUpdateWorkarea");
             // verify the required parameter 'workareaFolderModel' is set
-            if (workareaFolderModel == null)
+            if(workareaFolderModel == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderModel' when calling WorkareaApi->WorkareaUpdateWorkarea");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}";
@@ -695,13 +694,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
-            if (workareaFolderModel != null && workareaFolderModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(workareaFolderModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(workareaFolderModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(workareaFolderModel); // http body(model) parameter
             }
             else
             {
@@ -710,21 +709,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaUpdateWorkarea", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+               (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -734,9 +733,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
         /// <returns>Task of WorkareaFolderModel</returns>
-        public async System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaAsync (string workareaFolderId, WorkareaFolderModel workareaFolderModel)
+        public async System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaAsync(string workareaFolderId, WorkareaFolderModel workareaFolderModel)
         {
-             ApiResponse<WorkareaFolderModel> localVarResponse = await UpdateWorkareaAsyncWithHttpInfo(workareaFolderId, workareaFolderModel);
+             var localVarResponse = await UpdateWorkareaAsyncWithHttpInfo(workareaFolderId, workareaFolderModel);
              return localVarResponse.Data;
 
         }
@@ -747,14 +746,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <param name="workareaFolderModel"></param>
-        /// <returns>Task of ApiResponse (WorkareaFolderModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaAsyncWithHttpInfo (string workareaFolderId, WorkareaFolderModel workareaFolderModel)
+        /// <returns>Task of ApiResponse(WorkareaFolderModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaAsyncWithHttpInfo(string workareaFolderId, WorkareaFolderModel workareaFolderModel)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaUpdateWorkarea");
             // verify the required parameter 'workareaFolderModel' is set
-            if (workareaFolderModel == null)
+            if(workareaFolderModel == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderModel' when calling WorkareaApi->WorkareaUpdateWorkarea");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}";
@@ -779,36 +778,35 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
-            if (workareaFolderModel != null && workareaFolderModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(workareaFolderModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(workareaFolderModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(workareaFolderModel); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = workareaFolderModel; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaUpdateWorkarea", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+               (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -818,9 +816,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
         /// <returns>WorkareaFolderModel</returns>
-        public WorkareaFolderModel UpdateWorkareaQuery (string workareaFolderId, QueryModel queryModel)
+        public WorkareaFolderModel UpdateWorkareaQuery(string workareaFolderId, QueryModel queryModel)
         {
-             ApiResponse<WorkareaFolderModel> localVarResponse = UpdateWorkareaQueryWithHttpInfo(workareaFolderId, queryModel);
+             var localVarResponse = UpdateWorkareaQueryWithHttpInfo(workareaFolderId, queryModel);
              return localVarResponse.Data;
         }
 
@@ -831,13 +829,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
         /// <returns>ApiResponse of WorkareaFolderModel</returns>
-        public ApiResponse< WorkareaFolderModel > UpdateWorkareaQueryWithHttpInfo (string workareaFolderId, QueryModel queryModel)
+        public ApiResponse<WorkareaFolderModel> UpdateWorkareaQueryWithHttpInfo(string workareaFolderId, QueryModel queryModel)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaUpdateWorkareaQuery");
             // verify the required parameter 'queryModel' is set
-            if (queryModel == null)
+            if(queryModel == null)
                 throw new ApiException(400, "Missing required parameter 'queryModel' when calling WorkareaApi->WorkareaUpdateWorkareaQuery");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/query";
@@ -862,13 +860,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
-            if (queryModel != null && queryModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(queryModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(queryModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(queryModel); // http body(model) parameter
             }
             else
             {
@@ -877,21 +875,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaUpdateWorkareaQuery", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+               (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
@@ -901,7 +899,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
         /// <returns>Task of WorkareaFolderModel</returns>
-        public async System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaQueryAsync (string workareaFolderId, QueryModel queryModel)
+        public async System.Threading.Tasks.Task<WorkareaFolderModel> UpdateWorkareaQueryAsync(string workareaFolderId, QueryModel queryModel)
         {
              ApiResponse<WorkareaFolderModel> localVarResponse = await UpdateWorkareaQueryAsyncWithHttpInfo(workareaFolderId, queryModel);
              return localVarResponse.Data;
@@ -914,14 +912,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <param name="queryModel"></param>
-        /// <returns>Task of ApiResponse (WorkareaFolderModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaQueryAsyncWithHttpInfo (string workareaFolderId, QueryModel queryModel)
+        /// <returns>Task of ApiResponse(WorkareaFolderModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<WorkareaFolderModel>> UpdateWorkareaQueryAsyncWithHttpInfo(string workareaFolderId, QueryModel queryModel)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaUpdateWorkareaQuery");
             // verify the required parameter 'queryModel' is set
-            if (queryModel == null)
+            if(queryModel == null)
                 throw new ApiException(400, "Missing required parameter 'queryModel' when calling WorkareaApi->WorkareaUpdateWorkareaQuery");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/query";
@@ -946,13 +944,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
-            if (queryModel != null && queryModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            if(queryModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(queryModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(queryModel); // http body(model) parameter
             }
             else
             {
@@ -961,34 +959,34 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaUpdateWorkareaQuery", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<WorkareaFolderModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
+               (WorkareaFolderModel) _serializer.Deserialize(localVarResponse, typeof(WorkareaFolderModel)));
         }
 
         /// <summary>
         /// Get workarea folder tree The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>List&lt;WorkareaTreeFolderModel&gt;</returns>
-        public List<WorkareaTreeFolderModel> WorkareaFolderTree (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        public List<WorkareaTreeFolderModel> WorkareaFolderTree(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
-             ApiResponse<List<WorkareaTreeFolderModel>> localVarResponse = WorkareaFolderTreeWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
+             var localVarResponse = WorkareaFolderTreeWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
              return localVarResponse.Data;
         }
 
@@ -996,11 +994,11 @@ namespace InRiver.Rest.Lib.Api
         /// Get workarea folder tree The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>ApiResponse of List&lt;WorkareaTreeFolderModel&gt;</returns>
-        public ApiResponse< List<WorkareaTreeFolderModel> > WorkareaFolderTreeWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        public ApiResponse<List<WorkareaTreeFolderModel>> WorkareaFolderTreeWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/workareafoldertree";
@@ -1022,43 +1020,43 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
-            if (includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
+            if(includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaWorkareaFolderTree", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<WorkareaTreeFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaTreeFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
+               (List<WorkareaTreeFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
         }
 
         /// <summary>
         /// Get workarea folder tree The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>Task of List&lt;WorkareaTreeFolderModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<WorkareaTreeFolderModel>> WorkareaFolderTreeAsync (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        public async System.Threading.Tasks.Task<List<WorkareaTreeFolderModel>> WorkareaFolderTreeAsync(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
-             ApiResponse<List<WorkareaTreeFolderModel>> localVarResponse = await WorkareaFolderTreeAsyncWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
+             var localVarResponse = await WorkareaFolderTreeAsyncWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
              return localVarResponse.Data;
 
         }
@@ -1067,11 +1065,11 @@ namespace InRiver.Rest.Lib.Api
         /// Get workarea folder tree The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;WorkareaTreeFolderModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<WorkareaTreeFolderModel>>> WorkareaFolderTreeAsyncWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;WorkareaTreeFolderModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<WorkareaTreeFolderModel>>> WorkareaFolderTreeAsyncWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/workareafoldertree";
@@ -1093,43 +1091,43 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
-            if (includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
+            if(includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaWorkareaFolderTree", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<WorkareaTreeFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaTreeFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
+               (List<WorkareaTreeFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaTreeFolderModel>)));
         }
 
         /// <summary>
         /// Get workarea folders The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>List&lt;WorkareaFolderModel&gt;</returns>
-        public List<WorkareaFolderModel> WorkareaFolders (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        public List<WorkareaFolderModel> WorkareaFolders(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
-             ApiResponse<List<WorkareaFolderModel>> localVarResponse = WorkareaFoldersWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
+             var localVarResponse = WorkareaFoldersWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
              return localVarResponse.Data;
         }
 
@@ -1137,11 +1135,11 @@ namespace InRiver.Rest.Lib.Api
         /// Get workarea folders The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>ApiResponse of List&lt;WorkareaFolderModel&gt;</returns>
-        public ApiResponse< List<WorkareaFolderModel> > WorkareaFoldersWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        public ApiResponse<List<WorkareaFolderModel>> WorkareaFoldersWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/workareafolders";
@@ -1163,43 +1161,43 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
-            if (includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
+            if(includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaWorkareaFolders", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<WorkareaFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
+               (List<WorkareaFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
         }
 
         /// <summary>
         /// Get workarea folders The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
         /// <returns>Task of List&lt;WorkareaFolderModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<WorkareaFolderModel>> WorkareaFoldersAsync (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        public async System.Threading.Tasks.Task<List<WorkareaFolderModel>> WorkareaFoldersAsync(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
-             ApiResponse<List<WorkareaFolderModel>> localVarResponse = await WorkareaFoldersAsyncWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
+             var localVarResponse = await WorkareaFoldersAsyncWithHttpInfo(includeCreatedByMe, includeShared, forUsername);
              return localVarResponse.Data;
 
         }
@@ -1208,11 +1206,11 @@ namespace InRiver.Rest.Lib.Api
         /// Get workarea folders The parameter includeCreatedByMe will be ignored if forUsername is set.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="includeCreatedByMe">optional (optional)</param>
-        /// <param name="includeShared">optional (optional)</param>
-        /// <param name="forUsername">optional (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;WorkareaFolderModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<WorkareaFolderModel>>> WorkareaFoldersAsyncWithHttpInfo (bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
+        /// <param name="includeCreatedByMe">optional(optional)</param>
+        /// <param name="includeShared">optional(optional)</param>
+        /// <param name="forUsername">optional(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;WorkareaFolderModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<WorkareaFolderModel>>> WorkareaFoldersAsyncWithHttpInfo(bool? includeCreatedByMe = null, bool? includeShared = null, string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/workareafolders";
@@ -1234,30 +1232,30 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
-            if (includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(includeCreatedByMe != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeCreatedByMe", includeCreatedByMe, Configuration)); // query parameter
+            if(includeShared != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "includeShared", includeShared, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaWorkareaFolders", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<WorkareaFolderModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<WorkareaFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
+               (List<WorkareaFolderModel>) _serializer.Deserialize(localVarResponse, typeof(List<WorkareaFolderModel>)));
         }
 
         /// <summary>
@@ -1266,9 +1264,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>EntityListModel</returns>
-        public EntityListModel WorkareaQueryResult (string workareaFolderId)
+        public EntityListModel WorkareaQueryResult(string workareaFolderId)
         {
-             ApiResponse<EntityListModel> localVarResponse = WorkareaQueryResultWithHttpInfo(workareaFolderId);
+             var localVarResponse = WorkareaQueryResultWithHttpInfo(workareaFolderId);
              return localVarResponse.Data;
         }
 
@@ -1278,10 +1276,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>ApiResponse of EntityListModel</returns>
-        public ApiResponse< EntityListModel > WorkareaQueryResultWithHttpInfo (string workareaFolderId)
+        public ApiResponse<EntityListModel> WorkareaQueryResultWithHttpInfo(string workareaFolderId)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaWorkareaQueryResult");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/entitylist";
@@ -1303,28 +1301,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaWorkareaQueryResult", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
+               (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
         /// <summary>
@@ -1333,9 +1331,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of EntityListModel</returns>
-        public async System.Threading.Tasks.Task<EntityListModel> WorkareaQueryResultAsync (string workareaFolderId)
+        public async System.Threading.Tasks.Task<EntityListModel> WorkareaQueryResultAsync(string workareaFolderId)
         {
-             ApiResponse<EntityListModel> localVarResponse = await WorkareaQueryResultAsyncWithHttpInfo(workareaFolderId);
+             var localVarResponse = await WorkareaQueryResultAsyncWithHttpInfo(workareaFolderId);
              return localVarResponse.Data;
 
         }
@@ -1345,11 +1343,11 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
-        /// <returns>Task of ApiResponse (EntityListModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EntityListModel>> WorkareaQueryResultAsyncWithHttpInfo (string workareaFolderId)
+        /// <returns>Task of ApiResponse(EntityListModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<EntityListModel>> WorkareaQueryResultAsyncWithHttpInfo(string workareaFolderId)
         {
             // verify the required parameter 'workareaFolderId' is set
-            if (workareaFolderId == null)
+            if(workareaFolderId == null)
                 throw new ApiException(400, "Missing required parameter 'workareaFolderId' when calling WorkareaApi->WorkareaWorkareaQueryResult");
 
             var localVarPath = "/api/v1.0.0/workareafolder/{workareaFolderId}/entitylist";
@@ -1371,28 +1369,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (workareaFolderId != null) localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
+            localVarPathParams.Add("workareaFolderId", HttpHelpers.ParameterToString(workareaFolderId, Configuration)); // path parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("WorkareaWorkareaQueryResult", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
+               (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
     }

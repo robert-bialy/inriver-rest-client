@@ -21,12 +21,12 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserRoleModel" /> class.
         /// </summary>
-        /// <param name="username">username (required).</param>
-        /// <param name="roleName">roleName (required).</param>
+        /// <param name="username">username(required).</param>
+        /// <param name="roleName">roleName(required).</param>
         public UserRoleModel(string username = default, string roleName = default)
         {
-            // to ensure "username" is required (not null)
-            if (username == null)
+            // to ensure "username" is required(not null)
+            if(username == null)
             {
                 throw new InvalidDataException("username is a required property for UserRoleModel and cannot be null");
             }
@@ -34,8 +34,8 @@ namespace InRiver.Rest.Lib.Model
             {
                 Username = username;
             }
-            // to ensure "roleName" is required (not null)
-            if (roleName == null)
+            // to ensure "roleName" is required(not null)
+            if(roleName == null)
             {
                 throw new InvalidDataException("roleName is a required property for UserRoleModel and cannot be null");
             }
@@ -97,18 +97,18 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(UserRoleModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Username == input.Username ||
-                    (Username != null &&
+                   (Username != null &&
                     Username.Equals(input.Username))
                 ) && 
-                (
+               (
                     RoleName == input.RoleName ||
-                    (RoleName != null &&
+                   (RoleName != null &&
                     RoleName.Equals(input.RoleName))
                 );
         }
@@ -122,9 +122,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Username != null)
+                if(Username != null)
                     hashCode = hashCode * 59 + Username.GetHashCode();
-                if (RoleName != null)
+                if(RoleName != null)
                     hashCode = hashCode * 59 + RoleName.GetHashCode();
                 return hashCode;
             }

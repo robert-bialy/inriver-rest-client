@@ -22,8 +22,8 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="WorkareaCreationModel" /> class.
         /// </summary>
-        /// <param name="name">name (required).</param>
-        /// <param name="isShared">isShared (required).</param>
+        /// <param name="name">name(required).</param>
+        /// <param name="isShared">isShared(required).</param>
         /// <param name="query">query.</param>
         /// <param name="entityIds">entityIds.</param>
         /// <param name="index">index.</param>
@@ -31,8 +31,8 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="username">username.</param>
         public WorkareaCreationModel(string name = default, bool? isShared = default(bool?), QueryModel query = default(QueryModel), List<int?> entityIds = default(List<int?>), int? index = default(int?), string parentId = default, string username = default)
         {
-            // to ensure "name" is required (not null)
-            if (name == null)
+            // to ensure "name" is required(not null)
+            if(name == null)
             {
                 throw new InvalidDataException("name is a required property for WorkareaCreationModel and cannot be null");
             }
@@ -40,8 +40,8 @@ namespace InRiver.Rest.Lib.Model
             {
                 Name = name;
             }
-            // to ensure "isShared" is required (not null)
-            if (isShared == null)
+            // to ensure "isShared" is required(not null)
+            if(isShared == null)
             {
                 throw new InvalidDataException("isShared is a required property for WorkareaCreationModel and cannot be null");
             }
@@ -143,43 +143,43 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(WorkareaCreationModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Name == input.Name ||
-                    (Name != null &&
+                   (Name != null &&
                     Name.Equals(input.Name))
                 ) && 
-                (
+               (
                     IsShared == input.IsShared ||
-                    (IsShared != null &&
+                   (IsShared != null &&
                     IsShared.Equals(input.IsShared))
                 ) && 
-                (
+               (
                     Query == input.Query ||
-                    (Query != null &&
+                   (Query != null &&
                     Query.Equals(input.Query))
                 ) && 
-                (
+               (
                     EntityIds == input.EntityIds ||
                     EntityIds != null &&
                     EntityIds.SequenceEqual(input.EntityIds)
                 ) && 
-                (
+               (
                     Index == input.Index ||
-                    (Index != null &&
+                   (Index != null &&
                     Index.Equals(input.Index))
                 ) && 
-                (
+               (
                     ParentId == input.ParentId ||
-                    (ParentId != null &&
+                   (ParentId != null &&
                     ParentId.Equals(input.ParentId))
                 ) && 
-                (
+               (
                     Username == input.Username ||
-                    (Username != null &&
+                   (Username != null &&
                     Username.Equals(input.Username))
                 );
         }
@@ -193,19 +193,19 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Name != null)
+                if(Name != null)
                     hashCode = hashCode * 59 + Name.GetHashCode();
-                if (IsShared != null)
+                if(IsShared != null)
                     hashCode = hashCode * 59 + IsShared.GetHashCode();
-                if (Query != null)
+                if(Query != null)
                     hashCode = hashCode * 59 + Query.GetHashCode();
-                if (EntityIds != null)
+                if(EntityIds != null)
                     hashCode = hashCode * 59 + EntityIds.GetHashCode();
-                if (Index != null)
+                if(Index != null)
                     hashCode = hashCode * 59 + Index.GetHashCode();
-                if (ParentId != null)
+                if(ParentId != null)
                     hashCode = hashCode * 59 + ParentId.GetHashCode();
-                if (Username != null)
+                if(Username != null)
                     hashCode = hashCode * 59 + Username.GetHashCode();
                 return hashCode;
             }

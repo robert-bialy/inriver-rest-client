@@ -84,23 +84,23 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SystemCriterionModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Type == input.Type ||
-                    (Type != null &&
+                   (Type != null &&
                     Type.Equals(input.Type))
                 ) && 
-                (
+               (
                     Value == input.Value ||
-                    (Value != null &&
+                   (Value != null &&
                     Value.Equals(input.Value))
                 ) && 
-                (
+               (
                     Operator == input.Operator ||
-                    (Operator != null &&
+                   (Operator != null &&
                     Operator.Equals(input.Operator))
                 );
         }
@@ -114,11 +114,11 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Type != null)
+                if(Type != null)
                     hashCode = hashCode * 59 + Type.GetHashCode();
-                if (Value != null)
+                if(Value != null)
                     hashCode = hashCode * 59 + Value.GetHashCode();
-                if (Operator != null)
+                if(Operator != null)
                     hashCode = hashCode * 59 + Operator.GetHashCode();
                 return hashCode;
             }

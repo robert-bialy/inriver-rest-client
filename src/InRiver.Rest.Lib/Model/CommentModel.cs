@@ -21,15 +21,15 @@ namespace InRiver.Rest.Lib.Model
         /// Initializes a new instance of the <see cref="CommentModel" /> class.
         /// </summary>
         /// <param name="id">id.</param>
-        /// <param name="text">text (required).</param>
+        /// <param name="text">text(required).</param>
         /// <param name="author">author.</param>
         /// <param name="createdDate">createdDate.</param>
         /// <param name="formattedCreatedDate">formattedCreatedDate.</param>
         /// <param name="entityId">entityId.</param>
         public CommentModel(int? id = default(int?), string text = default, string author = default, string createdDate = default, string formattedCreatedDate = default, int? entityId = default(int?))
         {
-            // to ensure "text" is required (not null)
-            if (text == null)
+            // to ensure "text" is required(not null)
+            if(text == null)
             {
                 throw new InvalidDataException("text is a required property for CommentModel and cannot be null");
             }
@@ -124,38 +124,38 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(CommentModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Id == input.Id ||
-                    (Id != null &&
+                   (Id != null &&
                     Id.Equals(input.Id))
                 ) && 
-                (
+               (
                     Text == input.Text ||
-                    (Text != null &&
+                   (Text != null &&
                     Text.Equals(input.Text))
                 ) && 
-                (
+               (
                     Author == input.Author ||
-                    (Author != null &&
+                   (Author != null &&
                     Author.Equals(input.Author))
                 ) && 
-                (
+               (
                     CreatedDate == input.CreatedDate ||
-                    (CreatedDate != null &&
+                   (CreatedDate != null &&
                     CreatedDate.Equals(input.CreatedDate))
                 ) && 
-                (
+               (
                     FormattedCreatedDate == input.FormattedCreatedDate ||
-                    (FormattedCreatedDate != null &&
+                   (FormattedCreatedDate != null &&
                     FormattedCreatedDate.Equals(input.FormattedCreatedDate))
                 ) && 
-                (
+               (
                     EntityId == input.EntityId ||
-                    (EntityId != null &&
+                   (EntityId != null &&
                     EntityId.Equals(input.EntityId))
                 );
         }
@@ -169,17 +169,17 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Id != null)
+                if(Id != null)
                     hashCode = hashCode * 59 + Id.GetHashCode();
-                if (Text != null)
+                if(Text != null)
                     hashCode = hashCode * 59 + Text.GetHashCode();
-                if (Author != null)
+                if(Author != null)
                     hashCode = hashCode * 59 + Author.GetHashCode();
-                if (CreatedDate != null)
+                if(CreatedDate != null)
                     hashCode = hashCode * 59 + CreatedDate.GetHashCode();
-                if (FormattedCreatedDate != null)
+                if(FormattedCreatedDate != null)
                     hashCode = hashCode * 59 + FormattedCreatedDate.GetHashCode();
-                if (EntityId != null)
+                if(EntityId != null)
                     hashCode = hashCode * 59 + EntityId.GetHashCode();
                 return hashCode;
             }

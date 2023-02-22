@@ -14,7 +14,7 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class SystemApi : ISystemApi
     {
-        private ExceptionFactory _exceptionFactory = (name, response) => null;
+        private ExceptionFactory _exceptionFactory =(name, response) => null;
         private readonly ISerializer _serializer;
         private readonly IApiClient _apiClient;
 
@@ -30,10 +30,8 @@ namespace InRiver.Rest.Lib.Api
         {
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
-            if (configuration == null) // use the default one in Configuration
-                Configuration = Configuration.Default;
-            else
-                Configuration = configuration;
+            // use the default one in Configuration
+            Configuration = configuration ?? Configuration.Default;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
@@ -51,13 +49,13 @@ namespace InRiver.Rest.Lib.Api
         {
             get
             {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
                 {
                     throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
         
         /// <summary>
@@ -67,9 +65,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>UserRolesModel</returns>
-        public UserRolesModel AddUserRoleForSegment (int? segmentId, UserRoleModel userRoleModel)
+        public UserRolesModel AddUserRoleForSegment(int? segmentId, UserRoleModel userRoleModel)
         {
-             ApiResponse<UserRolesModel> localVarResponse = AddUserRoleForSegmentWithHttpInfo(segmentId, userRoleModel);
+             var localVarResponse = AddUserRoleForSegmentWithHttpInfo(segmentId, userRoleModel);
              return localVarResponse.Data;
         }
 
@@ -80,13 +78,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>ApiResponse of UserRolesModel</returns>
-        public ApiResponse< UserRolesModel > AddUserRoleForSegmentWithHttpInfo (int? segmentId, UserRoleModel userRoleModel)
+        public ApiResponse<UserRolesModel> AddUserRoleForSegmentWithHttpInfo(int? segmentId, UserRoleModel userRoleModel)
         {
             // verify the required parameter 'segmentId' is set
-            if (segmentId == null)
+            if(segmentId == null)
                 throw new ApiException(400, "Missing required parameter 'segmentId' when calling SystemApi->SystemAddUserRoleForSegment");
             // verify the required parameter 'userRoleModel' is set
-            if (userRoleModel == null)
+            if(userRoleModel == null)
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemAddUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:adduserrole";
@@ -111,13 +109,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (segmentId != null) localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
-            if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
+            if(userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body(model) parameter
             }
             else
             {
@@ -126,21 +124,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemAddUserRoleForSegment", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
+               (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -150,7 +148,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>Task of UserRolesModel</returns>
-        public async System.Threading.Tasks.Task<UserRolesModel> AddUserRoleForSegmentAsync (int? segmentId, UserRoleModel userRoleModel)
+        public async System.Threading.Tasks.Task<UserRolesModel> AddUserRoleForSegmentAsync(int? segmentId, UserRoleModel userRoleModel)
         {
              ApiResponse<UserRolesModel> localVarResponse = await AddUserRoleForSegmentAsyncWithHttpInfo(segmentId, userRoleModel);
              return localVarResponse.Data;
@@ -163,14 +161,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
-        /// <returns>Task of ApiResponse (UserRolesModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> AddUserRoleForSegmentAsyncWithHttpInfo (int? segmentId, UserRoleModel userRoleModel)
+        /// <returns>Task of ApiResponse(UserRolesModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> AddUserRoleForSegmentAsyncWithHttpInfo(int? segmentId, UserRoleModel userRoleModel)
         {
             // verify the required parameter 'segmentId' is set
-            if (segmentId == null)
+            if(segmentId == null)
                 throw new ApiException(400, "Missing required parameter 'segmentId' when calling SystemApi->SystemAddUserRoleForSegment");
             // verify the required parameter 'userRoleModel' is set
-            if (userRoleModel == null)
+            if(userRoleModel == null)
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemAddUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:adduserrole";
@@ -195,13 +193,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (segmentId != null) localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
-            if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
+            if(userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body(model) parameter
             }
             else
             {
@@ -210,21 +208,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemAddUserRoleForSegment", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
+               (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -232,9 +230,9 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;string&gt;</returns>
-        public List<string> GetAllImageConfigurations ()
+        public List<string> GetAllImageConfigurations()
         {
-             ApiResponse<List<string>> localVarResponse = GetAllImageConfigurationsWithHttpInfo();
+             var localVarResponse = GetAllImageConfigurationsWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -243,7 +241,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > GetAllImageConfigurationsWithHttpInfo ()
+        public ApiResponse<List<string>> GetAllImageConfigurationsWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurations";
@@ -265,27 +263,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemGetAllImageConfigurations", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
+               (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -293,7 +289,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> GetAllImageConfigurationsAsync ()
+        public async System.Threading.Tasks.Task<List<string>> GetAllImageConfigurationsAsync()
         {
              ApiResponse<List<string>> localVarResponse = await GetAllImageConfigurationsAsyncWithHttpInfo();
              return localVarResponse.Data;
@@ -304,8 +300,8 @@ namespace InRiver.Rest.Lib.Api
         /// Returns available image configurations 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetAllImageConfigurationsAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse(List&lt;string&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetAllImageConfigurationsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurations";
@@ -327,27 +323,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int)localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemGetAllImageConfigurations", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
+               (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
         /// <summary>
@@ -355,9 +349,9 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ImageConfigurationDetailsModel</returns>
-        public ImageConfigurationDetailsModel GetImageConfigurationDetails ()
+        public ImageConfigurationDetailsModel GetImageConfigurationDetails()
         {
-             ApiResponse<ImageConfigurationDetailsModel> localVarResponse = GetImageConfigurationDetailsWithHttpInfo();
+             var localVarResponse = GetImageConfigurationDetailsWithHttpInfo();
              return localVarResponse.Data;
         }
 
@@ -366,7 +360,7 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of ImageConfigurationDetailsModel</returns>
-        public ApiResponse< ImageConfigurationDetailsModel > GetImageConfigurationDetailsWithHttpInfo ()
+        public ApiResponse<ImageConfigurationDetailsModel> GetImageConfigurationDetailsWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurationdetails";
@@ -388,27 +382,25 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemGetImageConfigurationDetails", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<ImageConfigurationDetailsModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
+               (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
         }
 
         /// <summary>
@@ -416,9 +408,9 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of ImageConfigurationDetailsModel</returns>
-        public async System.Threading.Tasks.Task<ImageConfigurationDetailsModel> GetImageConfigurationDetailsAsync ()
+        public async System.Threading.Tasks.Task<ImageConfigurationDetailsModel> GetImageConfigurationDetailsAsync()
         {
-             ApiResponse<ImageConfigurationDetailsModel> localVarResponse = await GetImageConfigurationDetailsAsyncWithHttpInfo();
+             var localVarResponse = await GetImageConfigurationDetailsAsyncWithHttpInfo();
              return localVarResponse.Data;
 
         }
@@ -427,8 +419,8 @@ namespace InRiver.Rest.Lib.Api
         /// Return full details of available image configurations 
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (ImageConfigurationDetailsModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<ImageConfigurationDetailsModel>> GetImageConfigurationDetailsAsyncWithHttpInfo ()
+        /// <returns>Task of ApiResponse(ImageConfigurationDetailsModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<ImageConfigurationDetailsModel>> GetImageConfigurationDetailsAsyncWithHttpInfo()
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurationdetails";
@@ -450,38 +442,36 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemGetImageConfigurationDetails", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<ImageConfigurationDetailsModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
+               (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
         }
 
         /// <summary>
         /// Get list of server settings Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
         /// <returns>Dictionary&lt;string, string&gt;</returns>
-        public Dictionary<string, string> GetServerSettings (string settingNames = null)
+        public Dictionary<string, string> GetServerSettings(string settingNames = null)
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = GetServerSettingsWithHttpInfo(settingNames);
+             var localVarResponse = GetServerSettingsWithHttpInfo(settingNames);
              return localVarResponse.Data;
         }
 
@@ -489,11 +479,10 @@ namespace InRiver.Rest.Lib.Api
         /// Get list of server settings Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
         /// <returns>ApiResponse of Dictionary&lt;string, string&gt;</returns>
-        public ApiResponse< Dictionary<string, string> > GetServerSettingsWithHttpInfo (string settingNames = null)
+        public ApiResponse<Dictionary<string, string>> GetServerSettingsWithHttpInfo(string settingNames = null)
         {
-
             var localVarPath = "/api/v1.0.0/system/serversettings";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
@@ -513,50 +502,49 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (settingNames != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "settingNames", settingNames, Configuration)); // query parameter
+            if(settingNames != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "settingNames", settingNames, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemGetServerSettings", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+               (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
         /// Get list of server settings Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
         /// <returns>Task of Dictionary&lt;string, string&gt;</returns>
-        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetServerSettingsAsync (string settingNames = null)
+        public async System.Threading.Tasks.Task<Dictionary<string, string>> GetServerSettingsAsync(string settingNames = null)
         {
-             ApiResponse<Dictionary<string, string>> localVarResponse = await GetServerSettingsAsyncWithHttpInfo(settingNames);
+             var localVarResponse = await GetServerSettingsAsyncWithHttpInfo(settingNames);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
         /// Get list of server settings Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="settingNames">optional, comma separated list of setting names (optional)</param>
-        /// <returns>Task of ApiResponse (Dictionary&lt;string, string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetServerSettingsAsyncWithHttpInfo (string settingNames = null)
+        /// <param name="settingNames">optional, comma separated list of setting names(optional)</param>
+        /// <returns>Task of ApiResponse(Dictionary&lt;string, string&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<Dictionary<string, string>>> GetServerSettingsAsyncWithHttpInfo(string settingNames = null)
         {
 
             var localVarPath = "/api/v1.0.0/system/serversettings";
@@ -578,28 +566,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (settingNames != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "settingNames", settingNames, Configuration)); // query parameter
+            if(settingNames != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "settingNames", settingNames, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemGetServerSettings", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
+               (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
         /// <summary>
@@ -609,9 +597,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>UserRolesModel</returns>
-        public UserRolesModel RemoveUserRoleForSegment (int? segmentId, UserRoleModel userRoleModel)
+        public UserRolesModel RemoveUserRoleForSegment(int? segmentId, UserRoleModel userRoleModel)
         {
-             ApiResponse<UserRolesModel> localVarResponse = RemoveUserRoleForSegmentWithHttpInfo(segmentId, userRoleModel);
+             var localVarResponse = RemoveUserRoleForSegmentWithHttpInfo(segmentId, userRoleModel);
              return localVarResponse.Data;
         }
 
@@ -622,13 +610,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>ApiResponse of UserRolesModel</returns>
-        public ApiResponse< UserRolesModel > RemoveUserRoleForSegmentWithHttpInfo (int? segmentId, UserRoleModel userRoleModel)
+        public ApiResponse<UserRolesModel> RemoveUserRoleForSegmentWithHttpInfo(int? segmentId, UserRoleModel userRoleModel)
         {
             // verify the required parameter 'segmentId' is set
-            if (segmentId == null)
+            if(segmentId == null)
                 throw new ApiException(400, "Missing required parameter 'segmentId' when calling SystemApi->SystemRemoveUserRoleForSegment");
             // verify the required parameter 'userRoleModel' is set
-            if (userRoleModel == null)
+            if(userRoleModel == null)
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemRemoveUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:removeuserrole";
@@ -653,36 +641,35 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (segmentId != null) localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
-            if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
+            if(userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = userRoleModel; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemRemoveUserRoleForSegment", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
+               (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -692,11 +679,10 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
         /// <returns>Task of UserRolesModel</returns>
-        public async System.Threading.Tasks.Task<UserRolesModel> RemoveUserRoleForSegmentAsync (int? segmentId, UserRoleModel userRoleModel)
+        public async System.Threading.Tasks.Task<UserRolesModel> RemoveUserRoleForSegmentAsync(int? segmentId, UserRoleModel userRoleModel)
         {
-             ApiResponse<UserRolesModel> localVarResponse = await RemoveUserRoleForSegmentAsyncWithHttpInfo(segmentId, userRoleModel);
+             var localVarResponse = await RemoveUserRoleForSegmentAsyncWithHttpInfo(segmentId, userRoleModel);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -705,14 +691,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="segmentId"></param>
         /// <param name="userRoleModel"></param>
-        /// <returns>Task of ApiResponse (UserRolesModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> RemoveUserRoleForSegmentAsyncWithHttpInfo (int? segmentId, UserRoleModel userRoleModel)
+        /// <returns>Task of ApiResponse(UserRolesModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> RemoveUserRoleForSegmentAsyncWithHttpInfo(int? segmentId, UserRoleModel userRoleModel)
         {
             // verify the required parameter 'segmentId' is set
-            if (segmentId == null)
+            if(segmentId == null)
                 throw new ApiException(400, "Missing required parameter 'segmentId' when calling SystemApi->SystemRemoveUserRoleForSegment");
             // verify the required parameter 'userRoleModel' is set
-            if (userRoleModel == null)
+            if(userRoleModel == null)
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemRemoveUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:removeuserrole";
@@ -737,13 +723,13 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (segmentId != null) localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
-            if (userRoleModel != null && userRoleModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
+            if(userRoleModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(userRoleModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRoleModel); // http body(model) parameter
             }
             else
             {
@@ -752,32 +738,32 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemRemoveUserRoleForSegment", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
+               (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
         /// Get list of user roles and permissions If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
         /// <returns>List&lt;RoleModel&gt;</returns>
-        public List<RoleModel> Roles (string forUsername = null)
+        public List<RoleModel> Roles(string forUsername = null)
         {
-             ApiResponse<List<RoleModel>> localVarResponse = RolesWithHttpInfo(forUsername);
+             var localVarResponse = RolesWithHttpInfo(forUsername);
              return localVarResponse.Data;
         }
 
@@ -785,9 +771,9 @@ namespace InRiver.Rest.Lib.Api
         /// Get list of user roles and permissions If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
         /// <returns>ApiResponse of List&lt;RoleModel&gt;</returns>
-        public ApiResponse< List<RoleModel> > RolesWithHttpInfo (string forUsername = null)
+        public ApiResponse<List<RoleModel>> RolesWithHttpInfo(string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/system/roles";
@@ -809,39 +795,39 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemRoles", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<RoleModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
+               (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
         }
 
         /// <summary>
         /// Get list of user roles and permissions If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
         /// <returns>Task of List&lt;RoleModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<RoleModel>> RolesAsync (string forUsername = null)
+        public async System.Threading.Tasks.Task<List<RoleModel>> RolesAsync(string forUsername = null)
         {
-             ApiResponse<List<RoleModel>> localVarResponse = await RolesAsyncWithHttpInfo(forUsername);
+             var localVarResponse = await RolesAsyncWithHttpInfo(forUsername);
              return localVarResponse.Data;
 
         }
@@ -850,9 +836,9 @@ namespace InRiver.Rest.Lib.Api
         /// Get list of user roles and permissions If the environment has multiple segments the user&#39;s roles for assigned segments will be combined. The /segments endpoint should be used for multi segment environments. Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get permissions for a specific user (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;RoleModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<RoleModel>>> RolesAsyncWithHttpInfo (string forUsername = null)
+        /// <param name="forUsername">optional, get permissions for a specific user(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;RoleModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<RoleModel>>> RolesAsyncWithHttpInfo(string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/system/roles";
@@ -874,39 +860,39 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemRoles", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<RoleModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
+               (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
         }
 
         /// <summary>
         /// Get list of segments Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
         /// <returns>List&lt;SegmentModel&gt;</returns>
-        public List<SegmentModel> Segments (string forUsername = null)
+        public List<SegmentModel> Segments(string forUsername = null)
         {
-             ApiResponse<List<SegmentModel>> localVarResponse = SegmentsWithHttpInfo(forUsername);
+             var localVarResponse = SegmentsWithHttpInfo(forUsername);
              return localVarResponse.Data;
         }
 
@@ -914,9 +900,9 @@ namespace InRiver.Rest.Lib.Api
         /// Get list of segments Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
         /// <returns>ApiResponse of List&lt;SegmentModel&gt;</returns>
-        public ApiResponse< List<SegmentModel> > SegmentsWithHttpInfo (string forUsername = null)
+        public ApiResponse<List<SegmentModel>> SegmentsWithHttpInfo(string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/system/segments";
@@ -938,39 +924,39 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemSegments", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<SegmentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
+               (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
         }
 
         /// <summary>
         /// Get list of segments Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
         /// <returns>Task of List&lt;SegmentModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<SegmentModel>> SegmentsAsync (string forUsername = null)
+        public async System.Threading.Tasks.Task<List<SegmentModel>> SegmentsAsync(string forUsername = null)
         {
-             ApiResponse<List<SegmentModel>> localVarResponse = await SegmentsAsyncWithHttpInfo(forUsername);
+             var localVarResponse = await SegmentsAsyncWithHttpInfo(forUsername);
              return localVarResponse.Data;
 
         }
@@ -979,9 +965,9 @@ namespace InRiver.Rest.Lib.Api
         /// Get list of segments Requires administrator role.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="forUsername">optional, get segments for a specific user (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;SegmentModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<SegmentModel>>> SegmentsAsyncWithHttpInfo (string forUsername = null)
+        /// <param name="forUsername">optional, get segments for a specific user(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;SegmentModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<SegmentModel>>> SegmentsAsyncWithHttpInfo(string forUsername = null)
         {
 
             var localVarPath = "/api/v1.0.0/system/segments";
@@ -1003,28 +989,28 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
+            if(forUsername != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "forUsername", forUsername, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemSegments", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<SegmentModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
+               (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
         }
 
         /// <summary>
@@ -1034,7 +1020,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
         /// <returns>UserRolesModel</returns>
-        public UserRolesModel SetUserRolesForSegment (int? segmentId, UserRolesModel userRolesModel)
+        public UserRolesModel SetUserRolesForSegment(int? segmentId, UserRolesModel userRolesModel)
         {
              ApiResponse<UserRolesModel> localVarResponse = SetUserRolesForSegmentWithHttpInfo(segmentId, userRolesModel);
              return localVarResponse.Data;
@@ -1047,13 +1033,13 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
         /// <returns>ApiResponse of UserRolesModel</returns>
-        public ApiResponse< UserRolesModel > SetUserRolesForSegmentWithHttpInfo (int? segmentId, UserRolesModel userRolesModel)
+        public ApiResponse<UserRolesModel> SetUserRolesForSegmentWithHttpInfo(int? segmentId, UserRolesModel userRolesModel)
         {
             // verify the required parameter 'segmentId' is set
-            if (segmentId == null)
+            if(segmentId == null)
                 throw new ApiException(400, "Missing required parameter 'segmentId' when calling SystemApi->SystemSetUserRolesForSegment");
             // verify the required parameter 'userRolesModel' is set
-            if (userRolesModel == null)
+            if(userRolesModel == null)
                 throw new ApiException(400, "Missing required parameter 'userRolesModel' when calling SystemApi->SystemSetUserRolesForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:setuserroles";
@@ -1078,36 +1064,35 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (segmentId != null) localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
-            if (userRolesModel != null && userRolesModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
+            if(userRolesModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(userRolesModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRolesModel); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = userRolesModel; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemSetUserRolesForSegment", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
+               (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
         /// <summary>
@@ -1117,9 +1102,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
         /// <returns>Task of UserRolesModel</returns>
-        public async System.Threading.Tasks.Task<UserRolesModel> SetUserRolesForSegmentAsync (int? segmentId, UserRolesModel userRolesModel)
+        public async System.Threading.Tasks.Task<UserRolesModel> SetUserRolesForSegmentAsync(int? segmentId, UserRolesModel userRolesModel)
         {
-             ApiResponse<UserRolesModel> localVarResponse = await GaetUserRolesForSegmentAsyncWithHttpInfo(segmentId, userRolesModel);
+             ApiResponse<UserRolesModel> localVarResponse = await GetUserRolesForSegmentAsyncWithHttpInfo(segmentId, userRolesModel);
              return localVarResponse.Data;
 
         }
@@ -1130,14 +1115,14 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="segmentId"></param>
         /// <param name="userRolesModel"></param>
-        /// <returns>Task of ApiResponse (UserRolesModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> GaetUserRolesForSegmentAsyncWithHttpInfo (int? segmentId, UserRolesModel userRolesModel)
+        /// <returns>Task of ApiResponse(UserRolesModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<UserRolesModel>> GetUserRolesForSegmentAsyncWithHttpInfo(int? segmentId, UserRolesModel userRolesModel)
         {
             // verify the required parameter 'segmentId' is set
-            if (segmentId == null)
+            if(segmentId == null)
                 throw new ApiException(400, "Missing required parameter 'segmentId' when calling SystemApi->SystemSetUserRolesForSegment");
             // verify the required parameter 'userRolesModel' is set
-            if (userRolesModel == null)
+            if(userRolesModel == null)
                 throw new ApiException(400, "Missing required parameter 'userRolesModel' when calling SystemApi->SystemSetUserRolesForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:setuserroles";
@@ -1162,36 +1147,35 @@ namespace InRiver.Rest.Lib.Api
                 "text/json"
             };
             String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (segmentId != null) localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
-            if (userRolesModel != null && userRolesModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("segmentId", HttpHelpers.ParameterToString(segmentId, Configuration)); // path parameter
+            if(userRolesModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(userRolesModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(userRolesModel); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = userRolesModel; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("SystemSetUserRolesForSegment", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
+               (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
     }

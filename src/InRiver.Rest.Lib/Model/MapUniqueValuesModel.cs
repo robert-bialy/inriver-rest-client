@@ -22,12 +22,12 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MapUniqueValuesModel" /> class.
         /// </summary>
-        /// <param name="fieldTypeId">fieldTypeId (required).</param>
-        /// <param name="uniqueValues">uniqueValues (required).</param>
+        /// <param name="fieldTypeId">fieldTypeId(required).</param>
+        /// <param name="uniqueValues">uniqueValues(required).</param>
         public MapUniqueValuesModel(string fieldTypeId = default, List<object> uniqueValues = default(List<object>))
         {
-            // to ensure "fieldTypeId" is required (not null)
-            if (fieldTypeId == null)
+            // to ensure "fieldTypeId" is required(not null)
+            if(fieldTypeId == null)
             {
                 throw new InvalidDataException("fieldTypeId is a required property for MapUniqueValuesModel and cannot be null");
             }
@@ -35,8 +35,8 @@ namespace InRiver.Rest.Lib.Model
             {
                 FieldTypeId = fieldTypeId;
             }
-            // to ensure "uniqueValues" is required (not null)
-            if (uniqueValues == null)
+            // to ensure "uniqueValues" is required(not null)
+            if(uniqueValues == null)
             {
                 throw new InvalidDataException("uniqueValues is a required property for MapUniqueValuesModel and cannot be null");
             }
@@ -98,16 +98,16 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(MapUniqueValuesModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     FieldTypeId == input.FieldTypeId ||
-                    (FieldTypeId != null &&
+                   (FieldTypeId != null &&
                     FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
-                (
+               (
                     UniqueValues == input.UniqueValues ||
                     UniqueValues != null &&
                     UniqueValues.SequenceEqual(input.UniqueValues)
@@ -123,9 +123,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (FieldTypeId != null)
+                if(FieldTypeId != null)
                     hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
-                if (UniqueValues != null)
+                if(UniqueValues != null)
                     hashCode = hashCode * 59 + UniqueValues.GetHashCode();
                 return hashCode;
             }

@@ -74,18 +74,18 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ExeternalUrlFileModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
+               (
                     Url == input.Url ||
-                    (Url != null &&
+                   (Url != null &&
                     Url.Equals(input.Url))
                 ) && 
-                (
+               (
                     OverrideUrlFileName == input.OverrideUrlFileName ||
-                    (OverrideUrlFileName != null &&
+                   (OverrideUrlFileName != null &&
                     OverrideUrlFileName.Equals(input.OverrideUrlFileName))
                 );
         }
@@ -99,9 +99,9 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (Url != null)
+                if(Url != null)
                     hashCode = hashCode * 59 + Url.GetHashCode();
-                if (OverrideUrlFileName != null)
+                if(OverrideUrlFileName != null)
                     hashCode = hashCode * 59 + OverrideUrlFileName.GetHashCode();
                 return hashCode;
             }
