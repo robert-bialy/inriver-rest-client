@@ -9,18 +9,18 @@ namespace InRiver.Rest.Lib.Model
     /// FetchLinkobjectsModel
     /// </summary>
     [DataContract]
-    public class FetchLinkobjectsModel :  IEquatable<FetchLinkobjectsModel>
+    public class FetchLinkObjectsModel :  IEquatable<FetchLinkObjectsModel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FetchLinkobjectsModel" /> class.
+        /// Initializes a new instance of the <see cref="FetchLinkObjectsModel" /> class.
         /// </summary>
         /// <param name="linkTypeIds">linkTypeIds.</param>
         /// <param name="objects">objects.</param>
         /// <param name="linkEntityobjects">linkEntityobjects.</param>
-        public FetchLinkobjectsModel(string linkTypeIds = default, string objects = default, string linkEntityobjects = default)
+        public FetchLinkObjectsModel(string linkTypeIds = default, string objects = default, string linkEntityobjects = default)
         {
             LinkTypeIds = linkTypeIds;
-            objects = objects;
+            Objects = objects;
             LinkEntityobjects = linkEntityobjects;
         }
         
@@ -34,7 +34,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets objects
         /// </summary>
         [DataMember(Name="objects", EmitDefaultValue=false)]
-        public string objects { get; set; }
+        public string Objects { get; set; }
 
         /// <summary>
         /// Gets or Sets LinkEntityobjects
@@ -51,7 +51,7 @@ namespace InRiver.Rest.Lib.Model
             var sb = new StringBuilder();
             sb.Append("class FetchLinkobjectsModel {\n");
             sb.Append("  LinkTypeIds: ").Append(LinkTypeIds).Append("\n");
-            sb.Append("  objects: ").Append(objects).Append("\n");
+            sb.Append("  objects: ").Append(Objects).Append("\n");
             sb.Append("  LinkEntityobjects: ").Append(LinkEntityobjects).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
@@ -73,7 +73,7 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return Equals(input as FetchLinkobjectsModel);
+            return Equals(input as FetchLinkObjectsModel);
         }
 
         /// <summary>
@@ -81,7 +81,7 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="input">Instance of FetchLinkobjectsModel to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FetchLinkobjectsModel input)
+        public bool Equals(FetchLinkObjectsModel input)
         {
             if (input == null)
                 return false;
@@ -93,9 +93,9 @@ namespace InRiver.Rest.Lib.Model
                     LinkTypeIds.Equals(input.LinkTypeIds))
                 ) && 
                 (
-                    objects == input.objects ||
-                    (objects != null &&
-                    objects.Equals(input.objects))
+                    Objects == input.Objects ||
+                    (Objects != null &&
+                     Objects.Equals(input.Objects))
                 ) && 
                 (
                     LinkEntityobjects == input.LinkEntityobjects ||
@@ -115,8 +115,8 @@ namespace InRiver.Rest.Lib.Model
                 int hashCode = 41;
                 if (LinkTypeIds != null)
                     hashCode = hashCode * 59 + LinkTypeIds.GetHashCode();
-                if (objects != null)
-                    hashCode = hashCode * 59 + objects.GetHashCode();
+                if (Objects != null)
+                    hashCode = hashCode * 59 + Objects.GetHashCode();
                 if (LinkEntityobjects != null)
                     hashCode = hashCode * 59 + LinkEntityobjects.GetHashCode();
                 return hashCode;

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Helpers;
@@ -31,10 +30,8 @@ namespace InRiver.Rest.Lib.Api
         {
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
-            if (configuration == null) // use the default one in Configuration
-                Configuration = Configuration.Default;
-            else
-                Configuration = configuration;
+            // use the default one in Configuration
+            Configuration = configuration ?? Configuration.Default;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
@@ -58,7 +55,7 @@ namespace InRiver.Rest.Lib.Api
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
         
         /// <summary>
@@ -67,9 +64,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        public MediaInfoModel AddExternalUrl (ExternalUrlFileModelWithLink urlFileModel)
+        public MediaInfoModel AddExternalUrl(ExternalUrlFileModelWithLink urlFileModel)
         {
-             ApiResponse<MediaInfoModel> localVarResponse = AddExternalUrlWithHttpInfo(urlFileModel);
+             var localVarResponse = AddExternalUrlWithHttpInfo(urlFileModel);
              return localVarResponse.Data;
         }
 
@@ -79,7 +76,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        public ApiResponse< MediaInfoModel > AddExternalUrlWithHttpInfo (ExternalUrlFileModelWithLink urlFileModel)
+        public ApiResponse< MediaInfoModel > AddExternalUrlWithHttpInfo(ExternalUrlFileModelWithLink urlFileModel)
         {
             // verify the required parameter 'urlFileModel' is set
             if (urlFileModel == null)
@@ -110,7 +107,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
+            if (urlFileModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
@@ -127,11 +124,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("MediaAddExternalUrl", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("MediaAddExternalUrl", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -157,7 +151,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> AddExternalUrlAsyncWithHttpInfo (ExternalUrlFileModelWithLink urlFileModel)
+        public async System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> AddExternalUrlAsyncWithHttpInfo(ExternalUrlFileModelWithLink urlFileModel)
         {
             // verify the required parameter 'urlFileModel' is set
             if (urlFileModel == null)
@@ -188,7 +182,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
+            if (urlFileModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
@@ -222,9 +216,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        public MediaInfoModel UploadBase64File (Base64FileModelWithLink base64FileModel)
+        public MediaInfoModel UploadBase64File(Base64FileModelWithLink base64FileModel)
         {
-             ApiResponse<MediaInfoModel> localVarResponse = UploadBase64FileWithHttpInfo(base64FileModel);
+             var localVarResponse = UploadBase64FileWithHttpInfo(base64FileModel);
              return localVarResponse.Data;
         }
 
@@ -234,7 +228,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        public ApiResponse< MediaInfoModel > UploadBase64FileWithHttpInfo (Base64FileModelWithLink base64FileModel)
+        public ApiResponse< MediaInfoModel > UploadBase64FileWithHttpInfo(Base64FileModelWithLink base64FileModel)
         {
             // verify the required parameter 'base64FileModel' is set
             if (base64FileModel == null)
@@ -299,9 +293,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        public async System.Threading.Tasks.Task<MediaInfoModel> UploadBase64FileAsync (Base64FileModelWithLink base64FileModel)
+        public async System.Threading.Tasks.Task<MediaInfoModel> UploadBase64FileAsync(Base64FileModelWithLink base64FileModel)
         {
-             ApiResponse<MediaInfoModel> localVarResponse = await UploadBase64FileAsyncWithHttpInfo(base64FileModel);
+             var localVarResponse = await UploadBase64FileAsyncWithHttpInfo(base64FileModel);
              return localVarResponse.Data;
 
         }
@@ -312,7 +306,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
         /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadBase64FileAsyncWithHttpInfo (Base64FileModelWithLink base64FileModel)
+        public async System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadBase64FileAsyncWithHttpInfo(Base64FileModelWithLink base64FileModel)
         {
             // verify the required parameter 'base64FileModel' is set
             if (base64FileModel == null)
@@ -343,7 +337,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (base64FileModel != null && base64FileModel.GetType() != typeof(byte[]))
+            if (base64FileModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = _serializer.Serialize(base64FileModel); // http body (model) parameter
             }
@@ -377,9 +371,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        public MediaInfoModel UploadMediaFromUrl (UrlFileModelWithLink urlFileModel)
+        public MediaInfoModel UploadMediaFromUrl(UrlFileModelWithLink urlFileModel)
         {
-             ApiResponse<MediaInfoModel> localVarResponse = UploadMediaFromUrlWithHttpInfo(urlFileModel);
+             var localVarResponse = UploadMediaFromUrlWithHttpInfo(urlFileModel);
              return localVarResponse.Data;
         }
 
@@ -389,7 +383,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        public ApiResponse< MediaInfoModel > UploadMediaFromUrlWithHttpInfo (UrlFileModelWithLink urlFileModel)
+        public ApiResponse< MediaInfoModel > UploadMediaFromUrlWithHttpInfo(UrlFileModelWithLink urlFileModel)
         {
             // verify the required parameter 'urlFileModel' is set
             if (urlFileModel == null)
@@ -420,7 +414,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
+            if (urlFileModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
@@ -437,11 +431,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("MediaUploadMediaFromUrl", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("MediaUploadMediaFromUrl", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -454,7 +445,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        public async System.Threading.Tasks.Task<MediaInfoModel> UploadMediaFromUrlAsync (UrlFileModelWithLink urlFileModel)
+        public async System.Threading.Tasks.Task<MediaInfoModel> UploadMediaFromUrlAsync(UrlFileModelWithLink urlFileModel)
         {
              ApiResponse<MediaInfoModel> localVarResponse = await UploadMediaFromUrlAsyncWithHttpInfo(urlFileModel);
              return localVarResponse.Data;
@@ -467,7 +458,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadMediaFromUrlAsyncWithHttpInfo (UrlFileModelWithLink urlFileModel)
+        public async System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadMediaFromUrlAsyncWithHttpInfo(UrlFileModelWithLink urlFileModel)
         {
             // verify the required parameter 'urlFileModel' is set
             if (urlFileModel == null)
@@ -498,7 +489,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
+            if (urlFileModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
@@ -515,11 +506,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("MediaUploadMediaFromUrl", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("MediaUploadMediaFromUrl", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),

@@ -86,9 +86,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        public MediaInfoModel AddExternalUrl (int? entityId, ExeternalUrlFileModel urlFileModel)
+        public MediaInfoModel AddExternalUrl(int? entityId, ExeternalUrlFileModel urlFileModel)
         {
-             ApiResponse<MediaInfoModel> localVarResponse = AddExternalUrlWithHttpInfo(entityId, urlFileModel);
+             var localVarResponse = AddExternalUrlWithHttpInfo(entityId, urlFileModel);
              return localVarResponse.Data;
         }
 
@@ -133,8 +133,8 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (entityId != null) localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
-            if (urlFileModel != null && urlFileModel.GetType() != typeof(byte[]))
+            localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
+            if (urlFileModel.GetType() != typeof(byte[]))
             {
                 localVarPostBody = _serializer.Serialize(urlFileModel); // http body (model) parameter
             }
@@ -169,9 +169,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        public async System.Threading.Tasks.Task<MediaInfoModel> AddExternalUrlAsync (int? entityId, ExeternalUrlFileModel urlFileModel)
+        public async System.Threading.Tasks.Task<MediaInfoModel> AddExternalUrlAsync(int? entityId, ExeternalUrlFileModel urlFileModel)
         {
-             ApiResponse<MediaInfoModel> localVarResponse = await AddExternalUrlAsyncWithHttpInfo(entityId, urlFileModel);
+             var localVarResponse = await AddExternalUrlAsyncWithHttpInfo(entityId, urlFileModel);
              return localVarResponse.Data;
 
         }
@@ -1112,11 +1112,11 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchobjectsModel"></param>
+        /// <param name="fetchObjectsModel"></param>
         /// <returns>List&lt;EntityDataModel&gt;</returns>
-        public List<EntityDataModel> FetchData (FetchobjectsModel fetchobjectsModel)
+        public List<EntityDataModel> FetchData (FetchObjectsModel fetchObjectsModel)
         {
-             ApiResponse<List<EntityDataModel>> localVarResponse = FetchDataWithHttpInfo(fetchobjectsModel);
+             ApiResponse<List<EntityDataModel>> localVarResponse = FetchDataWithHttpInfo(fetchObjectsModel);
              return localVarResponse.Data;
         }
 
@@ -1124,12 +1124,12 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchobjectsModel"></param>
+        /// <param name="fetchObjectsModel"></param>
         /// <returns>ApiResponse of List&lt;EntityDataModel&gt;</returns>
-        public ApiResponse< List<EntityDataModel> > FetchDataWithHttpInfo (FetchobjectsModel fetchobjectsModel)
+        public ApiResponse< List<EntityDataModel> > FetchDataWithHttpInfo (FetchObjectsModel fetchObjectsModel)
         {
             // verify the required parameter 'fetchobjectsModel' is set
-            if (fetchobjectsModel == null)
+            if (fetchObjectsModel == null)
                 throw new ApiException(400, "Missing required parameter 'fetchobjectsModel' when calling EntityApi->EntityFetchData");
 
             var localVarPath = "/api/v1.0.1/entities:fetchdata";
@@ -1157,13 +1157,13 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (fetchobjectsModel != null && fetchobjectsModel.GetType() != typeof(byte[]))
+            if (fetchObjectsModel != null && fetchObjectsModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(fetchobjectsModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(fetchObjectsModel); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = fetchobjectsModel; // byte array
+                localVarPostBody = fetchObjectsModel; // byte array
             }
 
 
@@ -1189,11 +1189,11 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchobjectsModel"></param>
+        /// <param name="fetchObjectsModel"></param>
         /// <returns>Task of List&lt;EntityDataModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<EntityDataModel>> FetchDataAsync (FetchobjectsModel fetchobjectsModel)
+        public async System.Threading.Tasks.Task<List<EntityDataModel>> FetchDataAsync (FetchObjectsModel fetchObjectsModel)
         {
-             ApiResponse<List<EntityDataModel>> localVarResponse = await FetchDataAsyncWithHttpInfo(fetchobjectsModel);
+             ApiResponse<List<EntityDataModel>> localVarResponse = await FetchDataAsyncWithHttpInfo(fetchObjectsModel);
              return localVarResponse.Data;
 
         }
@@ -1202,12 +1202,12 @@ namespace InRiver.Rest.Lib.Api
         /// Returns various types of entity data Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchobjectsModel"></param>
+        /// <param name="fetchObjectsModel"></param>
         /// <returns>Task of ApiResponse (List&lt;EntityDataModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<EntityDataModel>>> FetchDataAsyncWithHttpInfo (FetchobjectsModel fetchobjectsModel)
+        public async System.Threading.Tasks.Task<ApiResponse<List<EntityDataModel>>> FetchDataAsyncWithHttpInfo (FetchObjectsModel fetchObjectsModel)
         {
             // verify the required parameter 'fetchobjectsModel' is set
-            if (fetchobjectsModel == null)
+            if (fetchObjectsModel == null)
                 throw new ApiException(400, "Missing required parameter 'fetchobjectsModel' when calling EntityApi->EntityFetchData");
 
             var localVarPath = "/api/v1.0.1/entities:fetchdata";
@@ -1235,13 +1235,13 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (fetchobjectsModel != null && fetchobjectsModel.GetType() != typeof(byte[]))
+            if (fetchObjectsModel != null && fetchObjectsModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = _serializer.Serialize(fetchobjectsModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(fetchObjectsModel); // http body (model) parameter
             }
             else
             {
-                localVarPostBody = fetchobjectsModel; // byte array
+                localVarPostBody = fetchObjectsModel; // byte array
             }
 
 

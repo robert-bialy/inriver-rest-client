@@ -9,25 +9,25 @@ using Newtonsoft.Json;
 namespace InRiver.Rest.Lib.Model
 {
     /// <summary>
-    /// FetchobjectsModel
+    /// FetchObjectsModel
     /// </summary>
     [DataContract]
-    public class FetchobjectsModel :  IEquatable<FetchobjectsModel>
+    public class FetchObjectsModel :  IEquatable<FetchObjectsModel>
     {
         /// <summary>
-        /// Initializes a new instance of the <see cref="FetchobjectsModel" /> class.
+        /// Initializes a new instance of the <see cref="FetchObjectsModel" /> class.
         /// </summary>
         [JsonConstructor]
-        protected FetchobjectsModel() { }
+        protected FetchObjectsModel() { }
         /// <summary>
-        /// Initializes a new instance of the <see cref="FetchobjectsModel" /> class.
+        /// Initializes a new instance of the <see cref="FetchObjectsModel" /> class.
         /// </summary>
         /// <param name="entityIds">entityIds (required).</param>
         /// <param name="objects">objects (required).</param>
         /// <param name="fieldTypeIds">fieldTypeIds.</param>
         /// <param name="inbound">inbound.</param>
         /// <param name="outbound">outbound.</param>
-        public FetchobjectsModel(List<int?> entityIds = default(List<int?>), string objects = default, string fieldTypeIds = default, FetchLinkobjectsModel inbound = default(FetchLinkobjectsModel), FetchLinkobjectsModel outbound = default(FetchLinkobjectsModel))
+        public FetchObjectsModel(List<int?> entityIds = default(List<int?>), string objects = default, string fieldTypeIds = default, FetchLinkObjectsModel inbound = default(FetchLinkObjectsModel), FetchLinkObjectsModel outbound = default(FetchLinkObjectsModel))
         {
             // to ensure "entityIds" is required (not null)
             if (entityIds == null)
@@ -45,7 +45,7 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                objects = objects;
+                Objects = objects;
             }
             FieldTypeIds = fieldTypeIds;
             Inbound = inbound;
@@ -62,7 +62,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets objects
         /// </summary>
         [DataMember(Name="objects", EmitDefaultValue=false)]
-        public string objects { get; set; }
+        public string Objects { get; set; }
 
         /// <summary>
         /// Gets or Sets FieldTypeIds
@@ -74,13 +74,13 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Inbound
         /// </summary>
         [DataMember(Name="inbound", EmitDefaultValue=false)]
-        public FetchLinkobjectsModel Inbound { get; set; }
+        public FetchLinkObjectsModel Inbound { get; set; }
 
         /// <summary>
         /// Gets or Sets Outbound
         /// </summary>
         [DataMember(Name="outbound", EmitDefaultValue=false)]
-        public FetchLinkobjectsModel Outbound { get; set; }
+        public FetchLinkObjectsModel Outbound { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -91,7 +91,7 @@ namespace InRiver.Rest.Lib.Model
             var sb = new StringBuilder();
             sb.Append("class FetchobjectsModel {\n");
             sb.Append("  EntityIds: ").Append(EntityIds).Append("\n");
-            sb.Append("  objects: ").Append(objects).Append("\n");
+            sb.Append("  objects: ").Append(Objects).Append("\n");
             sb.Append("  FieldTypeIds: ").Append(FieldTypeIds).Append("\n");
             sb.Append("  Inbound: ").Append(Inbound).Append("\n");
             sb.Append("  Outbound: ").Append(Outbound).Append("\n");
@@ -115,7 +115,7 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return Equals(input as FetchobjectsModel);
+            return Equals(input as FetchObjectsModel);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="input">Instance of FetchobjectsModel to be compared</param>
         /// <returns>Boolean</returns>
-        public bool Equals(FetchobjectsModel input)
+        public bool Equals(FetchObjectsModel input)
         {
             if (input == null)
                 return false;
@@ -135,9 +135,9 @@ namespace InRiver.Rest.Lib.Model
                     EntityIds.SequenceEqual(input.EntityIds)
                 ) && 
                 (
-                    objects == input.objects ||
-                    (objects != null &&
-                    objects.Equals(input.objects))
+                    Objects == input.Objects ||
+                    (Objects != null &&
+                     Objects.Equals(input.Objects))
                 ) && 
                 (
                     FieldTypeIds == input.FieldTypeIds ||
@@ -167,8 +167,8 @@ namespace InRiver.Rest.Lib.Model
                 int hashCode = 41;
                 if (EntityIds != null)
                     hashCode = hashCode * 59 + EntityIds.GetHashCode();
-                if (objects != null)
-                    hashCode = hashCode * 59 + objects.GetHashCode();
+                if (Objects != null)
+                    hashCode = hashCode * 59 + Objects.GetHashCode();
                 if (FieldTypeIds != null)
                     hashCode = hashCode * 59 + FieldTypeIds.GetHashCode();
                 if (Inbound != null)

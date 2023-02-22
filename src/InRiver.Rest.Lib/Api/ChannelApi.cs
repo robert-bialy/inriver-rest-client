@@ -12,7 +12,7 @@ namespace InRiver.Rest.Lib.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    internal class ChannelApi : IChannelApi
+    internal sealed class ChannelApi : IChannelApi
     {
         private readonly ISerializer _serializer;
         private readonly IApiClient _apiClient;
@@ -54,7 +54,7 @@ namespace InRiver.Rest.Lib.Api
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
         
         /// <summary>
@@ -64,9 +64,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="path"></param>
         /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>ChannelPathContentModel</returns>
-        public ChannelPathContentModel ChannelContent (string path, string entityTypeIds = null)
+        public ChannelPathContentModel ChannelContent(string path, string entityTypeIds = null)
         {
-             ApiResponse<ChannelPathContentModel> localVarResponse = ChannelContentWithHttpInfo(path, entityTypeIds);
+             var localVarResponse = ChannelContentWithHttpInfo(path, entityTypeIds);
              return localVarResponse.Data;
         }
 
@@ -77,7 +77,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="path"></param>
         /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
         /// <returns>ApiResponse of ChannelPathContentModel</returns>
-        public ApiResponse< ChannelPathContentModel > ChannelContentWithHttpInfo (string path, string entityTypeIds = null)
+        public ApiResponse<ChannelPathContentModel> ChannelContentWithHttpInfo(string path, string entityTypeIds = null)
         {
             // verify the required parameter 'path' is set
             if (path == null)
@@ -105,7 +105,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (path != null) localVarPathParams.Add("path", HttpHelpers.ParameterToString(path,Configuration)); // path parameter
+            localVarPathParams.Add("path", HttpHelpers.ParameterToString(path,Configuration)); // path parameter
             if (entityTypeIds != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "entityTypeIds", entityTypeIds, Configuration)); // query parameter
 
 
@@ -116,11 +116,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelChannelContent", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelChannelContent", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<ChannelPathContentModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -187,11 +184,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelChannelContent", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelChannelContent", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<ChannelPathContentModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -216,7 +210,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse< List<string> > EntityTypesWithHttpInfo (int? channelId)
+        public ApiResponse<List<string>> EntityTypesWithHttpInfo(int? channelId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -244,8 +238,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
-
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
 
             // make the HTTP request
             RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
@@ -254,11 +247,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelEntityTypes", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelEntityTypes", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -273,7 +263,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>Task of List&lt;string&gt;</returns>
         public async System.Threading.Tasks.Task<List<string>> EntityTypesAsync (int? channelId)
         {
-             ApiResponse<List<string>> localVarResponse = await EntityTypesAsyncWithHttpInfo(channelId);
+             var localVarResponse = await EntityTypesAsyncWithHttpInfo(channelId);
              return localVarResponse.Data;
 
         }
@@ -342,7 +332,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="linkDirection">\&quot;inbound\&quot; or \&quot;outbound\&quot;</param>
         /// <param name="linkTypeId">optional, filter by link type (optional)</param>
         /// <returns>EntityListModel</returns>
-        public EntityListModel GetByEntityType (int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
+        public EntityListModel GetByEntityType(int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
         {
              ApiResponse<EntityListModel> localVarResponse = GetByEntityTypeWithHttpInfo(channelId, entityId, linkDirection, linkTypeId);
              return localVarResponse.Data;
@@ -357,7 +347,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="linkDirection">\&quot;inbound\&quot; or \&quot;outbound\&quot;</param>
         /// <param name="linkTypeId">optional, filter by link type (optional)</param>
         /// <returns>ApiResponse of EntityListModel</returns>
-        public ApiResponse< EntityListModel > GetByEntityTypeWithHttpInfo (int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
+        public ApiResponse< EntityListModel > GetByEntityTypeWithHttpInfo(int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -391,9 +381,9 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
-            if (entityId != null) localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
-            if (linkDirection != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "linkDirection", linkDirection, Configuration)); // query parameter
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
+            localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "linkDirection", linkDirection, Configuration)); // query parameter
             if (linkTypeId != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "linkTypeId", linkTypeId, Configuration)); // query parameter
 
 
@@ -404,11 +394,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetByEntityType", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelGetByEntityType", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -424,9 +411,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="linkDirection">\&quot;inbound\&quot; or \&quot;outbound\&quot;</param>
         /// <param name="linkTypeId">optional, filter by link type (optional)</param>
         /// <returns>Task of EntityListModel</returns>
-        public async System.Threading.Tasks.Task<EntityListModel> GetByEntityTypeAsync (int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
+        public async System.Threading.Tasks.Task<EntityListModel> GetByEntityTypeAsync(int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
         {
-             ApiResponse<EntityListModel> localVarResponse = await GetByEntityTypeAsyncWithHttpInfo(channelId, entityId, linkDirection, linkTypeId);
+             var localVarResponse = await GetByEntityTypeAsyncWithHttpInfo(channelId, entityId, linkDirection, linkTypeId);
              return localVarResponse.Data;
 
         }
@@ -440,7 +427,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="linkDirection">\&quot;inbound\&quot; or \&quot;outbound\&quot;</param>
         /// <param name="linkTypeId">optional, filter by link type (optional)</param>
         /// <returns>Task of ApiResponse (EntityListModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<EntityListModel>> GetByEntityTypeAsyncWithHttpInfo (int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
+        public async System.Threading.Tasks.Task<ApiResponse<EntityListModel>> GetByEntityTypeAsyncWithHttpInfo(int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -474,9 +461,9 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
-            if (entityId != null) localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
-            if (linkDirection != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "linkDirection", linkDirection, Configuration)); // query parameter
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
+            localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "linkDirection", linkDirection, Configuration)); // query parameter
             if (linkTypeId != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "linkTypeId", linkTypeId, Configuration)); // query parameter
 
 
@@ -487,11 +474,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetByEntityType", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelGetByEntityType", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -507,7 +491,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>EntityListModel</returns>
         public EntityListModel GetByLinkEntityType (int? channelId, string entityTypeId = null)
         {
-             ApiResponse<EntityListModel> localVarResponse = GetByLinkEntityTypeWithHttpInfo(channelId, entityTypeId);
+             var localVarResponse = GetByLinkEntityTypeWithHttpInfo(channelId, entityTypeId);
              return localVarResponse.Data;
         }
 
@@ -518,7 +502,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="channelId"></param>
         /// <param name="entityTypeId">optional, filter by entity type id (optional)</param>
         /// <returns>ApiResponse of EntityListModel</returns>
-        public ApiResponse< EntityListModel > GetByLinkEntityTypeWithHttpInfo (int? channelId, string entityTypeId = null)
+        public ApiResponse<EntityListModel> GetByLinkEntityTypeWithHttpInfo(int? channelId, string entityTypeId = null)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -546,7 +530,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
             if (entityTypeId != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "entityTypeId", entityTypeId, Configuration)); // query parameter
 
 
@@ -575,9 +559,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="channelId"></param>
         /// <param name="entityTypeId">optional, filter by entity type id (optional)</param>
         /// <returns>Task of EntityListModel</returns>
-        public async System.Threading.Tasks.Task<EntityListModel> GetByLinkEntityTypeAsync (int? channelId, string entityTypeId = null)
+        public async System.Threading.Tasks.Task<EntityListModel> GetByLinkEntityTypeAsync(int? channelId, string entityTypeId = null)
         {
-             ApiResponse<EntityListModel> localVarResponse = await GetByLinkEntityTypeAsyncWithHttpInfo(channelId, entityTypeId);
+             var localVarResponse = await GetByLinkEntityTypeAsyncWithHttpInfo(channelId, entityTypeId);
              return localVarResponse.Data;
 
         }
@@ -617,22 +601,19 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
             if (entityTypeId != null) localVarQueryParams.AddRange(HttpHelpers.ParameterToKeyValuePairs("", "entityTypeId", entityTypeId, Configuration)); // query parameter
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
+            var localVarResponse = (RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetByLinkEntityType", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelGetByLinkEntityType", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -647,7 +628,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>Dictionary&lt;string, StructureNode&gt;</returns>
         public Dictionary<string, StructureNode> GetChannelNodeTree (int? channelId)
         {
-             ApiResponse<Dictionary<string, StructureNode>> localVarResponse = GetChannelNodeTreeWithHttpInfo(channelId);
+             var localVarResponse = GetChannelNodeTreeWithHttpInfo(channelId);
              return localVarResponse.Data;
         }
 
@@ -695,11 +676,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelNodeTree", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelGetChannelNodeTree", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -714,7 +692,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>Task of Dictionary&lt;string, StructureNode&gt;</returns>
         public async System.Threading.Tasks.Task<Dictionary<string, StructureNode>> GetChannelNodeTreeAsync(int? channelId)
         {
-             ApiResponse<Dictionary<string, StructureNode>> localVarResponse = await GetChannelNodeTreeAsyncWithHttpInfo(channelId);
+             var localVarResponse = await GetChannelNodeTreeAsyncWithHttpInfo(channelId);
              return localVarResponse.Data;
 
         }
@@ -753,7 +731,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
 
 
             // make the HTTP request
@@ -763,11 +741,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelNodeTree", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            Exception exception = ExceptionFactory?.Invoke("ChannelGetChannelNodeTree", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -782,7 +757,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>List&lt;string&gt;</returns>
         public List<string> GetChannelNodes (int? channelId)
         {
-             ApiResponse<List<string>> localVarResponse = GetChannelNodesWithHttpInfo(channelId);
+             var localVarResponse = GetChannelNodesWithHttpInfo(channelId);
              return localVarResponse.Data;
         }
 
@@ -792,7 +767,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
         /// <returns>ApiResponse of List&lt;string&gt;</returns>
-        public ApiResponse<List<string>> GetChannelNodesWithHttpInfo (int? channelId)
+        public ApiResponse<List<string>> GetChannelNodesWithHttpInfo(int? channelId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -820,7 +795,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
 
 
             // make the HTTP request
@@ -848,9 +823,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
         /// <returns>Task of List&lt;string&gt;</returns>
-        public async System.Threading.Tasks.Task<List<string>> GetChannelNodesAsync (int? channelId)
+        public async System.Threading.Tasks.Task<List<string>> GetChannelNodesAsync(int? channelId)
         {
-             ApiResponse<List<string>> localVarResponse = await GetChannelNodesAsyncWithHttpInfo(channelId);
+             var localVarResponse = await GetChannelNodesAsyncWithHttpInfo(channelId);
              return localVarResponse.Data;
 
         }
@@ -861,7 +836,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="channelId"></param>
         /// <returns>Task of ApiResponse (List&lt;string&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetChannelNodesAsyncWithHttpInfo (int? channelId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<string>>> GetChannelNodesAsyncWithHttpInfo(int? channelId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -889,7 +864,7 @@ namespace InRiver.Rest.Lib.Api
             if (localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
 
 
             // make the HTTP request
@@ -899,11 +874,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelNodes", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelGetChannelNodes", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<List<string>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -917,9 +889,9 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="channelId"></param>
         /// <param name="entityId"></param>
         /// <returns>List&lt;StructureEntityModel&gt;</returns>
-        public List<StructureEntityModel> GetChannelStructureEntities (int? channelId, int? entityId)
+        public List<StructureEntityModel> GetChannelStructureEntities(int? channelId, int? entityId)
         {
-             ApiResponse<List<StructureEntityModel>> localVarResponse = GetChannelStructureEntitiesWithHttpInfo(channelId, entityId);
+             var localVarResponse = GetChannelStructureEntitiesWithHttpInfo(channelId, entityId);
              return localVarResponse.Data;
         }
 
@@ -930,7 +902,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="channelId"></param>
         /// <param name="entityId"></param>
         /// <returns>ApiResponse of List&lt;StructureEntityModel&gt;</returns>
-        public ApiResponse< List<StructureEntityModel> > GetChannelStructureEntitiesWithHttpInfo (int? channelId, int? entityId)
+        public ApiResponse<List<StructureEntityModel>> GetChannelStructureEntitiesWithHttpInfo(int? channelId, int? entityId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -972,11 +944,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelStructureEntities", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelGetChannelStructureEntities", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<List<StructureEntityModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -990,11 +959,10 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="channelId"></param>
         /// <param name="entityId"></param>
         /// <returns>Task of List&lt;StructureEntityModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<StructureEntityModel>> GetChannelStructureEntitiesAsync (int? channelId, int? entityId)
+        public async System.Threading.Tasks.Task<List<StructureEntityModel>> GetChannelStructureEntitiesAsync(int? channelId, int? entityId)
         {
-             ApiResponse<List<StructureEntityModel>> localVarResponse = await GetChannelStructureEntitiesAsyncWithHttpInfo(channelId, entityId);
+             var localVarResponse = await GetChannelStructureEntitiesAsyncWithHttpInfo(channelId, entityId);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1004,7 +972,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="channelId"></param>
         /// <param name="entityId"></param>
         /// <returns>Task of ApiResponse (List&lt;StructureEntityModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<StructureEntityModel>>> GetChannelStructureEntitiesAsyncWithHttpInfo (int? channelId, int? entityId)
+        public async System.Threading.Tasks.Task<ApiResponse<List<StructureEntityModel>>> GetChannelStructureEntitiesAsyncWithHttpInfo(int? channelId, int? entityId)
         {
             // verify the required parameter 'channelId' is set
             if (channelId == null)
@@ -1046,11 +1014,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode = (int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelStructureEntities", localVarResponse);
-                if (exception != null) throw exception;
-            }
+            var exception = ExceptionFactory?.Invoke("ChannelGetChannelStructureEntities", localVarResponse);
+            if (exception != null) throw exception;
 
             return new ApiResponse<List<StructureEntityModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
@@ -1065,7 +1030,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="includeChannels">optional, defaults to true (optional)</param>
         /// <param name="includePublications">optional, defaults to false (optional)</param>
         /// <returns>List&lt;ChannelSummaryModel&gt;</returns>
-        public List<ChannelSummaryModel> GetChannelsForEntityId (int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
+        public List<ChannelSummaryModel> GetChannelsForEntityId(int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
         {
              ApiResponse<List<ChannelSummaryModel>> localVarResponse = GetChannelsForEntityIdWithHttpInfo(forEntityId, includeChannels, includePublications);
              return localVarResponse.Data;
@@ -1079,7 +1044,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="includeChannels">optional, defaults to true (optional)</param>
         /// <param name="includePublications">optional, defaults to false (optional)</param>
         /// <returns>ApiResponse of List&lt;ChannelSummaryModel&gt;</returns>
-        public ApiResponse< List<ChannelSummaryModel> > GetChannelsForEntityIdWithHttpInfo (int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
+        public ApiResponse<List<ChannelSummaryModel>> GetChannelsForEntityIdWithHttpInfo(int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
         {
 
             var localVarPath = "/api/v1.0.0/channels";
@@ -1137,7 +1102,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>Task of List&lt;ChannelSummaryModel&gt;</returns>
         public async System.Threading.Tasks.Task<List<ChannelSummaryModel>> GetChannelsForEntityIdAsync (int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
         {
-             ApiResponse<List<ChannelSummaryModel>> localVarResponse = await GetChannelsForEntityIdAsyncWithHttpInfo(forEntityId, includeChannels, includePublications);
+             var localVarResponse = await GetChannelsForEntityIdAsyncWithHttpInfo(forEntityId, includeChannels, includePublications);
              return localVarResponse.Data;
 
         }
@@ -1150,7 +1115,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="includeChannels">optional, defaults to true (optional)</param>
         /// <param name="includePublications">optional, defaults to false (optional)</param>
         /// <returns>Task of ApiResponse (List&lt;ChannelSummaryModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<ChannelSummaryModel>>> GetChannelsForEntityIdAsyncWithHttpInfo (int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
+        public async System.Threading.Tasks.Task<ApiResponse<List<ChannelSummaryModel>>> GetChannelsForEntityIdAsyncWithHttpInfo(int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
         {
 
             var localVarPath = "/api/v1.0.0/channels";
