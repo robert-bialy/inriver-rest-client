@@ -8,7 +8,7 @@ namespace InRiver.Rest.Lib.Client
     /// <summary>
     /// Represents a set of configuration settings
     /// </summary>
-    public class Configuration : IReadableConfiguration, ICloneable
+    public class Configuration : ICloneable
     {
         #region Constants
 

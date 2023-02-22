@@ -38,7 +38,6 @@ namespace InRiver.Rest.Lib.Services
         /// <returns>object representation of the JSON string.</returns>
         public object Deserialize(RestResponse response, Type type)
         {
-            var headers = response.Headers;
             if (type == typeof(byte[])) // return byte array
             {
                 return response.RawBytes;
@@ -49,7 +48,7 @@ namespace InRiver.Rest.Lib.Services
                 return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
 
-            if (type == typeof(String) || type.Name.StartsWith("System.Nullable")) // return primitive type
+            if (type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
             {
                 return ConvertType(response.Content, type);
             }
