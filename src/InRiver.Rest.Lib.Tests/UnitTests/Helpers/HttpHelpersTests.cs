@@ -29,7 +29,7 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Helpers
         public void ReturnsNullIfAcceptsArrayIsEmpty()
         {
             // Arrange
-            string[] accepts = new string[0];
+            string[] accepts = Array.Empty<string>();
 
             // Act
             string result = HttpHelpers.SelectHeaderAccept(accepts);
@@ -42,7 +42,7 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Helpers
         public void ReturnsJsonIfAcceptsArrayContainsJson()
         {
             // Arrange
-            string[] accepts = new string[] { "application/json" };
+            string[] accepts = { "application/json" };
 
             // Act
             string result = HttpHelpers.SelectHeaderAccept(accepts);
@@ -55,7 +55,7 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Helpers
         public void ReturnsJoinedStringIfAcceptsArrayDoesNotContainJson()
         {
             // Arrange
-            string[] accepts = new string[] { "text/html", "application/xml" };
+            string[] accepts = { "text/html", "application/xml" };
 
             // Act
             string result = HttpHelpers.SelectHeaderAccept(accepts);
@@ -68,7 +68,7 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Helpers
         public void ReturnsJsonIfAcceptsArrayContainsJsonWithDifferentCasing()
         {
             // Arrange
-            string[] accepts = new string[] { "AppliCation/JSON" };
+            string[] accepts = { "AppliCation/JSON" };
 
             // Act
             string result = HttpHelpers.SelectHeaderAccept(accepts);

@@ -91,12 +91,12 @@ namespace InRiver.Rest.Lib.Api
             object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
             String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
@@ -134,7 +134,6 @@ namespace InRiver.Rest.Lib.Api
         {
              var localVarResponse = await RunSyndicateAsyncWithHttpInfo(syndicationId);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -158,12 +157,12 @@ namespace InRiver.Rest.Lib.Api
             object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
             String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
@@ -219,12 +218,12 @@ namespace InRiver.Rest.Lib.Api
             object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
             String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
@@ -278,12 +277,12 @@ namespace InRiver.Rest.Lib.Api
             object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
             String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };

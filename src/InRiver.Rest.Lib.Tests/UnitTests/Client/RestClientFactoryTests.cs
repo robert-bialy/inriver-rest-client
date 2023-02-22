@@ -1,7 +1,6 @@
 ﻿using InRiver.Rest.Lib.Client;
 using NUnit.Framework;
 using RestSharp;
-using RestClient = InRiver.Rest.Lib.Services.RestClient;
 
 namespace InRiver.Rest.Lib.Tests.UnitTests.Client
 {

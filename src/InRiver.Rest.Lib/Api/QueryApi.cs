@@ -55,7 +55,7 @@ namespace InRiver.Rest.Lib.Api
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
         
         /// <summary>
@@ -91,7 +91,7 @@ namespace InRiver.Rest.Lib.Api
             object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
                 "application/json", 
                 "text/json", 
                 "application/x-www-form-urlencoded"
@@ -99,7 +99,7 @@ namespace InRiver.Rest.Lib.Api
             String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
@@ -169,7 +169,7 @@ namespace InRiver.Rest.Lib.Api
             object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
                 "application/json", 
                 "text/json", 
                 "application/x-www-form-urlencoded"
@@ -177,7 +177,7 @@ namespace InRiver.Rest.Lib.Api
             String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
@@ -193,7 +193,6 @@ namespace InRiver.Rest.Lib.Api
             {
                 localVarPostBody = queryModel; // byte array
             }
-
 
             // make the HTTP request
             RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,

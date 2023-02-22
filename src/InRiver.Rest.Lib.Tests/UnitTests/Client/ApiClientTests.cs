@@ -9,8 +9,8 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Client
     [TestFixture]
     public class ApiClientTests
     {
-        private ApiClient _apiClient;
-        private Mock<IRestClientFactory> _restClientFactoryMock;
+        private ApiClient _apiClient = null!;
+        private Mock<IRestClientFactory> _restClientFactoryMock = null!;
 
         [SetUp]
         public void SetUp()

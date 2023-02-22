@@ -6,7 +6,7 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Services
 {
     internal class SerializerTests
     {
-        private Serializer _serializer;
+        private Serializer _serializer = null!;
 
         [SetUp]
         public void Setup()
