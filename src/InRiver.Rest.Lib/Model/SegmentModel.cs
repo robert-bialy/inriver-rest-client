@@ -20,12 +20,12 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="name">name.</param>
         /// <param name="description">description.</param>
         /// <param name="roles">roles.</param>
-        public SegmentModel(int? id = default(int?), string name = default(string), string description = default(string), List<RoleModel> roles = default(List<RoleModel>))
+        public SegmentModel(int? id = default(int?), string name = default, string description = default, List<RoleModel> roles = default(List<RoleModel>))
         {
-            this.Id = id;
-            this.Name = name;
-            this.Description = description;
-            this.Roles = roles;
+            Id = id;
+            Name = name;
+            Description = description;
+            Roles = roles;
         }
         
         /// <summary>
@@ -80,11 +80,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SegmentModel);
+            return Equals(input as SegmentModel);
         }
 
         /// <summary>
@@ -99,24 +99,24 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    Id == input.Id ||
+                    (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    Name == input.Name ||
+                    (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    Description == input.Description ||
+                    (Description != null &&
+                    Description.Equals(input.Description))
                 ) && 
                 (
-                    this.Roles == input.Roles ||
-                    this.Roles != null &&
-                    this.Roles.SequenceEqual(input.Roles)
+                    Roles == input.Roles ||
+                    Roles != null &&
+                    Roles.SequenceEqual(input.Roles)
                 );
         }
 
@@ -129,14 +129,14 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.Roles != null)
-                    hashCode = hashCode * 59 + this.Roles.GetHashCode();
+                if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Description != null)
+                    hashCode = hashCode * 59 + Description.GetHashCode();
+                if (Roles != null)
+                    hashCode = hashCode * 59 + Roles.GetHashCode();
                 return hashCode;
             }
         }

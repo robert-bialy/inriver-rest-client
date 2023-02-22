@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
@@ -25,7 +24,7 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="value">value.</param>
         /// <param name="index">index.</param>
         /// <param name="parentKey">parentKey.</param>
-        public CVLValueModel(string key = default(string), Object value = default(Object), int? index = default(int?), string parentKey = default(string))
+        public CVLValueModel(string key = default, object value = default(object), int? index = default(int?), string parentKey = default)
         {
             // to ensure "key" is required (not null)
             if (key == null)
@@ -34,11 +33,11 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.Key = key;
+                Key = key;
             }
-            this.Value = value;
-            this.Index = index;
-            this.ParentKey = parentKey;
+            Value = value;
+            Index = index;
+            ParentKey = parentKey;
         }
         
         /// <summary>
@@ -51,7 +50,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Gets or Sets Index
@@ -93,11 +92,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CVLValueModel);
+            return Equals(input as CVLValueModel);
         }
 
         /// <summary>
@@ -112,24 +111,24 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Key == input.Key ||
-                    (this.Key != null &&
-                    this.Key.Equals(input.Key))
+                    Key == input.Key ||
+                    (Key != null &&
+                    Key.Equals(input.Key))
                 ) && 
                 (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    Value == input.Value ||
+                    (Value != null &&
+                    Value.Equals(input.Value))
                 ) && 
                 (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
+                    Index == input.Index ||
+                    (Index != null &&
+                    Index.Equals(input.Index))
                 ) && 
                 (
-                    this.ParentKey == input.ParentKey ||
-                    (this.ParentKey != null &&
-                    this.ParentKey.Equals(input.ParentKey))
+                    ParentKey == input.ParentKey ||
+                    (ParentKey != null &&
+                    ParentKey.Equals(input.ParentKey))
                 );
         }
 
@@ -142,14 +141,14 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Key != null)
-                    hashCode = hashCode * 59 + this.Key.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
-                if (this.ParentKey != null)
-                    hashCode = hashCode * 59 + this.ParentKey.GetHashCode();
+                if (Key != null)
+                    hashCode = hashCode * 59 + Key.GetHashCode();
+                if (Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
+                if (Index != null)
+                    hashCode = hashCode * 59 + Index.GetHashCode();
+                if (ParentKey != null)
+                    hashCode = hashCode * 59 + ParentKey.GetHashCode();
                 return hashCode;
             }
         }

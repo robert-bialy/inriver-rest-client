@@ -18,11 +18,11 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="type">type.</param>
         /// <param name="value">value.</param>
         /// <param name="_operator">_operator.</param>
-        public SystemCriterionModel(string type = default(string), Object value = default(Object), string _operator = default(string))
+        public SystemCriterionModel(string type = default, object value = default(object), string _operator = default)
         {
-            this.Type = type;
-            this.Value = value;
-            this.Operator = _operator;
+            Type = type;
+            Value = value;
+            Operator = _operator;
         }
         
         /// <summary>
@@ -35,7 +35,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Gets or Sets Operator
@@ -70,11 +70,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SystemCriterionModel);
+            return Equals(input as SystemCriterionModel);
         }
 
         /// <summary>
@@ -89,19 +89,19 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Type == input.Type ||
-                    (this.Type != null &&
-                    this.Type.Equals(input.Type))
+                    Type == input.Type ||
+                    (Type != null &&
+                    Type.Equals(input.Type))
                 ) && 
                 (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    Value == input.Value ||
+                    (Value != null &&
+                    Value.Equals(input.Value))
                 ) && 
                 (
-                    this.Operator == input.Operator ||
-                    (this.Operator != null &&
-                    this.Operator.Equals(input.Operator))
+                    Operator == input.Operator ||
+                    (Operator != null &&
+                    Operator.Equals(input.Operator))
                 );
         }
 
@@ -114,12 +114,12 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Type != null)
-                    hashCode = hashCode * 59 + this.Type.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
-                if (this.Operator != null)
-                    hashCode = hashCode * 59 + this.Operator.GetHashCode();
+                if (Type != null)
+                    hashCode = hashCode * 59 + Type.GetHashCode();
+                if (Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
+                if (Operator != null)
+                    hashCode = hashCode * 59 + Operator.GetHashCode();
                 return hashCode;
             }
         }

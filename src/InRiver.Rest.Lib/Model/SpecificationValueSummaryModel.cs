@@ -31,24 +31,24 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="mandatory">mandatory.</param>
         /// <param name="isHidden">isHidden.</param>
         /// <param name="isReadOnly">isReadOnly.</param>
-        public SpecificationValueSummaryModel(int? entityId = default(int?), string name = default(string), string categoryId = default(string), Object value = default(Object), Object displayValue = default(Object), string parentCvlId = default(string), string cvlId = default(string), bool? isMultiValue = default(bool?), int? index = default(int?), bool? isFormatted = default(bool?), string specificationFieldTypeId = default(string), string unit = default(string), string specificationDataType = default(string), bool? mandatory = default(bool?), bool? isHidden = default(bool?), bool? isReadOnly = default(bool?))
+        public SpecificationValueSummaryModel(int? entityId = default(int?), string name = default, string categoryId = default, object value = default(object), object displayValue = default(object), string parentCvlId = default, string cvlId = default, bool? isMultiValue = default(bool?), int? index = default(int?), bool? isFormatted = default(bool?), string specificationFieldTypeId = default, string unit = default, string specificationDataType = default, bool? mandatory = default(bool?), bool? isHidden = default(bool?), bool? isReadOnly = default(bool?))
         {
-            this.EntityId = entityId;
-            this.Name = name;
-            this.CategoryId = categoryId;
-            this.Value = value;
-            this.DisplayValue = displayValue;
-            this.ParentCvlId = parentCvlId;
-            this.CvlId = cvlId;
-            this.IsMultiValue = isMultiValue;
-            this.Index = index;
-            this.IsFormatted = isFormatted;
-            this.SpecificationFieldTypeId = specificationFieldTypeId;
-            this.Unit = unit;
-            this.SpecificationDataType = specificationDataType;
-            this.Mandatory = mandatory;
-            this.IsHidden = isHidden;
-            this.IsReadOnly = isReadOnly;
+            EntityId = entityId;
+            Name = name;
+            CategoryId = categoryId;
+            Value = value;
+            DisplayValue = displayValue;
+            ParentCvlId = parentCvlId;
+            CvlId = cvlId;
+            IsMultiValue = isMultiValue;
+            Index = index;
+            IsFormatted = isFormatted;
+            SpecificationFieldTypeId = specificationFieldTypeId;
+            Unit = unit;
+            SpecificationDataType = specificationDataType;
+            Mandatory = mandatory;
+            IsHidden = isHidden;
+            IsReadOnly = isReadOnly;
         }
         
         /// <summary>
@@ -73,13 +73,13 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayValue
         /// </summary>
         [DataMember(Name="displayValue", EmitDefaultValue=false)]
-        public Object DisplayValue { get; set; }
+        public object DisplayValue { get; set; }
 
         /// <summary>
         /// Gets or Sets ParentCvlId
@@ -187,11 +187,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SpecificationValueSummaryModel);
+            return Equals(input as SpecificationValueSummaryModel);
         }
 
         /// <summary>
@@ -206,84 +206,84 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
+                    EntityId == input.EntityId ||
+                    (EntityId != null &&
+                    EntityId.Equals(input.EntityId))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    Name == input.Name ||
+                    (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
                 (
-                    this.CategoryId == input.CategoryId ||
-                    (this.CategoryId != null &&
-                    this.CategoryId.Equals(input.CategoryId))
+                    CategoryId == input.CategoryId ||
+                    (CategoryId != null &&
+                    CategoryId.Equals(input.CategoryId))
                 ) && 
                 (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    Value == input.Value ||
+                    (Value != null &&
+                    Value.Equals(input.Value))
                 ) && 
                 (
-                    this.DisplayValue == input.DisplayValue ||
-                    (this.DisplayValue != null &&
-                    this.DisplayValue.Equals(input.DisplayValue))
+                    DisplayValue == input.DisplayValue ||
+                    (DisplayValue != null &&
+                    DisplayValue.Equals(input.DisplayValue))
                 ) && 
                 (
-                    this.ParentCvlId == input.ParentCvlId ||
-                    (this.ParentCvlId != null &&
-                    this.ParentCvlId.Equals(input.ParentCvlId))
+                    ParentCvlId == input.ParentCvlId ||
+                    (ParentCvlId != null &&
+                    ParentCvlId.Equals(input.ParentCvlId))
                 ) && 
                 (
-                    this.CvlId == input.CvlId ||
-                    (this.CvlId != null &&
-                    this.CvlId.Equals(input.CvlId))
+                    CvlId == input.CvlId ||
+                    (CvlId != null &&
+                    CvlId.Equals(input.CvlId))
                 ) && 
                 (
-                    this.IsMultiValue == input.IsMultiValue ||
-                    (this.IsMultiValue != null &&
-                    this.IsMultiValue.Equals(input.IsMultiValue))
+                    IsMultiValue == input.IsMultiValue ||
+                    (IsMultiValue != null &&
+                    IsMultiValue.Equals(input.IsMultiValue))
                 ) && 
                 (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
+                    Index == input.Index ||
+                    (Index != null &&
+                    Index.Equals(input.Index))
                 ) && 
                 (
-                    this.IsFormatted == input.IsFormatted ||
-                    (this.IsFormatted != null &&
-                    this.IsFormatted.Equals(input.IsFormatted))
+                    IsFormatted == input.IsFormatted ||
+                    (IsFormatted != null &&
+                    IsFormatted.Equals(input.IsFormatted))
                 ) && 
                 (
-                    this.SpecificationFieldTypeId == input.SpecificationFieldTypeId ||
-                    (this.SpecificationFieldTypeId != null &&
-                    this.SpecificationFieldTypeId.Equals(input.SpecificationFieldTypeId))
+                    SpecificationFieldTypeId == input.SpecificationFieldTypeId ||
+                    (SpecificationFieldTypeId != null &&
+                    SpecificationFieldTypeId.Equals(input.SpecificationFieldTypeId))
                 ) && 
                 (
-                    this.Unit == input.Unit ||
-                    (this.Unit != null &&
-                    this.Unit.Equals(input.Unit))
+                    Unit == input.Unit ||
+                    (Unit != null &&
+                    Unit.Equals(input.Unit))
                 ) && 
                 (
-                    this.SpecificationDataType == input.SpecificationDataType ||
-                    (this.SpecificationDataType != null &&
-                    this.SpecificationDataType.Equals(input.SpecificationDataType))
+                    SpecificationDataType == input.SpecificationDataType ||
+                    (SpecificationDataType != null &&
+                    SpecificationDataType.Equals(input.SpecificationDataType))
                 ) && 
                 (
-                    this.Mandatory == input.Mandatory ||
-                    (this.Mandatory != null &&
-                    this.Mandatory.Equals(input.Mandatory))
+                    Mandatory == input.Mandatory ||
+                    (Mandatory != null &&
+                    Mandatory.Equals(input.Mandatory))
                 ) && 
                 (
-                    this.IsHidden == input.IsHidden ||
-                    (this.IsHidden != null &&
-                    this.IsHidden.Equals(input.IsHidden))
+                    IsHidden == input.IsHidden ||
+                    (IsHidden != null &&
+                    IsHidden.Equals(input.IsHidden))
                 ) && 
                 (
-                    this.IsReadOnly == input.IsReadOnly ||
-                    (this.IsReadOnly != null &&
-                    this.IsReadOnly.Equals(input.IsReadOnly))
+                    IsReadOnly == input.IsReadOnly ||
+                    (IsReadOnly != null &&
+                    IsReadOnly.Equals(input.IsReadOnly))
                 );
         }
 
@@ -296,38 +296,38 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EntityId != null)
-                    hashCode = hashCode * 59 + this.EntityId.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.CategoryId != null)
-                    hashCode = hashCode * 59 + this.CategoryId.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
-                if (this.DisplayValue != null)
-                    hashCode = hashCode * 59 + this.DisplayValue.GetHashCode();
-                if (this.ParentCvlId != null)
-                    hashCode = hashCode * 59 + this.ParentCvlId.GetHashCode();
-                if (this.CvlId != null)
-                    hashCode = hashCode * 59 + this.CvlId.GetHashCode();
-                if (this.IsMultiValue != null)
-                    hashCode = hashCode * 59 + this.IsMultiValue.GetHashCode();
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
-                if (this.IsFormatted != null)
-                    hashCode = hashCode * 59 + this.IsFormatted.GetHashCode();
-                if (this.SpecificationFieldTypeId != null)
-                    hashCode = hashCode * 59 + this.SpecificationFieldTypeId.GetHashCode();
-                if (this.Unit != null)
-                    hashCode = hashCode * 59 + this.Unit.GetHashCode();
-                if (this.SpecificationDataType != null)
-                    hashCode = hashCode * 59 + this.SpecificationDataType.GetHashCode();
-                if (this.Mandatory != null)
-                    hashCode = hashCode * 59 + this.Mandatory.GetHashCode();
-                if (this.IsHidden != null)
-                    hashCode = hashCode * 59 + this.IsHidden.GetHashCode();
-                if (this.IsReadOnly != null)
-                    hashCode = hashCode * 59 + this.IsReadOnly.GetHashCode();
+                if (EntityId != null)
+                    hashCode = hashCode * 59 + EntityId.GetHashCode();
+                if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if (CategoryId != null)
+                    hashCode = hashCode * 59 + CategoryId.GetHashCode();
+                if (Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
+                if (DisplayValue != null)
+                    hashCode = hashCode * 59 + DisplayValue.GetHashCode();
+                if (ParentCvlId != null)
+                    hashCode = hashCode * 59 + ParentCvlId.GetHashCode();
+                if (CvlId != null)
+                    hashCode = hashCode * 59 + CvlId.GetHashCode();
+                if (IsMultiValue != null)
+                    hashCode = hashCode * 59 + IsMultiValue.GetHashCode();
+                if (Index != null)
+                    hashCode = hashCode * 59 + Index.GetHashCode();
+                if (IsFormatted != null)
+                    hashCode = hashCode * 59 + IsFormatted.GetHashCode();
+                if (SpecificationFieldTypeId != null)
+                    hashCode = hashCode * 59 + SpecificationFieldTypeId.GetHashCode();
+                if (Unit != null)
+                    hashCode = hashCode * 59 + Unit.GetHashCode();
+                if (SpecificationDataType != null)
+                    hashCode = hashCode * 59 + SpecificationDataType.GetHashCode();
+                if (Mandatory != null)
+                    hashCode = hashCode * 59 + Mandatory.GetHashCode();
+                if (IsHidden != null)
+                    hashCode = hashCode * 59 + IsHidden.GetHashCode();
+                if (IsReadOnly != null)
+                    hashCode = hashCode * 59 + IsReadOnly.GetHashCode();
                 return hashCode;
             }
         }

@@ -20,12 +20,12 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="linkTypeId">linkTypeId.</param>
         /// <param name="direction">direction.</param>
         /// <param name="linkExists">linkExists.</param>
-        public LinkCriterionModel(List<DataCriterionModel> dataCriteria = default(List<DataCriterionModel>), string linkTypeId = default(string), string direction = default(string), bool? linkExists = default(bool?))
+        public LinkCriterionModel(List<DataCriterionModel> dataCriteria = default(List<DataCriterionModel>), string linkTypeId = default, string direction = default, bool? linkExists = default(bool?))
         {
-            this.DataCriteria = dataCriteria;
-            this.LinkTypeId = linkTypeId;
-            this.Direction = direction;
-            this.LinkExists = linkExists;
+            DataCriteria = dataCriteria;
+            LinkTypeId = linkTypeId;
+            Direction = direction;
+            LinkExists = linkExists;
         }
         
         /// <summary>
@@ -80,11 +80,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as LinkCriterionModel);
+            return Equals(input as LinkCriterionModel);
         }
 
         /// <summary>
@@ -99,24 +99,24 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.DataCriteria == input.DataCriteria ||
-                    this.DataCriteria != null &&
-                    this.DataCriteria.SequenceEqual(input.DataCriteria)
+                    DataCriteria == input.DataCriteria ||
+                    DataCriteria != null &&
+                    DataCriteria.SequenceEqual(input.DataCriteria)
                 ) && 
                 (
-                    this.LinkTypeId == input.LinkTypeId ||
-                    (this.LinkTypeId != null &&
-                    this.LinkTypeId.Equals(input.LinkTypeId))
+                    LinkTypeId == input.LinkTypeId ||
+                    (LinkTypeId != null &&
+                    LinkTypeId.Equals(input.LinkTypeId))
                 ) && 
                 (
-                    this.Direction == input.Direction ||
-                    (this.Direction != null &&
-                    this.Direction.Equals(input.Direction))
+                    Direction == input.Direction ||
+                    (Direction != null &&
+                    Direction.Equals(input.Direction))
                 ) && 
                 (
-                    this.LinkExists == input.LinkExists ||
-                    (this.LinkExists != null &&
-                    this.LinkExists.Equals(input.LinkExists))
+                    LinkExists == input.LinkExists ||
+                    (LinkExists != null &&
+                    LinkExists.Equals(input.LinkExists))
                 );
         }
 
@@ -129,14 +129,14 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.DataCriteria != null)
-                    hashCode = hashCode * 59 + this.DataCriteria.GetHashCode();
-                if (this.LinkTypeId != null)
-                    hashCode = hashCode * 59 + this.LinkTypeId.GetHashCode();
-                if (this.Direction != null)
-                    hashCode = hashCode * 59 + this.Direction.GetHashCode();
-                if (this.LinkExists != null)
-                    hashCode = hashCode * 59 + this.LinkExists.GetHashCode();
+                if (DataCriteria != null)
+                    hashCode = hashCode * 59 + DataCriteria.GetHashCode();
+                if (LinkTypeId != null)
+                    hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
+                if (Direction != null)
+                    hashCode = hashCode * 59 + Direction.GetHashCode();
+                if (LinkExists != null)
+                    hashCode = hashCode * 59 + LinkExists.GetHashCode();
                 return hashCode;
             }
         }

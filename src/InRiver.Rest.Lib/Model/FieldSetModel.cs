@@ -21,13 +21,13 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="description">description.</param>
         /// <param name="entityTypeId">entityTypeId.</param>
         /// <param name="fieldTypeIds">fieldTypeIds.</param>
-        public FieldSetModel(string fieldSetId = default(string), string name = default(string), string description = default(string), string entityTypeId = default(string), List<string> fieldTypeIds = default(List<string>))
+        public FieldSetModel(string fieldSetId = default, string name = default, string description = default, string entityTypeId = default, List<string> fieldTypeIds = default(List<string>))
         {
-            this.FieldSetId = fieldSetId;
-            this.Name = name;
-            this.Description = description;
-            this.EntityTypeId = entityTypeId;
-            this.FieldTypeIds = fieldTypeIds;
+            FieldSetId = fieldSetId;
+            Name = name;
+            Description = description;
+            EntityTypeId = entityTypeId;
+            FieldTypeIds = fieldTypeIds;
         }
         
         /// <summary>
@@ -89,11 +89,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FieldSetModel);
+            return Equals(input as FieldSetModel);
         }
 
         /// <summary>
@@ -108,29 +108,29 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.FieldSetId == input.FieldSetId ||
-                    (this.FieldSetId != null &&
-                    this.FieldSetId.Equals(input.FieldSetId))
+                    FieldSetId == input.FieldSetId ||
+                    (FieldSetId != null &&
+                    FieldSetId.Equals(input.FieldSetId))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    Name == input.Name ||
+                    (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
                 (
-                    this.Description == input.Description ||
-                    (this.Description != null &&
-                    this.Description.Equals(input.Description))
+                    Description == input.Description ||
+                    (Description != null &&
+                    Description.Equals(input.Description))
                 ) && 
                 (
-                    this.EntityTypeId == input.EntityTypeId ||
-                    (this.EntityTypeId != null &&
-                    this.EntityTypeId.Equals(input.EntityTypeId))
+                    EntityTypeId == input.EntityTypeId ||
+                    (EntityTypeId != null &&
+                    EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
                 (
-                    this.FieldTypeIds == input.FieldTypeIds ||
-                    this.FieldTypeIds != null &&
-                    this.FieldTypeIds.SequenceEqual(input.FieldTypeIds)
+                    FieldTypeIds == input.FieldTypeIds ||
+                    FieldTypeIds != null &&
+                    FieldTypeIds.SequenceEqual(input.FieldTypeIds)
                 );
         }
 
@@ -143,16 +143,16 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FieldSetId != null)
-                    hashCode = hashCode * 59 + this.FieldSetId.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Description != null)
-                    hashCode = hashCode * 59 + this.Description.GetHashCode();
-                if (this.EntityTypeId != null)
-                    hashCode = hashCode * 59 + this.EntityTypeId.GetHashCode();
-                if (this.FieldTypeIds != null)
-                    hashCode = hashCode * 59 + this.FieldTypeIds.GetHashCode();
+                if (FieldSetId != null)
+                    hashCode = hashCode * 59 + FieldSetId.GetHashCode();
+                if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if (Description != null)
+                    hashCode = hashCode * 59 + Description.GetHashCode();
+                if (EntityTypeId != null)
+                    hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
+                if (FieldTypeIds != null)
+                    hashCode = hashCode * 59 + FieldTypeIds.GetHashCode();
                 return hashCode;
             }
         }

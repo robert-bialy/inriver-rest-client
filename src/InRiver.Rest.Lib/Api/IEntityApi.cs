@@ -141,8 +141,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <param name="commentId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteCommentWithHttpInfo(int? entityId, int? commentId);
+        /// <returns>ApiResponse of object(void)</returns>
+        ApiResponse<object> DeleteCommentWithHttpInfo(int? entityId, int? commentId);
         /// <summary>
         /// Delete an entity
         /// </summary>
@@ -162,29 +162,29 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteEntityWithHttpInfo(int? entityId);
+        /// <returns>ApiResponse of object(void)</returns>
+        ApiResponse<object> DeleteEntityWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityObjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityObjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchObjectsModel"></param>
+        /// <param name="fetchobjectsModel"></param>
         /// <returns>List&lt;EntityDataModel&gt;</returns>
-        List<EntityDataModel> FetchData(FetchObjectsModel fetchObjectsModel);
+        List<EntityDataModel> FetchData(FetchobjectsModel fetchobjectsModel);
 
         /// <summary>
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityObjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityObjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchObjectsModel"></param>
+        /// <param name="fetchobjectsModel"></param>
         /// <returns>ApiResponse of List&lt;EntityDataModel&gt;</returns>
-        ApiResponse<List<EntityDataModel>> FetchDataWithHttpInfo(FetchObjectsModel fetchObjectsModel);
+        ApiResponse<List<EntityDataModel>> FetchDataWithHttpInfo(FetchobjectsModel fetchobjectsModel);
         /// <summary>
         /// Field value revisions
         /// </summary>
@@ -816,7 +816,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="entityId"></param>
         /// <param name="commentId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCommentAsyncWithHttpInfo(int? entityId, int? commentId);
+        System.Threading.Tasks.Task<ApiResponse<object>> DeleteCommentAsyncWithHttpInfo(int? entityId, int? commentId);
         /// <summary>
         /// Delete an entity
         /// </summary>
@@ -837,28 +837,28 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="entityId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteEntityAsyncWithHttpInfo(int? entityId);
+        System.Threading.Tasks.Task<ApiResponse<object>> DeleteEntityAsyncWithHttpInfo(int? entityId);
         /// <summary>
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityObjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityObjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchObjectsModel"></param>
+        /// <param name="fetchobjectsModel"></param>
         /// <returns>Task of List&lt;EntityDataModel&gt;</returns>
-        System.Threading.Tasks.Task<List<EntityDataModel>> FetchDataAsync(FetchObjectsModel fetchObjectsModel);
+        System.Threading.Tasks.Task<List<EntityDataModel>> FetchDataAsync(FetchobjectsModel fetchobjectsModel);
 
         /// <summary>
         /// Returns various types of entity data
         /// </summary>
         /// <remarks>
-        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityObjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityObjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
+        /// Fetch data for a list of entity id&#39;s and specify what data to include (objects).    Specify what objects to include in a comma separated list. You may fetch different object sets for entities, inbound links, outbound links. Supply a \&quot;linkEntityobjects\&quot; string in the inbound or outbound object to include link entity data in the response.    Link types may be specified for both inbound and outbound using linkTypeIds (a comma separated list of link type id&#39;s). If linkTypeIds is omitted no filtering will be applied.    Field data may be filtered by suppling a comma separated list as fieldTypeIds. The filter will be applied on all entities and linked entities regardless of entity type.    Available objects  - -- --  EntitySummary&lt;br /&gt;  FieldsSummary&lt;br /&gt;  FieldValues&lt;br /&gt;  SpecificationSummary&lt;br /&gt;  SpecificationValues&lt;br /&gt;  Media&lt;br /&gt;  MediaDetails&lt;br /&gt;    Examples:&lt;br /&gt;  \&quot;objects\&quot;: \&quot;EntitySummary,Media\&quot; &lt;br /&gt;  \&quot;linkEntityobjects\&quot;: \&quot;FieldValues\&quot; (applicable to inbound and outbound links only)&lt;br /&gt;    Always request as few objects as possible as this will reduce the response time.    Limit: 1000 entity ids per request.
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="fetchObjectsModel"></param>
+        /// <param name="fetchobjectsModel"></param>
         /// <returns>Task of ApiResponse (List&lt;EntityDataModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<EntityDataModel>>> FetchDataAsyncWithHttpInfo(FetchObjectsModel fetchObjectsModel);
+        System.Threading.Tasks.Task<ApiResponse<List<EntityDataModel>>> FetchDataAsyncWithHttpInfo(FetchobjectsModel fetchobjectsModel);
         /// <summary>
         /// Field value revisions
         /// </summary>

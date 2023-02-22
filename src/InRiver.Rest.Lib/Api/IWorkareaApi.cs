@@ -51,8 +51,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteWorkareaWithHttpInfo (string workareaFolderId);
+        /// <returns>ApiResponse of object(void)</returns>
+        ApiResponse<object> DeleteWorkareaWithHttpInfo (string workareaFolderId);
         /// <summary>
         /// Get entity id&#39;s in a static workarea
         /// </summary>
@@ -257,7 +257,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="workareaFolderId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteWorkareaAsyncWithHttpInfo (string workareaFolderId);
+        System.Threading.Tasks.Task<ApiResponse<object>> DeleteWorkareaAsyncWithHttpInfo (string workareaFolderId);
         /// <summary>
         /// Get entity id&#39;s in a static workarea
         /// </summary>

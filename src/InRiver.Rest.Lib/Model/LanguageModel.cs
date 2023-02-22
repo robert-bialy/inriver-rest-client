@@ -17,10 +17,10 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="name">name.</param>
         /// <param name="displayName">displayName.</param>
-        public LanguageModel(string name = default(string), string displayName = default(string))
+        public LanguageModel(string name = default, string displayName = default)
         {
-            this.Name = name;
-            this.DisplayName = displayName;
+            Name = name;
+            DisplayName = displayName;
         }
         
         /// <summary>
@@ -61,11 +61,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as LanguageModel);
+            return Equals(input as LanguageModel);
         }
 
         /// <summary>
@@ -80,14 +80,14 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    Name == input.Name ||
+                    (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
                 (
-                    this.DisplayName == input.DisplayName ||
-                    (this.DisplayName != null &&
-                    this.DisplayName.Equals(input.DisplayName))
+                    DisplayName == input.DisplayName ||
+                    (DisplayName != null &&
+                    DisplayName.Equals(input.DisplayName))
                 );
         }
 
@@ -100,10 +100,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
+                if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if (DisplayName != null)
+                    hashCode = hashCode * 59 + DisplayName.GetHashCode();
                 return hashCode;
             }
         }

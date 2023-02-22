@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Helpers;
@@ -32,7 +31,7 @@ namespace InRiver.Rest.Lib.Api
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             // use the default one in Configuration
-            this.Configuration = configuration ?? Configuration.Default;
+            Configuration = configuration ?? Configuration.Default;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
@@ -86,10 +85,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/query";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -164,10 +163,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/query";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {

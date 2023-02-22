@@ -23,7 +23,7 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="username">username (required).</param>
         /// <param name="roleName">roleName (required).</param>
-        public UserRoleModel(string username = default(string), string roleName = default(string))
+        public UserRoleModel(string username = default, string roleName = default)
         {
             // to ensure "username" is required (not null)
             if (username == null)
@@ -32,7 +32,7 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.Username = username;
+                Username = username;
             }
             // to ensure "roleName" is required (not null)
             if (roleName == null)
@@ -41,7 +41,7 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.RoleName = roleName;
+                RoleName = roleName;
             }
         }
         
@@ -83,11 +83,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UserRoleModel);
+            return Equals(input as UserRoleModel);
         }
 
         /// <summary>
@@ -102,14 +102,14 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
+                    Username == input.Username ||
+                    (Username != null &&
+                    Username.Equals(input.Username))
                 ) && 
                 (
-                    this.RoleName == input.RoleName ||
-                    (this.RoleName != null &&
-                    this.RoleName.Equals(input.RoleName))
+                    RoleName == input.RoleName ||
+                    (RoleName != null &&
+                    RoleName.Equals(input.RoleName))
                 );
         }
 
@@ -122,10 +122,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
-                if (this.RoleName != null)
-                    hashCode = hashCode * 59 + this.RoleName.GetHashCode();
+                if (Username != null)
+                    hashCode = hashCode * 59 + Username.GetHashCode();
+                if (RoleName != null)
+                    hashCode = hashCode * 59 + RoleName.GetHashCode();
                 return hashCode;
             }
         }

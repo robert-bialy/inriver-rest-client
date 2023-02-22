@@ -37,29 +37,29 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="cvlId">cvlId.</param>
         /// <param name="parentCvlId">parentCvlId.</param>
         /// <param name="settings">settings.</param>
-        public FieldSummaryModel(string fieldTypeId = default(string), int? entityId = default(int?), string fieldTypeDisplayName = default(string), string fieldTypeDescription = default(string), string fieldDataType = default(string), Object value = default(Object), Object displayValue = default(Object), bool? isMultiValue = default(bool?), bool? isHidden = default(bool?), bool? isReadOnly = default(bool?), bool? isMandatory = default(bool?), bool? isUnique = default(bool?), bool? isExcludedFromDefaultView = default(bool?), List<string> includedInFieldSets = default(List<string>), string categoryId = default(string), string categoryName = default(string), int? index = default(int?), int? revision = default(int?), string cvlId = default(string), string parentCvlId = default(string), Dictionary<string, string> settings = default(Dictionary<string, string>))
+        public FieldSummaryModel(string fieldTypeId = default, int? entityId = default(int?), string fieldTypeDisplayName = default, string fieldTypeDescription = default, string fieldDataType = default, object value = default(object), object displayValue = default(object), bool? isMultiValue = default(bool?), bool? isHidden = default(bool?), bool? isReadOnly = default(bool?), bool? isMandatory = default(bool?), bool? isUnique = default(bool?), bool? isExcludedFromDefaultView = default(bool?), List<string> includedInFieldSets = default(List<string>), string categoryId = default, string categoryName = default, int? index = default(int?), int? revision = default(int?), string cvlId = default, string parentCvlId = default, Dictionary<string, string> settings = default(Dictionary<string, string>))
         {
-            this.FieldTypeId = fieldTypeId;
-            this.EntityId = entityId;
-            this.FieldTypeDisplayName = fieldTypeDisplayName;
-            this.FieldTypeDescription = fieldTypeDescription;
-            this.FieldDataType = fieldDataType;
-            this.Value = value;
-            this.DisplayValue = displayValue;
-            this.IsMultiValue = isMultiValue;
-            this.IsHidden = isHidden;
-            this.IsReadOnly = isReadOnly;
-            this.IsMandatory = isMandatory;
-            this.IsUnique = isUnique;
-            this.IsExcludedFromDefaultView = isExcludedFromDefaultView;
-            this.IncludedInFieldSets = includedInFieldSets;
-            this.CategoryId = categoryId;
-            this.CategoryName = categoryName;
-            this.Index = index;
-            this.Revision = revision;
-            this.CvlId = cvlId;
-            this.ParentCvlId = parentCvlId;
-            this.Settings = settings;
+            FieldTypeId = fieldTypeId;
+            EntityId = entityId;
+            FieldTypeDisplayName = fieldTypeDisplayName;
+            FieldTypeDescription = fieldTypeDescription;
+            FieldDataType = fieldDataType;
+            Value = value;
+            DisplayValue = displayValue;
+            IsMultiValue = isMultiValue;
+            IsHidden = isHidden;
+            IsReadOnly = isReadOnly;
+            IsMandatory = isMandatory;
+            IsUnique = isUnique;
+            IsExcludedFromDefaultView = isExcludedFromDefaultView;
+            IncludedInFieldSets = includedInFieldSets;
+            CategoryId = categoryId;
+            CategoryName = categoryName;
+            Index = index;
+            Revision = revision;
+            CvlId = cvlId;
+            ParentCvlId = parentCvlId;
+            Settings = settings;
         }
         
         /// <summary>
@@ -96,13 +96,13 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Gets or Sets DisplayValue
         /// </summary>
         [DataMember(Name="displayValue", EmitDefaultValue=false)]
-        public Object DisplayValue { get; set; }
+        public object DisplayValue { get; set; }
 
         /// <summary>
         /// Gets or Sets IsMultiValue
@@ -233,11 +233,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FieldSummaryModel);
+            return Equals(input as FieldSummaryModel);
         }
 
         /// <summary>
@@ -252,109 +252,109 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.FieldTypeId == input.FieldTypeId ||
-                    (this.FieldTypeId != null &&
-                    this.FieldTypeId.Equals(input.FieldTypeId))
+                    FieldTypeId == input.FieldTypeId ||
+                    (FieldTypeId != null &&
+                    FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
                 (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
+                    EntityId == input.EntityId ||
+                    (EntityId != null &&
+                    EntityId.Equals(input.EntityId))
                 ) && 
                 (
-                    this.FieldTypeDisplayName == input.FieldTypeDisplayName ||
-                    (this.FieldTypeDisplayName != null &&
-                    this.FieldTypeDisplayName.Equals(input.FieldTypeDisplayName))
+                    FieldTypeDisplayName == input.FieldTypeDisplayName ||
+                    (FieldTypeDisplayName != null &&
+                    FieldTypeDisplayName.Equals(input.FieldTypeDisplayName))
                 ) && 
                 (
-                    this.FieldTypeDescription == input.FieldTypeDescription ||
-                    (this.FieldTypeDescription != null &&
-                    this.FieldTypeDescription.Equals(input.FieldTypeDescription))
+                    FieldTypeDescription == input.FieldTypeDescription ||
+                    (FieldTypeDescription != null &&
+                    FieldTypeDescription.Equals(input.FieldTypeDescription))
                 ) && 
                 (
-                    this.FieldDataType == input.FieldDataType ||
-                    (this.FieldDataType != null &&
-                    this.FieldDataType.Equals(input.FieldDataType))
+                    FieldDataType == input.FieldDataType ||
+                    (FieldDataType != null &&
+                    FieldDataType.Equals(input.FieldDataType))
                 ) && 
                 (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    Value == input.Value ||
+                    (Value != null &&
+                    Value.Equals(input.Value))
                 ) && 
                 (
-                    this.DisplayValue == input.DisplayValue ||
-                    (this.DisplayValue != null &&
-                    this.DisplayValue.Equals(input.DisplayValue))
+                    DisplayValue == input.DisplayValue ||
+                    (DisplayValue != null &&
+                    DisplayValue.Equals(input.DisplayValue))
                 ) && 
                 (
-                    this.IsMultiValue == input.IsMultiValue ||
-                    (this.IsMultiValue != null &&
-                    this.IsMultiValue.Equals(input.IsMultiValue))
+                    IsMultiValue == input.IsMultiValue ||
+                    (IsMultiValue != null &&
+                    IsMultiValue.Equals(input.IsMultiValue))
                 ) && 
                 (
-                    this.IsHidden == input.IsHidden ||
-                    (this.IsHidden != null &&
-                    this.IsHidden.Equals(input.IsHidden))
+                    IsHidden == input.IsHidden ||
+                    (IsHidden != null &&
+                    IsHidden.Equals(input.IsHidden))
                 ) && 
                 (
-                    this.IsReadOnly == input.IsReadOnly ||
-                    (this.IsReadOnly != null &&
-                    this.IsReadOnly.Equals(input.IsReadOnly))
+                    IsReadOnly == input.IsReadOnly ||
+                    (IsReadOnly != null &&
+                    IsReadOnly.Equals(input.IsReadOnly))
                 ) && 
                 (
-                    this.IsMandatory == input.IsMandatory ||
-                    (this.IsMandatory != null &&
-                    this.IsMandatory.Equals(input.IsMandatory))
+                    IsMandatory == input.IsMandatory ||
+                    (IsMandatory != null &&
+                    IsMandatory.Equals(input.IsMandatory))
                 ) && 
                 (
-                    this.IsUnique == input.IsUnique ||
-                    (this.IsUnique != null &&
-                    this.IsUnique.Equals(input.IsUnique))
+                    IsUnique == input.IsUnique ||
+                    (IsUnique != null &&
+                    IsUnique.Equals(input.IsUnique))
                 ) && 
                 (
-                    this.IsExcludedFromDefaultView == input.IsExcludedFromDefaultView ||
-                    (this.IsExcludedFromDefaultView != null &&
-                    this.IsExcludedFromDefaultView.Equals(input.IsExcludedFromDefaultView))
+                    IsExcludedFromDefaultView == input.IsExcludedFromDefaultView ||
+                    (IsExcludedFromDefaultView != null &&
+                    IsExcludedFromDefaultView.Equals(input.IsExcludedFromDefaultView))
                 ) && 
                 (
-                    this.IncludedInFieldSets == input.IncludedInFieldSets ||
-                    this.IncludedInFieldSets != null &&
-                    this.IncludedInFieldSets.SequenceEqual(input.IncludedInFieldSets)
+                    IncludedInFieldSets == input.IncludedInFieldSets ||
+                    IncludedInFieldSets != null &&
+                    IncludedInFieldSets.SequenceEqual(input.IncludedInFieldSets)
                 ) && 
                 (
-                    this.CategoryId == input.CategoryId ||
-                    (this.CategoryId != null &&
-                    this.CategoryId.Equals(input.CategoryId))
+                    CategoryId == input.CategoryId ||
+                    (CategoryId != null &&
+                    CategoryId.Equals(input.CategoryId))
                 ) && 
                 (
-                    this.CategoryName == input.CategoryName ||
-                    (this.CategoryName != null &&
-                    this.CategoryName.Equals(input.CategoryName))
+                    CategoryName == input.CategoryName ||
+                    (CategoryName != null &&
+                    CategoryName.Equals(input.CategoryName))
                 ) && 
                 (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
+                    Index == input.Index ||
+                    (Index != null &&
+                    Index.Equals(input.Index))
                 ) && 
                 (
-                    this.Revision == input.Revision ||
-                    (this.Revision != null &&
-                    this.Revision.Equals(input.Revision))
+                    Revision == input.Revision ||
+                    (Revision != null &&
+                    Revision.Equals(input.Revision))
                 ) && 
                 (
-                    this.CvlId == input.CvlId ||
-                    (this.CvlId != null &&
-                    this.CvlId.Equals(input.CvlId))
+                    CvlId == input.CvlId ||
+                    (CvlId != null &&
+                    CvlId.Equals(input.CvlId))
                 ) && 
                 (
-                    this.ParentCvlId == input.ParentCvlId ||
-                    (this.ParentCvlId != null &&
-                    this.ParentCvlId.Equals(input.ParentCvlId))
+                    ParentCvlId == input.ParentCvlId ||
+                    (ParentCvlId != null &&
+                    ParentCvlId.Equals(input.ParentCvlId))
                 ) && 
                 (
-                    this.Settings == input.Settings ||
-                    this.Settings != null &&
-                    this.Settings.SequenceEqual(input.Settings)
+                    Settings == input.Settings ||
+                    Settings != null &&
+                    Settings.SequenceEqual(input.Settings)
                 );
         }
 
@@ -367,48 +367,48 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FieldTypeId != null)
-                    hashCode = hashCode * 59 + this.FieldTypeId.GetHashCode();
-                if (this.EntityId != null)
-                    hashCode = hashCode * 59 + this.EntityId.GetHashCode();
-                if (this.FieldTypeDisplayName != null)
-                    hashCode = hashCode * 59 + this.FieldTypeDisplayName.GetHashCode();
-                if (this.FieldTypeDescription != null)
-                    hashCode = hashCode * 59 + this.FieldTypeDescription.GetHashCode();
-                if (this.FieldDataType != null)
-                    hashCode = hashCode * 59 + this.FieldDataType.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
-                if (this.DisplayValue != null)
-                    hashCode = hashCode * 59 + this.DisplayValue.GetHashCode();
-                if (this.IsMultiValue != null)
-                    hashCode = hashCode * 59 + this.IsMultiValue.GetHashCode();
-                if (this.IsHidden != null)
-                    hashCode = hashCode * 59 + this.IsHidden.GetHashCode();
-                if (this.IsReadOnly != null)
-                    hashCode = hashCode * 59 + this.IsReadOnly.GetHashCode();
-                if (this.IsMandatory != null)
-                    hashCode = hashCode * 59 + this.IsMandatory.GetHashCode();
-                if (this.IsUnique != null)
-                    hashCode = hashCode * 59 + this.IsUnique.GetHashCode();
-                if (this.IsExcludedFromDefaultView != null)
-                    hashCode = hashCode * 59 + this.IsExcludedFromDefaultView.GetHashCode();
-                if (this.IncludedInFieldSets != null)
-                    hashCode = hashCode * 59 + this.IncludedInFieldSets.GetHashCode();
-                if (this.CategoryId != null)
-                    hashCode = hashCode * 59 + this.CategoryId.GetHashCode();
-                if (this.CategoryName != null)
-                    hashCode = hashCode * 59 + this.CategoryName.GetHashCode();
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
-                if (this.Revision != null)
-                    hashCode = hashCode * 59 + this.Revision.GetHashCode();
-                if (this.CvlId != null)
-                    hashCode = hashCode * 59 + this.CvlId.GetHashCode();
-                if (this.ParentCvlId != null)
-                    hashCode = hashCode * 59 + this.ParentCvlId.GetHashCode();
-                if (this.Settings != null)
-                    hashCode = hashCode * 59 + this.Settings.GetHashCode();
+                if (FieldTypeId != null)
+                    hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
+                if (EntityId != null)
+                    hashCode = hashCode * 59 + EntityId.GetHashCode();
+                if (FieldTypeDisplayName != null)
+                    hashCode = hashCode * 59 + FieldTypeDisplayName.GetHashCode();
+                if (FieldTypeDescription != null)
+                    hashCode = hashCode * 59 + FieldTypeDescription.GetHashCode();
+                if (FieldDataType != null)
+                    hashCode = hashCode * 59 + FieldDataType.GetHashCode();
+                if (Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
+                if (DisplayValue != null)
+                    hashCode = hashCode * 59 + DisplayValue.GetHashCode();
+                if (IsMultiValue != null)
+                    hashCode = hashCode * 59 + IsMultiValue.GetHashCode();
+                if (IsHidden != null)
+                    hashCode = hashCode * 59 + IsHidden.GetHashCode();
+                if (IsReadOnly != null)
+                    hashCode = hashCode * 59 + IsReadOnly.GetHashCode();
+                if (IsMandatory != null)
+                    hashCode = hashCode * 59 + IsMandatory.GetHashCode();
+                if (IsUnique != null)
+                    hashCode = hashCode * 59 + IsUnique.GetHashCode();
+                if (IsExcludedFromDefaultView != null)
+                    hashCode = hashCode * 59 + IsExcludedFromDefaultView.GetHashCode();
+                if (IncludedInFieldSets != null)
+                    hashCode = hashCode * 59 + IncludedInFieldSets.GetHashCode();
+                if (CategoryId != null)
+                    hashCode = hashCode * 59 + CategoryId.GetHashCode();
+                if (CategoryName != null)
+                    hashCode = hashCode * 59 + CategoryName.GetHashCode();
+                if (Index != null)
+                    hashCode = hashCode * 59 + Index.GetHashCode();
+                if (Revision != null)
+                    hashCode = hashCode * 59 + Revision.GetHashCode();
+                if (CvlId != null)
+                    hashCode = hashCode * 59 + CvlId.GetHashCode();
+                if (ParentCvlId != null)
+                    hashCode = hashCode * 59 + ParentCvlId.GetHashCode();
+                if (Settings != null)
+                    hashCode = hashCode * 59 + Settings.GetHashCode();
                 return hashCode;
             }
         }

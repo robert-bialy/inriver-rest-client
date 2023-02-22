@@ -171,7 +171,7 @@ namespace InRiver.Rest.Lib.Client
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 }

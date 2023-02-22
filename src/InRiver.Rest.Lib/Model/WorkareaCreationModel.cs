@@ -29,7 +29,7 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="index">index.</param>
         /// <param name="parentId">parentId.</param>
         /// <param name="username">username.</param>
-        public WorkareaCreationModel(string name = default(string), bool? isShared = default(bool?), QueryModel query = default(QueryModel), List<int?> entityIds = default(List<int?>), int? index = default(int?), string parentId = default(string), string username = default(string))
+        public WorkareaCreationModel(string name = default, bool? isShared = default(bool?), QueryModel query = default(QueryModel), List<int?> entityIds = default(List<int?>), int? index = default(int?), string parentId = default, string username = default)
         {
             // to ensure "name" is required (not null)
             if (name == null)
@@ -38,7 +38,7 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.Name = name;
+                Name = name;
             }
             // to ensure "isShared" is required (not null)
             if (isShared == null)
@@ -47,13 +47,13 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.IsShared = isShared;
+                IsShared = isShared;
             }
-            this.Query = query;
-            this.EntityIds = entityIds;
-            this.Index = index;
-            this.ParentId = parentId;
-            this.Username = username;
+            Query = query;
+            EntityIds = entityIds;
+            Index = index;
+            ParentId = parentId;
+            Username = username;
         }
         
         /// <summary>
@@ -129,11 +129,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WorkareaCreationModel);
+            return Equals(input as WorkareaCreationModel);
         }
 
         /// <summary>
@@ -148,39 +148,39 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    Name == input.Name ||
+                    (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
                 (
-                    this.IsShared == input.IsShared ||
-                    (this.IsShared != null &&
-                    this.IsShared.Equals(input.IsShared))
+                    IsShared == input.IsShared ||
+                    (IsShared != null &&
+                    IsShared.Equals(input.IsShared))
                 ) && 
                 (
-                    this.Query == input.Query ||
-                    (this.Query != null &&
-                    this.Query.Equals(input.Query))
+                    Query == input.Query ||
+                    (Query != null &&
+                    Query.Equals(input.Query))
                 ) && 
                 (
-                    this.EntityIds == input.EntityIds ||
-                    this.EntityIds != null &&
-                    this.EntityIds.SequenceEqual(input.EntityIds)
+                    EntityIds == input.EntityIds ||
+                    EntityIds != null &&
+                    EntityIds.SequenceEqual(input.EntityIds)
                 ) && 
                 (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
+                    Index == input.Index ||
+                    (Index != null &&
+                    Index.Equals(input.Index))
                 ) && 
                 (
-                    this.ParentId == input.ParentId ||
-                    (this.ParentId != null &&
-                    this.ParentId.Equals(input.ParentId))
+                    ParentId == input.ParentId ||
+                    (ParentId != null &&
+                    ParentId.Equals(input.ParentId))
                 ) && 
                 (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
+                    Username == input.Username ||
+                    (Username != null &&
+                    Username.Equals(input.Username))
                 );
         }
 
@@ -193,20 +193,20 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.IsShared != null)
-                    hashCode = hashCode * 59 + this.IsShared.GetHashCode();
-                if (this.Query != null)
-                    hashCode = hashCode * 59 + this.Query.GetHashCode();
-                if (this.EntityIds != null)
-                    hashCode = hashCode * 59 + this.EntityIds.GetHashCode();
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
-                if (this.ParentId != null)
-                    hashCode = hashCode * 59 + this.ParentId.GetHashCode();
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
+                if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if (IsShared != null)
+                    hashCode = hashCode * 59 + IsShared.GetHashCode();
+                if (Query != null)
+                    hashCode = hashCode * 59 + Query.GetHashCode();
+                if (EntityIds != null)
+                    hashCode = hashCode * 59 + EntityIds.GetHashCode();
+                if (Index != null)
+                    hashCode = hashCode * 59 + Index.GetHashCode();
+                if (ParentId != null)
+                    hashCode = hashCode * 59 + ParentId.GetHashCode();
+                if (Username != null)
+                    hashCode = hashCode * 59 + Username.GetHashCode();
                 return hashCode;
             }
         }

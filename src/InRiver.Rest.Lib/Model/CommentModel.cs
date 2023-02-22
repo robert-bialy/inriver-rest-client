@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Text;
@@ -27,7 +26,7 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="createdDate">createdDate.</param>
         /// <param name="formattedCreatedDate">formattedCreatedDate.</param>
         /// <param name="entityId">entityId.</param>
-        public CommentModel(int? id = default(int?), string text = default(string), string author = default(string), string createdDate = default(string), string formattedCreatedDate = default(string), int? entityId = default(int?))
+        public CommentModel(int? id = default(int?), string text = default, string author = default, string createdDate = default, string formattedCreatedDate = default, int? entityId = default(int?))
         {
             // to ensure "text" is required (not null)
             if (text == null)
@@ -36,13 +35,13 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.Text = text;
+                Text = text;
             }
-            this.Id = id;
-            this.Author = author;
-            this.CreatedDate = createdDate;
-            this.FormattedCreatedDate = formattedCreatedDate;
-            this.EntityId = entityId;
+            Id = id;
+            Author = author;
+            CreatedDate = createdDate;
+            FormattedCreatedDate = formattedCreatedDate;
+            EntityId = entityId;
         }
         
         /// <summary>
@@ -111,11 +110,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CommentModel);
+            return Equals(input as CommentModel);
         }
 
         /// <summary>
@@ -130,34 +129,34 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    Id == input.Id ||
+                    (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
                 (
-                    this.Text == input.Text ||
-                    (this.Text != null &&
-                    this.Text.Equals(input.Text))
+                    Text == input.Text ||
+                    (Text != null &&
+                    Text.Equals(input.Text))
                 ) && 
                 (
-                    this.Author == input.Author ||
-                    (this.Author != null &&
-                    this.Author.Equals(input.Author))
+                    Author == input.Author ||
+                    (Author != null &&
+                    Author.Equals(input.Author))
                 ) && 
                 (
-                    this.CreatedDate == input.CreatedDate ||
-                    (this.CreatedDate != null &&
-                    this.CreatedDate.Equals(input.CreatedDate))
+                    CreatedDate == input.CreatedDate ||
+                    (CreatedDate != null &&
+                    CreatedDate.Equals(input.CreatedDate))
                 ) && 
                 (
-                    this.FormattedCreatedDate == input.FormattedCreatedDate ||
-                    (this.FormattedCreatedDate != null &&
-                    this.FormattedCreatedDate.Equals(input.FormattedCreatedDate))
+                    FormattedCreatedDate == input.FormattedCreatedDate ||
+                    (FormattedCreatedDate != null &&
+                    FormattedCreatedDate.Equals(input.FormattedCreatedDate))
                 ) && 
                 (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
+                    EntityId == input.EntityId ||
+                    (EntityId != null &&
+                    EntityId.Equals(input.EntityId))
                 );
         }
 
@@ -170,18 +169,18 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Text != null)
-                    hashCode = hashCode * 59 + this.Text.GetHashCode();
-                if (this.Author != null)
-                    hashCode = hashCode * 59 + this.Author.GetHashCode();
-                if (this.CreatedDate != null)
-                    hashCode = hashCode * 59 + this.CreatedDate.GetHashCode();
-                if (this.FormattedCreatedDate != null)
-                    hashCode = hashCode * 59 + this.FormattedCreatedDate.GetHashCode();
-                if (this.EntityId != null)
-                    hashCode = hashCode * 59 + this.EntityId.GetHashCode();
+                if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if (Text != null)
+                    hashCode = hashCode * 59 + Text.GetHashCode();
+                if (Author != null)
+                    hashCode = hashCode * 59 + Author.GetHashCode();
+                if (CreatedDate != null)
+                    hashCode = hashCode * 59 + CreatedDate.GetHashCode();
+                if (FormattedCreatedDate != null)
+                    hashCode = hashCode * 59 + FormattedCreatedDate.GetHashCode();
+                if (EntityId != null)
+                    hashCode = hashCode * 59 + EntityId.GetHashCode();
                 return hashCode;
             }
         }

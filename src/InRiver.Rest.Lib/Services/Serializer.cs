@@ -11,14 +11,14 @@ namespace InRiver.Rest.Lib.Services
         /// Deserialize the JSON string into a proper object.
         /// </summary>
         /// <param name="response">The HTTP response.</param>
-        /// <param name="type">Object type.</param>
-        /// <returns>Object representation of the JSON string.</returns>
+        /// <param name="type">object type.</param>
+        /// <returns>object representation of the JSON string.</returns>
         object Deserialize(RestResponse response, Type type);
 
         /// <summary>
         /// Serialize an input (model) into JSON string
         /// </summary>
-        /// <param name="obj">Object.</param>
+        /// <param name="obj">object.</param>
         /// <returns>JSON string.</returns>
         string Serialize(object obj);
     }
@@ -34,8 +34,8 @@ namespace InRiver.Rest.Lib.Services
         /// Deserialize the JSON string into a proper object.
         /// </summary>
         /// <param name="response">The HTTP response.</param>
-        /// <param name="type">Object type.</param>
-        /// <returns>Object representation of the JSON string.</returns>
+        /// <param name="type">object type.</param>
+        /// <returns>object representation of the JSON string.</returns>
         public object Deserialize(RestResponse response, Type type)
         {
             var headers = response.Headers;
@@ -68,7 +68,7 @@ namespace InRiver.Rest.Lib.Services
         /// <summary>
         /// Serialize an input (model) into JSON string
         /// </summary>
-        /// <param name="obj">Object.</param>
+        /// <param name="obj">object.</param>
         /// <returns>JSON string.</returns>
         public string Serialize(object obj)
         {
@@ -86,12 +86,12 @@ namespace InRiver.Rest.Lib.Services
         /// <summary>
         /// Dynamically cast the object into target type.
         /// </summary>
-        /// <param name="fromObject">Object to be casted</param>
-        /// <param name="toObject">Target type</param>
+        /// <param name="fromobject">object to be casted</param>
+        /// <param name="toobject">Target type</param>
         /// <returns>Casted object</returns>
-        private static dynamic ConvertType(dynamic fromObject, Type toObject)
+        private static dynamic ConvertType(dynamic fromobject, Type toobject)
         {
-            return Convert.ChangeType(fromObject, toObject);
+            return Convert.ChangeType(fromobject, toobject);
         }
     }
 }

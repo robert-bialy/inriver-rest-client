@@ -18,7 +18,7 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="specificationId">specificationId.</param>
         public SetSpecificationTemplateModel(int? specificationId = default(int?))
         {
-            this.SpecificationId = specificationId;
+            SpecificationId = specificationId;
         }
         
         /// <summary>
@@ -52,11 +52,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SetSpecificationTemplateModel);
+            return Equals(input as SetSpecificationTemplateModel);
         }
 
         /// <summary>
@@ -71,9 +71,9 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.SpecificationId == input.SpecificationId ||
-                    (this.SpecificationId != null &&
-                    this.SpecificationId.Equals(input.SpecificationId))
+                    SpecificationId == input.SpecificationId ||
+                    (SpecificationId != null &&
+                    SpecificationId.Equals(input.SpecificationId))
                 );
         }
 
@@ -86,8 +86,8 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SpecificationId != null)
-                    hashCode = hashCode * 59 + this.SpecificationId.GetHashCode();
+                if (SpecificationId != null)
+                    hashCode = hashCode * 59 + SpecificationId.GetHashCode();
                 return hashCode;
             }
         }

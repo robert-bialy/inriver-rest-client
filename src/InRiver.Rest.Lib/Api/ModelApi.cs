@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Helpers;
@@ -32,9 +31,9 @@ namespace InRiver.Rest.Lib.Api
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
+                Configuration = Configuration.Default;
             else
-                this.Configuration = configuration;
+                Configuration = configuration;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
@@ -93,10 +92,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -177,10 +176,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -246,8 +245,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteCvlValueWithHttpInfo (string cvlId, string key)
+        /// <returns>ApiResponse of object(void)</returns>
+        public ApiResponse<object> DeleteCvlValueWithHttpInfo (string cvlId, string key)
         {
             // verify the required parameter 'cvlId' is set
             if (cvlId == null)
@@ -259,10 +258,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -293,7 +292,7 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
         }
@@ -318,7 +317,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCvlValueAsyncWithHttpInfo (string cvlId, string key)
+        public async System.Threading.Tasks.Task<ApiResponse<object>> DeleteCvlValueAsyncWithHttpInfo (string cvlId, string key)
         {
             // verify the required parameter 'cvlId' is set
             if (cvlId == null)
@@ -330,10 +329,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -364,7 +363,7 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
         }
@@ -396,10 +395,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -464,10 +463,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -526,10 +525,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -588,10 +587,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -651,10 +650,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/entitytypes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -716,10 +715,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/entitytypes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -778,10 +777,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/fieldsets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -840,10 +839,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/fieldsets";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -901,10 +900,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/languages";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -963,10 +962,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/languages";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1024,10 +1023,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/specificationtemplates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1086,10 +1085,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/specificationtemplates";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1157,10 +1156,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1231,10 +1230,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1299,10 +1298,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/specificationtemplates/{templateId}/fieldtypes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1367,10 +1366,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/specificationtemplates/{templateId}/fieldtypes";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1444,10 +1443,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -1534,10 +1533,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {

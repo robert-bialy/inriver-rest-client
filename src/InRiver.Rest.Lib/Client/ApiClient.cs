@@ -80,7 +80,7 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="fileParams">File parameters.</param>
         /// <param name="pathParams">Path parameters.</param>
         /// <param name="contentType">Content Type of the request</param>
-        /// <returns>Object</returns>
+        /// <returns>object</returns>
         public object CallApi(
             string path,
             Method method,

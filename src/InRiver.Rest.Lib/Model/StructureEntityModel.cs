@@ -22,15 +22,15 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="path">path.</param>
         /// <param name="linkEntityId">linkEntityId.</param>
         /// <param name="linkTypeIdFromParent">linkTypeIdFromParent.</param>
-        public StructureEntityModel(int? entityId = default(int?), string entityTypeId = default(string), string name = default(string), int? sortOrder = default(int?), string path = default(string), int? linkEntityId = default(int?), string linkTypeIdFromParent = default(string))
+        public StructureEntityModel(int? entityId = default(int?), string entityTypeId = default, string name = default, int? sortOrder = default(int?), string path = default, int? linkEntityId = default(int?), string linkTypeIdFromParent = default)
         {
-            this.EntityId = entityId;
-            this.EntityTypeId = entityTypeId;
-            this.Name = name;
-            this.SortOrder = sortOrder;
-            this.Path = path;
-            this.LinkEntityId = linkEntityId;
-            this.LinkTypeIdFromParent = linkTypeIdFromParent;
+            EntityId = entityId;
+            EntityTypeId = entityTypeId;
+            Name = name;
+            SortOrder = sortOrder;
+            Path = path;
+            LinkEntityId = linkEntityId;
+            LinkTypeIdFromParent = linkTypeIdFromParent;
         }
         
         /// <summary>
@@ -106,11 +106,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as StructureEntityModel);
+            return Equals(input as StructureEntityModel);
         }
 
         /// <summary>
@@ -125,39 +125,39 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
+                    EntityId == input.EntityId ||
+                    (EntityId != null &&
+                    EntityId.Equals(input.EntityId))
                 ) && 
                 (
-                    this.EntityTypeId == input.EntityTypeId ||
-                    (this.EntityTypeId != null &&
-                    this.EntityTypeId.Equals(input.EntityTypeId))
+                    EntityTypeId == input.EntityTypeId ||
+                    (EntityTypeId != null &&
+                    EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
                 (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+                    Name == input.Name ||
+                    (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
                 (
-                    this.SortOrder == input.SortOrder ||
-                    (this.SortOrder != null &&
-                    this.SortOrder.Equals(input.SortOrder))
+                    SortOrder == input.SortOrder ||
+                    (SortOrder != null &&
+                    SortOrder.Equals(input.SortOrder))
                 ) && 
                 (
-                    this.Path == input.Path ||
-                    (this.Path != null &&
-                    this.Path.Equals(input.Path))
+                    Path == input.Path ||
+                    (Path != null &&
+                    Path.Equals(input.Path))
                 ) && 
                 (
-                    this.LinkEntityId == input.LinkEntityId ||
-                    (this.LinkEntityId != null &&
-                    this.LinkEntityId.Equals(input.LinkEntityId))
+                    LinkEntityId == input.LinkEntityId ||
+                    (LinkEntityId != null &&
+                    LinkEntityId.Equals(input.LinkEntityId))
                 ) && 
                 (
-                    this.LinkTypeIdFromParent == input.LinkTypeIdFromParent ||
-                    (this.LinkTypeIdFromParent != null &&
-                    this.LinkTypeIdFromParent.Equals(input.LinkTypeIdFromParent))
+                    LinkTypeIdFromParent == input.LinkTypeIdFromParent ||
+                    (LinkTypeIdFromParent != null &&
+                    LinkTypeIdFromParent.Equals(input.LinkTypeIdFromParent))
                 );
         }
 
@@ -170,20 +170,20 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EntityId != null)
-                    hashCode = hashCode * 59 + this.EntityId.GetHashCode();
-                if (this.EntityTypeId != null)
-                    hashCode = hashCode * 59 + this.EntityTypeId.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.SortOrder != null)
-                    hashCode = hashCode * 59 + this.SortOrder.GetHashCode();
-                if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
-                if (this.LinkEntityId != null)
-                    hashCode = hashCode * 59 + this.LinkEntityId.GetHashCode();
-                if (this.LinkTypeIdFromParent != null)
-                    hashCode = hashCode * 59 + this.LinkTypeIdFromParent.GetHashCode();
+                if (EntityId != null)
+                    hashCode = hashCode * 59 + EntityId.GetHashCode();
+                if (EntityTypeId != null)
+                    hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
+                if (Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if (SortOrder != null)
+                    hashCode = hashCode * 59 + SortOrder.GetHashCode();
+                if (Path != null)
+                    hashCode = hashCode * 59 + Path.GetHashCode();
+                if (LinkEntityId != null)
+                    hashCode = hashCode * 59 + LinkEntityId.GetHashCode();
+                if (LinkTypeIdFromParent != null)
+                    hashCode = hashCode * 59 + LinkTypeIdFromParent.GetHashCode();
                 return hashCode;
             }
         }

@@ -20,8 +20,8 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="content">content.</param>
         public ChannelPathContentModel(EntityListModel entityList = default(EntityListModel), List<StructureEntityModel> content = default(List<StructureEntityModel>))
         {
-            this.EntityList = entityList;
-            this.Content = content;
+            EntityList = entityList;
+            Content = content;
         }
         
         /// <summary>
@@ -62,11 +62,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ChannelPathContentModel);
+            return Equals(input as ChannelPathContentModel);
         }
 
         /// <summary>
@@ -81,14 +81,14 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.EntityList == input.EntityList ||
-                    (this.EntityList != null &&
-                    this.EntityList.Equals(input.EntityList))
+                    EntityList == input.EntityList ||
+                    (EntityList != null &&
+                    EntityList.Equals(input.EntityList))
                 ) && 
                 (
-                    this.Content == input.Content ||
-                    this.Content != null &&
-                    this.Content.SequenceEqual(input.Content)
+                    Content == input.Content ||
+                    Content != null &&
+                    Content.SequenceEqual(input.Content)
                 );
         }
 
@@ -101,10 +101,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EntityList != null)
-                    hashCode = hashCode * 59 + this.EntityList.GetHashCode();
-                if (this.Content != null)
-                    hashCode = hashCode * 59 + this.Content.GetHashCode();
+                if (EntityList != null)
+                    hashCode = hashCode * 59 + EntityList.GetHashCode();
+                if (Content != null)
+                    hashCode = hashCode * 59 + Content.GetHashCode();
                 return hashCode;
             }
         }

@@ -17,10 +17,10 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="sourceEntityId">sourceEntityId.</param>
         /// <param name="linkTypeId">linkTypeId.</param>
-        public ResourceLinkModel(int? sourceEntityId = default(int?), string linkTypeId = default(string))
+        public ResourceLinkModel(int? sourceEntityId = default(int?), string linkTypeId = default)
         {
-            this.SourceEntityId = sourceEntityId;
-            this.LinkTypeId = linkTypeId;
+            SourceEntityId = sourceEntityId;
+            LinkTypeId = linkTypeId;
         }
         
         /// <summary>
@@ -61,11 +61,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ResourceLinkModel);
+            return Equals(input as ResourceLinkModel);
         }
 
         /// <summary>
@@ -80,14 +80,14 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.SourceEntityId == input.SourceEntityId ||
-                    (this.SourceEntityId != null &&
-                    this.SourceEntityId.Equals(input.SourceEntityId))
+                    SourceEntityId == input.SourceEntityId ||
+                    (SourceEntityId != null &&
+                    SourceEntityId.Equals(input.SourceEntityId))
                 ) && 
                 (
-                    this.LinkTypeId == input.LinkTypeId ||
-                    (this.LinkTypeId != null &&
-                    this.LinkTypeId.Equals(input.LinkTypeId))
+                    LinkTypeId == input.LinkTypeId ||
+                    (LinkTypeId != null &&
+                    LinkTypeId.Equals(input.LinkTypeId))
                 );
         }
 
@@ -100,10 +100,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SourceEntityId != null)
-                    hashCode = hashCode * 59 + this.SourceEntityId.GetHashCode();
-                if (this.LinkTypeId != null)
-                    hashCode = hashCode * 59 + this.LinkTypeId.GetHashCode();
+                if (SourceEntityId != null)
+                    hashCode = hashCode * 59 + SourceEntityId.GetHashCode();
+                if (LinkTypeId != null)
+                    hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
                 return hashCode;
             }
         }

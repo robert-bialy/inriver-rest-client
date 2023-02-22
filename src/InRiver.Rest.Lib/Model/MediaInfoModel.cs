@@ -23,16 +23,16 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="dateCreated">dateCreated.</param>
         /// <param name="lastModified">lastModified.</param>
         /// <param name="entityId">entityId.</param>
-        public MediaInfoModel(int? fileId = default(int?), string url = default(string), string fileName = default(string), string extension = default(string), long? fileSize = default(long?), string dateCreated = default(string), string lastModified = default(string), int? entityId = default(int?))
+        public MediaInfoModel(int? fileId = default(int?), string url = default, string fileName = default, string extension = default, long? fileSize = default(long?), string dateCreated = default, string lastModified = default, int? entityId = default(int?))
         {
-            this.FileId = fileId;
-            this.Url = url;
-            this.FileName = fileName;
-            this.Extension = extension;
-            this.FileSize = fileSize;
-            this.DateCreated = dateCreated;
-            this.LastModified = lastModified;
-            this.EntityId = entityId;
+            FileId = fileId;
+            Url = url;
+            FileName = fileName;
+            Extension = extension;
+            FileSize = fileSize;
+            DateCreated = dateCreated;
+            LastModified = lastModified;
+            EntityId = entityId;
         }
         
         /// <summary>
@@ -115,11 +115,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MediaInfoModel);
+            return Equals(input as MediaInfoModel);
         }
 
         /// <summary>
@@ -134,44 +134,44 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.FileId == input.FileId ||
-                    (this.FileId != null &&
-                    this.FileId.Equals(input.FileId))
+                    FileId == input.FileId ||
+                    (FileId != null &&
+                    FileId.Equals(input.FileId))
                 ) && 
                 (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
+                    Url == input.Url ||
+                    (Url != null &&
+                    Url.Equals(input.Url))
                 ) && 
                 (
-                    this.FileName == input.FileName ||
-                    (this.FileName != null &&
-                    this.FileName.Equals(input.FileName))
+                    FileName == input.FileName ||
+                    (FileName != null &&
+                    FileName.Equals(input.FileName))
                 ) && 
                 (
-                    this.Extension == input.Extension ||
-                    (this.Extension != null &&
-                    this.Extension.Equals(input.Extension))
+                    Extension == input.Extension ||
+                    (Extension != null &&
+                    Extension.Equals(input.Extension))
                 ) && 
                 (
-                    this.FileSize == input.FileSize ||
-                    (this.FileSize != null &&
-                    this.FileSize.Equals(input.FileSize))
+                    FileSize == input.FileSize ||
+                    (FileSize != null &&
+                    FileSize.Equals(input.FileSize))
                 ) && 
                 (
-                    this.DateCreated == input.DateCreated ||
-                    (this.DateCreated != null &&
-                    this.DateCreated.Equals(input.DateCreated))
+                    DateCreated == input.DateCreated ||
+                    (DateCreated != null &&
+                    DateCreated.Equals(input.DateCreated))
                 ) && 
                 (
-                    this.LastModified == input.LastModified ||
-                    (this.LastModified != null &&
-                    this.LastModified.Equals(input.LastModified))
+                    LastModified == input.LastModified ||
+                    (LastModified != null &&
+                    LastModified.Equals(input.LastModified))
                 ) && 
                 (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
+                    EntityId == input.EntityId ||
+                    (EntityId != null &&
+                    EntityId.Equals(input.EntityId))
                 );
         }
 
@@ -184,22 +184,22 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FileId != null)
-                    hashCode = hashCode * 59 + this.FileId.GetHashCode();
-                if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
-                if (this.FileName != null)
-                    hashCode = hashCode * 59 + this.FileName.GetHashCode();
-                if (this.Extension != null)
-                    hashCode = hashCode * 59 + this.Extension.GetHashCode();
-                if (this.FileSize != null)
-                    hashCode = hashCode * 59 + this.FileSize.GetHashCode();
-                if (this.DateCreated != null)
-                    hashCode = hashCode * 59 + this.DateCreated.GetHashCode();
-                if (this.LastModified != null)
-                    hashCode = hashCode * 59 + this.LastModified.GetHashCode();
-                if (this.EntityId != null)
-                    hashCode = hashCode * 59 + this.EntityId.GetHashCode();
+                if (FileId != null)
+                    hashCode = hashCode * 59 + FileId.GetHashCode();
+                if (Url != null)
+                    hashCode = hashCode * 59 + Url.GetHashCode();
+                if (FileName != null)
+                    hashCode = hashCode * 59 + FileName.GetHashCode();
+                if (Extension != null)
+                    hashCode = hashCode * 59 + Extension.GetHashCode();
+                if (FileSize != null)
+                    hashCode = hashCode * 59 + FileSize.GetHashCode();
+                if (DateCreated != null)
+                    hashCode = hashCode * 59 + DateCreated.GetHashCode();
+                if (LastModified != null)
+                    hashCode = hashCode * 59 + LastModified.GetHashCode();
+                if (EntityId != null)
+                    hashCode = hashCode * 59 + EntityId.GetHashCode();
                 return hashCode;
             }
         }

@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -34,27 +33,27 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="fieldSetName">fieldSetName.</param>
         /// <param name="segmentId">segmentId.</param>
         /// <param name="segmentName">segmentName.</param>
-        public EntitySummaryModel(int? id = default(int?), string displayName = default(string), string displayDescription = default(string), string version = default(string), string lockedBy = default(string), string createdBy = default(string), string createdDate = default(string), string formattedCreatedDate = default(string), string modifiedBy = default(string), string modifiedDate = default(string), string formattedModifiedDate = default(string), string resourceUrl = default(string), string entityTypeId = default(string), string entityTypeDisplayName = default(string), int? completeness = default(int?), string fieldSetId = default(string), string fieldSetName = default(string), int? segmentId = default(int?), string segmentName = default(string))
+        public EntitySummaryModel(int? id = default(int?), string displayName = default, string displayDescription = default, string version = default, string lockedBy = default, string createdBy = default, string createdDate = default, string formattedCreatedDate = default, string modifiedBy = default, string modifiedDate = default, string formattedModifiedDate = default, string resourceUrl = default, string entityTypeId = default, string entityTypeDisplayName = default, int? completeness = default(int?), string fieldSetId = default, string fieldSetName = default, int? segmentId = default(int?), string segmentName = default)
         {
-            this.Id = id;
-            this.DisplayName = displayName;
-            this.DisplayDescription = displayDescription;
-            this.Version = version;
-            this.LockedBy = lockedBy;
-            this.CreatedBy = createdBy;
-            this.CreatedDate = createdDate;
-            this.FormattedCreatedDate = formattedCreatedDate;
-            this.ModifiedBy = modifiedBy;
-            this.ModifiedDate = modifiedDate;
-            this.FormattedModifiedDate = formattedModifiedDate;
-            this.ResourceUrl = resourceUrl;
-            this.EntityTypeId = entityTypeId;
-            this.EntityTypeDisplayName = entityTypeDisplayName;
-            this.Completeness = completeness;
-            this.FieldSetId = fieldSetId;
-            this.FieldSetName = fieldSetName;
-            this.SegmentId = segmentId;
-            this.SegmentName = segmentName;
+            Id = id;
+            DisplayName = displayName;
+            DisplayDescription = displayDescription;
+            Version = version;
+            LockedBy = lockedBy;
+            CreatedBy = createdBy;
+            CreatedDate = createdDate;
+            FormattedCreatedDate = formattedCreatedDate;
+            ModifiedBy = modifiedBy;
+            ModifiedDate = modifiedDate;
+            FormattedModifiedDate = formattedModifiedDate;
+            ResourceUrl = resourceUrl;
+            EntityTypeId = entityTypeId;
+            EntityTypeDisplayName = entityTypeDisplayName;
+            Completeness = completeness;
+            FieldSetId = fieldSetId;
+            FieldSetName = fieldSetName;
+            SegmentId = segmentId;
+            SegmentName = segmentName;
         }
         
         /// <summary>
@@ -214,11 +213,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EntitySummaryModel);
+            return Equals(input as EntitySummaryModel);
         }
 
         /// <summary>
@@ -233,99 +232,99 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+                    Id == input.Id ||
+                    (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
                 (
-                    this.DisplayName == input.DisplayName ||
-                    (this.DisplayName != null &&
-                    this.DisplayName.Equals(input.DisplayName))
+                    DisplayName == input.DisplayName ||
+                    (DisplayName != null &&
+                    DisplayName.Equals(input.DisplayName))
                 ) && 
                 (
-                    this.DisplayDescription == input.DisplayDescription ||
-                    (this.DisplayDescription != null &&
-                    this.DisplayDescription.Equals(input.DisplayDescription))
+                    DisplayDescription == input.DisplayDescription ||
+                    (DisplayDescription != null &&
+                    DisplayDescription.Equals(input.DisplayDescription))
                 ) && 
                 (
-                    this.Version == input.Version ||
-                    (this.Version != null &&
-                    this.Version.Equals(input.Version))
+                    Version == input.Version ||
+                    (Version != null &&
+                    Version.Equals(input.Version))
                 ) && 
                 (
-                    this.LockedBy == input.LockedBy ||
-                    (this.LockedBy != null &&
-                    this.LockedBy.Equals(input.LockedBy))
+                    LockedBy == input.LockedBy ||
+                    (LockedBy != null &&
+                    LockedBy.Equals(input.LockedBy))
                 ) && 
                 (
-                    this.CreatedBy == input.CreatedBy ||
-                    (this.CreatedBy != null &&
-                    this.CreatedBy.Equals(input.CreatedBy))
+                    CreatedBy == input.CreatedBy ||
+                    (CreatedBy != null &&
+                    CreatedBy.Equals(input.CreatedBy))
                 ) && 
                 (
-                    this.CreatedDate == input.CreatedDate ||
-                    (this.CreatedDate != null &&
-                    this.CreatedDate.Equals(input.CreatedDate))
+                    CreatedDate == input.CreatedDate ||
+                    (CreatedDate != null &&
+                    CreatedDate.Equals(input.CreatedDate))
                 ) && 
                 (
-                    this.FormattedCreatedDate == input.FormattedCreatedDate ||
-                    (this.FormattedCreatedDate != null &&
-                    this.FormattedCreatedDate.Equals(input.FormattedCreatedDate))
+                    FormattedCreatedDate == input.FormattedCreatedDate ||
+                    (FormattedCreatedDate != null &&
+                    FormattedCreatedDate.Equals(input.FormattedCreatedDate))
                 ) && 
                 (
-                    this.ModifiedBy == input.ModifiedBy ||
-                    (this.ModifiedBy != null &&
-                    this.ModifiedBy.Equals(input.ModifiedBy))
+                    ModifiedBy == input.ModifiedBy ||
+                    (ModifiedBy != null &&
+                    ModifiedBy.Equals(input.ModifiedBy))
                 ) && 
                 (
-                    this.ModifiedDate == input.ModifiedDate ||
-                    (this.ModifiedDate != null &&
-                    this.ModifiedDate.Equals(input.ModifiedDate))
+                    ModifiedDate == input.ModifiedDate ||
+                    (ModifiedDate != null &&
+                    ModifiedDate.Equals(input.ModifiedDate))
                 ) && 
                 (
-                    this.FormattedModifiedDate == input.FormattedModifiedDate ||
-                    (this.FormattedModifiedDate != null &&
-                    this.FormattedModifiedDate.Equals(input.FormattedModifiedDate))
+                    FormattedModifiedDate == input.FormattedModifiedDate ||
+                    (FormattedModifiedDate != null &&
+                    FormattedModifiedDate.Equals(input.FormattedModifiedDate))
                 ) && 
                 (
-                    this.ResourceUrl == input.ResourceUrl ||
-                    (this.ResourceUrl != null &&
-                    this.ResourceUrl.Equals(input.ResourceUrl))
+                    ResourceUrl == input.ResourceUrl ||
+                    (ResourceUrl != null &&
+                    ResourceUrl.Equals(input.ResourceUrl))
                 ) && 
                 (
-                    this.EntityTypeId == input.EntityTypeId ||
-                    (this.EntityTypeId != null &&
-                    this.EntityTypeId.Equals(input.EntityTypeId))
+                    EntityTypeId == input.EntityTypeId ||
+                    (EntityTypeId != null &&
+                    EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
                 (
-                    this.EntityTypeDisplayName == input.EntityTypeDisplayName ||
-                    (this.EntityTypeDisplayName != null &&
-                    this.EntityTypeDisplayName.Equals(input.EntityTypeDisplayName))
+                    EntityTypeDisplayName == input.EntityTypeDisplayName ||
+                    (EntityTypeDisplayName != null &&
+                    EntityTypeDisplayName.Equals(input.EntityTypeDisplayName))
                 ) && 
                 (
-                    this.Completeness == input.Completeness ||
-                    (this.Completeness != null &&
-                    this.Completeness.Equals(input.Completeness))
+                    Completeness == input.Completeness ||
+                    (Completeness != null &&
+                    Completeness.Equals(input.Completeness))
                 ) && 
                 (
-                    this.FieldSetId == input.FieldSetId ||
-                    (this.FieldSetId != null &&
-                    this.FieldSetId.Equals(input.FieldSetId))
+                    FieldSetId == input.FieldSetId ||
+                    (FieldSetId != null &&
+                    FieldSetId.Equals(input.FieldSetId))
                 ) && 
                 (
-                    this.FieldSetName == input.FieldSetName ||
-                    (this.FieldSetName != null &&
-                    this.FieldSetName.Equals(input.FieldSetName))
+                    FieldSetName == input.FieldSetName ||
+                    (FieldSetName != null &&
+                    FieldSetName.Equals(input.FieldSetName))
                 ) && 
                 (
-                    this.SegmentId == input.SegmentId ||
-                    (this.SegmentId != null &&
-                    this.SegmentId.Equals(input.SegmentId))
+                    SegmentId == input.SegmentId ||
+                    (SegmentId != null &&
+                    SegmentId.Equals(input.SegmentId))
                 ) && 
                 (
-                    this.SegmentName == input.SegmentName ||
-                    (this.SegmentName != null &&
-                    this.SegmentName.Equals(input.SegmentName))
+                    SegmentName == input.SegmentName ||
+                    (SegmentName != null &&
+                    SegmentName.Equals(input.SegmentName))
                 );
         }
 
@@ -338,44 +337,44 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
-                if (this.DisplayDescription != null)
-                    hashCode = hashCode * 59 + this.DisplayDescription.GetHashCode();
-                if (this.Version != null)
-                    hashCode = hashCode * 59 + this.Version.GetHashCode();
-                if (this.LockedBy != null)
-                    hashCode = hashCode * 59 + this.LockedBy.GetHashCode();
-                if (this.CreatedBy != null)
-                    hashCode = hashCode * 59 + this.CreatedBy.GetHashCode();
-                if (this.CreatedDate != null)
-                    hashCode = hashCode * 59 + this.CreatedDate.GetHashCode();
-                if (this.FormattedCreatedDate != null)
-                    hashCode = hashCode * 59 + this.FormattedCreatedDate.GetHashCode();
-                if (this.ModifiedBy != null)
-                    hashCode = hashCode * 59 + this.ModifiedBy.GetHashCode();
-                if (this.ModifiedDate != null)
-                    hashCode = hashCode * 59 + this.ModifiedDate.GetHashCode();
-                if (this.FormattedModifiedDate != null)
-                    hashCode = hashCode * 59 + this.FormattedModifiedDate.GetHashCode();
-                if (this.ResourceUrl != null)
-                    hashCode = hashCode * 59 + this.ResourceUrl.GetHashCode();
-                if (this.EntityTypeId != null)
-                    hashCode = hashCode * 59 + this.EntityTypeId.GetHashCode();
-                if (this.EntityTypeDisplayName != null)
-                    hashCode = hashCode * 59 + this.EntityTypeDisplayName.GetHashCode();
-                if (this.Completeness != null)
-                    hashCode = hashCode * 59 + this.Completeness.GetHashCode();
-                if (this.FieldSetId != null)
-                    hashCode = hashCode * 59 + this.FieldSetId.GetHashCode();
-                if (this.FieldSetName != null)
-                    hashCode = hashCode * 59 + this.FieldSetName.GetHashCode();
-                if (this.SegmentId != null)
-                    hashCode = hashCode * 59 + this.SegmentId.GetHashCode();
-                if (this.SegmentName != null)
-                    hashCode = hashCode * 59 + this.SegmentName.GetHashCode();
+                if (Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if (DisplayName != null)
+                    hashCode = hashCode * 59 + DisplayName.GetHashCode();
+                if (DisplayDescription != null)
+                    hashCode = hashCode * 59 + DisplayDescription.GetHashCode();
+                if (Version != null)
+                    hashCode = hashCode * 59 + Version.GetHashCode();
+                if (LockedBy != null)
+                    hashCode = hashCode * 59 + LockedBy.GetHashCode();
+                if (CreatedBy != null)
+                    hashCode = hashCode * 59 + CreatedBy.GetHashCode();
+                if (CreatedDate != null)
+                    hashCode = hashCode * 59 + CreatedDate.GetHashCode();
+                if (FormattedCreatedDate != null)
+                    hashCode = hashCode * 59 + FormattedCreatedDate.GetHashCode();
+                if (ModifiedBy != null)
+                    hashCode = hashCode * 59 + ModifiedBy.GetHashCode();
+                if (ModifiedDate != null)
+                    hashCode = hashCode * 59 + ModifiedDate.GetHashCode();
+                if (FormattedModifiedDate != null)
+                    hashCode = hashCode * 59 + FormattedModifiedDate.GetHashCode();
+                if (ResourceUrl != null)
+                    hashCode = hashCode * 59 + ResourceUrl.GetHashCode();
+                if (EntityTypeId != null)
+                    hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
+                if (EntityTypeDisplayName != null)
+                    hashCode = hashCode * 59 + EntityTypeDisplayName.GetHashCode();
+                if (Completeness != null)
+                    hashCode = hashCode * 59 + Completeness.GetHashCode();
+                if (FieldSetId != null)
+                    hashCode = hashCode * 59 + FieldSetId.GetHashCode();
+                if (FieldSetName != null)
+                    hashCode = hashCode * 59 + FieldSetName.GetHashCode();
+                if (SegmentId != null)
+                    hashCode = hashCode * 59 + SegmentId.GetHashCode();
+                if (SegmentName != null)
+                    hashCode = hashCode * 59 + SegmentName.GetHashCode();
                 return hashCode;
             }
         }

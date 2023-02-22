@@ -55,8 +55,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteCvlValueWithHttpInfo (string cvlId, string key);
+        /// <returns>ApiResponse of object(void)</returns>
+        ApiResponse<object> DeleteCvlValueWithHttpInfo (string cvlId, string key);
         /// <summary>
         /// Returns all values for a CVL
         /// </summary>
@@ -291,7 +291,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCvlValueAsyncWithHttpInfo (string cvlId, string key);
+        System.Threading.Tasks.Task<ApiResponse<object>> DeleteCvlValueAsyncWithHttpInfo (string cvlId, string key);
         /// <summary>
         /// Returns all values for a CVL
         /// </summary>

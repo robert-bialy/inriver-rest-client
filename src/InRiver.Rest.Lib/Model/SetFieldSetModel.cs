@@ -17,10 +17,10 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="fieldSetId">fieldSetId.</param>
         /// <param name="wipeOtherFields">wipeOtherFields.</param>
-        public SetFieldSetModel(string fieldSetId = default(string), bool? wipeOtherFields = default(bool?))
+        public SetFieldSetModel(string fieldSetId = default, bool? wipeOtherFields = default(bool?))
         {
-            this.FieldSetId = fieldSetId;
-            this.WipeOtherFields = wipeOtherFields;
+            FieldSetId = fieldSetId;
+            WipeOtherFields = wipeOtherFields;
         }
         
         /// <summary>
@@ -61,11 +61,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SetFieldSetModel);
+            return Equals(input as SetFieldSetModel);
         }
 
         /// <summary>
@@ -80,14 +80,14 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.FieldSetId == input.FieldSetId ||
-                    (this.FieldSetId != null &&
-                    this.FieldSetId.Equals(input.FieldSetId))
+                    FieldSetId == input.FieldSetId ||
+                    (FieldSetId != null &&
+                    FieldSetId.Equals(input.FieldSetId))
                 ) && 
                 (
-                    this.WipeOtherFields == input.WipeOtherFields ||
-                    (this.WipeOtherFields != null &&
-                    this.WipeOtherFields.Equals(input.WipeOtherFields))
+                    WipeOtherFields == input.WipeOtherFields ||
+                    (WipeOtherFields != null &&
+                    WipeOtherFields.Equals(input.WipeOtherFields))
                 );
         }
 
@@ -100,10 +100,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FieldSetId != null)
-                    hashCode = hashCode * 59 + this.FieldSetId.GetHashCode();
-                if (this.WipeOtherFields != null)
-                    hashCode = hashCode * 59 + this.WipeOtherFields.GetHashCode();
+                if (FieldSetId != null)
+                    hashCode = hashCode * 59 + FieldSetId.GetHashCode();
+                if (WipeOtherFields != null)
+                    hashCode = hashCode * 59 + WipeOtherFields.GetHashCode();
                 return hashCode;
             }
         }

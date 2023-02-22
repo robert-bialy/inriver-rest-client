@@ -18,11 +18,11 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="fileName">fileName.</param>
         /// <param name="data">data.</param>
         /// <param name="resourceLink">resourceLink.</param>
-        public Base64FileModelWithLink(string fileName = default(string), string data = default(string), ResourceLinkModel resourceLink = default(ResourceLinkModel))
+        public Base64FileModelWithLink(string fileName = default, string data = default, ResourceLinkModel resourceLink = default(ResourceLinkModel))
         {
-            this.FileName = fileName;
-            this.Data = data;
-            this.ResourceLink = resourceLink;
+            FileName = fileName;
+            Data = data;
+            ResourceLink = resourceLink;
         }
         
         /// <summary>
@@ -70,11 +70,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Base64FileModelWithLink);
+            return Equals(input as Base64FileModelWithLink);
         }
 
         /// <summary>
@@ -89,19 +89,19 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.FileName == input.FileName ||
-                    (this.FileName != null &&
-                    this.FileName.Equals(input.FileName))
+                    FileName == input.FileName ||
+                    (FileName != null &&
+                    FileName.Equals(input.FileName))
                 ) && 
                 (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
+                    Data == input.Data ||
+                    (Data != null &&
+                    Data.Equals(input.Data))
                 ) && 
                 (
-                    this.ResourceLink == input.ResourceLink ||
-                    (this.ResourceLink != null &&
-                    this.ResourceLink.Equals(input.ResourceLink))
+                    ResourceLink == input.ResourceLink ||
+                    (ResourceLink != null &&
+                    ResourceLink.Equals(input.ResourceLink))
                 );
         }
 
@@ -114,12 +114,12 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FileName != null)
-                    hashCode = hashCode * 59 + this.FileName.GetHashCode();
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
-                if (this.ResourceLink != null)
-                    hashCode = hashCode * 59 + this.ResourceLink.GetHashCode();
+                if (FileName != null)
+                    hashCode = hashCode * 59 + FileName.GetHashCode();
+                if (Data != null)
+                    hashCode = hashCode * 59 + Data.GetHashCode();
+                if (ResourceLink != null)
+                    hashCode = hashCode * 59 + ResourceLink.GetHashCode();
                 return hashCode;
             }
         }

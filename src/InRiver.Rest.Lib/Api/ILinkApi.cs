@@ -51,8 +51,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteLinkWithHttpInfo(int? linkId);
+        /// <returns>ApiResponse of object(void)</returns>
+        ApiResponse<object> DeleteLinkWithHttpInfo(int? linkId);
         /// <summary>
         /// Returns a link
         /// </summary>
@@ -138,7 +138,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteLinkAsyncWithHttpInfo(int? linkId);
+        System.Threading.Tasks.Task<ApiResponse<object>> DeleteLinkAsyncWithHttpInfo(int? linkId);
         /// <summary>
         /// Returns a link
         /// </summary>

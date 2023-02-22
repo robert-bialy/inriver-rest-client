@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -19,12 +18,12 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="value">value.</param>
         /// <param name="language">language.</param>
         /// <param name="_operator">_operator.</param>
-        public DataCriterionModel(string fieldTypeId = default(string), Object value = default(Object), string language = default(string), string _operator = default(string))
+        public DataCriterionModel(string fieldTypeId = default, object value = default(object), string language = default, string _operator = default)
         {
-            this.FieldTypeId = fieldTypeId;
-            this.Value = value;
-            this.Language = language;
-            this.Operator = _operator;
+            FieldTypeId = fieldTypeId;
+            Value = value;
+            Language = language;
+            Operator = _operator;
         }
         
         /// <summary>
@@ -37,7 +36,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Gets or Sets Language
@@ -79,11 +78,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as DataCriterionModel);
+            return Equals(input as DataCriterionModel);
         }
 
         /// <summary>
@@ -98,24 +97,24 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.FieldTypeId == input.FieldTypeId ||
-                    (this.FieldTypeId != null &&
-                    this.FieldTypeId.Equals(input.FieldTypeId))
+                    FieldTypeId == input.FieldTypeId ||
+                    (FieldTypeId != null &&
+                    FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
                 (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+                    Value == input.Value ||
+                    (Value != null &&
+                    Value.Equals(input.Value))
                 ) && 
                 (
-                    this.Language == input.Language ||
-                    (this.Language != null &&
-                    this.Language.Equals(input.Language))
+                    Language == input.Language ||
+                    (Language != null &&
+                    Language.Equals(input.Language))
                 ) && 
                 (
-                    this.Operator == input.Operator ||
-                    (this.Operator != null &&
-                    this.Operator.Equals(input.Operator))
+                    Operator == input.Operator ||
+                    (Operator != null &&
+                    Operator.Equals(input.Operator))
                 );
         }
 
@@ -128,14 +127,14 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FieldTypeId != null)
-                    hashCode = hashCode * 59 + this.FieldTypeId.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
-                if (this.Language != null)
-                    hashCode = hashCode * 59 + this.Language.GetHashCode();
-                if (this.Operator != null)
-                    hashCode = hashCode * 59 + this.Operator.GetHashCode();
+                if (FieldTypeId != null)
+                    hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
+                if (Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
+                if (Language != null)
+                    hashCode = hashCode * 59 + Language.GetHashCode();
+                if (Operator != null)
+                    hashCode = hashCode * 59 + Operator.GetHashCode();
                 return hashCode;
             }
         }

@@ -31,7 +31,7 @@ namespace InRiver.Rest.Lib.Model
             }
             else
             {
-                this.SegmentId = segmentId;
+                SegmentId = segmentId;
             }
         }
         
@@ -66,11 +66,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SetSegmentModel);
+            return Equals(input as SetSegmentModel);
         }
 
         /// <summary>
@@ -85,9 +85,9 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.SegmentId == input.SegmentId ||
-                    (this.SegmentId != null &&
-                    this.SegmentId.Equals(input.SegmentId))
+                    SegmentId == input.SegmentId ||
+                    (SegmentId != null &&
+                    SegmentId.Equals(input.SegmentId))
                 );
         }
 
@@ -100,8 +100,8 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SegmentId != null)
-                    hashCode = hashCode * 59 + this.SegmentId.GetHashCode();
+                if (SegmentId != null)
+                    hashCode = hashCode * 59 + SegmentId.GetHashCode();
                 return hashCode;
             }
         }

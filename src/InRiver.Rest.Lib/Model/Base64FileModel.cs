@@ -17,10 +17,10 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="fileName">fileName.</param>
         /// <param name="data">data.</param>
-        public Base64FileModel(string fileName = default(string), string data = default(string))
+        public Base64FileModel(string fileName = default, string data = default)
         {
-            this.FileName = fileName;
-            this.Data = data;
+            FileName = fileName;
+            Data = data;
         }
         
         /// <summary>
@@ -61,11 +61,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as Base64FileModel);
+            return Equals(input as Base64FileModel);
         }
 
         /// <summary>
@@ -80,14 +80,14 @@ namespace InRiver.Rest.Lib.Model
 
             return 
                 (
-                    this.FileName == input.FileName ||
-                    (this.FileName != null &&
-                    this.FileName.Equals(input.FileName))
+                    FileName == input.FileName ||
+                    (FileName != null &&
+                    FileName.Equals(input.FileName))
                 ) && 
                 (
-                    this.Data == input.Data ||
-                    (this.Data != null &&
-                    this.Data.Equals(input.Data))
+                    Data == input.Data ||
+                    (Data != null &&
+                    Data.Equals(input.Data))
                 );
         }
 
@@ -100,10 +100,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FileName != null)
-                    hashCode = hashCode * 59 + this.FileName.GetHashCode();
-                if (this.Data != null)
-                    hashCode = hashCode * 59 + this.Data.GetHashCode();
+                if (FileName != null)
+                    hashCode = hashCode * 59 + FileName.GetHashCode();
+                if (Data != null)
+                    hashCode = hashCode * 59 + Data.GetHashCode();
                 return hashCode;
             }
         }

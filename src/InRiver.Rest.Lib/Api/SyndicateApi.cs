@@ -31,9 +31,9 @@ namespace InRiver.Rest.Lib.Api
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
+                Configuration = Configuration.Default;
             else
-                this.Configuration = configuration;
+                Configuration = configuration;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
@@ -65,10 +65,10 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="syndicationId"></param>
-        /// <returns>Object</returns>
-        public Object RunSyndicate (int? syndicationId)
+        /// <returns>object</returns>
+        public object RunSyndicate (int? syndicationId)
         {
-             ApiResponse<Object> localVarResponse = RunSyndicateWithHttpInfo(syndicationId);
+             ApiResponse<object> localVarResponse = RunSyndicateWithHttpInfo(syndicationId);
              return localVarResponse.Data;
         }
 
@@ -77,8 +77,8 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="syndicationId"></param>
-        /// <returns>ApiResponse of Object</returns>
-        public ApiResponse< Object > RunSyndicateWithHttpInfo (int? syndicationId)
+        /// <returns>ApiResponse of object</returns>
+        public ApiResponse< object > RunSyndicateWithHttpInfo (int? syndicationId)
         {
             // verify the required parameter 'syndicationId' is set
             if (syndicationId == null)
@@ -87,10 +87,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/syndications/{syndicationId}:run";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -122,9 +122,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Object) _serializer.Deserialize(localVarResponse, typeof(Object)));
+                (object) _serializer.Deserialize(localVarResponse, typeof(object)));
         }
 
         /// <summary>
@@ -132,10 +132,10 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="syndicationId"></param>
-        /// <returns>Task of Object</returns>
-        public async System.Threading.Tasks.Task<Object> RunSyndicateAsync (int? syndicationId)
+        /// <returns>Task of object</returns>
+        public async System.Threading.Tasks.Task<object> RunSyndicateAsync (int? syndicationId)
         {
-             ApiResponse<Object> localVarResponse = await RunSyndicateAsyncWithHttpInfo(syndicationId);
+             ApiResponse<object> localVarResponse = await RunSyndicateAsyncWithHttpInfo(syndicationId);
              return localVarResponse.Data;
 
         }
@@ -145,8 +145,8 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="syndicationId"></param>
-        /// <returns>Task of ApiResponse (Object)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> RunSyndicateAsyncWithHttpInfo (int? syndicationId)
+        /// <returns>Task of ApiResponse (object)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<object>> RunSyndicateAsyncWithHttpInfo (int? syndicationId)
         {
             // verify the required parameter 'syndicationId' is set
             if (syndicationId == null)
@@ -155,10 +155,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/syndications/{syndicationId}:run";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -190,9 +190,9 @@ namespace InRiver.Rest.Lib.Api
                 if (exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (Object) _serializer.Deserialize(localVarResponse, typeof(Object)));
+                (object) _serializer.Deserialize(localVarResponse, typeof(object)));
         }
 
         /// <summary>
@@ -217,10 +217,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/syndications";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
@@ -279,10 +279,10 @@ namespace InRiver.Rest.Lib.Api
             var localVarPath = "/api/v1.0.0/syndications";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
             String[] localVarHttpContentTypes = new String[] {
