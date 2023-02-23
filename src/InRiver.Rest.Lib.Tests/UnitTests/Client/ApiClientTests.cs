@@ -1,4 +1,5 @@
-﻿using InRiver.Rest.Lib.Client;
+﻿using System.Net;
+using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Services;
 using NUnit.Framework;
 using Moq;
@@ -32,7 +33,10 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Client
             var fileParams = new Dictionary<string, FileParameter>();
             var pathParams = new Dictionary<string, string>();
             var contentType = "application/json";
-            var response = new RestResponse();
+            var response = new RestResponse
+            {
+                StatusCode = HttpStatusCode.OK
+            };
             var restClientMock = new Mock<IRestClient>();
             _restClientFactoryMock
                 .Setup(x => x.Create(It.IsAny<RestClientOptions>()))
@@ -63,7 +67,10 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Client
             var fileParams = new Dictionary<string, FileParameter>();
             var pathParams = new Dictionary<string, string>();
             var contentType = "application/json";
-            var response = new RestResponse();
+            var response = new RestResponse
+            {
+                StatusCode = HttpStatusCode.OK
+            };
 
             var restClientMock = new Mock<IRestClient>();
             _restClientFactoryMock
