@@ -13,7 +13,7 @@ namespace InRiver.Rest.Lib.Client
 
         private readonly Configuration _configuration;
         private readonly ISerializer _serializer = new Serializer();
-        private object Lock = new object();
+        private readonly object _lock = new object();
         private IApiClient _apiClient;
         private IChannelApi _channelApi;
         private IEntityApi _entityApi;
@@ -100,7 +100,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_channelApi != null) return _channelApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _channelApi = new ChannelApi(_serializer, ApiClient, _configuration);
                 }
@@ -112,7 +112,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_entityApi != null) return _entityApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _entityApi = new EntityApi(_serializer, ApiClient, _configuration);
                 }
@@ -124,7 +124,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_entityApi != null) return _linkApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _linkApi = new LinkApi(_serializer, ApiClient, _configuration);
                 }
@@ -136,7 +136,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_mediaApi != null) return _mediaApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _mediaApi = new MediaApi(_serializer, ApiClient, _configuration);
                 }
@@ -148,7 +148,7 @@ namespace InRiver.Rest.Lib.Client
             get 
             {
                 if(_modelApi != null) return _modelApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _modelApi = new ModelApi(_serializer, ApiClient, _configuration);
                 }
@@ -160,7 +160,7 @@ namespace InRiver.Rest.Lib.Client
             get 
             {
                 if(_queryApi != null) return _queryApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _queryApi = new QueryApi(_serializer, ApiClient, _configuration);
                 }
@@ -172,7 +172,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_syndicateApi != null) return _syndicateApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _syndicateApi = new SyndicateApi(_serializer, ApiClient, _configuration);
                 }
@@ -184,7 +184,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_systemApi != null) return _systemApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _systemApi = new SystemApi(_serializer, ApiClient, _configuration);
                 }
@@ -196,7 +196,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_workareaApi != null) return _workareaApi;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _workareaApi = new WorkareaApi(_serializer, ApiClient, _configuration);
                 }
@@ -208,7 +208,7 @@ namespace InRiver.Rest.Lib.Client
             get
             {
                 if(_apiClient != null) return _apiClient;
-                lock(Lock)
+                lock(_lock)
                 {
                     return _apiClient = new ApiClient(_configuration, new RestClientFactory(_configuration.HttpClientOverride));
                 }

@@ -69,10 +69,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelCreateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -108,7 +108,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -146,10 +146,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelCreateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -185,7 +185,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -221,10 +221,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelDeleteCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -249,7 +249,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -285,10 +285,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelDeleteCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -312,7 +312,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -344,10 +344,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelGetAllCvlValues");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -372,7 +372,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<CVLValueModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -404,10 +404,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'cvlId' when calling ModelApi->ModelGetAllCvlValues");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -432,7 +432,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<CVLValueModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -459,10 +459,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/cvls";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -485,7 +485,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<CVLModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -512,10 +512,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/cvls";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -538,7 +538,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<CVLModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -567,10 +567,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/entitytypes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -596,7 +596,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<EntityTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -625,10 +625,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/entitytypes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -653,7 +653,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<EntityTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -679,10 +679,10 @@ namespace InRiver.Rest.Lib.Api
         public ApiResponse<List<FieldSetModel>> GetAllFieldSetsWithHttpInfo()
         {
             var localVarPath = "/api/v1.0.0/model/fieldsets";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -705,7 +705,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<FieldSetModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -732,10 +732,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/fieldsets";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -760,7 +760,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<FieldSetModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -787,10 +787,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/languages";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -813,7 +813,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<LanguageModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -839,10 +839,10 @@ namespace InRiver.Rest.Lib.Api
         public async System.Threading.Tasks.Task<ApiResponse<List<LanguageModel>>> GetAllLanguagesAsyncWithHttpInfo()
         {
             var localVarPath = "/api/v1.0.0/model/languages";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -865,7 +865,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<LanguageModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -892,10 +892,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -918,7 +918,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<EntitySummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -945,10 +945,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -971,7 +971,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<EntitySummaryModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -1008,10 +1008,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelGetCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1038,7 +1038,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -1075,10 +1075,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'key' when calling ModelApi->ModelGetCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1104,7 +1104,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -1136,10 +1136,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling ModelApi->ModelGetSpecificationTemplatesields");
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates/{templateId}/fieldtypes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1164,7 +1164,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<SpecificationFieldTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -1196,10 +1196,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'templateId' when calling ModelApi->ModelGetSpecificationTemplatesields");
 
             var localVarPath = "/api/v1.0.0/model/specificationtemplates/{templateId}/fieldtypes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1225,7 +1225,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<List<SpecificationFieldTypeModel>>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -1267,10 +1267,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelUpdateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1307,7 +1307,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -1350,10 +1350,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'cvlValueModel' when calling ModelApi->ModelUpdateCvlValue");
 
             var localVarPath = "/api/v1.0.0/model/cvls/{cvlId}/values/{key}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1390,7 +1390,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<CVLValueModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),

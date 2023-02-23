@@ -64,10 +64,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'queryModel' when calling QueryApi->QueryQuery");
 
             var localVarPath = "/api/v1.0.0/query";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -102,7 +102,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
@@ -134,10 +134,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'queryModel' when calling QueryApi->QueryQuery");
 
             var localVarPath = "/api/v1.0.0/query";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -172,7 +172,7 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
             
             return new ApiResponse<EntityListModel>(localVarStatusCode,
                 localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
