@@ -32,8 +32,6 @@ namespace InRiver.Rest.Lib.Api
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             // use the default one in Configuration
             Configuration = configuration ?? Configuration.Default;
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
         
         /// <summary>
@@ -41,22 +39,6 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <value>An instance of the Configuration</value>
         public Configuration Configuration {get; set;}
-
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set => _exceptionFactory = value;
-        }
         
         /// <summary>
         /// Create a new link Set index to 0 to add the link to first position. Set index to null to add the link to last position. Specifying the index will reorganize all link indices.
@@ -122,15 +104,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkCreateLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<LinkModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
@@ -198,15 +174,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkCreateLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<LinkModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
@@ -261,15 +231,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkDeleteLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                 null);
         }
 
@@ -325,14 +289,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkDeleteLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                 null);
         }
 
@@ -390,15 +348,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkGetLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<LinkModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
@@ -457,15 +409,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkGetLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<LinkModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
@@ -533,15 +479,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkUpdateLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
@@ -603,22 +543,15 @@ namespace InRiver.Rest.Lib.Api
                 localVarPostBody = linkModels; // byte array
             }
 
-
             // make the HTTP request
             RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("LinkUpdateLink", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 

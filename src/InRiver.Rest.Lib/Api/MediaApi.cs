@@ -32,8 +32,6 @@ namespace InRiver.Rest.Lib.Api
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             // use the default one in Configuration
             Configuration = configuration ?? Configuration.Default;
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
         
         /// <summary>
@@ -42,22 +40,6 @@ namespace InRiver.Rest.Lib.Api
         /// <value>An instance of the Configuration</value>
         public Configuration Configuration {get; set;}
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set => _exceptionFactory = value;
-        }
-        
         /// <summary>
         /// Add external media url If the resourceLink object is omitted a resource entity will be created without a link. If resourceLink.linkTypeId is omitted inRiver will automatically find the most suitable link type.     Example:                Original external file URL that is added with this REST endpoint                https://yourexternalresourceservice.com/imagename.jpg                Your external image service then need to support the standard inRiver image configuration formats(Original, Preview, Thumbnail and SmallThumbnail) as a suffix on the URL that you uploaded or have a proxy that redirect to the right image format, else the inRiver web portal will not work correct.                https://yourexternalresourceservice.com/imagename.jpg/Original &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/Preview &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/Thumbnail &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/SmallThumbnail &lt;br /&gt;
         /// </summary>
@@ -123,12 +105,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("MediaAddExternalUrl", localVarResponse);
-            if(exception != null) throw exception;
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -190,22 +169,15 @@ namespace InRiver.Rest.Lib.Api
                 localVarPostBody = urlFileModel; // byte array
             }
 
-
             // make the HTTP request
             RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("MediaAddExternalUrl", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -273,15 +245,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("MediaUploadBase64File", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -349,15 +315,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("MediaUploadBase64File", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -425,12 +385,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("MediaUploadMediaFromUrl", localVarResponse);
-            if(exception != null) throw exception;
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -500,11 +457,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            var exception = ExceptionFactory?.Invoke("MediaUploadMediaFromUrl", localVarResponse);
-            if(exception != null) throw exception;
-
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 

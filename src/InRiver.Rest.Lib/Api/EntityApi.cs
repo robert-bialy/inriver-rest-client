@@ -128,14 +128,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityAddExternalUrl", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -211,14 +205,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityAddExternalUrl", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -277,14 +265,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityComments", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
@@ -343,14 +325,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityComments", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
@@ -409,14 +385,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityCompletenessDetails", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<CompletenessDetailsModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<CompletenessDetailsModel>) _serializer.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
         }
 
@@ -475,14 +445,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityCompletenessDetails", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<CompletenessDetailsModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<CompletenessDetailsModel>) _serializer.Deserialize(localVarResponse, typeof(List<CompletenessDetailsModel>)));
         }
 
@@ -558,14 +522,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityCreateComment", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
@@ -640,14 +598,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityCreateComment", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<CommentModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<CommentModel>) _serializer.Deserialize(localVarResponse, typeof(List<CommentModel>)));
         }
 
@@ -716,14 +668,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityCreateEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -792,14 +738,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityCreateEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -861,14 +801,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityDeleteComment", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                 null);
         }
 
@@ -930,14 +864,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityDeleteComment", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                 null);
         }
 
@@ -993,14 +921,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityDeleteEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                 null);
         }
 
@@ -1056,14 +978,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityDeleteEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<object>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                 null);
         }
 
@@ -1132,14 +1048,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityFetchData", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<EntityDataModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<EntityDataModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityDataModel>)));
         }
 
@@ -1208,14 +1118,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityFetchData", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<EntityDataModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<EntityDataModel>) _serializer.Deserialize(localVarResponse, typeof(List<EntityDataModel>)));
         }
 
@@ -1280,14 +1184,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityFieldHistory", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<FieldRevisionModel[]>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (FieldRevisionModel[]) _serializer.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
         }
 
@@ -1352,14 +1250,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityFieldHistory", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<FieldRevisionModel[]>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (FieldRevisionModel[]) _serializer.Deserialize(localVarResponse, typeof(FieldRevisionModel[])));
         }
 
@@ -1418,14 +1310,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetAllMedia", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
@@ -1484,14 +1370,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetAllMedia", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
@@ -1543,14 +1423,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetAllSegments", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<Segment>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<Segment>) _serializer.Deserialize(localVarResponse, typeof(List<Segment>)));
         }
 
@@ -1601,14 +1475,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetAllSegments", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<Segment>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<Segment>) _serializer.Deserialize(localVarResponse, typeof(List<Segment>)));
         }
 
@@ -1674,14 +1542,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetEmptyEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<EntityCreationModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityCreationModel) _serializer.Deserialize(localVarResponse, typeof(EntityCreationModel)));
         }
 
@@ -1747,14 +1609,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetEmptyEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<EntityCreationModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityCreationModel) _serializer.Deserialize(localVarResponse, typeof(EntityCreationModel)));
         }
 
@@ -1822,14 +1678,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetEntityBundle", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<EntityBundleModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityBundleModel) _serializer.Deserialize(localVarResponse, typeof(EntityBundleModel)));
         }
 
@@ -1898,14 +1748,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetEntityBundle", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<EntityBundleModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityBundleModel) _serializer.Deserialize(localVarResponse, typeof(EntityBundleModel)));
         }
 
@@ -1958,20 +1802,14 @@ namespace InRiver.Rest.Lib.Api
             localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId,Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetEntitySummary", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -2030,14 +1868,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetEntitySummary", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -2099,14 +1931,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetFieldValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
@@ -2168,15 +1994,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetFieldValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
@@ -2238,14 +2058,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetFields", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<FieldSummaryModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<FieldSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
         }
 
@@ -2307,14 +2121,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetFields", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<FieldSummaryModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<FieldSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldSummaryModel>)));
         }
 
@@ -2380,14 +2188,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetLinksForEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
@@ -2453,14 +2255,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetLinksForEntity", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
@@ -2518,15 +2314,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetMediaDetails", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
@@ -2585,14 +2375,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetMediaDetails", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<MediaInfoModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<MediaInfoModel>) _serializer.Deserialize(localVarResponse, typeof(List<MediaInfoModel>)));
         }
 
@@ -2653,15 +2437,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetSpecificationSummary", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<SpecificationValueSummaryModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SpecificationValueSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueSummaryModel>)));
         }
 
@@ -2724,15 +2502,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetSpecificationSummary", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<SpecificationValueSummaryModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SpecificationValueSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueSummaryModel>)));
         }
 
@@ -2797,15 +2569,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetSpecificationValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
@@ -2871,15 +2637,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityGetSpecificationValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
@@ -2948,15 +2708,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityMapUniqueValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<Dictionary<string, int?>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (Dictionary<string, int?>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
         }
 
@@ -3026,15 +2780,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityMapUniqueValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<Dictionary<string, int?>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (Dictionary<string, int?>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, int?>)));
         }
 
@@ -3109,15 +2857,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetFieldSet", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -3193,15 +2935,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetFieldSet", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -3276,15 +3012,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetFieldValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
@@ -3360,15 +3090,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetFieldValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<FieldValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<FieldValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<FieldValueModel>)));
         }
 
@@ -3443,15 +3167,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -3527,15 +3245,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -3610,15 +3322,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetSpecificationTemplate", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -3694,15 +3400,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntitySetSpecificationTemplate", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<EntitySummaryModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntitySummaryModel) _serializer.Deserialize(localVarResponse, typeof(EntitySummaryModel)));
         }
 
@@ -3755,15 +3455,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityStarredEntities", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<int?>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
@@ -3817,15 +3511,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityStarredEntities", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<int?>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
@@ -3900,15 +3588,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUpdateSpecificationValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
@@ -3984,15 +3666,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUpdateSpecificationValues", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<SpecificationValueModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SpecificationValueModel>) _serializer.Deserialize(localVarResponse, typeof(List<SpecificationValueModel>)));
         }
 
@@ -4061,15 +3737,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUpdateStarredEntities", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<int?>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
@@ -4139,15 +3809,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUpdateStarredEntities", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<List<int?>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<int?>) _serializer.Deserialize(localVarResponse, typeof(List<int?>)));
         }
 
@@ -4226,15 +3890,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUploadBase64File", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -4314,15 +3972,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUploadBase64File", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -4399,15 +4051,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUploadMediaFromUrl", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
@@ -4483,15 +4129,9 @@ namespace InRiver.Rest.Lib.Api
                 localVarPathParams, localVarHttpContentType);
 
             int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("EntityUploadMediaFromUrl", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
+            
             return new ApiResponse<MediaInfoModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (MediaInfoModel) _serializer.Deserialize(localVarResponse, typeof(MediaInfoModel)));
         }
 
