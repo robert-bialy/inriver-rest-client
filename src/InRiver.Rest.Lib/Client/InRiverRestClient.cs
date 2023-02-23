@@ -195,7 +195,7 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if(_systemApi != null) return _workareaApi;
+                if(_workareaApi != null) return _workareaApi;
                 lock(Lock)
                 {
                     return _workareaApi = new WorkareaApi(_serializer, ApiClient, _configuration);
@@ -207,7 +207,7 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if(_systemApi != null) return _apiClient;
+                if(_apiClient != null) return _apiClient;
                 lock(Lock)
                 {
                     return _apiClient = new ApiClient(_configuration, new RestClientFactory(_configuration.HttpClientOverride));

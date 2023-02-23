@@ -15,7 +15,6 @@ namespace InRiver.Rest.Lib.Api
     internal sealed class MediaApi : IMediaApi
     {
         private readonly ISerializer _serializer;
-        private ExceptionFactory _exceptionFactory =(name, response) => null;
         private readonly IApiClient _apiClient;
 
         /// <summary>

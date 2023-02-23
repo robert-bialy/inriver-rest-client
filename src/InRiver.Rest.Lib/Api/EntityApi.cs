@@ -16,7 +16,6 @@ namespace InRiver.Rest.Lib.Api
     internal sealed class EntityApi : IEntityApi
     {
         private readonly ISerializer _serializer;
-        private ExceptionFactory _exceptionFactory =(name, response) => null;
         private readonly IApiClient _apiClient;
 
         /// <summary>
@@ -32,7 +31,6 @@ namespace InRiver.Rest.Lib.Api
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             Configuration = configuration ?? Configuration.Default;
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
         
         /// <summary>
@@ -41,22 +39,6 @@ namespace InRiver.Rest.Lib.Api
         /// <value>An instance of the Configuration</value>
         public Configuration Configuration {get; set;}
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set => _exceptionFactory = value;
-        }
-        
         /// <summary>
         /// Add external media url Enter entityId for the entity you want to link the created resource entity to.     Example:     You want to create a resource and then link it to a Product. You add the entityId for the product entity that you would like to link the resource entity to.    Original external file URL that is added with this REST endpoint                https://yourexternalresourceservice.com/imagename.jpg                Your external image service then need to support the standard inRiver image configuration formats(Original, Preview, Thumbnail and SmallThumbnail) as a suffix on the URL that you uploaded or have a proxy that redirect to the right image format, else the inRiver web portal will not work correct.                https://yourexternalresourceservice.com/imagename.jpg/Original &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/Preview &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/Thumbnail &lt;br /&gt;  https://yourexternalresourceservice.com/imagename.jpg/SmallThumbnail &lt;br /&gt;
         /// </summary>

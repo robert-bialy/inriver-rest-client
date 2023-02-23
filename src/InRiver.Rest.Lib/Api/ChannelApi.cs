@@ -16,7 +16,6 @@ namespace InRiver.Rest.Lib.Api
     {
         private readonly ISerializer _serializer;
         private readonly IApiClient _apiClient;
-        private ExceptionFactory _exceptionFactory =(name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelApi"/> class
