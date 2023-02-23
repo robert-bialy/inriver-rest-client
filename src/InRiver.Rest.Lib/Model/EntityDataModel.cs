@@ -29,21 +29,21 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="mediaDetails">mediaDetails.</param>
         /// <param name="inbound">inbound.</param>
         /// <param name="outbound">outbound.</param>
-        public EntityDataModel(int? entityId = default(int?), string linkTypeId = default(string), int? linkIndex = default(int?), EntityDataModel linkEntity = default(EntityDataModel), EntitySummaryModel summary = default(EntitySummaryModel), List<FieldSummaryModel> fields = default(List<FieldSummaryModel>), List<FieldValueModel> fieldValues = default(List<FieldValueModel>), List<SpecificationValueSummaryModel> specification = default(List<SpecificationValueSummaryModel>), List<SpecificationValueModel> specificationValues = default(List<SpecificationValueModel>), List<string> media = default(List<string>), List<MediaInfoModel> mediaDetails = default(List<MediaInfoModel>), List<EntityDataModel> inbound = default(List<EntityDataModel>), List<EntityDataModel> outbound = default(List<EntityDataModel>))
+        public EntityDataModel(int? entityId = default(int?), string linkTypeId = default, int? linkIndex = default(int?), EntityDataModel linkEntity = default(EntityDataModel), EntitySummaryModel summary = default(EntitySummaryModel), List<FieldSummaryModel> fields = default(List<FieldSummaryModel>), List<FieldValueModel> fieldValues = default(List<FieldValueModel>), List<SpecificationValueSummaryModel> specification = default(List<SpecificationValueSummaryModel>), List<SpecificationValueModel> specificationValues = default(List<SpecificationValueModel>), List<string> media = default(List<string>), List<MediaInfoModel> mediaDetails = default(List<MediaInfoModel>), List<EntityDataModel> inbound = default(List<EntityDataModel>), List<EntityDataModel> outbound = default(List<EntityDataModel>))
         {
-            this.EntityId = entityId;
-            this.LinkTypeId = linkTypeId;
-            this.LinkIndex = linkIndex;
-            this.LinkEntity = linkEntity;
-            this.Summary = summary;
-            this.Fields = fields;
-            this.FieldValues = fieldValues;
-            this.Specification = specification;
-            this.SpecificationValues = specificationValues;
-            this.Media = media;
-            this.MediaDetails = mediaDetails;
-            this.Inbound = inbound;
-            this.Outbound = outbound;
+            EntityId = entityId;
+            LinkTypeId = linkTypeId;
+            LinkIndex = linkIndex;
+            LinkEntity = linkEntity;
+            Summary = summary;
+            Fields = fields;
+            FieldValues = fieldValues;
+            Specification = specification;
+            SpecificationValues = specificationValues;
+            Media = media;
+            MediaDetails = mediaDetails;
+            Inbound = inbound;
+            Outbound = outbound;
         }
         
         /// <summary>
@@ -161,11 +161,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EntityDataModel);
+            return Equals(input as EntityDataModel);
         }
 
         /// <summary>
@@ -175,74 +175,74 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityDataModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.EntityId == input.EntityId ||
-                    (this.EntityId != null &&
-                    this.EntityId.Equals(input.EntityId))
+               (
+                    EntityId == input.EntityId ||
+                   (EntityId != null &&
+                    EntityId.Equals(input.EntityId))
                 ) && 
-                (
-                    this.LinkTypeId == input.LinkTypeId ||
-                    (this.LinkTypeId != null &&
-                    this.LinkTypeId.Equals(input.LinkTypeId))
+               (
+                    LinkTypeId == input.LinkTypeId ||
+                   (LinkTypeId != null &&
+                    LinkTypeId.Equals(input.LinkTypeId))
                 ) && 
-                (
-                    this.LinkIndex == input.LinkIndex ||
-                    (this.LinkIndex != null &&
-                    this.LinkIndex.Equals(input.LinkIndex))
+               (
+                    LinkIndex == input.LinkIndex ||
+                   (LinkIndex != null &&
+                    LinkIndex.Equals(input.LinkIndex))
                 ) && 
-                (
-                    this.LinkEntity == input.LinkEntity ||
-                    (this.LinkEntity != null &&
-                    this.LinkEntity.Equals(input.LinkEntity))
+               (
+                    LinkEntity == input.LinkEntity ||
+                   (LinkEntity != null &&
+                    LinkEntity.Equals(input.LinkEntity))
                 ) && 
-                (
-                    this.Summary == input.Summary ||
-                    (this.Summary != null &&
-                    this.Summary.Equals(input.Summary))
+               (
+                    Summary == input.Summary ||
+                   (Summary != null &&
+                    Summary.Equals(input.Summary))
                 ) && 
-                (
-                    this.Fields == input.Fields ||
-                    this.Fields != null &&
-                    this.Fields.SequenceEqual(input.Fields)
+               (
+                    Fields == input.Fields ||
+                    Fields != null &&
+                    Fields.SequenceEqual(input.Fields)
                 ) && 
-                (
-                    this.FieldValues == input.FieldValues ||
-                    this.FieldValues != null &&
-                    this.FieldValues.SequenceEqual(input.FieldValues)
+               (
+                    FieldValues == input.FieldValues ||
+                    FieldValues != null &&
+                    FieldValues.SequenceEqual(input.FieldValues)
                 ) && 
-                (
-                    this.Specification == input.Specification ||
-                    this.Specification != null &&
-                    this.Specification.SequenceEqual(input.Specification)
+               (
+                    Specification == input.Specification ||
+                    Specification != null &&
+                    Specification.SequenceEqual(input.Specification)
                 ) && 
-                (
-                    this.SpecificationValues == input.SpecificationValues ||
-                    this.SpecificationValues != null &&
-                    this.SpecificationValues.SequenceEqual(input.SpecificationValues)
+               (
+                    SpecificationValues == input.SpecificationValues ||
+                    SpecificationValues != null &&
+                    SpecificationValues.SequenceEqual(input.SpecificationValues)
                 ) && 
-                (
-                    this.Media == input.Media ||
-                    this.Media != null &&
-                    this.Media.SequenceEqual(input.Media)
+               (
+                    Media == input.Media ||
+                    Media != null &&
+                    Media.SequenceEqual(input.Media)
                 ) && 
-                (
-                    this.MediaDetails == input.MediaDetails ||
-                    this.MediaDetails != null &&
-                    this.MediaDetails.SequenceEqual(input.MediaDetails)
+               (
+                    MediaDetails == input.MediaDetails ||
+                    MediaDetails != null &&
+                    MediaDetails.SequenceEqual(input.MediaDetails)
                 ) && 
-                (
-                    this.Inbound == input.Inbound ||
-                    this.Inbound != null &&
-                    this.Inbound.SequenceEqual(input.Inbound)
+               (
+                    Inbound == input.Inbound ||
+                    Inbound != null &&
+                    Inbound.SequenceEqual(input.Inbound)
                 ) && 
-                (
-                    this.Outbound == input.Outbound ||
-                    this.Outbound != null &&
-                    this.Outbound.SequenceEqual(input.Outbound)
+               (
+                    Outbound == input.Outbound ||
+                    Outbound != null &&
+                    Outbound.SequenceEqual(input.Outbound)
                 );
         }
 
@@ -255,32 +255,32 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EntityId != null)
-                    hashCode = hashCode * 59 + this.EntityId.GetHashCode();
-                if (this.LinkTypeId != null)
-                    hashCode = hashCode * 59 + this.LinkTypeId.GetHashCode();
-                if (this.LinkIndex != null)
-                    hashCode = hashCode * 59 + this.LinkIndex.GetHashCode();
-                if (this.LinkEntity != null)
-                    hashCode = hashCode * 59 + this.LinkEntity.GetHashCode();
-                if (this.Summary != null)
-                    hashCode = hashCode * 59 + this.Summary.GetHashCode();
-                if (this.Fields != null)
-                    hashCode = hashCode * 59 + this.Fields.GetHashCode();
-                if (this.FieldValues != null)
-                    hashCode = hashCode * 59 + this.FieldValues.GetHashCode();
-                if (this.Specification != null)
-                    hashCode = hashCode * 59 + this.Specification.GetHashCode();
-                if (this.SpecificationValues != null)
-                    hashCode = hashCode * 59 + this.SpecificationValues.GetHashCode();
-                if (this.Media != null)
-                    hashCode = hashCode * 59 + this.Media.GetHashCode();
-                if (this.MediaDetails != null)
-                    hashCode = hashCode * 59 + this.MediaDetails.GetHashCode();
-                if (this.Inbound != null)
-                    hashCode = hashCode * 59 + this.Inbound.GetHashCode();
-                if (this.Outbound != null)
-                    hashCode = hashCode * 59 + this.Outbound.GetHashCode();
+                if(EntityId != null)
+                    hashCode = hashCode * 59 + EntityId.GetHashCode();
+                if(LinkTypeId != null)
+                    hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
+                if(LinkIndex != null)
+                    hashCode = hashCode * 59 + LinkIndex.GetHashCode();
+                if(LinkEntity != null)
+                    hashCode = hashCode * 59 + LinkEntity.GetHashCode();
+                if(Summary != null)
+                    hashCode = hashCode * 59 + Summary.GetHashCode();
+                if(Fields != null)
+                    hashCode = hashCode * 59 + Fields.GetHashCode();
+                if(FieldValues != null)
+                    hashCode = hashCode * 59 + FieldValues.GetHashCode();
+                if(Specification != null)
+                    hashCode = hashCode * 59 + Specification.GetHashCode();
+                if(SpecificationValues != null)
+                    hashCode = hashCode * 59 + SpecificationValues.GetHashCode();
+                if(Media != null)
+                    hashCode = hashCode * 59 + Media.GetHashCode();
+                if(MediaDetails != null)
+                    hashCode = hashCode * 59 + MediaDetails.GetHashCode();
+                if(Inbound != null)
+                    hashCode = hashCode * 59 + Inbound.GetHashCode();
+                if(Outbound != null)
+                    hashCode = hashCode * 59 + Outbound.GetHashCode();
                 return hashCode;
             }
         }

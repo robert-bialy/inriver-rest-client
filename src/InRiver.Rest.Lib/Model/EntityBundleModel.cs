@@ -24,16 +24,16 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="linkEntity">linkEntity.</param>
         /// <param name="linkTypeId">linkTypeId.</param>
         /// <param name="linkIndex">linkIndex.</param>
-        public EntityBundleModel(EntitySummaryModel summary = default(EntitySummaryModel), List<FieldSummaryModel> fields = default(List<FieldSummaryModel>), List<SpecificationValueSummaryModel> specification = default(List<SpecificationValueSummaryModel>), List<EntityBundleModel> outbound = default(List<EntityBundleModel>), List<EntityBundleModel> inbound = default(List<EntityBundleModel>), EntityBundleModel linkEntity = default(EntityBundleModel), string linkTypeId = default(string), int? linkIndex = default(int?))
+        public EntityBundleModel(EntitySummaryModel summary = default(EntitySummaryModel), List<FieldSummaryModel> fields = default(List<FieldSummaryModel>), List<SpecificationValueSummaryModel> specification = default(List<SpecificationValueSummaryModel>), List<EntityBundleModel> outbound = default(List<EntityBundleModel>), List<EntityBundleModel> inbound = default(List<EntityBundleModel>), EntityBundleModel linkEntity = default(EntityBundleModel), string linkTypeId = default, int? linkIndex = default(int?))
         {
-            this.Summary = summary;
-            this.Fields = fields;
-            this.Specification = specification;
-            this.Outbound = outbound;
-            this.Inbound = inbound;
-            this.LinkEntity = linkEntity;
-            this.LinkTypeId = linkTypeId;
-            this.LinkIndex = linkIndex;
+            Summary = summary;
+            Fields = fields;
+            Specification = specification;
+            Outbound = outbound;
+            Inbound = inbound;
+            LinkEntity = linkEntity;
+            LinkTypeId = linkTypeId;
+            LinkIndex = linkIndex;
         }
         
         /// <summary>
@@ -116,11 +116,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EntityBundleModel);
+            return Equals(input as EntityBundleModel);
         }
 
         /// <summary>
@@ -130,49 +130,49 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityBundleModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Summary == input.Summary ||
-                    (this.Summary != null &&
-                    this.Summary.Equals(input.Summary))
+               (
+                    Summary == input.Summary ||
+                   (Summary != null &&
+                    Summary.Equals(input.Summary))
                 ) && 
-                (
-                    this.Fields == input.Fields ||
-                    this.Fields != null &&
-                    this.Fields.SequenceEqual(input.Fields)
+               (
+                    Fields == input.Fields ||
+                    Fields != null &&
+                    Fields.SequenceEqual(input.Fields)
                 ) && 
-                (
-                    this.Specification == input.Specification ||
-                    this.Specification != null &&
-                    this.Specification.SequenceEqual(input.Specification)
+               (
+                    Specification == input.Specification ||
+                    Specification != null &&
+                    Specification.SequenceEqual(input.Specification)
                 ) && 
-                (
-                    this.Outbound == input.Outbound ||
-                    this.Outbound != null &&
-                    this.Outbound.SequenceEqual(input.Outbound)
+               (
+                    Outbound == input.Outbound ||
+                    Outbound != null &&
+                    Outbound.SequenceEqual(input.Outbound)
                 ) && 
-                (
-                    this.Inbound == input.Inbound ||
-                    this.Inbound != null &&
-                    this.Inbound.SequenceEqual(input.Inbound)
+               (
+                    Inbound == input.Inbound ||
+                    Inbound != null &&
+                    Inbound.SequenceEqual(input.Inbound)
                 ) && 
-                (
-                    this.LinkEntity == input.LinkEntity ||
-                    (this.LinkEntity != null &&
-                    this.LinkEntity.Equals(input.LinkEntity))
+               (
+                    LinkEntity == input.LinkEntity ||
+                   (LinkEntity != null &&
+                    LinkEntity.Equals(input.LinkEntity))
                 ) && 
-                (
-                    this.LinkTypeId == input.LinkTypeId ||
-                    (this.LinkTypeId != null &&
-                    this.LinkTypeId.Equals(input.LinkTypeId))
+               (
+                    LinkTypeId == input.LinkTypeId ||
+                   (LinkTypeId != null &&
+                    LinkTypeId.Equals(input.LinkTypeId))
                 ) && 
-                (
-                    this.LinkIndex == input.LinkIndex ||
-                    (this.LinkIndex != null &&
-                    this.LinkIndex.Equals(input.LinkIndex))
+               (
+                    LinkIndex == input.LinkIndex ||
+                   (LinkIndex != null &&
+                    LinkIndex.Equals(input.LinkIndex))
                 );
         }
 
@@ -185,22 +185,22 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Summary != null)
-                    hashCode = hashCode * 59 + this.Summary.GetHashCode();
-                if (this.Fields != null)
-                    hashCode = hashCode * 59 + this.Fields.GetHashCode();
-                if (this.Specification != null)
-                    hashCode = hashCode * 59 + this.Specification.GetHashCode();
-                if (this.Outbound != null)
-                    hashCode = hashCode * 59 + this.Outbound.GetHashCode();
-                if (this.Inbound != null)
-                    hashCode = hashCode * 59 + this.Inbound.GetHashCode();
-                if (this.LinkEntity != null)
-                    hashCode = hashCode * 59 + this.LinkEntity.GetHashCode();
-                if (this.LinkTypeId != null)
-                    hashCode = hashCode * 59 + this.LinkTypeId.GetHashCode();
-                if (this.LinkIndex != null)
-                    hashCode = hashCode * 59 + this.LinkIndex.GetHashCode();
+                if(Summary != null)
+                    hashCode = hashCode * 59 + Summary.GetHashCode();
+                if(Fields != null)
+                    hashCode = hashCode * 59 + Fields.GetHashCode();
+                if(Specification != null)
+                    hashCode = hashCode * 59 + Specification.GetHashCode();
+                if(Outbound != null)
+                    hashCode = hashCode * 59 + Outbound.GetHashCode();
+                if(Inbound != null)
+                    hashCode = hashCode * 59 + Inbound.GetHashCode();
+                if(LinkEntity != null)
+                    hashCode = hashCode * 59 + LinkEntity.GetHashCode();
+                if(LinkTypeId != null)
+                    hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
+                if(LinkIndex != null)
+                    hashCode = hashCode * 59 + LinkIndex.GetHashCode();
                 return hashCode;
             }
         }

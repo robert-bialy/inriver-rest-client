@@ -124,10 +124,10 @@ namespace InRiver.Rest.Lib.Model
 
         public bool Equals(FieldRevisionModel x, FieldRevisionModel y)
         {
-            if (ReferenceEquals(x, y)) return true;
-            if (ReferenceEquals(x, null)) return false;
-            if (ReferenceEquals(y, null)) return false;
-            if (x.GetType() != y.GetType()) return false;
+            if(ReferenceEquals(x, y)) return true;
+            if(ReferenceEquals(x, null)) return false;
+            if(ReferenceEquals(y, null)) return false;
+            if(x.GetType() != y.GetType()) return false;
             return x.FieldTypeId == y.FieldTypeId && Equals(x.Value, y.Value) && x.Language == y.Language && x.Revision == y.Revision && x.ModifiedBy == y.ModifiedBy && x.ModifiedDate == y.ModifiedDate && x.FormattedModifiedDate == y.FormattedModifiedDate && x.EntityId == y.EntityId;
         }
 
@@ -135,14 +135,14 @@ namespace InRiver.Rest.Lib.Model
         {
             unchecked
             {
-                var localHashCode = (obj.FieldTypeId != null ? obj.FieldTypeId.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (obj.Value != null ? obj.Value.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (obj.Language != null ? obj.Language.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ obj.Revision;
-                localHashCode = (localHashCode * 397) ^ (obj.ModifiedBy != null ? obj.ModifiedBy.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (obj.ModifiedDate != null ? obj.ModifiedDate.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ (obj.FormattedModifiedDate != null ? obj.FormattedModifiedDate.GetHashCode() : 0);
-                localHashCode = (localHashCode * 397) ^ obj.EntityId;
+                var localHashCode =(obj.FieldTypeId != null ? obj.FieldTypeId.GetHashCode() : 0);
+                localHashCode =(localHashCode * 397) ^(obj.Value != null ? obj.Value.GetHashCode() : 0);
+                localHashCode =(localHashCode * 397) ^(obj.Language != null ? obj.Language.GetHashCode() : 0);
+                localHashCode =(localHashCode * 397) ^ obj.Revision;
+                localHashCode =(localHashCode * 397) ^(obj.ModifiedBy != null ? obj.ModifiedBy.GetHashCode() : 0);
+                localHashCode =(localHashCode * 397) ^(obj.ModifiedDate != null ? obj.ModifiedDate.GetHashCode() : 0);
+                localHashCode =(localHashCode * 397) ^(obj.FormattedModifiedDate != null ? obj.FormattedModifiedDate.GetHashCode() : 0);
+                localHashCode =(localHashCode * 397) ^ obj.EntityId;
                 return localHashCode;
             }
         }

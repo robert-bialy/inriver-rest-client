@@ -28,20 +28,20 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="isMandatory">isMandatory.</param>
         /// <param name="index">index.</param>
         /// <param name="cvlId">cvlId.</param>
-        public SpecificationFieldTypeModel(string id = default(string), Dictionary<string, string> name = default(Dictionary<string, string>), string dataType = default(string), string categoryId = default(string), string defaultValue = default(string), string format = default(string), string unit = default(string), bool? isDisabled = default(bool?), bool? isMultiValue = default(bool?), bool? isMandatory = default(bool?), int? index = default(int?), string cvlId = default(string))
+        public SpecificationFieldTypeModel(string id = default, Dictionary<string, string> name = default(Dictionary<string, string>), string dataType = default, string categoryId = default, string defaultValue = default, string format = default, string unit = default, bool? isDisabled = default(bool?), bool? isMultiValue = default(bool?), bool? isMandatory = default(bool?), int? index = default(int?), string cvlId = default)
         {
-            this.Id = id;
-            this.Name = name;
-            this.DataType = dataType;
-            this.CategoryId = categoryId;
-            this.DefaultValue = defaultValue;
-            this.Format = format;
-            this.Unit = unit;
-            this.IsDisabled = isDisabled;
-            this.IsMultiValue = isMultiValue;
-            this.IsMandatory = isMandatory;
-            this.Index = index;
-            this.CvlId = cvlId;
+            Id = id;
+            Name = name;
+            DataType = dataType;
+            CategoryId = categoryId;
+            DefaultValue = defaultValue;
+            Format = format;
+            Unit = unit;
+            IsDisabled = isDisabled;
+            IsMultiValue = isMultiValue;
+            IsMandatory = isMandatory;
+            Index = index;
+            CvlId = cvlId;
         }
         
         /// <summary>
@@ -152,11 +152,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SpecificationFieldTypeModel);
+            return Equals(input as SpecificationFieldTypeModel);
         }
 
         /// <summary>
@@ -166,69 +166,69 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SpecificationFieldTypeModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.Name == input.Name ||
-                    this.Name != null &&
-                    this.Name.SequenceEqual(input.Name)
+               (
+                    Name == input.Name ||
+                    Name != null &&
+                    Name.SequenceEqual(input.Name)
                 ) && 
-                (
-                    this.DataType == input.DataType ||
-                    (this.DataType != null &&
-                    this.DataType.Equals(input.DataType))
+               (
+                    DataType == input.DataType ||
+                   (DataType != null &&
+                    DataType.Equals(input.DataType))
                 ) && 
-                (
-                    this.CategoryId == input.CategoryId ||
-                    (this.CategoryId != null &&
-                    this.CategoryId.Equals(input.CategoryId))
+               (
+                    CategoryId == input.CategoryId ||
+                   (CategoryId != null &&
+                    CategoryId.Equals(input.CategoryId))
                 ) && 
-                (
-                    this.DefaultValue == input.DefaultValue ||
-                    (this.DefaultValue != null &&
-                    this.DefaultValue.Equals(input.DefaultValue))
+               (
+                    DefaultValue == input.DefaultValue ||
+                   (DefaultValue != null &&
+                    DefaultValue.Equals(input.DefaultValue))
                 ) && 
-                (
-                    this.Format == input.Format ||
-                    (this.Format != null &&
-                    this.Format.Equals(input.Format))
+               (
+                    Format == input.Format ||
+                   (Format != null &&
+                    Format.Equals(input.Format))
                 ) && 
-                (
-                    this.Unit == input.Unit ||
-                    (this.Unit != null &&
-                    this.Unit.Equals(input.Unit))
+               (
+                    Unit == input.Unit ||
+                   (Unit != null &&
+                    Unit.Equals(input.Unit))
                 ) && 
-                (
-                    this.IsDisabled == input.IsDisabled ||
-                    (this.IsDisabled != null &&
-                    this.IsDisabled.Equals(input.IsDisabled))
+               (
+                    IsDisabled == input.IsDisabled ||
+                   (IsDisabled != null &&
+                    IsDisabled.Equals(input.IsDisabled))
                 ) && 
-                (
-                    this.IsMultiValue == input.IsMultiValue ||
-                    (this.IsMultiValue != null &&
-                    this.IsMultiValue.Equals(input.IsMultiValue))
+               (
+                    IsMultiValue == input.IsMultiValue ||
+                   (IsMultiValue != null &&
+                    IsMultiValue.Equals(input.IsMultiValue))
                 ) && 
-                (
-                    this.IsMandatory == input.IsMandatory ||
-                    (this.IsMandatory != null &&
-                    this.IsMandatory.Equals(input.IsMandatory))
+               (
+                    IsMandatory == input.IsMandatory ||
+                   (IsMandatory != null &&
+                    IsMandatory.Equals(input.IsMandatory))
                 ) && 
-                (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
+               (
+                    Index == input.Index ||
+                   (Index != null &&
+                    Index.Equals(input.Index))
                 ) && 
-                (
-                    this.CvlId == input.CvlId ||
-                    (this.CvlId != null &&
-                    this.CvlId.Equals(input.CvlId))
+               (
+                    CvlId == input.CvlId ||
+                   (CvlId != null &&
+                    CvlId.Equals(input.CvlId))
                 );
         }
 
@@ -241,30 +241,30 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.DataType != null)
-                    hashCode = hashCode * 59 + this.DataType.GetHashCode();
-                if (this.CategoryId != null)
-                    hashCode = hashCode * 59 + this.CategoryId.GetHashCode();
-                if (this.DefaultValue != null)
-                    hashCode = hashCode * 59 + this.DefaultValue.GetHashCode();
-                if (this.Format != null)
-                    hashCode = hashCode * 59 + this.Format.GetHashCode();
-                if (this.Unit != null)
-                    hashCode = hashCode * 59 + this.Unit.GetHashCode();
-                if (this.IsDisabled != null)
-                    hashCode = hashCode * 59 + this.IsDisabled.GetHashCode();
-                if (this.IsMultiValue != null)
-                    hashCode = hashCode * 59 + this.IsMultiValue.GetHashCode();
-                if (this.IsMandatory != null)
-                    hashCode = hashCode * 59 + this.IsMandatory.GetHashCode();
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
-                if (this.CvlId != null)
-                    hashCode = hashCode * 59 + this.CvlId.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if(DataType != null)
+                    hashCode = hashCode * 59 + DataType.GetHashCode();
+                if(CategoryId != null)
+                    hashCode = hashCode * 59 + CategoryId.GetHashCode();
+                if(DefaultValue != null)
+                    hashCode = hashCode * 59 + DefaultValue.GetHashCode();
+                if(Format != null)
+                    hashCode = hashCode * 59 + Format.GetHashCode();
+                if(Unit != null)
+                    hashCode = hashCode * 59 + Unit.GetHashCode();
+                if(IsDisabled != null)
+                    hashCode = hashCode * 59 + IsDisabled.GetHashCode();
+                if(IsMultiValue != null)
+                    hashCode = hashCode * 59 + IsMultiValue.GetHashCode();
+                if(IsMandatory != null)
+                    hashCode = hashCode * 59 + IsMandatory.GetHashCode();
+                if(Index != null)
+                    hashCode = hashCode * 59 + Index.GetHashCode();
+                if(CvlId != null)
+                    hashCode = hashCode * 59 + CvlId.GetHashCode();
                 return hashCode;
             }
         }

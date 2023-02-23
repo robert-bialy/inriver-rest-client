@@ -21,17 +21,17 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SetSegmentModel" /> class.
         /// </summary>
-        /// <param name="segmentId">segmentId (required).</param>
+        /// <param name="segmentId">segmentId(required).</param>
         public SetSegmentModel(int? segmentId = default(int?))
         {
-            // to ensure "segmentId" is required (not null)
-            if (segmentId == null)
+            // to ensure "segmentId" is required(not null)
+            if(segmentId == null)
             {
                 throw new InvalidDataException("segmentId is a required property for SetSegmentModel and cannot be null");
             }
             else
             {
-                this.SegmentId = segmentId;
+                SegmentId = segmentId;
             }
         }
         
@@ -66,11 +66,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SetSegmentModel);
+            return Equals(input as SetSegmentModel);
         }
 
         /// <summary>
@@ -80,14 +80,14 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SetSegmentModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.SegmentId == input.SegmentId ||
-                    (this.SegmentId != null &&
-                    this.SegmentId.Equals(input.SegmentId))
+               (
+                    SegmentId == input.SegmentId ||
+                   (SegmentId != null &&
+                    SegmentId.Equals(input.SegmentId))
                 );
         }
 
@@ -100,8 +100,8 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SegmentId != null)
-                    hashCode = hashCode * 59 + this.SegmentId.GetHashCode();
+                if(SegmentId != null)
+                    hashCode = hashCode * 59 + SegmentId.GetHashCode();
                 return hashCode;
             }
         }

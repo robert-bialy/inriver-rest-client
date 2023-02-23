@@ -25,17 +25,17 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="fieldSetIds">fieldSetIds.</param>
         /// <param name="displayNameFieldTypeId">displayNameFieldTypeId.</param>
         /// <param name="displayDescriptionFieldTypeId">displayDescriptionFieldTypeId.</param>
-        public EntityTypeModel(string id = default(string), string name = default(string), List<FieldTypeModel> fieldTypes = default(List<FieldTypeModel>), List<string> inboundLinkTypes = default(List<string>), List<string> outboundLinkTypes = default(List<string>), bool? isLinkEntityType = default(bool?), List<string> fieldSetIds = default(List<string>), string displayNameFieldTypeId = default(string), string displayDescriptionFieldTypeId = default(string))
+        public EntityTypeModel(string id = default, string name = default, List<FieldTypeModel> fieldTypes = default(List<FieldTypeModel>), List<string> inboundLinkTypes = default(List<string>), List<string> outboundLinkTypes = default(List<string>), bool? isLinkEntityType = default(bool?), List<string> fieldSetIds = default(List<string>), string displayNameFieldTypeId = default, string displayDescriptionFieldTypeId = default)
         {
-            this.Id = id;
-            this.Name = name;
-            this.FieldTypes = fieldTypes;
-            this.InboundLinkTypes = inboundLinkTypes;
-            this.OutboundLinkTypes = outboundLinkTypes;
-            this.IsLinkEntityType = isLinkEntityType;
-            this.FieldSetIds = fieldSetIds;
-            this.DisplayNameFieldTypeId = displayNameFieldTypeId;
-            this.DisplayDescriptionFieldTypeId = displayDescriptionFieldTypeId;
+            Id = id;
+            Name = name;
+            FieldTypes = fieldTypes;
+            InboundLinkTypes = inboundLinkTypes;
+            OutboundLinkTypes = outboundLinkTypes;
+            IsLinkEntityType = isLinkEntityType;
+            FieldSetIds = fieldSetIds;
+            DisplayNameFieldTypeId = displayNameFieldTypeId;
+            DisplayDescriptionFieldTypeId = displayDescriptionFieldTypeId;
         }
         
         /// <summary>
@@ -125,11 +125,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EntityTypeModel);
+            return Equals(input as EntityTypeModel);
         }
 
         /// <summary>
@@ -139,54 +139,54 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityTypeModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+               (
+                    Name == input.Name ||
+                   (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
-                (
-                    this.FieldTypes == input.FieldTypes ||
-                    this.FieldTypes != null &&
-                    this.FieldTypes.SequenceEqual(input.FieldTypes)
+               (
+                    FieldTypes == input.FieldTypes ||
+                    FieldTypes != null &&
+                    FieldTypes.SequenceEqual(input.FieldTypes)
                 ) && 
-                (
-                    this.InboundLinkTypes == input.InboundLinkTypes ||
-                    this.InboundLinkTypes != null &&
-                    this.InboundLinkTypes.SequenceEqual(input.InboundLinkTypes)
+               (
+                    InboundLinkTypes == input.InboundLinkTypes ||
+                    InboundLinkTypes != null &&
+                    InboundLinkTypes.SequenceEqual(input.InboundLinkTypes)
                 ) && 
-                (
-                    this.OutboundLinkTypes == input.OutboundLinkTypes ||
-                    this.OutboundLinkTypes != null &&
-                    this.OutboundLinkTypes.SequenceEqual(input.OutboundLinkTypes)
+               (
+                    OutboundLinkTypes == input.OutboundLinkTypes ||
+                    OutboundLinkTypes != null &&
+                    OutboundLinkTypes.SequenceEqual(input.OutboundLinkTypes)
                 ) && 
-                (
-                    this.IsLinkEntityType == input.IsLinkEntityType ||
-                    (this.IsLinkEntityType != null &&
-                    this.IsLinkEntityType.Equals(input.IsLinkEntityType))
+               (
+                    IsLinkEntityType == input.IsLinkEntityType ||
+                   (IsLinkEntityType != null &&
+                    IsLinkEntityType.Equals(input.IsLinkEntityType))
                 ) && 
-                (
-                    this.FieldSetIds == input.FieldSetIds ||
-                    this.FieldSetIds != null &&
-                    this.FieldSetIds.SequenceEqual(input.FieldSetIds)
+               (
+                    FieldSetIds == input.FieldSetIds ||
+                    FieldSetIds != null &&
+                    FieldSetIds.SequenceEqual(input.FieldSetIds)
                 ) && 
-                (
-                    this.DisplayNameFieldTypeId == input.DisplayNameFieldTypeId ||
-                    (this.DisplayNameFieldTypeId != null &&
-                    this.DisplayNameFieldTypeId.Equals(input.DisplayNameFieldTypeId))
+               (
+                    DisplayNameFieldTypeId == input.DisplayNameFieldTypeId ||
+                   (DisplayNameFieldTypeId != null &&
+                    DisplayNameFieldTypeId.Equals(input.DisplayNameFieldTypeId))
                 ) && 
-                (
-                    this.DisplayDescriptionFieldTypeId == input.DisplayDescriptionFieldTypeId ||
-                    (this.DisplayDescriptionFieldTypeId != null &&
-                    this.DisplayDescriptionFieldTypeId.Equals(input.DisplayDescriptionFieldTypeId))
+               (
+                    DisplayDescriptionFieldTypeId == input.DisplayDescriptionFieldTypeId ||
+                   (DisplayDescriptionFieldTypeId != null &&
+                    DisplayDescriptionFieldTypeId.Equals(input.DisplayDescriptionFieldTypeId))
                 );
         }
 
@@ -199,24 +199,24 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.FieldTypes != null)
-                    hashCode = hashCode * 59 + this.FieldTypes.GetHashCode();
-                if (this.InboundLinkTypes != null)
-                    hashCode = hashCode * 59 + this.InboundLinkTypes.GetHashCode();
-                if (this.OutboundLinkTypes != null)
-                    hashCode = hashCode * 59 + this.OutboundLinkTypes.GetHashCode();
-                if (this.IsLinkEntityType != null)
-                    hashCode = hashCode * 59 + this.IsLinkEntityType.GetHashCode();
-                if (this.FieldSetIds != null)
-                    hashCode = hashCode * 59 + this.FieldSetIds.GetHashCode();
-                if (this.DisplayNameFieldTypeId != null)
-                    hashCode = hashCode * 59 + this.DisplayNameFieldTypeId.GetHashCode();
-                if (this.DisplayDescriptionFieldTypeId != null)
-                    hashCode = hashCode * 59 + this.DisplayDescriptionFieldTypeId.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if(FieldTypes != null)
+                    hashCode = hashCode * 59 + FieldTypes.GetHashCode();
+                if(InboundLinkTypes != null)
+                    hashCode = hashCode * 59 + InboundLinkTypes.GetHashCode();
+                if(OutboundLinkTypes != null)
+                    hashCode = hashCode * 59 + OutboundLinkTypes.GetHashCode();
+                if(IsLinkEntityType != null)
+                    hashCode = hashCode * 59 + IsLinkEntityType.GetHashCode();
+                if(FieldSetIds != null)
+                    hashCode = hashCode * 59 + FieldSetIds.GetHashCode();
+                if(DisplayNameFieldTypeId != null)
+                    hashCode = hashCode * 59 + DisplayNameFieldTypeId.GetHashCode();
+                if(DisplayDescriptionFieldTypeId != null)
+                    hashCode = hashCode * 59 + DisplayDescriptionFieldTypeId.GetHashCode();
                 return hashCode;
             }
         }

@@ -22,24 +22,24 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="EntityCreationModel" /> class.
         /// </summary>
-        /// <param name="entityTypeId">entityTypeId (required).</param>
+        /// <param name="entityTypeId">entityTypeId(required).</param>
         /// <param name="fieldSetId">fieldSetId.</param>
         /// <param name="fieldValues">fieldValues.</param>
         /// <param name="segmentId">segmentId.</param>
-        public EntityCreationModel(string entityTypeId = default(string), string fieldSetId = default(string), List<FieldValueModel> fieldValues = default(List<FieldValueModel>), int? segmentId = default(int?))
+        public EntityCreationModel(string entityTypeId = default, string fieldSetId = default, List<FieldValueModel> fieldValues = default(List<FieldValueModel>), int? segmentId = default(int?))
         {
-            // to ensure "entityTypeId" is required (not null)
-            if (entityTypeId == null)
+            // to ensure "entityTypeId" is required(not null)
+            if(entityTypeId == null)
             {
                 throw new InvalidDataException("entityTypeId is a required property for EntityCreationModel and cannot be null");
             }
             else
             {
-                this.EntityTypeId = entityTypeId;
+                EntityTypeId = entityTypeId;
             }
-            this.FieldSetId = fieldSetId;
-            this.FieldValues = fieldValues;
-            this.SegmentId = segmentId;
+            FieldSetId = fieldSetId;
+            FieldValues = fieldValues;
+            SegmentId = segmentId;
         }
         
         /// <summary>
@@ -94,11 +94,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EntityCreationModel);
+            return Equals(input as EntityCreationModel);
         }
 
         /// <summary>
@@ -108,29 +108,29 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityCreationModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.EntityTypeId == input.EntityTypeId ||
-                    (this.EntityTypeId != null &&
-                    this.EntityTypeId.Equals(input.EntityTypeId))
+               (
+                    EntityTypeId == input.EntityTypeId ||
+                   (EntityTypeId != null &&
+                    EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
-                (
-                    this.FieldSetId == input.FieldSetId ||
-                    (this.FieldSetId != null &&
-                    this.FieldSetId.Equals(input.FieldSetId))
+               (
+                    FieldSetId == input.FieldSetId ||
+                   (FieldSetId != null &&
+                    FieldSetId.Equals(input.FieldSetId))
                 ) && 
-                (
-                    this.FieldValues == input.FieldValues ||
-                    this.FieldValues != null &&
-                    this.FieldValues.SequenceEqual(input.FieldValues)
+               (
+                    FieldValues == input.FieldValues ||
+                    FieldValues != null &&
+                    FieldValues.SequenceEqual(input.FieldValues)
                 ) && 
-                (
-                    this.SegmentId == input.SegmentId ||
-                    (this.SegmentId != null &&
-                    this.SegmentId.Equals(input.SegmentId))
+               (
+                    SegmentId == input.SegmentId ||
+                   (SegmentId != null &&
+                    SegmentId.Equals(input.SegmentId))
                 );
         }
 
@@ -143,14 +143,14 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.EntityTypeId != null)
-                    hashCode = hashCode * 59 + this.EntityTypeId.GetHashCode();
-                if (this.FieldSetId != null)
-                    hashCode = hashCode * 59 + this.FieldSetId.GetHashCode();
-                if (this.FieldValues != null)
-                    hashCode = hashCode * 59 + this.FieldValues.GetHashCode();
-                if (this.SegmentId != null)
-                    hashCode = hashCode * 59 + this.SegmentId.GetHashCode();
+                if(EntityTypeId != null)
+                    hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
+                if(FieldSetId != null)
+                    hashCode = hashCode * 59 + FieldSetId.GetHashCode();
+                if(FieldValues != null)
+                    hashCode = hashCode * 59 + FieldValues.GetHashCode();
+                if(SegmentId != null)
+                    hashCode = hashCode * 59 + SegmentId.GetHashCode();
                 return hashCode;
             }
         }

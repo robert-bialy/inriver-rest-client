@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
 using System.Linq;
 using InRiver.Rest.Lib.Client;
+using InRiver.Rest.Lib.Helpers;
 using InRiver.Rest.Lib.Model;
+using InRiver.Rest.Lib.Services;
 using RestSharp;
 
 namespace InRiver.Rest.Lib.Api
@@ -11,47 +12,30 @@ namespace InRiver.Rest.Lib.Api
     /// <summary>
     /// Represents a collection of functions to interact with the API endpoints
     /// </summary>
-    internal class LinkApi : ILinkApi
+    internal sealed class LinkApi : ILinkApi
     {
-        private ExceptionFactory _exceptionFactory = (name, response) => null;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="LinkApi"/> class.
-        /// </summary>
-        /// <returns></returns>
-        public LinkApi(String basePath)
-        {
-            this.Configuration = new Configuration { BasePath = basePath };
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
-        }
+        private readonly ISerializer _serializer;
+        private readonly IApiClient _apiClient;
+        private ExceptionFactory _exceptionFactory =(name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="LinkApi"/> class
         /// using Configuration object
         /// </summary>
+        /// <param name="serializer"></param>
+        /// <param name="apiClient"></param>
         /// <param name="configuration">An instance of Configuration</param>
         /// <returns></returns>
-        public LinkApi(Configuration configuration = null)
+        public LinkApi(ISerializer serializer, IApiClient apiClient, Configuration configuration = null)
         {
-            if (configuration == null) // use the default one in Configuration
-                this.Configuration = Configuration.Default;
-            else
-                this.Configuration = configuration;
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+            _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
+            // use the default one in Configuration
+            Configuration = configuration ?? Configuration.Default;
 
             ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
-
-        /// <summary>
-        /// Sets the base path of the API client.
-        /// </summary>
-        /// <value>The base path</value>
-        [Obsolete("SetBasePath is deprecated, please do 'Configuration.ApiClient = new ApiClient(\"http://new-path\")' instead.")]
-        public void SetBasePath(String basePath)
-        {
-            // do nothing
-        }
-
+        
         /// <summary>
         /// Gets or sets the configuration object
         /// </summary>
@@ -65,46 +49,24 @@ namespace InRiver.Rest.Lib.Api
         {
             get
             {
-                if (_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length > 1)
+                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
                 {
                     throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
                 }
                 return _exceptionFactory;
             }
-            set { _exceptionFactory = value; }
+            set => _exceptionFactory = value;
         }
-
-        /// <summary>
-        /// Gets the default header.
-        /// </summary>
-        /// <returns>Dictionary of HTTP header</returns>
-        [Obsolete("DefaultHeader is deprecated, please use Configuration.DefaultHeader instead.")]
-        public IDictionary<String, String> DefaultHeader()
-        {
-            return new ReadOnlyDictionary<string, string>(this.Configuration.DefaultHeader);
-        }
-
-        /// <summary>
-        /// Add default header.
-        /// </summary>
-        /// <param name="key">Header field name.</param>
-        /// <param name="value">Header field value.</param>
-        /// <returns></returns>
-        [Obsolete("AddDefaultHeader is deprecated, please use Configuration.AddDefaultHeader instead.")]
-        public void AddDefaultHeader(string key, string value)
-        {
-            this.Configuration.AddDefaultHeader(key, value);
-        }
-
+        
         /// <summary>
         /// Create a new link Set index to 0 to add the link to first position. Set index to null to add the link to last position. Specifying the index will reorganize all link indices.
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
         /// <returns>LinkModel</returns>
-        public LinkModel CreateLink (LinkModel linkModel)
+        public LinkModel CreateLink(LinkModel linkModel)
         {
-             ApiResponse<LinkModel> localVarResponse = CreateLinkWithHttpInfo(linkModel);
+             var localVarResponse = CreateLinkWithHttpInfo(linkModel);
              return localVarResponse.Data;
         }
 
@@ -114,63 +76,62 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
         /// <returns>ApiResponse of LinkModel</returns>
-        public ApiResponse< LinkModel > CreateLinkWithHttpInfo (LinkModel linkModel)
+        public ApiResponse<LinkModel> CreateLinkWithHttpInfo(LinkModel linkModel)
         {
             // verify the required parameter 'linkModel' is set
-            if (linkModel == null)
+            if(linkModel == null)
                 throw new ApiException(400, "Missing required parameter 'linkModel' when calling LinkApi->LinkCreateLink");
 
             var localVarPath = "/api/v1.0.0/links";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
                 "application/json", 
                 "text/json", 
                 "application/x-www-form-urlencoded"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkModel != null && linkModel.GetType() != typeof(byte[]))
+            if(linkModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModel); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = linkModel; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkCreateLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+               (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -179,11 +140,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
         /// <returns>Task of LinkModel</returns>
-        public async System.Threading.Tasks.Task<LinkModel> CreateLinkAsync (LinkModel linkModel)
+        public async System.Threading.Tasks.Task<LinkModel> CreateLinkAsync(LinkModel linkModel)
         {
-             ApiResponse<LinkModel> localVarResponse = await CreateLinkAsyncWithHttpInfo(linkModel);
+             var localVarResponse = await CreateLinkAsyncWithHttpInfo(linkModel);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -191,64 +151,63 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModel"></param>
-        /// <returns>Task of ApiResponse (LinkModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<LinkModel>> CreateLinkAsyncWithHttpInfo (LinkModel linkModel)
+        /// <returns>Task of ApiResponse(LinkModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<LinkModel>> CreateLinkAsyncWithHttpInfo(LinkModel linkModel)
         {
             // verify the required parameter 'linkModel' is set
-            if (linkModel == null)
+            if(linkModel == null)
                 throw new ApiException(400, "Missing required parameter 'linkModel' when calling LinkApi->LinkCreateLink");
 
             var localVarPath = "/api/v1.0.0/links";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
                 "application/json", 
                 "text/json", 
                 "application/x-www-form-urlencoded"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkModel != null && linkModel.GetType() != typeof(byte[]))
+            if(linkModel.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModel); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModel); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = linkModel; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkCreateLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+               (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -257,7 +216,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns></returns>
-        public void DeleteLink (int? linkId)
+        public void DeleteLink(int? linkId)
         {
              DeleteLinkWithHttpInfo(linkId);
         }
@@ -267,50 +226,49 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        public ApiResponse<Object> DeleteLinkWithHttpInfo (int? linkId)
+        /// <returns>ApiResponse of object(void)</returns>
+        public ApiResponse<object> DeleteLinkWithHttpInfo(int? linkId)
         {
             // verify the required parameter 'linkId' is set
-            if (linkId == null)
+            if(linkId == null)
                 throw new ApiException(400, "Missing required parameter 'linkId' when calling LinkApi->LinkDeleteLink");
 
             var localVarPath = "/api/v1.0.0/links/{linkId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkId != null) localVarPathParams.Add("linkId", this.Configuration.ApiClient.ParameterToString(linkId)); // path parameter
-
+            localVarPathParams.Add("linkId", HttpHelpers.ParameterToString(linkId, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkDeleteLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
         }
@@ -321,10 +279,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of void</returns>
-        public async System.Threading.Tasks.Task DeleteLinkAsync (int? linkId)
+        public async System.Threading.Tasks.Task DeleteLinkAsync(int? linkId)
         {
-             await DeleteLinkAsyncWithHttpInfo(linkId);
-
+            await DeleteLinkAsyncWithHttpInfo(linkId);
         }
 
         /// <summary>
@@ -333,49 +290,48 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of ApiResponse</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<Object>> DeleteLinkAsyncWithHttpInfo (int? linkId)
+        public async System.Threading.Tasks.Task<ApiResponse<object>> DeleteLinkAsyncWithHttpInfo(int? linkId)
         {
             // verify the required parameter 'linkId' is set
-            if (linkId == null)
+            if(linkId == null)
                 throw new ApiException(400, "Missing required parameter 'linkId' when calling LinkApi->LinkDeleteLink");
 
             var localVarPath = "/api/v1.0.0/links/{linkId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkId != null) localVarPathParams.Add("linkId", this.Configuration.ApiClient.ParameterToString(linkId)); // path parameter
-
+            localVarPathParams.Add("linkId", HttpHelpers.ParameterToString(linkId, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Delete, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkDeleteLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
-            return new ApiResponse<Object>(localVarStatusCode,
+            return new ApiResponse<object>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
                 null);
         }
@@ -386,9 +342,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>LinkModel</returns>
-        public LinkModel GetLink (int? linkId)
+        public LinkModel GetLink(int? linkId)
         {
-             ApiResponse<LinkModel> localVarResponse = GetLinkWithHttpInfo(linkId);
+             var localVarResponse = GetLinkWithHttpInfo(linkId);
              return localVarResponse.Data;
         }
 
@@ -398,53 +354,52 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>ApiResponse of LinkModel</returns>
-        public ApiResponse< LinkModel > GetLinkWithHttpInfo (int? linkId)
+        public ApiResponse<LinkModel> GetLinkWithHttpInfo(int? linkId)
         {
             // verify the required parameter 'linkId' is set
-            if (linkId == null)
+            if(linkId == null)
                 throw new ApiException(400, "Missing required parameter 'linkId' when calling LinkApi->LinkGetLink");
 
             var localVarPath = "/api/v1.0.0/links/{linkId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null) 
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkId != null) localVarPathParams.Add("linkId", this.Configuration.ApiClient.ParameterToString(linkId)); // path parameter
-
+            localVarPathParams.Add("linkId", HttpHelpers.ParameterToString(linkId, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkGetLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+               (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -453,9 +408,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
         /// <returns>Task of LinkModel</returns>
-        public async System.Threading.Tasks.Task<LinkModel> GetLinkAsync (int? linkId)
+        public async System.Threading.Tasks.Task<LinkModel> GetLinkAsync(int? linkId)
         {
-             ApiResponse<LinkModel> localVarResponse = await GetLinkAsyncWithHttpInfo(linkId);
+             var localVarResponse = await GetLinkAsyncWithHttpInfo(linkId);
              return localVarResponse.Data;
 
         }
@@ -465,54 +420,53 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkId"></param>
-        /// <returns>Task of ApiResponse (LinkModel)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<LinkModel>> GetLinkAsyncWithHttpInfo (int? linkId)
+        /// <returns>Task of ApiResponse(LinkModel)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<LinkModel>> GetLinkAsyncWithHttpInfo(int? linkId)
         {
             // verify the required parameter 'linkId' is set
-            if (linkId == null)
+            if(linkId == null)
                 throw new ApiException(400, "Missing required parameter 'linkId' when calling LinkApi->LinkGetLink");
 
             var localVarPath = "/api/v1.0.0/links/{linkId}";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null) 
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkId != null) localVarPathParams.Add("linkId", this.Configuration.ApiClient.ParameterToString(linkId)); // path parameter
-
+            localVarPathParams.Add("linkId", HttpHelpers.ParameterToString(linkId, Configuration)); // path parameter
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkGetLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<LinkModel>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (LinkModel) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(LinkModel)));
+               (LinkModel) _serializer.Deserialize(localVarResponse, typeof(LinkModel)));
         }
 
         /// <summary>
@@ -521,9 +475,9 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
         /// <returns>List&lt;LinkModel&gt;</returns>
-        public List<LinkModel> UpdateLink (List<LinkModel> linkModels)
+        public List<LinkModel> UpdateLink(List<LinkModel> linkModels)
         {
-             ApiResponse<List<LinkModel>> localVarResponse = UpdateLinkWithHttpInfo(linkModels);
+             var localVarResponse = UpdateLinkWithHttpInfo(linkModels);
              return localVarResponse.Data;
         }
 
@@ -533,63 +487,62 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
         /// <returns>ApiResponse of List&lt;LinkModel&gt;</returns>
-        public ApiResponse< List<LinkModel> > UpdateLinkWithHttpInfo (List<LinkModel> linkModels)
+        public ApiResponse<List<LinkModel>> UpdateLinkWithHttpInfo(List<LinkModel> linkModels)
         {
             // verify the required parameter 'linkModels' is set
-            if (linkModels == null)
+            if(linkModels == null)
                 throw new ApiException(400, "Missing required parameter 'linkModels' when calling LinkApi->LinkUpdateLink");
 
             var localVarPath = "/api/v1.0.0/links/sortorder";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
                 "application/json", 
                 "text/json", 
                 "application/x-www-form-urlencoded"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkModels != null && linkModels.GetType() != typeof(byte[]))
+            if(linkModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModels); // http body(model) parameter
             }
             else
             {
                 localVarPostBody = linkModels; // byte array
             }
 
-
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) this.Configuration.ApiClient.CallApi(localVarPath,
+            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkUpdateLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LinkModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LinkModel>)));
+               (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
         /// <summary>
@@ -598,11 +551,10 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
         /// <returns>Task of List&lt;LinkModel&gt;</returns>
-        public async System.Threading.Tasks.Task<List<LinkModel>> UpdateLinkAsync (List<LinkModel> linkModels)
+        public async System.Threading.Tasks.Task<List<LinkModel>> UpdateLinkAsync(List<LinkModel> linkModels)
         {
-             ApiResponse<List<LinkModel>> localVarResponse = await UpdateLinkAsyncWithHttpInfo(linkModels);
+             var localVarResponse = await UpdateLinkAsyncWithHttpInfo(linkModels);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -610,41 +562,41 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="linkModels"></param>
-        /// <returns>Task of ApiResponse (List&lt;LinkModel&gt;)</returns>
-        public async System.Threading.Tasks.Task<ApiResponse<List<LinkModel>>> UpdateLinkAsyncWithHttpInfo (List<LinkModel> linkModels)
+        /// <returns>Task of ApiResponse(List&lt;LinkModel&gt;)</returns>
+        public async System.Threading.Tasks.Task<ApiResponse<List<LinkModel>>> UpdateLinkAsyncWithHttpInfo(List<LinkModel> linkModels)
         {
             // verify the required parameter 'linkModels' is set
-            if (linkModels == null)
+            if(linkModels == null)
                 throw new ApiException(400, "Missing required parameter 'linkModels' when calling LinkApi->LinkUpdateLink");
 
             var localVarPath = "/api/v1.0.0/links/sortorder";
             var localVarPathParams = new Dictionary<String, String>();
             var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(this.Configuration.DefaultHeader);
+            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
             var localVarFormParams = new Dictionary<String, String>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
-            Object localVarPostBody = null;
+            object localVarPostBody = null;
 
             // to determine the Content-Type header
-            String[] localVarHttpContentTypes = new String[] {
+            string[] localVarHttpContentTypes =  {
                 "application/json", 
                 "text/json", 
                 "application/x-www-form-urlencoded"
             };
-            String localVarHttpContentType = this.Configuration.ApiClient.SelectHeaderContentType(localVarHttpContentTypes);
+            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
-            String[] localVarHttpHeaderAccepts = new String[] {
+            string[] localVarHttpHeaderAccepts =  {
                 "application/json",
                 "text/json"
             };
-            String localVarHttpHeaderAccept = this.Configuration.ApiClient.SelectHeaderAccept(localVarHttpHeaderAccepts);
-            if (localVarHttpHeaderAccept != null)
+            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            if(localVarHttpHeaderAccept != null) 
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if (linkModels != null && linkModels.GetType() != typeof(byte[]))
+            if(linkModels.GetType() != typeof(byte[]))
             {
-                localVarPostBody = this.Configuration.ApiClient.Serialize(linkModels); // http body (model) parameter
+                localVarPostBody = _serializer.Serialize(linkModels); // http body(model) parameter
             }
             else
             {
@@ -653,21 +605,21 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse = (RestResponse) await this.Configuration.ApiClient.CallApiAsync(localVarPath,
+            RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Put, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode = (int) localVarResponse.StatusCode;
+            int localVarStatusCode =(int) localVarResponse.StatusCode;
 
-            if (ExceptionFactory != null)
+            if(ExceptionFactory != null)
             {
                 Exception exception = ExceptionFactory("LinkUpdateLink", localVarResponse);
-                if (exception != null) throw exception;
+                if(exception != null) throw exception;
             }
 
             return new ApiResponse<List<LinkModel>>(localVarStatusCode,
                 localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
-                (List<LinkModel>) this.Configuration.ApiClient.Deserialize(localVarResponse, typeof(List<LinkModel>)));
+               (List<LinkModel>) _serializer.Deserialize(localVarResponse, typeof(List<LinkModel>)));
         }
 
     }

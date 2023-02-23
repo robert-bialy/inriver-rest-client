@@ -22,9 +22,9 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="id">id.</param>
         /// <param name="isActive">isActive.</param>
-        /// <param name="linkTypeId">linkTypeId (required).</param>
-        /// <param name="sourceEntityId">sourceEntityId (required).</param>
-        /// <param name="targetEntityId">targetEntityId (required).</param>
+        /// <param name="linkTypeId">linkTypeId(required).</param>
+        /// <param name="sourceEntityId">sourceEntityId(required).</param>
+        /// <param name="targetEntityId">targetEntityId(required).</param>
         /// <param name="linkEntityId">linkEntityId.</param>
         /// <param name="index">index.</param>
         public LinkModel(
@@ -36,8 +36,8 @@ namespace InRiver.Rest.Lib.Model
             int? linkEntityId,
             int? index)
         {
-            // to ensure "linkTypeId" is required (not null)
-            if (linkTypeId == null)
+            // to ensure "linkTypeId" is required(not null)
+            if(linkTypeId == null)
             {
                 throw new InvalidDataException("linkTypeId is a required property for LinkModel and cannot be null");
             }
@@ -45,8 +45,8 @@ namespace InRiver.Rest.Lib.Model
             {
                 LinkTypeId = linkTypeId;
             }
-            // to ensure "sourceEntityId" is required (not null)
-            if (sourceEntityId == null)
+            // to ensure "sourceEntityId" is required(not null)
+            if(sourceEntityId == null)
             {
                 throw new InvalidDataException("sourceEntityId is a required property for LinkModel and cannot be null");
             }
@@ -54,8 +54,8 @@ namespace InRiver.Rest.Lib.Model
             {
                 SourceEntityId = sourceEntityId;
             }
-            // to ensure "targetEntityId" is required (not null)
-            if (targetEntityId == null)
+            // to ensure "targetEntityId" is required(not null)
+            if(targetEntityId == null)
             {
                 throw new InvalidDataException("targetEntityId is a required property for LinkModel and cannot be null");
             }
@@ -142,11 +142,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as LinkModel);
+            return Equals(input as LinkModel);
         }
 
         /// <summary>
@@ -156,44 +156,44 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(LinkModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.IsActive == input.IsActive ||
-                    (this.IsActive != null &&
-                    this.IsActive.Equals(input.IsActive))
+               (
+                    IsActive == input.IsActive ||
+                   (IsActive != null &&
+                    IsActive.Equals(input.IsActive))
                 ) && 
-                (
-                    this.LinkTypeId == input.LinkTypeId ||
-                    (this.LinkTypeId != null &&
-                    this.LinkTypeId.Equals(input.LinkTypeId))
+               (
+                    LinkTypeId == input.LinkTypeId ||
+                   (LinkTypeId != null &&
+                    LinkTypeId.Equals(input.LinkTypeId))
                 ) && 
-                (
-                    this.SourceEntityId == input.SourceEntityId ||
-                    (this.SourceEntityId != null &&
-                    this.SourceEntityId.Equals(input.SourceEntityId))
+               (
+                    SourceEntityId == input.SourceEntityId ||
+                   (SourceEntityId != null &&
+                    SourceEntityId.Equals(input.SourceEntityId))
                 ) && 
-                (
-                    this.TargetEntityId == input.TargetEntityId ||
-                    (this.TargetEntityId != null &&
-                    this.TargetEntityId.Equals(input.TargetEntityId))
+               (
+                    TargetEntityId == input.TargetEntityId ||
+                   (TargetEntityId != null &&
+                    TargetEntityId.Equals(input.TargetEntityId))
                 ) && 
-                (
-                    this.LinkEntityId == input.LinkEntityId ||
-                    (this.LinkEntityId != null &&
-                    this.LinkEntityId.Equals(input.LinkEntityId))
+               (
+                    LinkEntityId == input.LinkEntityId ||
+                   (LinkEntityId != null &&
+                    LinkEntityId.Equals(input.LinkEntityId))
                 ) && 
-                (
-                    this.Index == input.Index ||
-                    (this.Index != null &&
-                    this.Index.Equals(input.Index))
+               (
+                    Index == input.Index ||
+                   (Index != null &&
+                    Index.Equals(input.Index))
                 );
         }
 
@@ -206,20 +206,20 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.IsActive != null)
-                    hashCode = hashCode * 59 + this.IsActive.GetHashCode();
-                if (this.LinkTypeId != null)
-                    hashCode = hashCode * 59 + this.LinkTypeId.GetHashCode();
-                if (this.SourceEntityId != null)
-                    hashCode = hashCode * 59 + this.SourceEntityId.GetHashCode();
-                if (this.TargetEntityId != null)
-                    hashCode = hashCode * 59 + this.TargetEntityId.GetHashCode();
-                if (this.LinkEntityId != null)
-                    hashCode = hashCode * 59 + this.LinkEntityId.GetHashCode();
-                if (this.Index != null)
-                    hashCode = hashCode * 59 + this.Index.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(IsActive != null)
+                    hashCode = hashCode * 59 + IsActive.GetHashCode();
+                if(LinkTypeId != null)
+                    hashCode = hashCode * 59 + LinkTypeId.GetHashCode();
+                if(SourceEntityId != null)
+                    hashCode = hashCode * 59 + SourceEntityId.GetHashCode();
+                if(TargetEntityId != null)
+                    hashCode = hashCode * 59 + TargetEntityId.GetHashCode();
+                if(LinkEntityId != null)
+                    hashCode = hashCode * 59 + LinkEntityId.GetHashCode();
+                if(Index != null)
+                    hashCode = hashCode * 59 + Index.GetHashCode();
                 return hashCode;
             }
         }

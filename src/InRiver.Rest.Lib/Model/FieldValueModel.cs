@@ -21,20 +21,20 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="FieldValueModel" /> class.
         /// </summary>
-        /// <param name="fieldTypeId">fieldTypeId (required).</param>
+        /// <param name="fieldTypeId">fieldTypeId(required).</param>
         /// <param name="value">value.</param>
-        public FieldValueModel(string fieldTypeId = default(string), Object value = default(Object))
+        public FieldValueModel(string fieldTypeId = default, object value = default(object))
         {
-            // to ensure "fieldTypeId" is required (not null)
-            if (fieldTypeId == null)
+            // to ensure "fieldTypeId" is required(not null)
+            if(fieldTypeId == null)
             {
                 throw new InvalidDataException("fieldTypeId is a required property for FieldValueModel and cannot be null");
             }
             else
             {
-                this.FieldTypeId = fieldTypeId;
+                FieldTypeId = fieldTypeId;
             }
-            this.Value = value;
+            Value = value;
         }
         
         /// <summary>
@@ -47,7 +47,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value")]
-        public Object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,11 +75,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FieldValueModel);
+            return Equals(input as FieldValueModel);
         }
 
         /// <summary>
@@ -89,19 +89,19 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(FieldValueModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.FieldTypeId == input.FieldTypeId ||
-                    (this.FieldTypeId != null &&
-                    this.FieldTypeId.Equals(input.FieldTypeId))
+               (
+                    FieldTypeId == input.FieldTypeId ||
+                   (FieldTypeId != null &&
+                    FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
-                (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+               (
+                    Value == input.Value ||
+                   (Value != null &&
+                    Value.Equals(input.Value))
                 );
         }
 
@@ -114,10 +114,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FieldTypeId != null)
-                    hashCode = hashCode * 59 + this.FieldTypeId.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
+                if(FieldTypeId != null)
+                    hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
+                if(Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
                 return hashCode;
             }
         }

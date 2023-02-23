@@ -1,39 +1,37 @@
 ﻿using RestSharp;
 using System.Net.Http;
+using System.Runtime.CompilerServices;
+using InRiver.Rest.Lib.Services;
+using RestClient = RestSharp.RestClient;
 
+[assembly: InternalsVisibleTo("DynamicProxyGenAssembly2")]
 namespace InRiver.Rest.Lib.Client
 {
-    public interface IRestClientFactory
+    internal interface IRestClientFactory
     {
-        RestClient Create(RestClientOptions configuration);
+        IRestClient Create(RestClientOptions configuration);
     }
 
-    public class RestClientFactory : IRestClientFactory
+    internal sealed class RestClientFactory : IRestClientFactory
     {
         private static readonly object Lock = new object();
 
         private readonly HttpClient _httpClientOverride;
-        private RestClient _restClient;
+        private IRestClient _restClient;
 
         public RestClientFactory(HttpClient httpClientOverride = null)
         {
             _httpClientOverride = httpClientOverride;
         }
 
-        public RestClient Create(RestClientOptions configuration)
+        public IRestClient Create(RestClientOptions configuration)
         {
-            if (_httpClientOverride == null)
-                return new RestClient(configuration);
-
-            if (_restClient == null)
+            if(_restClient != null) return _restClient;
+            lock(Lock)
             {
-                lock (Lock)
-                {
-                    if (_restClient == null)
-                    {
-                        _restClient = new RestClient(_httpClientOverride, configuration);
-                    }
-                }
+                _restClient = _httpClientOverride == null
+                    ? new Services.RestClient(new RestClient(configuration))
+                    : new Services.RestClient(new RestClient(_httpClientOverride, configuration));
             }
 
             return _restClient;

@@ -21,9 +21,9 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="linkCriterion">linkCriterion.</param>
         public QueryModel(List<SystemCriterionModel> systemCriteria = default(List<SystemCriterionModel>), List<DataCriterionModel> dataCriteria = default(List<DataCriterionModel>), LinkCriterionModel linkCriterion = default(LinkCriterionModel))
         {
-            this.SystemCriteria = systemCriteria;
-            this.DataCriteria = dataCriteria;
-            this.LinkCriterion = linkCriterion;
+            SystemCriteria = systemCriteria;
+            DataCriteria = dataCriteria;
+            LinkCriterion = linkCriterion;
         }
         
         /// <summary>
@@ -71,11 +71,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as QueryModel);
+            return Equals(input as QueryModel);
         }
 
         /// <summary>
@@ -85,24 +85,24 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(QueryModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.SystemCriteria == input.SystemCriteria ||
-                    this.SystemCriteria != null &&
-                    this.SystemCriteria.SequenceEqual(input.SystemCriteria)
+               (
+                    SystemCriteria == input.SystemCriteria ||
+                    SystemCriteria != null &&
+                    SystemCriteria.SequenceEqual(input.SystemCriteria)
                 ) && 
-                (
-                    this.DataCriteria == input.DataCriteria ||
-                    this.DataCriteria != null &&
-                    this.DataCriteria.SequenceEqual(input.DataCriteria)
+               (
+                    DataCriteria == input.DataCriteria ||
+                    DataCriteria != null &&
+                    DataCriteria.SequenceEqual(input.DataCriteria)
                 ) && 
-                (
-                    this.LinkCriterion == input.LinkCriterion ||
-                    (this.LinkCriterion != null &&
-                    this.LinkCriterion.Equals(input.LinkCriterion))
+               (
+                    LinkCriterion == input.LinkCriterion ||
+                   (LinkCriterion != null &&
+                    LinkCriterion.Equals(input.LinkCriterion))
                 );
         }
 
@@ -115,12 +115,12 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SystemCriteria != null)
-                    hashCode = hashCode * 59 + this.SystemCriteria.GetHashCode();
-                if (this.DataCriteria != null)
-                    hashCode = hashCode * 59 + this.DataCriteria.GetHashCode();
-                if (this.LinkCriterion != null)
-                    hashCode = hashCode * 59 + this.LinkCriterion.GetHashCode();
+                if(SystemCriteria != null)
+                    hashCode = hashCode * 59 + SystemCriteria.GetHashCode();
+                if(DataCriteria != null)
+                    hashCode = hashCode * 59 + DataCriteria.GetHashCode();
+                if(LinkCriterion != null)
+                    hashCode = hashCode * 59 + LinkCriterion.GetHashCode();
                 return hashCode;
             }
         }
