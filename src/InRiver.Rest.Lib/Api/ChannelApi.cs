@@ -16,7 +16,6 @@ namespace InRiver.Rest.Lib.Api
     {
         private readonly ISerializer _serializer;
         private readonly IApiClient _apiClient;
-        private ExceptionFactory _exceptionFactory =(name, response) => null;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="ChannelApi"/> class
@@ -31,8 +30,6 @@ namespace InRiver.Rest.Lib.Api
             _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             Configuration = configuration ?? Configuration.Default;
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
 
         /// <summary>
@@ -41,22 +38,6 @@ namespace InRiver.Rest.Lib.Api
         /// <value>An instance of the Configuration</value>
         public Configuration Configuration {get; set;}
 
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set => _exceptionFactory = value;
-        }
-        
         /// <summary>
         /// Channel path content Use the entity list to directly query data. Use the paths in the content array to traverse the channel structure.
         /// </summary>
@@ -84,10 +65,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'path' when calling ChannelApi->ChannelChannelContent");
 
             var localVarPath = "/api/v1.0.0/channels/content/{path}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -113,13 +94,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelChannelContent", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<ChannelPathContentModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (ChannelPathContentModel) _serializer.Deserialize(localVarResponse, typeof(ChannelPathContentModel)));
         }
 
@@ -132,7 +110,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>Task of ChannelPathContentModel</returns>
         public async System.Threading.Tasks.Task<ChannelPathContentModel> ChannelContentAsync(string path, string entityTypeIds = null)
         {
-             ApiResponse<ChannelPathContentModel> localVarResponse = await ChannelContentAsyncWithHttpInfo(path, entityTypeIds);
+             var localVarResponse = await ChannelContentAsyncWithHttpInfo(path, entityTypeIds);
              return localVarResponse.Data;
         }
 
@@ -150,10 +128,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'path' when calling ChannelApi->ChannelChannelContent");
 
             var localVarPath = "/api/v1.0.0/channels/content/{path}";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -179,13 +157,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelChannelContent", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<ChannelPathContentModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (ChannelPathContentModel) _serializer.Deserialize(localVarResponse, typeof(ChannelPathContentModel)));
         }
 
@@ -214,10 +189,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelEntityTypes");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entitytypes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -242,13 +217,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelEntityTypes", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<string>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
@@ -277,10 +249,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelEntityTypes");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entitytypes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -305,16 +277,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelEntityTypes", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<string>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
@@ -329,7 +295,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>EntityListModel</returns>
         public EntityListModel GetByEntityType(int? channelId, int? entityId, string linkDirection, string linkTypeId = null)
         {
-             ApiResponse<EntityListModel> localVarResponse = GetByEntityTypeWithHttpInfo(channelId, entityId, linkDirection, linkTypeId);
+             var localVarResponse = GetByEntityTypeWithHttpInfo(channelId, entityId, linkDirection, linkTypeId);
              return localVarResponse.Data;
         }
 
@@ -355,10 +321,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'linkDirection' when calling ChannelApi->ChannelGetByEntityType");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entities/{entityId}/links";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -386,13 +352,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelGetByEntityType", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
@@ -433,10 +396,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'linkDirection' when calling ChannelApi->ChannelGetByEntityType");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entities/{entityId}/links";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -465,13 +428,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelGetByEntityType", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
@@ -502,10 +462,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelGetByLinkEntityType");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entitylist";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -528,20 +488,14 @@ namespace InRiver.Rest.Lib.Api
 
 
             // make the HTTP request
-            RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
+            RestResponse localVarResponse = (RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetByLinkEntityType", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
@@ -572,17 +526,17 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelGetByLinkEntityType");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entitylist";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
-            var localVarFileParams = new Dictionary<String, FileParameter>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
+            var localVarFileParams = new Dictionary<string, FileParameter>();
             object localVarPostBody = null;
 
             // to determine the Content-Type header
             string[] localVarHttpContentTypes =  {
             };
-            String localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
+            var localVarHttpContentType = HttpHelpers.SelectHeaderContentType(localVarHttpContentTypes);
 
             // to determine the Accept header
             string[] localVarHttpHeaderAccepts =  {
@@ -602,13 +556,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelGetByLinkEntityType", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<EntityListModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (EntityListModel) _serializer.Deserialize(localVarResponse, typeof(EntityListModel)));
         }
 
@@ -637,10 +588,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelGetChannelNodeTree");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/nodetree";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -665,13 +616,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelGetChannelNodeTree", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (Dictionary<string, StructureNode>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
         }
 
@@ -700,10 +648,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelGetChannelNodeTree");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/nodetree";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -729,13 +677,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            Exception exception = ExceptionFactory?.Invoke("ChannelGetChannelNodeTree", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<Dictionary<string, StructureNode>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (Dictionary<string, StructureNode>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, StructureNode>)));
         }
 
@@ -764,10 +709,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelGetChannelNodes");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/nodes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -793,17 +738,11 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelNodes", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<string>>(
                 localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
@@ -817,7 +756,6 @@ namespace InRiver.Rest.Lib.Api
         {
              var localVarResponse = await GetChannelNodesAsyncWithHttpInfo(channelId);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -833,10 +771,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'channelId' when calling ChannelApi->ChannelGetChannelNodes");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/nodes";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -862,13 +800,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelGetChannelNodes", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<string>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
@@ -902,10 +837,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'entityId' when calling ChannelApi->ChannelGetChannelStructureEntities");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entities/{entityId}/structureentities";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -919,26 +854,22 @@ namespace InRiver.Rest.Lib.Api
                 "application/json",
                 "text/json"
             };
-            String localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
+            string localVarHttpHeaderAccept = HttpHelpers.SelectHeaderAccept(localVarHttpHeaderAccepts);
             if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if(channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
-            if(entityId != null) localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
-
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
 
             // make the HTTP request
             RestResponse localVarResponse =(RestResponse) _apiClient.CallApi(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelGetChannelStructureEntities", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<StructureEntityModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<StructureEntityModel>) _serializer.Deserialize(localVarResponse, typeof(List<StructureEntityModel>)));
         }
 
@@ -972,10 +903,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'entityId' when calling ChannelApi->ChannelGetChannelStructureEntities");
 
             var localVarPath = "/api/v1.0.0/channels/{channelId}/entities/{entityId}/structureentities";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -993,22 +924,18 @@ namespace InRiver.Rest.Lib.Api
             if(localVarHttpHeaderAccept != null)
                 localVarHeaderParams.Add("Accept", localVarHttpHeaderAccept);
 
-            if(channelId != null) localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
-            if(entityId != null) localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
-
+            localVarPathParams.Add("channelId", HttpHelpers.ParameterToString(channelId, Configuration)); // path parameter
+            localVarPathParams.Add("entityId", HttpHelpers.ParameterToString(entityId, Configuration)); // path parameter
 
             // make the HTTP request
             RestResponse localVarResponse =(RestResponse) await _apiClient.CallApiAsync(localVarPath,
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            var exception = ExceptionFactory?.Invoke("ChannelGetChannelStructureEntities", localVarResponse);
-            if(exception != null) throw exception;
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<StructureEntityModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<StructureEntityModel>) _serializer.Deserialize(localVarResponse, typeof(List<StructureEntityModel>)));
         }
 
@@ -1022,7 +949,7 @@ namespace InRiver.Rest.Lib.Api
         /// <returns>List&lt;ChannelSummaryModel&gt;</returns>
         public List<ChannelSummaryModel> GetChannelsForEntityId(int? forEntityId = null, bool? includeChannels = null, bool? includePublications = null)
         {
-             ApiResponse<List<ChannelSummaryModel>> localVarResponse = GetChannelsForEntityIdWithHttpInfo(forEntityId, includeChannels, includePublications);
+             var localVarResponse = GetChannelsForEntityIdWithHttpInfo(forEntityId, includeChannels, includePublications);
              return localVarResponse.Data;
         }
 
@@ -1038,10 +965,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/channels";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1069,16 +996,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelsForEntityId", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<ChannelSummaryModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<ChannelSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<ChannelSummaryModel>)));
         }
 
@@ -1094,7 +1015,6 @@ namespace InRiver.Rest.Lib.Api
         {
              var localVarResponse = await GetChannelsForEntityIdAsyncWithHttpInfo(forEntityId, includeChannels, includePublications);
              return localVarResponse.Data;
-
         }
 
         /// <summary>
@@ -1109,10 +1029,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/channels";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1140,16 +1060,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("ChannelGetChannelsForEntityId", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<ChannelSummaryModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<ChannelSummaryModel>) _serializer.Deserialize(localVarResponse, typeof(List<ChannelSummaryModel>)));
         }
 

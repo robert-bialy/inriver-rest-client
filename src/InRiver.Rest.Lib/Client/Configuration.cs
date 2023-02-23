@@ -32,26 +32,6 @@ namespace InRiver.Rest.Lib.Client
         private static Configuration _globalConfiguration;
 
         /// <summary>
-        /// Default creation of exceptions for a given method name and response object
-        /// </summary>
-        public static readonly ExceptionFactory DefaultExceptionFactory =(methodName, response) =>
-        {
-            var status =(int)response.StatusCode;
-            if(status>= 400)
-            {
-                return new ApiException(status,
-                    $"Error calling {methodName}: {response.Content}",
-                    response.Content);
-            }
-            if(status == 0)
-            {
-                return new ApiException(status,
-                    $"Error calling {methodName}: {response.ErrorMessage}", response.ErrorMessage);
-            }
-            return null;
-        };
-
-        /// <summary>
         /// Gets or sets the default Configuration.
         /// </summary>
         /// <value>Configuration.</value>

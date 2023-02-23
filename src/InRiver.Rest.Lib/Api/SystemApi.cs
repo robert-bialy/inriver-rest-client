@@ -14,7 +14,6 @@ namespace InRiver.Rest.Lib.Api
     /// </summary>
     internal sealed class SystemApi : ISystemApi
     {
-        private ExceptionFactory _exceptionFactory =(name, response) => null;
         private readonly ISerializer _serializer;
         private readonly IApiClient _apiClient;
 
@@ -32,8 +31,6 @@ namespace InRiver.Rest.Lib.Api
             _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
             // use the default one in Configuration
             Configuration = configuration ?? Configuration.Default;
-
-            ExceptionFactory = Configuration.DefaultExceptionFactory;
         }
         
         /// <summary>
@@ -41,22 +38,6 @@ namespace InRiver.Rest.Lib.Api
         /// </summary>
         /// <value>An instance of the Configuration</value>
         public Configuration Configuration {get; set;}
-
-        /// <summary>
-        /// Provides a factory method hook for the creation of exceptions.
-        /// </summary>
-        public ExceptionFactory ExceptionFactory
-        {
-            get
-            {
-                if(_exceptionFactory != null && _exceptionFactory.GetInvocationList().Length> 1)
-                {
-                    throw new InvalidOperationException("Multicast delegate for ExceptionFactory is unsupported.");
-                }
-                return _exceptionFactory;
-            }
-            set => _exceptionFactory = value;
-        }
         
         /// <summary>
         /// Assign a role to a user and segment The roleName value expects a single role name, such as \&quot;Editor\&quot; or \&quot;Reader\&quot;. Requires administrator role.
@@ -88,10 +69,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemAddUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:adduserrole";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -127,16 +108,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemAddUserRoleForSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
@@ -171,10 +146,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemAddUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:adduserrole";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -211,16 +186,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemAddUserRoleForSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
@@ -244,10 +213,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurations";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -270,16 +239,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemGetAllImageConfigurations", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<string>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
@@ -304,10 +267,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurations";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -332,14 +295,8 @@ namespace InRiver.Rest.Lib.Api
 
             int localVarStatusCode =(int)localVarResponse.StatusCode;
 
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemGetAllImageConfigurations", localVarResponse);
-                if(exception != null) throw exception;
-            }
-
             return new ApiResponse<List<string>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<string>) _serializer.Deserialize(localVarResponse, typeof(List<string>)));
         }
 
@@ -363,10 +320,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurationdetails";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -389,16 +346,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemGetImageConfigurationDetails", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<ImageConfigurationDetailsModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
         }
 
@@ -423,10 +374,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/imageconfigurationdetails";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -449,16 +400,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemGetImageConfigurationDetails", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<ImageConfigurationDetailsModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (ImageConfigurationDetailsModel) _serializer.Deserialize(localVarResponse, typeof(ImageConfigurationDetailsModel)));
         }
 
@@ -483,10 +428,10 @@ namespace InRiver.Rest.Lib.Api
         public ApiResponse<Dictionary<string, string>> GetServerSettingsWithHttpInfo(string settingNames = null)
         {
             var localVarPath = "/api/v1.0.0/system/serversettings";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -512,16 +457,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemGetServerSettings", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
@@ -547,10 +486,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/serversettings";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -576,16 +515,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemGetServerSettings", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<Dictionary<string, string>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (Dictionary<string, string>) _serializer.Deserialize(localVarResponse, typeof(Dictionary<string, string>)));
         }
 
@@ -619,10 +552,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemRemoveUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:removeuserrole";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -658,16 +591,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemRemoveUserRoleForSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
@@ -701,10 +628,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'userRoleModel' when calling SystemApi->SystemRemoveUserRoleForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:removeuserrole";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -740,16 +667,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemRemoveUserRoleForSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
@@ -775,10 +696,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/roles";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -804,16 +725,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemRoles", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<RoleModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
         }
 
@@ -839,10 +754,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/roles";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -868,16 +783,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemRoles", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<RoleModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<RoleModel>) _serializer.Deserialize(localVarResponse, typeof(List<RoleModel>)));
         }
 
@@ -903,10 +812,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/segments";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -932,16 +841,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemSegments", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<SegmentModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
         }
 
@@ -968,10 +871,10 @@ namespace InRiver.Rest.Lib.Api
         {
 
             var localVarPath = "/api/v1.0.0/system/segments";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -996,16 +899,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Get, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemSegments", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<List<SegmentModel>>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (List<SegmentModel>) _serializer.Deserialize(localVarResponse, typeof(List<SegmentModel>)));
         }
 
@@ -1039,10 +936,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'userRolesModel' when calling SystemApi->SystemSetUserRolesForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:setuserroles";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1078,16 +975,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemSetUserRolesForSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 
@@ -1121,10 +1012,10 @@ namespace InRiver.Rest.Lib.Api
                 throw new ApiException(400, "Missing required parameter 'userRolesModel' when calling SystemApi->SystemSetUserRolesForSegment");
 
             var localVarPath = "/api/v1.0.0/system/segments/{segmentId}:setuserroles";
-            var localVarPathParams = new Dictionary<String, String>();
-            var localVarQueryParams = new List<KeyValuePair<String, String>>();
-            var localVarHeaderParams = new Dictionary<String, String>(Configuration.DefaultHeader);
-            var localVarFormParams = new Dictionary<String, String>();
+            var localVarPathParams = new Dictionary<string, string>();
+            var localVarQueryParams = new List<KeyValuePair<string, string>>();
+            var localVarHeaderParams = new Dictionary<string, string>(Configuration.DefaultHeader);
+            var localVarFormParams = new Dictionary<string, string>();
             var localVarFileParams = new Dictionary<String, FileParameter>();
             object localVarPostBody = null;
 
@@ -1160,16 +1051,10 @@ namespace InRiver.Rest.Lib.Api
                 Method.Post, localVarQueryParams, localVarPostBody, localVarHeaderParams, localVarFormParams, localVarFileParams,
                 localVarPathParams, localVarHttpContentType);
 
-            int localVarStatusCode =(int) localVarResponse.StatusCode;
-
-            if(ExceptionFactory != null)
-            {
-                Exception exception = ExceptionFactory("SystemSetUserRolesForSegment", localVarResponse);
-                if(exception != null) throw exception;
-            }
+            var localVarStatusCode = (int) localVarResponse.StatusCode;
 
             return new ApiResponse<UserRolesModel>(localVarStatusCode,
-                localVarResponse.Headers.ToDictionary(x => x.Name, x => x.Value.ToString()),
+                localVarResponse.Headers?.ToDictionary(x => x.Name, x => x.Value?.ToString()),
                (UserRolesModel) _serializer.Deserialize(localVarResponse, typeof(UserRolesModel)));
         }
 

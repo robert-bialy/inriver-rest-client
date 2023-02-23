@@ -104,6 +104,7 @@ namespace InRiver.Rest.Lib.Client
             };
             var restClient = _restClientFactory.Create(configuration);
             var response = restClient.ExecuteAsync(request).Result;
+            HandleResponseError(path, response);
 
             return response;
         }
@@ -149,8 +150,25 @@ namespace InRiver.Rest.Lib.Client
             };
             var restClient = _restClientFactory.Create(configuration);
             var response = await restClient.ExecuteAsync(request);
+            HandleResponseError(path, response);
 
             return response;
+        }
+
+        private static void HandleResponseError(string path, RestResponseBase response)
+        {
+            var status = (int)response.StatusCode;
+            if (status >= 400)
+            {
+                throw new ApiException(status,
+                    $"Error calling {path}: {response.Content}",
+                    response.Content);
+            }
+            if (status == 0)
+            {
+                throw new ApiException(status,
+                    $"Error calling {path}: {response.ErrorMessage}", response.ErrorMessage);
+            }
         }
     }
 }
