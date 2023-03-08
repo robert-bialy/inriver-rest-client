@@ -18,7 +18,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        MediaInfoModel AddExternalUrl (ExternalUrlFileModelWithLink urlFileModel);
+        MediaInfoModel AddExternalUrl(ExternalUrlFileModelWithLink urlFileModel);
 
         /// <summary>
         /// Add external media url
@@ -29,7 +29,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        ApiResponse<MediaInfoModel> AddExternalUrlWithHttpInfo (ExternalUrlFileModelWithLink urlFileModel);
+        ApiResponse<MediaInfoModel> AddExternalUrlWithHttpInfo(ExternalUrlFileModelWithLink urlFileModel);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -39,7 +39,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        MediaInfoModel UploadBase64File (Base64FileModelWithLink base64FileModel);
+        MediaInfoModel UploadBase64File(Base64FileModelWithLink base64FileModel);
 
         /// <summary>
         /// Add Media
@@ -50,7 +50,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        ApiResponse<MediaInfoModel> UploadBase64FileWithHttpInfo (Base64FileModelWithLink base64FileModel);
+        ApiResponse<MediaInfoModel> UploadBase64FileWithHttpInfo(Base64FileModelWithLink base64FileModel);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -60,7 +60,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>MediaInfoModel</returns>
-        MediaInfoModel UploadMediaFromUrl (UrlFileModelWithLink urlFileModel);
+        MediaInfoModel UploadMediaFromUrl(UrlFileModelWithLink urlFileModel);
 
         /// <summary>
         /// Add Media
@@ -71,7 +71,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>ApiResponse of MediaInfoModel</returns>
-        ApiResponse<MediaInfoModel> UploadMediaFromUrlWithHttpInfo (UrlFileModelWithLink urlFileModel);
+        ApiResponse<MediaInfoModel> UploadMediaFromUrlWithHttpInfo(UrlFileModelWithLink urlFileModel);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -83,7 +83,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        System.Threading.Tasks.Task<MediaInfoModel> AddExternalUrlAsync (ExternalUrlFileModelWithLink urlFileModel);
+        System.Threading.Tasks.Task<MediaInfoModel> AddExternalUrlAsync(ExternalUrlFileModelWithLink urlFileModel);
 
         /// <summary>
         /// Add external media url
@@ -93,8 +93,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
-        /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> AddExternalUrlAsyncWithHttpInfo (ExternalUrlFileModelWithLink urlFileModel);
+        /// <returns>Task of ApiResponse(MediaInfoModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> AddExternalUrlAsyncWithHttpInfo(ExternalUrlFileModelWithLink urlFileModel);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -104,7 +104,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        System.Threading.Tasks.Task<MediaInfoModel> UploadBase64FileAsync (Base64FileModelWithLink base64FileModel);
+        System.Threading.Tasks.Task<MediaInfoModel> UploadBase64FileAsync(Base64FileModelWithLink base64FileModel);
 
         /// <summary>
         /// Add Media
@@ -114,8 +114,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="base64FileModel"></param>
-        /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadBase64FileAsyncWithHttpInfo (Base64FileModelWithLink base64FileModel);
+        /// <returns>Task of ApiResponse(MediaInfoModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadBase64FileAsyncWithHttpInfo(Base64FileModelWithLink base64FileModel);
         /// <summary>
         /// Add Media
         /// </summary>
@@ -125,7 +125,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
         /// <returns>Task of MediaInfoModel</returns>
-        System.Threading.Tasks.Task<MediaInfoModel> UploadMediaFromUrlAsync (UrlFileModelWithLink urlFileModel);
+        System.Threading.Tasks.Task<MediaInfoModel> UploadMediaFromUrlAsync(UrlFileModelWithLink urlFileModel);
 
         /// <summary>
         /// Add Media
@@ -135,8 +135,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="urlFileModel"></param>
-        /// <returns>Task of ApiResponse (MediaInfoModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadMediaFromUrlAsyncWithHttpInfo (UrlFileModelWithLink urlFileModel);
+        /// <returns>Task of ApiResponse(MediaInfoModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<MediaInfoModel>> UploadMediaFromUrlAsyncWithHttpInfo(UrlFileModelWithLink urlFileModel);
         #endregion Asynchronous Operations
     }
 }

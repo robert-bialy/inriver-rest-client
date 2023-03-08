@@ -20,8 +20,8 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="entityIds">entityIds.</param>
         public EntityListModel(int? count = default(int?), List<int?> entityIds = default(List<int?>))
         {
-            this.Count = count;
-            this.EntityIds = entityIds;
+            Count = count;
+            EntityIds = entityIds;
         }
         
         /// <summary>
@@ -62,11 +62,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as EntityListModel);
+            return Equals(input as EntityListModel);
         }
 
         /// <summary>
@@ -76,19 +76,19 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(EntityListModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Count == input.Count ||
-                    (this.Count != null &&
-                    this.Count.Equals(input.Count))
+               (
+                    Count == input.Count ||
+                   (Count != null &&
+                    Count.Equals(input.Count))
                 ) && 
-                (
-                    this.EntityIds == input.EntityIds ||
-                    this.EntityIds != null &&
-                    this.EntityIds.SequenceEqual(input.EntityIds)
+               (
+                    EntityIds == input.EntityIds ||
+                    EntityIds != null &&
+                    EntityIds.SequenceEqual(input.EntityIds)
                 );
         }
 
@@ -101,10 +101,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Count != null)
-                    hashCode = hashCode * 59 + this.Count.GetHashCode();
-                if (this.EntityIds != null)
-                    hashCode = hashCode * 59 + this.EntityIds.GetHashCode();
+                if(Count != null)
+                    hashCode = hashCode * 59 + Count.GetHashCode();
+                if(EntityIds != null)
+                    hashCode = hashCode * 59 + EntityIds.GetHashCode();
                 return hashCode;
             }
         }

@@ -22,20 +22,20 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="UserRolesModel" /> class.
         /// </summary>
-        /// <param name="username">username (required).</param>
+        /// <param name="username">username(required).</param>
         /// <param name="roleNames">roleNames.</param>
-        public UserRolesModel(string username = default(string), List<string> roleNames = default(List<string>))
+        public UserRolesModel(string username = default, List<string> roleNames = default(List<string>))
         {
-            // to ensure "username" is required (not null)
-            if (username == null)
+            // to ensure "username" is required(not null)
+            if(username == null)
             {
                 throw new InvalidDataException("username is a required property for UserRolesModel and cannot be null");
             }
             else
             {
-                this.Username = username;
+                Username = username;
             }
-            this.RoleNames = roleNames;
+            RoleNames = roleNames;
         }
         
         /// <summary>
@@ -76,11 +76,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as UserRolesModel);
+            return Equals(input as UserRolesModel);
         }
 
         /// <summary>
@@ -90,19 +90,19 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(UserRolesModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Username == input.Username ||
-                    (this.Username != null &&
-                    this.Username.Equals(input.Username))
+               (
+                    Username == input.Username ||
+                   (Username != null &&
+                    Username.Equals(input.Username))
                 ) && 
-                (
-                    this.RoleNames == input.RoleNames ||
-                    this.RoleNames != null &&
-                    this.RoleNames.SequenceEqual(input.RoleNames)
+               (
+                    RoleNames == input.RoleNames ||
+                    RoleNames != null &&
+                    RoleNames.SequenceEqual(input.RoleNames)
                 );
         }
 
@@ -115,10 +115,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Username != null)
-                    hashCode = hashCode * 59 + this.Username.GetHashCode();
-                if (this.RoleNames != null)
-                    hashCode = hashCode * 59 + this.RoleNames.GetHashCode();
+                if(Username != null)
+                    hashCode = hashCode * 59 + Username.GetHashCode();
+                if(RoleNames != null)
+                    hashCode = hashCode * 59 + RoleNames.GetHashCode();
                 return hashCode;
             }
         }

@@ -23,7 +23,7 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="outputFormat">outputFormat.</param>
         /// <param name="workareaName">workareaName.</param>
         /// <param name="workareaId">workareaId.</param>
-        public SyndicationModel(string extensionDisplayName = default(string), string extensionId = default(string), int? id = default(int?), string mappingName = default(string), string name = default(string), string outputFormat = default(string), string workareaName = default(string), string workareaId = default(string))
+        public SyndicationModel(string extensionDisplayName = default, string extensionId = default, int? id = default(int?), string mappingName = default, string name = default, string outputFormat = default, string workareaName = default, string workareaId = default)
         {
             ExtensionDisplayName = extensionDisplayName;
             ExtensionId = extensionId;
@@ -115,11 +115,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SyndicationModel);
+            return Equals(input as SyndicationModel);
         }
 
         /// <summary>
@@ -129,49 +129,49 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SyndicationModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.ExtensionDisplayName == input.ExtensionDisplayName ||
-                    (this.ExtensionDisplayName != null &&
-                    this.ExtensionDisplayName.Equals(input.ExtensionDisplayName))
+               (
+                    ExtensionDisplayName == input.ExtensionDisplayName ||
+                   (ExtensionDisplayName != null &&
+                    ExtensionDisplayName.Equals(input.ExtensionDisplayName))
                 ) && 
-                (
-                    this.ExtensionId == input.ExtensionId ||
-                    (this.ExtensionId != null &&
-                    this.ExtensionId.Equals(input.ExtensionId))
+               (
+                    ExtensionId == input.ExtensionId ||
+                   (ExtensionId != null &&
+                    ExtensionId.Equals(input.ExtensionId))
                 ) && 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.MappingName == input.MappingName ||
-                    (this.MappingName != null &&
-                    this.MappingName.Equals(input.MappingName))
+               (
+                    MappingName == input.MappingName ||
+                   (MappingName != null &&
+                    MappingName.Equals(input.MappingName))
                 ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+               (
+                    Name == input.Name ||
+                   (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
-                (
-                    this.OutputFormat == input.OutputFormat ||
-                    (this.OutputFormat != null &&
-                    this.OutputFormat.Equals(input.OutputFormat))
+               (
+                    OutputFormat == input.OutputFormat ||
+                   (OutputFormat != null &&
+                    OutputFormat.Equals(input.OutputFormat))
                 ) && 
-                (
-                    this.WorkareaName == input.WorkareaName ||
-                    (this.WorkareaName != null &&
-                    this.WorkareaName.Equals(input.WorkareaName))
+               (
+                    WorkareaName == input.WorkareaName ||
+                   (WorkareaName != null &&
+                    WorkareaName.Equals(input.WorkareaName))
                 ) && 
-                (
-                    this.WorkareaId == input.WorkareaId ||
-                    (this.WorkareaId != null &&
-                    this.WorkareaId.Equals(input.WorkareaId))
+               (
+                    WorkareaId == input.WorkareaId ||
+                   (WorkareaId != null &&
+                    WorkareaId.Equals(input.WorkareaId))
                 );
         }
 
@@ -184,22 +184,22 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.ExtensionDisplayName != null)
-                    hashCode = hashCode * 59 + this.ExtensionDisplayName.GetHashCode();
-                if (this.ExtensionId != null)
-                    hashCode = hashCode * 59 + this.ExtensionId.GetHashCode();
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.MappingName != null)
-                    hashCode = hashCode * 59 + this.MappingName.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.OutputFormat != null)
-                    hashCode = hashCode * 59 + this.OutputFormat.GetHashCode();
-                if (this.WorkareaName != null)
-                    hashCode = hashCode * 59 + this.WorkareaName.GetHashCode();
-                if (this.WorkareaId != null)
-                    hashCode = hashCode * 59 + this.WorkareaId.GetHashCode();
+                if(ExtensionDisplayName != null)
+                    hashCode = hashCode * 59 + ExtensionDisplayName.GetHashCode();
+                if(ExtensionId != null)
+                    hashCode = hashCode * 59 + ExtensionId.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(MappingName != null)
+                    hashCode = hashCode * 59 + MappingName.GetHashCode();
+                if(Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if(OutputFormat != null)
+                    hashCode = hashCode * 59 + OutputFormat.GetHashCode();
+                if(WorkareaName != null)
+                    hashCode = hashCode * 59 + WorkareaName.GetHashCode();
+                if(WorkareaId != null)
+                    hashCode = hashCode * 59 + WorkareaId.GetHashCode();
                 return hashCode;
             }
         }

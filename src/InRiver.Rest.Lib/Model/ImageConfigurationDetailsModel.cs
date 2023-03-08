@@ -20,13 +20,13 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="extension">extension.</param>
         /// <param name="outputExtension">outputExtension.</param>
         /// <param name="arguments">arguments.</param>
-        public ImageConfigurationDetailsModel(int? id = default(int?), string name = default(string), string extension = default(string), string outputExtension = default(string), string arguments = default(string))
+        public ImageConfigurationDetailsModel(int? id = default(int?), string name = default, string extension = default, string outputExtension = default, string arguments = default)
         {
-            this.Id = id;
-            this.Name = name;
-            this.Extension = extension;
-            this.OutputExtension = outputExtension;
-            this.Arguments = arguments;
+            Id = id;
+            Name = name;
+            Extension = extension;
+            OutputExtension = outputExtension;
+            Arguments = arguments;
         }
         
         /// <summary>
@@ -88,11 +88,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ImageConfigurationDetailsModel);
+            return Equals(input as ImageConfigurationDetailsModel);
         }
 
         /// <summary>
@@ -102,34 +102,34 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ImageConfigurationDetailsModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+               (
+                    Name == input.Name ||
+                   (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
-                (
-                    this.Extension == input.Extension ||
-                    (this.Extension != null &&
-                    this.Extension.Equals(input.Extension))
+               (
+                    Extension == input.Extension ||
+                   (Extension != null &&
+                    Extension.Equals(input.Extension))
                 ) && 
-                (
-                    this.OutputExtension == input.OutputExtension ||
-                    (this.OutputExtension != null &&
-                    this.OutputExtension.Equals(input.OutputExtension))
+               (
+                    OutputExtension == input.OutputExtension ||
+                   (OutputExtension != null &&
+                    OutputExtension.Equals(input.OutputExtension))
                 ) && 
-                (
-                    this.Arguments == input.Arguments ||
-                    (this.Arguments != null &&
-                    this.Arguments.Equals(input.Arguments))
+               (
+                    Arguments == input.Arguments ||
+                   (Arguments != null &&
+                    Arguments.Equals(input.Arguments))
                 );
         }
 
@@ -142,16 +142,16 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.Extension != null)
-                    hashCode = hashCode * 59 + this.Extension.GetHashCode();
-                if (this.OutputExtension != null)
-                    hashCode = hashCode * 59 + this.OutputExtension.GetHashCode();
-                if (this.Arguments != null)
-                    hashCode = hashCode * 59 + this.Arguments.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if(Extension != null)
+                    hashCode = hashCode * 59 + Extension.GetHashCode();
+                if(OutputExtension != null)
+                    hashCode = hashCode * 59 + OutputExtension.GetHashCode();
+                if(Arguments != null)
+                    hashCode = hashCode * 59 + Arguments.GetHashCode();
                 return hashCode;
             }
         }

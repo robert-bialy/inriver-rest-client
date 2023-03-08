@@ -21,7 +21,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>CVLValueModel</returns>
-        CVLValueModel CreateCvlValue (string cvlId, CVLValueModel cvlValueModel);
+        CVLValueModel CreateCvlValue(string cvlId, CVLValueModel cvlValueModel);
 
         /// <summary>
         /// Create new CVL value
@@ -33,7 +33,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>ApiResponse of CVLValueModel</returns>
-        ApiResponse<CVLValueModel> CreateCvlValueWithHttpInfo (string cvlId, CVLValueModel cvlValueModel);
+        ApiResponse<CVLValueModel> CreateCvlValueWithHttpInfo(string cvlId, CVLValueModel cvlValueModel);
         /// <summary>
         /// Delete CVL value
         /// </summary>
@@ -44,7 +44,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns></returns>
-        void DeleteCvlValue (string cvlId, string key);
+        void DeleteCvlValue(string cvlId, string key);
 
         /// <summary>
         /// Delete CVL value
@@ -55,8 +55,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
-        /// <returns>ApiResponse of Object(void)</returns>
-        ApiResponse<Object> DeleteCvlValueWithHttpInfo (string cvlId, string key);
+        /// <returns>ApiResponse of object(void)</returns>
+        ApiResponse<object> DeleteCvlValueWithHttpInfo(string cvlId, string key);
         /// <summary>
         /// Returns all values for a CVL
         /// </summary>
@@ -66,7 +66,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <returns>List&lt;CVLValueModel&gt;</returns>
-        List<CVLValueModel> GetAllCvlValues (string cvlId);
+        List<CVLValueModel> GetAllCvlValues(string cvlId);
 
         /// <summary>
         /// Returns all values for a CVL
@@ -77,7 +77,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <returns>ApiResponse of List&lt;CVLValueModel&gt;</returns>
-        ApiResponse<List<CVLValueModel>> GetAllCvlValuesWithHttpInfo (string cvlId);
+        ApiResponse<List<CVLValueModel>> GetAllCvlValuesWithHttpInfo(string cvlId);
         /// <summary>
         /// Returns all CVL&#39;s
         /// </summary>
@@ -86,7 +86,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;CVLModel&gt;</returns>
-        List<CVLModel> GetAllCvls ();
+        List<CVLModel> GetAllCvls();
 
         /// <summary>
         /// Returns all CVL&#39;s
@@ -96,7 +96,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;CVLModel&gt;</returns>
-        ApiResponse<List<CVLModel>> GetAllCvlsWithHttpInfo ();
+        ApiResponse<List<CVLModel>> GetAllCvlsWithHttpInfo();
         /// <summary>
         /// Returns available entity types
         /// </summary>
@@ -104,9 +104,9 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>List&lt;EntityTypeModel&gt;</returns>
-        List<EntityTypeModel> GetAllEntityTypes (string entityTypeIds = null);
+        List<EntityTypeModel> GetAllEntityTypes(string entityTypeIds = null);
 
         /// <summary>
         /// Returns available entity types
@@ -115,9 +115,9 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>ApiResponse of List&lt;EntityTypeModel&gt;</returns>
-        ApiResponse<List<EntityTypeModel>> GetAllEntityTypesWithHttpInfo (string entityTypeIds = null);
+        ApiResponse<List<EntityTypeModel>> GetAllEntityTypesWithHttpInfo(string entityTypeIds = null);
         /// <summary>
         /// Returns available field sets
         /// </summary>
@@ -126,7 +126,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;FieldSetModel&gt;</returns>
-        List<FieldSetModel> GetAllFieldSets ();
+        List<FieldSetModel> GetAllFieldSets();
 
         /// <summary>
         /// Returns available field sets
@@ -136,7 +136,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;FieldSetModel&gt;</returns>
-        ApiResponse<List<FieldSetModel>> GetAllFieldSetsWithHttpInfo ();
+        ApiResponse<List<FieldSetModel>> GetAllFieldSetsWithHttpInfo();
         /// <summary>
         /// Returns available languages
         /// </summary>
@@ -145,7 +145,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;LanguageModel&gt;</returns>
-        List<LanguageModel> GetAllLanguages ();
+        List<LanguageModel> GetAllLanguages();
 
         /// <summary>
         /// Returns available languages
@@ -155,7 +155,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;LanguageModel&gt;</returns>
-        ApiResponse<List<LanguageModel>> GetAllLanguagesWithHttpInfo ();
+        ApiResponse<List<LanguageModel>> GetAllLanguagesWithHttpInfo();
         /// <summary>
         /// Returns all specification templates
         /// </summary>
@@ -164,7 +164,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>List&lt;EntitySummaryModel&gt;</returns>
-        List<EntitySummaryModel> GetAllSpecificationTemplates ();
+        List<EntitySummaryModel> GetAllSpecificationTemplates();
 
         /// <summary>
         /// Returns all specification templates
@@ -174,7 +174,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>ApiResponse of List&lt;EntitySummaryModel&gt;</returns>
-        ApiResponse<List<EntitySummaryModel>> GetAllSpecificationTemplatesWithHttpInfo ();
+        ApiResponse<List<EntitySummaryModel>> GetAllSpecificationTemplatesWithHttpInfo();
         /// <summary>
         /// Get CVL value
         /// </summary>
@@ -185,7 +185,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
         /// <returns>CVLValueModel</returns>
-        CVLValueModel GetCvlValue (string cvlId, string key);
+        CVLValueModel GetCvlValue(string cvlId, string key);
 
         /// <summary>
         /// Get CVL value
@@ -197,7 +197,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
         /// <returns>ApiResponse of CVLValueModel</returns>
-        ApiResponse<CVLValueModel> GetCvlValueWithHttpInfo (string cvlId, string key);
+        ApiResponse<CVLValueModel> GetCvlValueWithHttpInfo(string cvlId, string key);
         /// <summary>
         /// Returns field types for specification template
         /// </summary>
@@ -207,7 +207,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
         /// <returns>List&lt;SpecificationFieldTypeModel&gt;</returns>
-        List<SpecificationFieldTypeModel> GetSpecificationTemplatesields (int? templateId);
+        List<SpecificationFieldTypeModel> GetSpecificationTemplatesields(int? templateId);
 
         /// <summary>
         /// Returns field types for specification template
@@ -218,7 +218,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
         /// <returns>ApiResponse of List&lt;SpecificationFieldTypeModel&gt;</returns>
-        ApiResponse<List<SpecificationFieldTypeModel>> GetSpecificationTemplatesieldsWithHttpInfo (int? templateId);
+        ApiResponse<List<SpecificationFieldTypeModel>> GetSpecificationTemplatesieldsWithHttpInfo(int? templateId);
         /// <summary>
         /// Update CVL value
         /// </summary>
@@ -230,7 +230,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>CVLValueModel</returns>
-        CVLValueModel UpdateCvlValue (string cvlId, string key, CVLValueModel cvlValueModel);
+        CVLValueModel UpdateCvlValue(string cvlId, string key, CVLValueModel cvlValueModel);
 
         /// <summary>
         /// Update CVL value
@@ -243,7 +243,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>ApiResponse of CVLValueModel</returns>
-        ApiResponse<CVLValueModel> UpdateCvlValueWithHttpInfo (string cvlId, string key, CVLValueModel cvlValueModel);
+        ApiResponse<CVLValueModel> UpdateCvlValueWithHttpInfo(string cvlId, string key, CVLValueModel cvlValueModel);
         #endregion Synchronous Operations
         #region Asynchronous Operations
         /// <summary>
@@ -256,7 +256,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>Task of CVLValueModel</returns>
-        System.Threading.Tasks.Task<CVLValueModel> CreateCvlValueAsync (string cvlId, CVLValueModel cvlValueModel);
+        System.Threading.Tasks.Task<CVLValueModel> CreateCvlValueAsync(string cvlId, CVLValueModel cvlValueModel);
 
         /// <summary>
         /// Create new CVL value
@@ -267,8 +267,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <param name="cvlValueModel"></param>
-        /// <returns>Task of ApiResponse (CVLValueModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> CreateCvlValueAsyncWithHttpInfo (string cvlId, CVLValueModel cvlValueModel);
+        /// <returns>Task of ApiResponse(CVLValueModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> CreateCvlValueAsyncWithHttpInfo(string cvlId, CVLValueModel cvlValueModel);
         /// <summary>
         /// Delete CVL value
         /// </summary>
@@ -279,7 +279,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns>Task of void</returns>
-        System.Threading.Tasks.Task DeleteCvlValueAsync (string cvlId, string key);
+        System.Threading.Tasks.Task DeleteCvlValueAsync(string cvlId, string key);
 
         /// <summary>
         /// Delete CVL value
@@ -291,7 +291,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">The key of the CVL value to delete</param>
         /// <returns>Task of ApiResponse</returns>
-        System.Threading.Tasks.Task<ApiResponse<Object>> DeleteCvlValueAsyncWithHttpInfo (string cvlId, string key);
+        System.Threading.Tasks.Task<ApiResponse<object>> DeleteCvlValueAsyncWithHttpInfo(string cvlId, string key);
         /// <summary>
         /// Returns all values for a CVL
         /// </summary>
@@ -301,7 +301,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <returns>Task of List&lt;CVLValueModel&gt;</returns>
-        System.Threading.Tasks.Task<List<CVLValueModel>> GetAllCvlValuesAsync (string cvlId);
+        System.Threading.Tasks.Task<List<CVLValueModel>> GetAllCvlValuesAsync(string cvlId);
 
         /// <summary>
         /// Returns all values for a CVL
@@ -311,8 +311,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
-        /// <returns>Task of ApiResponse (List&lt;CVLValueModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<CVLValueModel>>> GetAllCvlValuesAsyncWithHttpInfo (string cvlId);
+        /// <returns>Task of ApiResponse(List&lt;CVLValueModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<CVLValueModel>>> GetAllCvlValuesAsyncWithHttpInfo(string cvlId);
         /// <summary>
         /// Returns all CVL&#39;s
         /// </summary>
@@ -321,7 +321,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;CVLModel&gt;</returns>
-        System.Threading.Tasks.Task<List<CVLModel>> GetAllCvlsAsync ();
+        System.Threading.Tasks.Task<List<CVLModel>> GetAllCvlsAsync();
 
         /// <summary>
         /// Returns all CVL&#39;s
@@ -330,8 +330,8 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;CVLModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<CVLModel>>> GetAllCvlsAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse(List&lt;CVLModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<CVLModel>>> GetAllCvlsAsyncWithHttpInfo();
         /// <summary>
         /// Returns available entity types
         /// </summary>
@@ -339,9 +339,9 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
         /// <returns>Task of List&lt;EntityTypeModel&gt;</returns>
-        System.Threading.Tasks.Task<List<EntityTypeModel>> GetAllEntityTypesAsync (string entityTypeIds = null);
+        System.Threading.Tasks.Task<List<EntityTypeModel>> GetAllEntityTypesAsync(string entityTypeIds = null);
 
         /// <summary>
         /// Returns available entity types
@@ -350,9 +350,9 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <param name="entityTypeIds">optional, filter types using comma separated list (optional)</param>
-        /// <returns>Task of ApiResponse (List&lt;EntityTypeModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<EntityTypeModel>>> GetAllEntityTypesAsyncWithHttpInfo (string entityTypeIds = null);
+        /// <param name="entityTypeIds">optional, filter types using comma separated list(optional)</param>
+        /// <returns>Task of ApiResponse(List&lt;EntityTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<EntityTypeModel>>> GetAllEntityTypesAsyncWithHttpInfo(string entityTypeIds = null);
         /// <summary>
         /// Returns available field sets
         /// </summary>
@@ -361,7 +361,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;FieldSetModel&gt;</returns>
-        System.Threading.Tasks.Task<List<FieldSetModel>> GetAllFieldSetsAsync ();
+        System.Threading.Tasks.Task<List<FieldSetModel>> GetAllFieldSetsAsync();
 
         /// <summary>
         /// Returns available field sets
@@ -370,8 +370,8 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;FieldSetModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<FieldSetModel>>> GetAllFieldSetsAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse(List&lt;FieldSetModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<FieldSetModel>>> GetAllFieldSetsAsyncWithHttpInfo();
         /// <summary>
         /// Returns available languages
         /// </summary>
@@ -380,7 +380,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;LanguageModel&gt;</returns>
-        System.Threading.Tasks.Task<List<LanguageModel>> GetAllLanguagesAsync ();
+        System.Threading.Tasks.Task<List<LanguageModel>> GetAllLanguagesAsync();
 
         /// <summary>
         /// Returns available languages
@@ -389,8 +389,8 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;LanguageModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<LanguageModel>>> GetAllLanguagesAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse(List&lt;LanguageModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<LanguageModel>>> GetAllLanguagesAsyncWithHttpInfo();
         /// <summary>
         /// Returns all specification templates
         /// </summary>
@@ -399,7 +399,7 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <returns>Task of List&lt;EntitySummaryModel&gt;</returns>
-        System.Threading.Tasks.Task<List<EntitySummaryModel>> GetAllSpecificationTemplatesAsync ();
+        System.Threading.Tasks.Task<List<EntitySummaryModel>> GetAllSpecificationTemplatesAsync();
 
         /// <summary>
         /// Returns all specification templates
@@ -408,8 +408,8 @@ namespace InRiver.Rest.Lib.Api
         /// 
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
-        /// <returns>Task of ApiResponse (List&lt;EntitySummaryModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<EntitySummaryModel>>> GetAllSpecificationTemplatesAsyncWithHttpInfo ();
+        /// <returns>Task of ApiResponse(List&lt;EntitySummaryModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<EntitySummaryModel>>> GetAllSpecificationTemplatesAsyncWithHttpInfo();
         /// <summary>
         /// Get CVL value
         /// </summary>
@@ -420,7 +420,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
         /// <returns>Task of CVLValueModel</returns>
-        System.Threading.Tasks.Task<CVLValueModel> GetCvlValueAsync (string cvlId, string key);
+        System.Threading.Tasks.Task<CVLValueModel> GetCvlValueAsync(string cvlId, string key);
 
         /// <summary>
         /// Get CVL value
@@ -431,8 +431,8 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="cvlId"></param>
         /// <param name="key">CVL value key</param>
-        /// <returns>Task of ApiResponse (CVLValueModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> GetCvlValueAsyncWithHttpInfo (string cvlId, string key);
+        /// <returns>Task of ApiResponse(CVLValueModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> GetCvlValueAsyncWithHttpInfo(string cvlId, string key);
         /// <summary>
         /// Returns field types for specification template
         /// </summary>
@@ -442,7 +442,7 @@ namespace InRiver.Rest.Lib.Api
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
         /// <returns>Task of List&lt;SpecificationFieldTypeModel&gt;</returns>
-        System.Threading.Tasks.Task<List<SpecificationFieldTypeModel>> GetSpecificationTemplatesieldsAsync (int? templateId);
+        System.Threading.Tasks.Task<List<SpecificationFieldTypeModel>> GetSpecificationTemplatesieldsAsync(int? templateId);
 
         /// <summary>
         /// Returns field types for specification template
@@ -452,8 +452,8 @@ namespace InRiver.Rest.Lib.Api
         /// </remarks>
         /// <exception cref="ApiException">Thrown when fails to make API call</exception>
         /// <param name="templateId"></param>
-        /// <returns>Task of ApiResponse (List&lt;SpecificationFieldTypeModel&gt;)</returns>
-        System.Threading.Tasks.Task<ApiResponse<List<SpecificationFieldTypeModel>>> GetSpecificationTemplatesieldsAsyncWithHttpInfo (int? templateId);
+        /// <returns>Task of ApiResponse(List&lt;SpecificationFieldTypeModel&gt;)</returns>
+        System.Threading.Tasks.Task<ApiResponse<List<SpecificationFieldTypeModel>>> GetSpecificationTemplatesieldsAsyncWithHttpInfo(int? templateId);
         /// <summary>
         /// Update CVL value
         /// </summary>
@@ -465,7 +465,7 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
         /// <returns>Task of CVLValueModel</returns>
-        System.Threading.Tasks.Task<CVLValueModel> UpdateCvlValueAsync (string cvlId, string key, CVLValueModel cvlValueModel);
+        System.Threading.Tasks.Task<CVLValueModel> UpdateCvlValueAsync(string cvlId, string key, CVLValueModel cvlValueModel);
 
         /// <summary>
         /// Update CVL value
@@ -477,8 +477,8 @@ namespace InRiver.Rest.Lib.Api
         /// <param name="cvlId"></param>
         /// <param name="key"></param>
         /// <param name="cvlValueModel"></param>
-        /// <returns>Task of ApiResponse (CVLValueModel)</returns>
-        System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> UpdateCvlValueAsyncWithHttpInfo (string cvlId, string key, CVLValueModel cvlValueModel);
+        /// <returns>Task of ApiResponse(CVLValueModel)</returns>
+        System.Threading.Tasks.Task<ApiResponse<CVLValueModel>> UpdateCvlValueAsyncWithHttpInfo(string cvlId, string key, CVLValueModel cvlValueModel);
         #endregion Asynchronous Operations
     }
 }

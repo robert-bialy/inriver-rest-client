@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -18,11 +17,11 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="id">id.</param>
         /// <param name="parentId">parentId.</param>
         /// <param name="dataType">dataType.</param>
-        public CVLModel(string id = default(string), string parentId = default(string), string dataType = default(string))
+        public CVLModel(string id = default, string parentId = default, string dataType = default)
         {
-            this.Id = id;
-            this.ParentId = parentId;
-            this.DataType = dataType;
+            Id = id;
+            ParentId = parentId;
+            DataType = dataType;
         }
         
         /// <summary>
@@ -70,11 +69,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as CVLModel);
+            return Equals(input as CVLModel);
         }
 
         /// <summary>
@@ -84,24 +83,24 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(CVLModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.ParentId == input.ParentId ||
-                    (this.ParentId != null &&
-                    this.ParentId.Equals(input.ParentId))
+               (
+                    ParentId == input.ParentId ||
+                   (ParentId != null &&
+                    ParentId.Equals(input.ParentId))
                 ) && 
-                (
-                    this.DataType == input.DataType ||
-                    (this.DataType != null &&
-                    this.DataType.Equals(input.DataType))
+               (
+                    DataType == input.DataType ||
+                   (DataType != null &&
+                    DataType.Equals(input.DataType))
                 );
         }
 
@@ -114,12 +113,12 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.ParentId != null)
-                    hashCode = hashCode * 59 + this.ParentId.GetHashCode();
-                if (this.DataType != null)
-                    hashCode = hashCode * 59 + this.DataType.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(ParentId != null)
+                    hashCode = hashCode * 59 + ParentId.GetHashCode();
+                if(DataType != null)
+                    hashCode = hashCode * 59 + DataType.GetHashCode();
                 return hashCode;
             }
         }

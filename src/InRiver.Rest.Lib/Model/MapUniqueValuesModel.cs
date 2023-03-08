@@ -22,27 +22,27 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="MapUniqueValuesModel" /> class.
         /// </summary>
-        /// <param name="fieldTypeId">fieldTypeId (required).</param>
-        /// <param name="uniqueValues">uniqueValues (required).</param>
-        public MapUniqueValuesModel(string fieldTypeId = default(string), List<Object> uniqueValues = default(List<Object>))
+        /// <param name="fieldTypeId">fieldTypeId(required).</param>
+        /// <param name="uniqueValues">uniqueValues(required).</param>
+        public MapUniqueValuesModel(string fieldTypeId = default, List<object> uniqueValues = default(List<object>))
         {
-            // to ensure "fieldTypeId" is required (not null)
-            if (fieldTypeId == null)
+            // to ensure "fieldTypeId" is required(not null)
+            if(fieldTypeId == null)
             {
                 throw new InvalidDataException("fieldTypeId is a required property for MapUniqueValuesModel and cannot be null");
             }
             else
             {
-                this.FieldTypeId = fieldTypeId;
+                FieldTypeId = fieldTypeId;
             }
-            // to ensure "uniqueValues" is required (not null)
-            if (uniqueValues == null)
+            // to ensure "uniqueValues" is required(not null)
+            if(uniqueValues == null)
             {
                 throw new InvalidDataException("uniqueValues is a required property for MapUniqueValuesModel and cannot be null");
             }
             else
             {
-                this.UniqueValues = uniqueValues;
+                UniqueValues = uniqueValues;
             }
         }
         
@@ -56,7 +56,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets UniqueValues
         /// </summary>
         [DataMember(Name="uniqueValues", EmitDefaultValue=false)]
-        public List<Object> UniqueValues { get; set; }
+        public List<object> UniqueValues { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -84,11 +84,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as MapUniqueValuesModel);
+            return Equals(input as MapUniqueValuesModel);
         }
 
         /// <summary>
@@ -98,19 +98,19 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(MapUniqueValuesModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.FieldTypeId == input.FieldTypeId ||
-                    (this.FieldTypeId != null &&
-                    this.FieldTypeId.Equals(input.FieldTypeId))
+               (
+                    FieldTypeId == input.FieldTypeId ||
+                   (FieldTypeId != null &&
+                    FieldTypeId.Equals(input.FieldTypeId))
                 ) && 
-                (
-                    this.UniqueValues == input.UniqueValues ||
-                    this.UniqueValues != null &&
-                    this.UniqueValues.SequenceEqual(input.UniqueValues)
+               (
+                    UniqueValues == input.UniqueValues ||
+                    UniqueValues != null &&
+                    UniqueValues.SequenceEqual(input.UniqueValues)
                 );
         }
 
@@ -123,10 +123,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.FieldTypeId != null)
-                    hashCode = hashCode * 59 + this.FieldTypeId.GetHashCode();
-                if (this.UniqueValues != null)
-                    hashCode = hashCode * 59 + this.UniqueValues.GetHashCode();
+                if(FieldTypeId != null)
+                    hashCode = hashCode * 59 + FieldTypeId.GetHashCode();
+                if(UniqueValues != null)
+                    hashCode = hashCode * 59 + UniqueValues.GetHashCode();
                 return hashCode;
             }
         }

@@ -21,20 +21,20 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Initializes a new instance of the <see cref="SpecificationValueModel" /> class.
         /// </summary>
-        /// <param name="specificationFieldTypeId">specificationFieldTypeId (required).</param>
+        /// <param name="specificationFieldTypeId">specificationFieldTypeId(required).</param>
         /// <param name="value">value.</param>
-        public SpecificationValueModel(string specificationFieldTypeId = default(string), Object value = default(Object))
+        public SpecificationValueModel(string specificationFieldTypeId = default, object value = default(object))
         {
-            // to ensure "specificationFieldTypeId" is required (not null)
-            if (specificationFieldTypeId == null)
+            // to ensure "specificationFieldTypeId" is required(not null)
+            if(specificationFieldTypeId == null)
             {
                 throw new InvalidDataException("specificationFieldTypeId is a required property for SpecificationValueModel and cannot be null");
             }
             else
             {
-                this.SpecificationFieldTypeId = specificationFieldTypeId;
+                SpecificationFieldTypeId = specificationFieldTypeId;
             }
-            this.Value = value;
+            Value = value;
         }
         
         /// <summary>
@@ -47,7 +47,7 @@ namespace InRiver.Rest.Lib.Model
         /// Gets or Sets Value
         /// </summary>
         [DataMember(Name="value", EmitDefaultValue=false)]
-        public Object Value { get; set; }
+        public object Value { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -75,11 +75,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as SpecificationValueModel);
+            return Equals(input as SpecificationValueModel);
         }
 
         /// <summary>
@@ -89,19 +89,19 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(SpecificationValueModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.SpecificationFieldTypeId == input.SpecificationFieldTypeId ||
-                    (this.SpecificationFieldTypeId != null &&
-                    this.SpecificationFieldTypeId.Equals(input.SpecificationFieldTypeId))
+               (
+                    SpecificationFieldTypeId == input.SpecificationFieldTypeId ||
+                   (SpecificationFieldTypeId != null &&
+                    SpecificationFieldTypeId.Equals(input.SpecificationFieldTypeId))
                 ) && 
-                (
-                    this.Value == input.Value ||
-                    (this.Value != null &&
-                    this.Value.Equals(input.Value))
+               (
+                    Value == input.Value ||
+                   (Value != null &&
+                    Value.Equals(input.Value))
                 );
         }
 
@@ -114,10 +114,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.SpecificationFieldTypeId != null)
-                    hashCode = hashCode * 59 + this.SpecificationFieldTypeId.GetHashCode();
-                if (this.Value != null)
-                    hashCode = hashCode * 59 + this.Value.GetHashCode();
+                if(SpecificationFieldTypeId != null)
+                    hashCode = hashCode * 59 + SpecificationFieldTypeId.GetHashCode();
+                if(Value != null)
+                    hashCode = hashCode * 59 + Value.GetHashCode();
                 return hashCode;
             }
         }

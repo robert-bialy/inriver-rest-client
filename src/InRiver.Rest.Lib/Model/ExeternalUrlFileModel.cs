@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -17,10 +16,10 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="url">url.</param>
         /// <param name="overrideUrlFileName">overrideUrlFileName.</param>
-        public ExeternalUrlFileModel(string url = default(string), string overrideUrlFileName = default(string))
+        public ExeternalUrlFileModel(string url = default, string overrideUrlFileName = default)
         {
-            this.Url = url;
-            this.OverrideUrlFileName = overrideUrlFileName;
+            Url = url;
+            OverrideUrlFileName = overrideUrlFileName;
         }
         
         /// <summary>
@@ -61,11 +60,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ExeternalUrlFileModel);
+            return Equals(input as ExeternalUrlFileModel);
         }
 
         /// <summary>
@@ -75,19 +74,19 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ExeternalUrlFileModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Url == input.Url ||
-                    (this.Url != null &&
-                    this.Url.Equals(input.Url))
+               (
+                    Url == input.Url ||
+                   (Url != null &&
+                    Url.Equals(input.Url))
                 ) && 
-                (
-                    this.OverrideUrlFileName == input.OverrideUrlFileName ||
-                    (this.OverrideUrlFileName != null &&
-                    this.OverrideUrlFileName.Equals(input.OverrideUrlFileName))
+               (
+                    OverrideUrlFileName == input.OverrideUrlFileName ||
+                   (OverrideUrlFileName != null &&
+                    OverrideUrlFileName.Equals(input.OverrideUrlFileName))
                 );
         }
 
@@ -100,10 +99,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Url != null)
-                    hashCode = hashCode * 59 + this.Url.GetHashCode();
-                if (this.OverrideUrlFileName != null)
-                    hashCode = hashCode * 59 + this.OverrideUrlFileName.GetHashCode();
+                if(Url != null)
+                    hashCode = hashCode * 59 + Url.GetHashCode();
+                if(OverrideUrlFileName != null)
+                    hashCode = hashCode * 59 + OverrideUrlFileName.GetHashCode();
                 return hashCode;
             }
         }

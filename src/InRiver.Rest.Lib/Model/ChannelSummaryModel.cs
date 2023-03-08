@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -22,15 +21,15 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="createdDate">createdDate.</param>
         /// <param name="modifiedDate">modifiedDate.</param>
         /// <param name="isPublished">isPublished.</param>
-        public ChannelSummaryModel(int? id = default(int?), string displayName = default(string), string displayDescription = default(string), string entityTypeId = default(string), string createdDate = default(string), string modifiedDate = default(string), bool? isPublished = default(bool?))
+        public ChannelSummaryModel(int? id = default(int?), string displayName = default, string displayDescription = default, string entityTypeId = default, string createdDate = default, string modifiedDate = default, bool? isPublished = default(bool?))
         {
-            this.Id = id;
-            this.DisplayName = displayName;
-            this.DisplayDescription = displayDescription;
-            this.EntityTypeId = entityTypeId;
-            this.CreatedDate = createdDate;
-            this.ModifiedDate = modifiedDate;
-            this.IsPublished = isPublished;
+            Id = id;
+            DisplayName = displayName;
+            DisplayDescription = displayDescription;
+            EntityTypeId = entityTypeId;
+            CreatedDate = createdDate;
+            ModifiedDate = modifiedDate;
+            IsPublished = isPublished;
         }
         
         /// <summary>
@@ -106,11 +105,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as ChannelSummaryModel);
+            return Equals(input as ChannelSummaryModel);
         }
 
         /// <summary>
@@ -120,44 +119,44 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(ChannelSummaryModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.DisplayName == input.DisplayName ||
-                    (this.DisplayName != null &&
-                    this.DisplayName.Equals(input.DisplayName))
+               (
+                    DisplayName == input.DisplayName ||
+                   (DisplayName != null &&
+                    DisplayName.Equals(input.DisplayName))
                 ) && 
-                (
-                    this.DisplayDescription == input.DisplayDescription ||
-                    (this.DisplayDescription != null &&
-                    this.DisplayDescription.Equals(input.DisplayDescription))
+               (
+                    DisplayDescription == input.DisplayDescription ||
+                   (DisplayDescription != null &&
+                    DisplayDescription.Equals(input.DisplayDescription))
                 ) && 
-                (
-                    this.EntityTypeId == input.EntityTypeId ||
-                    (this.EntityTypeId != null &&
-                    this.EntityTypeId.Equals(input.EntityTypeId))
+               (
+                    EntityTypeId == input.EntityTypeId ||
+                   (EntityTypeId != null &&
+                    EntityTypeId.Equals(input.EntityTypeId))
                 ) && 
-                (
-                    this.CreatedDate == input.CreatedDate ||
-                    (this.CreatedDate != null &&
-                    this.CreatedDate.Equals(input.CreatedDate))
+               (
+                    CreatedDate == input.CreatedDate ||
+                   (CreatedDate != null &&
+                    CreatedDate.Equals(input.CreatedDate))
                 ) && 
-                (
-                    this.ModifiedDate == input.ModifiedDate ||
-                    (this.ModifiedDate != null &&
-                    this.ModifiedDate.Equals(input.ModifiedDate))
+               (
+                    ModifiedDate == input.ModifiedDate ||
+                   (ModifiedDate != null &&
+                    ModifiedDate.Equals(input.ModifiedDate))
                 ) && 
-                (
-                    this.IsPublished == input.IsPublished ||
-                    (this.IsPublished != null &&
-                    this.IsPublished.Equals(input.IsPublished))
+               (
+                    IsPublished == input.IsPublished ||
+                   (IsPublished != null &&
+                    IsPublished.Equals(input.IsPublished))
                 );
         }
 
@@ -170,20 +169,20 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.DisplayName != null)
-                    hashCode = hashCode * 59 + this.DisplayName.GetHashCode();
-                if (this.DisplayDescription != null)
-                    hashCode = hashCode * 59 + this.DisplayDescription.GetHashCode();
-                if (this.EntityTypeId != null)
-                    hashCode = hashCode * 59 + this.EntityTypeId.GetHashCode();
-                if (this.CreatedDate != null)
-                    hashCode = hashCode * 59 + this.CreatedDate.GetHashCode();
-                if (this.ModifiedDate != null)
-                    hashCode = hashCode * 59 + this.ModifiedDate.GetHashCode();
-                if (this.IsPublished != null)
-                    hashCode = hashCode * 59 + this.IsPublished.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(DisplayName != null)
+                    hashCode = hashCode * 59 + DisplayName.GetHashCode();
+                if(DisplayDescription != null)
+                    hashCode = hashCode * 59 + DisplayDescription.GetHashCode();
+                if(EntityTypeId != null)
+                    hashCode = hashCode * 59 + EntityTypeId.GetHashCode();
+                if(CreatedDate != null)
+                    hashCode = hashCode * 59 + CreatedDate.GetHashCode();
+                if(ModifiedDate != null)
+                    hashCode = hashCode * 59 + ModifiedDate.GetHashCode();
+                if(IsPublished != null)
+                    hashCode = hashCode * 59 + IsPublished.GetHashCode();
                 return hashCode;
             }
         }

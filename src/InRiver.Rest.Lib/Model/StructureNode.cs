@@ -18,10 +18,10 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="path">path.</param>
         /// <param name="nodes">nodes.</param>
-        public StructureNode(string path = default(string), Dictionary<string, StructureNode> nodes = default(Dictionary<string, StructureNode>))
+        public StructureNode(string path = default, Dictionary<string, StructureNode> nodes = default(Dictionary<string, StructureNode>))
         {
-            this.Path = path;
-            this.Nodes = nodes;
+            Path = path;
+            Nodes = nodes;
         }
         
         /// <summary>
@@ -62,11 +62,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as StructureNode);
+            return Equals(input as StructureNode);
         }
 
         /// <summary>
@@ -76,19 +76,19 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(StructureNode input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Path == input.Path ||
-                    (this.Path != null &&
-                    this.Path.Equals(input.Path))
+               (
+                    Path == input.Path ||
+                   (Path != null &&
+                    Path.Equals(input.Path))
                 ) && 
-                (
-                    this.Nodes == input.Nodes ||
-                    this.Nodes != null &&
-                    this.Nodes.SequenceEqual(input.Nodes)
+               (
+                    Nodes == input.Nodes ||
+                    Nodes != null &&
+                    Nodes.SequenceEqual(input.Nodes)
                 );
         }
 
@@ -101,10 +101,10 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Path != null)
-                    hashCode = hashCode * 59 + this.Path.GetHashCode();
-                if (this.Nodes != null)
-                    hashCode = hashCode * 59 + this.Nodes.GetHashCode();
+                if(Path != null)
+                    hashCode = hashCode * 59 + Path.GetHashCode();
+                if(Nodes != null)
+                    hashCode = hashCode * 59 + Nodes.GetHashCode();
                 return hashCode;
             }
         }

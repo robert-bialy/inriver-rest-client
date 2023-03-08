@@ -3,12 +3,29 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http;
 using InRiver.Rest.Lib.Api;
+using InRiver.Rest.Lib.Services;
 
 namespace InRiver.Rest.Lib.Client
 {
-    public class InRiverRestClient : IinRiverClient
+    public sealed class InRiverRestClient : IinRiverClient
     {
+        #region Private Members
+
         private readonly Configuration _configuration;
+        private readonly ISerializer _serializer = new Serializer();
+        private readonly object _lock = new object();
+        private IApiClient _apiClient;
+        private IChannelApi _channelApi;
+        private IEntityApi _entityApi;
+        private ILinkApi _linkApi;
+        private IMediaApi _mediaApi;
+        private IModelApi _modelApi;
+        private IQueryApi _queryApi;
+        private ISyndicateApi _syndicateApi;
+        private ISystemApi _systemApi;
+        private IWorkareaApi _workareaApi;
+
+        #endregion
 
         /// <summary>
         /// Initializes a new instance of the <see cref="InRiverRestClient" /> class.
@@ -17,9 +34,9 @@ namespace InRiver.Rest.Lib.Client
         /// <param name="basePath">REST API's endpoint.</param>
         public InRiverRestClient(string apiKey, string basePath = "https://apieuw.productmarketingcloud.com")
         {
-            if (string.IsNullOrWhiteSpace(apiKey))
+            if(string.IsNullOrWhiteSpace(apiKey))
                 throw new InvalidDataException("Api key is required and cannot be null or empty");
-            if (string.IsNullOrWhiteSpace(basePath))
+            if(string.IsNullOrWhiteSpace(basePath))
                 throw new InvalidDataException("Base path is required and cannot be null or empty");
             _configuration = new Configuration
             {
@@ -41,7 +58,7 @@ namespace InRiver.Rest.Lib.Client
             configuration.Invoke(_configuration);
             if(string.IsNullOrWhiteSpace(_configuration.BasePath))
                 throw new InvalidDataException("Base path is required and cannot be null or empty");
-            if (_configuration.DefaultHeader == null || !_configuration.DefaultHeader.ContainsKey("X-inRiver-APIKey") || string.IsNullOrWhiteSpace(_configuration.DefaultHeader["X-inRiver-APIKey"]))
+            if(_configuration.DefaultHeader == null || !_configuration.DefaultHeader.ContainsKey("X-inRiver-APIKey") || string.IsNullOrWhiteSpace(_configuration.DefaultHeader["X-inRiver-APIKey"]))
                 throw new InvalidDataException("Api key is required and cannot be null or empty. Please include default X-inRiver-APIKey header.");
         }
 
@@ -70,30 +87,132 @@ namespace InRiver.Rest.Lib.Client
         public InRiverRestClient(
             string apiKey,
             string basePath,
-            HttpClient httpClient = null, 
-            Action<Configuration> configuration = null) 
+            HttpClient httpClient = null,
+            Action<Configuration> configuration = null)
             : this(apiKey, basePath)
         {
             _configuration.HttpClientOverride = httpClient;
             configuration?.Invoke(_configuration);
         }
 
-        public IChannelApi ChannelApi => new ChannelApi(_configuration);
+        public IChannelApi ChannelApi
+        {
+            get
+            {
+                if(_channelApi != null) return _channelApi;
+                lock(_lock)
+                {
+                    return _channelApi = new ChannelApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IEntityApi EntityApi => new EntityApi(_configuration);
+        public IEntityApi EntityApi
+        {
+            get
+            {
+                if(_entityApi != null) return _entityApi;
+                lock(_lock)
+                {
+                    return _entityApi = new EntityApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public ILinkApi LinkApi => new LinkApi(_configuration);
+        public ILinkApi LinkApi
+        {
+            get
+            {
+                if(_entityApi != null) return _linkApi;
+                lock(_lock)
+                {
+                    return _linkApi = new LinkApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IMediaApi MediaApi => new MediaApi(_configuration);
+        public IMediaApi MediaApi
+        {
+            get
+            {
+                if(_mediaApi != null) return _mediaApi;
+                lock(_lock)
+                {
+                    return _mediaApi = new MediaApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IModelApi ModelApi => new ModelApi(_configuration);
+        public IModelApi ModelApi
+        {
+            get 
+            {
+                if(_modelApi != null) return _modelApi;
+                lock(_lock)
+                {
+                    return _modelApi = new ModelApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IQueryApi QueryApi => new QueryApi(_configuration);
+        public IQueryApi QueryApi
+        {
+            get 
+            {
+                if(_queryApi != null) return _queryApi;
+                lock(_lock)
+                {
+                    return _queryApi = new QueryApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public ISyndicateApi SyndicateApi => new SyndicateApi(_configuration);
+        public ISyndicateApi SyndicateApi
+        {
+            get
+            {
+                if(_syndicateApi != null) return _syndicateApi;
+                lock(_lock)
+                {
+                    return _syndicateApi = new SyndicateApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public ISystemApi SystemApi => new SystemApi(_configuration);
+        public ISystemApi SystemApi
+        {
+            get
+            {
+                if(_systemApi != null) return _systemApi;
+                lock(_lock)
+                {
+                    return _systemApi = new SystemApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
 
-        public IWorkareaApi WorkareaApi => new WorkareaApi(_configuration);
+        public IWorkareaApi WorkareaApi
+        {
+            get
+            {
+                if(_workareaApi != null) return _workareaApi;
+                lock(_lock)
+                {
+                    return _workareaApi = new WorkareaApi(_serializer, ApiClient, _configuration);
+                }
+            }
+        }
+
+        private IApiClient ApiClient
+        {
+            get
+            {
+                if(_apiClient != null) return _apiClient;
+                lock(_lock)
+                {
+                    return _apiClient = new ApiClient(_configuration, new RestClientFactory(_configuration.HttpClientOverride));
+                }
+            }
+        }
     }
 }

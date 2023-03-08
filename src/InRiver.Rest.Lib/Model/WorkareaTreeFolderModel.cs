@@ -20,12 +20,12 @@ namespace InRiver.Rest.Lib.Model
         /// <param name="name">name.</param>
         /// <param name="isQuery">isQuery.</param>
         /// <param name="folders">folders.</param>
-        public WorkareaTreeFolderModel(string id = default(string), string name = default(string), bool? isQuery = default(bool?), List<WorkareaTreeFolderModel> folders = default(List<WorkareaTreeFolderModel>))
+        public WorkareaTreeFolderModel(string id = default, string name = default, bool? isQuery = default(bool?), List<WorkareaTreeFolderModel> folders = default(List<WorkareaTreeFolderModel>))
         {
-            this.Id = id;
-            this.Name = name;
-            this.IsQuery = isQuery;
-            this.Folders = folders;
+            Id = id;
+            Name = name;
+            IsQuery = isQuery;
+            Folders = folders;
         }
         
         /// <summary>
@@ -80,11 +80,11 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as WorkareaTreeFolderModel);
+            return Equals(input as WorkareaTreeFolderModel);
         }
 
         /// <summary>
@@ -94,29 +94,29 @@ namespace InRiver.Rest.Lib.Model
         /// <returns>Boolean</returns>
         public bool Equals(WorkareaTreeFolderModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.Id == input.Id ||
-                    (this.Id != null &&
-                    this.Id.Equals(input.Id))
+               (
+                    Id == input.Id ||
+                   (Id != null &&
+                    Id.Equals(input.Id))
                 ) && 
-                (
-                    this.Name == input.Name ||
-                    (this.Name != null &&
-                    this.Name.Equals(input.Name))
+               (
+                    Name == input.Name ||
+                   (Name != null &&
+                    Name.Equals(input.Name))
                 ) && 
-                (
-                    this.IsQuery == input.IsQuery ||
-                    (this.IsQuery != null &&
-                    this.IsQuery.Equals(input.IsQuery))
+               (
+                    IsQuery == input.IsQuery ||
+                   (IsQuery != null &&
+                    IsQuery.Equals(input.IsQuery))
                 ) && 
-                (
-                    this.Folders == input.Folders ||
-                    this.Folders != null &&
-                    this.Folders.SequenceEqual(input.Folders)
+               (
+                    Folders == input.Folders ||
+                    Folders != null &&
+                    Folders.SequenceEqual(input.Folders)
                 );
         }
 
@@ -129,14 +129,14 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.Id != null)
-                    hashCode = hashCode * 59 + this.Id.GetHashCode();
-                if (this.Name != null)
-                    hashCode = hashCode * 59 + this.Name.GetHashCode();
-                if (this.IsQuery != null)
-                    hashCode = hashCode * 59 + this.IsQuery.GetHashCode();
-                if (this.Folders != null)
-                    hashCode = hashCode * 59 + this.Folders.GetHashCode();
+                if(Id != null)
+                    hashCode = hashCode * 59 + Id.GetHashCode();
+                if(Name != null)
+                    hashCode = hashCode * 59 + Name.GetHashCode();
+                if(IsQuery != null)
+                    hashCode = hashCode * 59 + IsQuery.GetHashCode();
+                if(Folders != null)
+                    hashCode = hashCode * 59 + Folders.GetHashCode();
                 return hashCode;
             }
         }

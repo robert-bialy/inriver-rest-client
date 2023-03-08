@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.Runtime.Serialization;
 using System.Text;
 using Newtonsoft.Json;
@@ -7,7 +6,7 @@ using Newtonsoft.Json;
 namespace InRiver.Rest.Lib.Model
 {
     /// <summary>
-    /// FetchLinkObjectsModel
+    /// FetchLinkobjectsModel
     /// </summary>
     [DataContract]
     public class FetchLinkObjectsModel :  IEquatable<FetchLinkObjectsModel>
@@ -17,12 +16,12 @@ namespace InRiver.Rest.Lib.Model
         /// </summary>
         /// <param name="linkTypeIds">linkTypeIds.</param>
         /// <param name="objects">objects.</param>
-        /// <param name="linkEntityObjects">linkEntityObjects.</param>
-        public FetchLinkObjectsModel(string linkTypeIds = default(string), string objects = default(string), string linkEntityObjects = default(string))
+        /// <param name="linkEntityobjects">linkEntityobjects.</param>
+        public FetchLinkObjectsModel(string linkTypeIds = default, string objects = default, string linkEntityobjects = default)
         {
-            this.LinkTypeIds = linkTypeIds;
-            this.Objects = objects;
-            this.LinkEntityObjects = linkEntityObjects;
+            LinkTypeIds = linkTypeIds;
+            Objects = objects;
+            LinkEntityobjects = linkEntityobjects;
         }
         
         /// <summary>
@@ -32,16 +31,16 @@ namespace InRiver.Rest.Lib.Model
         public string LinkTypeIds { get; set; }
 
         /// <summary>
-        /// Gets or Sets Objects
+        /// Gets or Sets objects
         /// </summary>
         [DataMember(Name="objects", EmitDefaultValue=false)]
         public string Objects { get; set; }
 
         /// <summary>
-        /// Gets or Sets LinkEntityObjects
+        /// Gets or Sets LinkEntityobjects
         /// </summary>
-        [DataMember(Name="linkEntityObjects", EmitDefaultValue=false)]
-        public string LinkEntityObjects { get; set; }
+        [DataMember(Name="linkEntityobjects", EmitDefaultValue=false)]
+        public string LinkEntityobjects { get; set; }
 
         /// <summary>
         /// Returns the string presentation of the object
@@ -50,10 +49,10 @@ namespace InRiver.Rest.Lib.Model
         public override string ToString()
         {
             var sb = new StringBuilder();
-            sb.Append("class FetchLinkObjectsModel {\n");
+            sb.Append("class FetchLinkobjectsModel {\n");
             sb.Append("  LinkTypeIds: ").Append(LinkTypeIds).Append("\n");
-            sb.Append("  Objects: ").Append(Objects).Append("\n");
-            sb.Append("  LinkEntityObjects: ").Append(LinkEntityObjects).Append("\n");
+            sb.Append("  objects: ").Append(Objects).Append("\n");
+            sb.Append("  LinkEntityobjects: ").Append(LinkEntityobjects).Append("\n");
             sb.Append("}\n");
             return sb.ToString();
         }
@@ -70,38 +69,38 @@ namespace InRiver.Rest.Lib.Model
         /// <summary>
         /// Returns true if objects are equal
         /// </summary>
-        /// <param name="input">Object to be compared</param>
+        /// <param name="input">object to be compared</param>
         /// <returns>Boolean</returns>
         public override bool Equals(object input)
         {
-            return this.Equals(input as FetchLinkObjectsModel);
+            return Equals(input as FetchLinkObjectsModel);
         }
 
         /// <summary>
-        /// Returns true if FetchLinkObjectsModel instances are equal
+        /// Returns true if FetchLinkobjectsModel instances are equal
         /// </summary>
-        /// <param name="input">Instance of FetchLinkObjectsModel to be compared</param>
+        /// <param name="input">Instance of FetchLinkobjectsModel to be compared</param>
         /// <returns>Boolean</returns>
         public bool Equals(FetchLinkObjectsModel input)
         {
-            if (input == null)
+            if(input == null)
                 return false;
 
             return 
-                (
-                    this.LinkTypeIds == input.LinkTypeIds ||
-                    (this.LinkTypeIds != null &&
-                    this.LinkTypeIds.Equals(input.LinkTypeIds))
+               (
+                    LinkTypeIds == input.LinkTypeIds ||
+                   (LinkTypeIds != null &&
+                    LinkTypeIds.Equals(input.LinkTypeIds))
                 ) && 
-                (
-                    this.Objects == input.Objects ||
-                    (this.Objects != null &&
-                    this.Objects.Equals(input.Objects))
+               (
+                    Objects == input.Objects ||
+                   (Objects != null &&
+                     Objects.Equals(input.Objects))
                 ) && 
-                (
-                    this.LinkEntityObjects == input.LinkEntityObjects ||
-                    (this.LinkEntityObjects != null &&
-                    this.LinkEntityObjects.Equals(input.LinkEntityObjects))
+               (
+                    LinkEntityobjects == input.LinkEntityobjects ||
+                   (LinkEntityobjects != null &&
+                    LinkEntityobjects.Equals(input.LinkEntityobjects))
                 );
         }
 
@@ -114,12 +113,12 @@ namespace InRiver.Rest.Lib.Model
             unchecked // Overflow is fine, just wrap
             {
                 int hashCode = 41;
-                if (this.LinkTypeIds != null)
-                    hashCode = hashCode * 59 + this.LinkTypeIds.GetHashCode();
-                if (this.Objects != null)
-                    hashCode = hashCode * 59 + this.Objects.GetHashCode();
-                if (this.LinkEntityObjects != null)
-                    hashCode = hashCode * 59 + this.LinkEntityObjects.GetHashCode();
+                if(LinkTypeIds != null)
+                    hashCode = hashCode * 59 + LinkTypeIds.GetHashCode();
+                if(Objects != null)
+                    hashCode = hashCode * 59 + Objects.GetHashCode();
+                if(LinkEntityobjects != null)
+                    hashCode = hashCode * 59 + LinkEntityobjects.GetHashCode();
                 return hashCode;
             }
         }

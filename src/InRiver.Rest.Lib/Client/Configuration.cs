@@ -8,7 +8,7 @@ namespace InRiver.Rest.Lib.Client
     /// <summary>
     /// Represents a set of configuration settings
     /// </summary>
-    public class Configuration : IReadableConfiguration, ICloneable
+    public class Configuration : ICloneable
     {
         #region Constants
 
@@ -32,26 +32,6 @@ namespace InRiver.Rest.Lib.Client
         private static Configuration _globalConfiguration;
 
         /// <summary>
-        /// Default creation of exceptions for a given method name and response object
-        /// </summary>
-        public static readonly ExceptionFactory DefaultExceptionFactory = (methodName, response) =>
-        {
-            var status = (int)response.StatusCode;
-            if (status >= 400)
-            {
-                return new ApiException(status,
-                    $"Error calling {methodName}: {response.Content}",
-                    response.Content);
-            }
-            if (status == 0)
-            {
-                return new ApiException(status,
-                    $"Error calling {methodName}: {response.ErrorMessage}", response.ErrorMessage);
-            }
-            return null;
-        };
-
-        /// <summary>
         /// Gets or sets the default Configuration.
         /// </summary>
         /// <value>Configuration.</value>
@@ -60,7 +40,7 @@ namespace InRiver.Rest.Lib.Client
             get { return _globalConfiguration; }
             set
             {
-                lock (GlobalConfigSync)
+                lock(GlobalConfigSync)
                 {
                     _globalConfiguration = value;
                 }
@@ -71,11 +51,6 @@ namespace InRiver.Rest.Lib.Client
 
         #region Private Members
         private string _dateTimeFormat = ISO8601_DATETIME_FORMAT;
-
-        /// <summary>
-        /// HTTP client wrapper
-        /// </summary>
-        private ApiClient _apiClient = null;
         #endregion Private Members
 
         #region Constructors
@@ -101,18 +76,6 @@ namespace InRiver.Rest.Lib.Client
         #region Properties
 
         /// <summary>
-        /// Gets an instance of an ApiClient for this configuration
-        /// </summary>
-        public virtual ApiClient ApiClient
-        {
-            get
-            {
-                if (_apiClient == null) _apiClient = CreateApiClient();
-                return _apiClient;
-            }
-        }
-
-        /// <summary>
         /// Gets or sets the base path for API access.
         /// </summary>
         public virtual string BasePath
@@ -127,7 +90,7 @@ namespace InRiver.Rest.Lib.Client
         public virtual IDictionary<string, string> DefaultHeader { get; set; }
 
         /// <summary>
-        /// Gets or sets the HTTP timeout (milliseconds) of ApiClient. Default to 100000 milliseconds.
+        /// Gets or sets the HTTP timeout(milliseconds) of ApiClient. Default to 100000 milliseconds.
         /// </summary>
         public int Timeout
         {
@@ -154,7 +117,7 @@ namespace InRiver.Rest.Lib.Client
             get => _dateTimeFormat;
             set
             {
-                if (string.IsNullOrEmpty(value))
+                if(string.IsNullOrEmpty(value))
                 {
                     // Never allow a blank or null string, go back to the default
                     _dateTimeFormat = ISO8601_DATETIME_FORMAT;
@@ -183,20 +146,12 @@ namespace InRiver.Rest.Lib.Client
         {
             DefaultHeader[key] = value;
         }
-
-        /// <summary>
-        /// Creates a new <see cref="ApiClient" /> based on this <see cref="Configuration" /> instance.
-        /// </summary>
-        /// <returns>ApiClient</returns>
-        private ApiClient CreateApiClient()
-        {
-            return new ApiClient(BasePath, HttpClientOverride) { Configuration = this };
-        }
+        
         #endregion Methods
 
         public object Clone()
         {
-            return this.MemberwiseClone();
+            return MemberwiseClone();
         }
     }
 }
