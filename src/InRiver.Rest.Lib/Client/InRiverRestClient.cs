@@ -123,7 +123,7 @@ namespace InRiver.Rest.Lib.Client
         {
             get
             {
-                if(_entityApi != null) return _linkApi;
+                if(_linkApi != null) return _linkApi;
                 lock(_lock)
                 {
                     return _linkApi = new LinkApi(_serializer, ApiClient, _configuration);
