@@ -1,10 +1,9 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <LangVersion>preview</LangVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +17,11 @@
 
   <ItemGroup>
     <ProjectReference Include="..\InRiver.Rest.Lib\InRiver.Rest.Lib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\..\swagger.json" Link="swagger.json" CopyToOutputDirectory="PreserveNewest" />
+    <None Include="..\..\tools\operations.json" Link="operations.json" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
 
 </Project>

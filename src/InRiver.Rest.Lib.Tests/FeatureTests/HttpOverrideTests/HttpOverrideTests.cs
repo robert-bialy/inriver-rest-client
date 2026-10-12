@@ -23,7 +23,7 @@ namespace InRiver.Rest.Lib.Tests.FeatureTests.HttpOverrideTests
                 .ForPost()
                 .ForHttps()
                 .ForHost(host)
-                .ForPath("/api/v1.0.0/entities:createnew")
+                .ForPath("/api/v1.0.1/entities:createnew")
                 .Responds()
                 .WithStatus(HttpStatusCode.Created)
                 .RegisterWith(options);
@@ -50,7 +50,7 @@ namespace InRiver.Rest.Lib.Tests.FeatureTests.HttpOverrideTests
                 .ForPost()
                 .ForHttps()
                 .ForHost(host)
-                .ForPath("/api/v1.0.0/entities:createnew")
+                .ForPath("/api/v1.0.1/entities:createnew")
                 .Responds()
                 .WithStatus(HttpStatusCode.Created)
                 .RegisterWith(options);

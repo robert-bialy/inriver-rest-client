@@ -12,7 +12,7 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Models
             var modelTypes = Assembly
                 .Load("InRiver.Rest.Lib")
                 .GetTypes()
-                .Where(t => t.IsClass && t.Namespace != null && t.Namespace.StartsWith("InRiver.Rest.Lib.Model"));
+                .Where(t => t.IsPublic && t.IsClass && t.Namespace != null && t.Namespace.StartsWith("InRiver.Rest.Lib.Model"));
 
             return modelTypes;
         }
@@ -20,7 +20,7 @@ namespace InRiver.Rest.Lib.Tests.UnitTests.Models
         [TestCaseSource(nameof(TypesToTest))]
         public void AllModels_ShouldHaveDataContractAttribute(Type type)
         {
-            Attribute.IsDefined(type, typeof(DataContractAttribute));
+            Assert.That(Attribute.IsDefined(type, typeof(DataContractAttribute)), Is.True);
         }
     }
 }

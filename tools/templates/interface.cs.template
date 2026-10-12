@@ -1,0 +1,17 @@
+using System;
+using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
+using InRiver.Rest.Lib.Client;
+using InRiver.Rest.Lib.Model;
+
+namespace InRiver.Rest.Lib.Api
+{
+    /// <summary>Functions for the $tag API endpoints.</summary>
+    public interface I${tag}Api
+    {
+        Configuration Configuration { get; }
+
+$methods
+    }
+}

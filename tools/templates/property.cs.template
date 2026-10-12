@@ -1,0 +1,11 @@
+        public I${tag}Api ${tag}Api
+        {
+            get
+            {
+                lock(_lock)
+                {
+                    if(_disposed) throw new ObjectDisposedException(nameof(InRiverRestClient));
+                    return $field ?? ($field = new ${tag}Api(ApiClient, _configuration));
+                }
+            }
+        }
