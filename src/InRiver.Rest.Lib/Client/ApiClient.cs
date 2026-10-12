@@ -1,174 +1,95 @@
 using System;
 using System.Collections.Generic;
-using RestSharp;
+using System.Linq;
+using System.Net.Http;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using InRiver.Rest.Lib.Services;
 
 namespace InRiver.Rest.Lib.Client
 {
-    /// <summary>
-    /// API client is mainly responsible for making the HTTP call to the API backend.
-    /// </summary>
-    internal sealed class ApiClient : IApiClient
+    /// <summary>Shared HTTP transport. Caller-supplied clients remain caller-owned.</summary>
+    internal sealed class ApiClient : IDisposable
     {
-        private readonly IRestClientFactory _restClientFactory;
         private readonly Configuration _configuration;
+        private readonly Serializer _serializer;
+        private readonly HttpClient _httpClient;
+        private readonly bool _ownsHttpClient;
+        private bool _disposed;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="ApiClient" /> class
-        /// with default configuration.
-        /// </summary>
-        /// <param name="configuration"></param>
-        /// <param name="restClientFactory"></param>
-        public ApiClient(Configuration configuration, IRestClientFactory restClientFactory)
+        public ApiClient(Configuration configuration, Serializer serializer)
         {
             _configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
-            _restClientFactory = restClientFactory ?? throw new ArgumentNullException(nameof(restClientFactory));
+            _serializer = serializer ?? throw new ArgumentNullException(nameof(serializer));
+            _ownsHttpClient = configuration.HttpClientOverride == null;
+            _httpClient = configuration.HttpClientOverride ?? new HttpClient { Timeout = System.Threading.Timeout.InfiniteTimeSpan };
         }
 
-        // Creates and sets up a RestRequest prior to a call.
-        public RestRequest PrepareRequest(
-            string path,
-            Method method,
-            List<KeyValuePair<string, string>> queryParams,
-            object postBody,
-            IEnumerable<KeyValuePair<string, string>> headerParams,
-            Dictionary<string, string> formParams,
-            Dictionary<string, FileParameter> fileParams,
-            Dictionary<string, string> pathParams,
-            string contentType)
+        public ApiResponse<T> CallApi<T>(string path, HttpMethod method,
+            List<KeyValuePair<string, string>> queryParams, object postBody)
         {
-            var request = new RestRequest(path, method);
-
-            // add path parameter, if any
-            foreach(var param in pathParams)
-                request.AddParameter(param.Key, param.Value, ParameterType.UrlSegment);
-
-            // add header parameter, if any
-            foreach(var param in headerParams)
-                request.AddHeader(param.Key, param.Value);
-
-            // add query parameter, if any
-            foreach(var param in queryParams)
-                request.AddQueryParameter(param.Key, param.Value);
-
-            // add form parameter, if any
-            foreach(var param in formParams)
-                request.AddParameter(param.Key, param.Value);
-
-            // add file parameter, if any
-            foreach(var param in fileParams)
-            {
-                request.AddFile(param.Value.Name, param.Value.GetFile, param.Value.FileName, param.Value.ContentType);
-            }
-
-            if(postBody != null) // http body(model or byte[]) parameter
-            {
-                request.AddBody(postBody, contentType);
-            }
-
-            return request;
+            return CallApiAsync<T>(path, method, queryParams, postBody).GetAwaiter().GetResult();
         }
 
-        /// <summary>
-        /// Makes the HTTP request(Sync).
-        /// </summary>
-        /// <param name="path">URL path.</param>
-        /// <param name="method">HTTP method.</param>
-        /// <param name="queryParams">Query parameters.</param>
-        /// <param name="postBody">HTTP body(POST request).</param>
-        /// <param name="headerParams">Header parameters.</param>
-        /// <param name="formParams">Form parameters.</param>
-        /// <param name="fileParams">File parameters.</param>
-        /// <param name="pathParams">Path parameters.</param>
-        /// <param name="contentType">Content Type of the request</param>
-        /// <returns>object</returns>
-        public object CallApi(
-            string path,
-            Method method,
-            List<KeyValuePair<string, string>> queryParams,
-            object postBody,
-            Dictionary<string, string> headerParams,
-            Dictionary<string, string> formParams,
-            Dictionary<string, FileParameter> fileParams,
-            Dictionary<string, string> pathParams,
-            string contentType)
+        public async Task<ApiResponse<T>> CallApiAsync<T>(string path, HttpMethod method,
+            List<KeyValuePair<string, string>> queryParams, object postBody,
+            CancellationToken cancellationToken = default)
         {
-            var request = PrepareRequest(
-                path, method, queryParams, postBody, headerParams, formParams, fileParams,
-                pathParams, contentType);
+            if(_disposed) throw new ObjectDisposedException(nameof(ApiClient));
+            cancellationToken.ThrowIfCancellationRequested();
+            var url = _configuration.BasePath.TrimEnd('/') + "/" + path.TrimStart('/');
+            if(queryParams.Count > 0)
+                url += "?" + string.Join("&", queryParams.Select(p =>
+                    Uri.EscapeDataString(p.Key) + "=" + Uri.EscapeDataString(p.Value)));
 
-            // set timeout
-            var configuration = new RestClientOptions
+            using(var request = new HttpRequestMessage(method, url))
+            using(var timeout = CancellationTokenSource.CreateLinkedTokenSource(cancellationToken))
             {
-                Timeout = _configuration.Timeout,
-                BaseUrl = new Uri(_configuration.BasePath)
-            };
-            var restClient = _restClientFactory.Create(configuration);
-            var response = restClient.ExecuteAsync(request).Result;
-            HandleResponseError(path, response);
+                timeout.CancelAfter(_configuration.Timeout);
+                foreach(var header in _configuration.DefaultHeader)
+                    request.Headers.Add(header.Key, header.Value);
+                if(!request.Headers.Contains("Accept"))
+                    request.Headers.Accept.ParseAdd("application/json");
+                if(!string.IsNullOrEmpty(_configuration.UserAgent) && !request.Headers.Contains("User-Agent"))
+                    request.Headers.UserAgent.ParseAdd(_configuration.UserAgent);
+                if(postBody != null)
+                    request.Content = new StringContent(_serializer.Serialize(postBody), Encoding.UTF8, "application/json");
 
-            return response;
+                try
+                {
+                    // ResponseContentRead keeps both receiving headers and buffering the body cancellable on netstandard2.0.
+                    using(var response = await _httpClient.SendAsync(request, HttpCompletionOption.ResponseContentRead, timeout.Token).ConfigureAwait(false))
+                    {
+                        var content = response.Content == null ? null : await response.Content.ReadAsStringAsync().ConfigureAwait(false);
+                        timeout.Token.ThrowIfCancellationRequested();
+                        var status = (int)response.StatusCode;
+                        if(status >= 400)
+                            throw new ApiException(status, $"Error calling {path}: {content}", content);
+
+                        var headers = response.Headers.ToDictionary(h => h.Key, h => string.Join(",", h.Value), StringComparer.OrdinalIgnoreCase);
+                        if(response.Content != null)
+                            foreach(var header in response.Content.Headers)
+                                headers[header.Key] = string.Join(",", header.Value);
+
+                        var data = string.IsNullOrWhiteSpace(content) ? default(T) :
+                            (T)_serializer.Deserialize(content, typeof(T), response.Content?.Headers.ContentType?.MediaType);
+                        return new ApiResponse<T>(status, headers, data);
+                    }
+                }
+                catch(HttpRequestException error)
+                {
+                    throw new ApiException(0, $"Error calling {path}: {error.Message}", error.Message);
+                }
+            }
         }
 
-        /// <summary>
-        /// Makes the asynchronous HTTP request.
-        /// </summary>
-        /// <param name="path">URL path.</param>
-        /// <param name="method">HTTP method.</param>
-        /// <param name="queryParams">Query parameters.</param>
-        /// <param name="postBody">HTTP body(POST request).</param>
-        /// <param name="headerParams">Header parameters.</param>
-        /// <param name="formParams">Form parameters.</param>
-        /// <param name="fileParams">File parameters.</param>
-        /// <param name="pathParams">Path parameters.</param>
-        /// <param name="contentType">Content type.</param>
-        /// <returns>The Task instance.</returns>
-        public async System.Threading.Tasks.Task<object> CallApiAsync(
-            string path,
-            Method method,
-            List<KeyValuePair<string, string>> queryParams,
-            object postBody,
-            Dictionary<string, string> headerParams,
-            Dictionary<string, string> formParams,
-            Dictionary<string, FileParameter> fileParams,
-            Dictionary<string, string> pathParams,
-            string contentType)
+        public void Dispose()
         {
-            var request = PrepareRequest(
-                path,
-                method,
-                queryParams,
-                postBody,
-                headerParams,
-                formParams,
-                fileParams,
-                pathParams,
-                contentType);
-            var configuration = new RestClientOptions
-            {
-                Timeout = _configuration.Timeout,
-                BaseUrl = new Uri(_configuration.BasePath)
-            };
-            var restClient = _restClientFactory.Create(configuration);
-            var response = await restClient.ExecuteAsync(request);
-            HandleResponseError(path, response);
-
-            return response;
-        }
-
-        private static void HandleResponseError(string path, RestResponseBase response)
-        {
-            var status = (int)response.StatusCode;
-            if (status >= 400)
-            {
-                throw new ApiException(status,
-                    $"Error calling {path}: {response.Content}",
-                    response.Content);
-            }
-            if (status == 0)
-            {
-                throw new ApiException(status,
-                    $"Error calling {path}: {response.ErrorMessage}", response.ErrorMessage);
-            }
+            if(_disposed) return;
+            _disposed = true;
+            if(_ownsHttpClient)
+                _httpClient.Dispose();
         }
     }
 }

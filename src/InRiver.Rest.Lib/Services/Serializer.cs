@@ -1,96 +1,43 @@
-﻿using System;
+using System;
 using InRiver.Rest.Lib.Client;
 using Newtonsoft.Json;
-using RestSharp;
 
 namespace InRiver.Rest.Lib.Services
 {
-    internal interface ISerializer
-    {
-        /// <summary>
-        /// Deserialize the JSON string into a proper object.
-        /// </summary>
-        /// <param name="response">The HTTP response.</param>
-        /// <param name="type">object type.</param>
-        /// <returns>object representation of the JSON string.</returns>
-        object Deserialize(RestResponse response, Type type);
-
-        /// <summary>
-        /// Serialize an input(model) into JSON string
-        /// </summary>
-        /// <param name="obj">object.</param>
-        /// <returns>JSON string.</returns>
-        string Serialize(object obj);
-    }
-
-    internal sealed class Serializer : ISerializer
+    internal sealed class Serializer
     {
         private readonly JsonSerializerSettings _serializerSettings = new JsonSerializerSettings
         {
-            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor
+            ConstructorHandling = ConstructorHandling.AllowNonPublicDefaultConstructor,
+            DateParseHandling = DateParseHandling.None
         };
 
-        /// <summary>
-        /// Deserialize the JSON string into a proper object.
-        /// </summary>
-        /// <param name="response">The HTTP response.</param>
-        /// <param name="type">object type.</param>
-        /// <returns>object representation of the JSON string.</returns>
-        public object Deserialize(RestResponse response, Type type)
+        public object Deserialize(string content, Type type, string mediaType = null)
         {
-            if(type == typeof(byte[])) // return byte array
-            {
-                return response.RawBytes;
-            }
-
-            if(type.Name.StartsWith("System.Nullable`1[[System.DateTime")) // return a datetime object
-            {
-                return DateTime.Parse(response.Content, null, System.Globalization.DateTimeStyles.RoundtripKind);
-            }
-
-            if(type == typeof(string) || type.Name.StartsWith("System.Nullable")) // return primitive type
-            {
-                return ConvertType(response.Content, type);
-            }
-
-            // at this point, it must be a model(json)
             try
             {
-                return JsonConvert.DeserializeObject(response.Content, type, _serializerSettings);
+                return JsonConvert.DeserializeObject(content, type, _serializerSettings);
             }
-            catch(Exception e)
+            catch(JsonException error)
             {
-                throw new ApiException(500, e.Message);
+                // The specification leaves several extension responses untyped and permits text/plain.
+                if(string.Equals(mediaType, "text/plain", StringComparison.OrdinalIgnoreCase) &&
+                    (type == typeof(object) || type == typeof(string)))
+                    return content;
+                throw new ApiException(500, error.Message, content);
             }
         }
 
-        /// <summary>
-        /// Serialize an input(model) into JSON string
-        /// </summary>
-        /// <param name="obj">object.</param>
-        /// <returns>JSON string.</returns>
         public string Serialize(object obj)
         {
             try
             {
-                return obj != null ? JsonConvert.SerializeObject(obj) : null;
+                return obj == null ? null : JsonConvert.SerializeObject(obj);
             }
-            catch(Exception e)
+            catch(JsonException error)
             {
-                throw new ApiException(500, e.Message);
+                throw new ApiException(500, error.Message);
             }
-        }
-
-
-        /// <summary>
-        /// Dynamically cast the object into target type.
-        /// </summary>
-        /// <param name="fromobject">object to be casted</param>
-        /// <param name="toobject">Target type</param>
-        /// <returns>Casted object</returns>
-        private static dynamic ConvertType(dynamic fromobject, Type toobject)
-        {
-            return Convert.ChangeType(fromobject, toobject);
         }
     }
 }

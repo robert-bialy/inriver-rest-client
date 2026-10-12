@@ -57,7 +57,7 @@ namespace InRiver.Rest.Lib.Client
 
         static Configuration()
         {
-            _globalConfiguration = new GlobalConfiguration();
+            _globalConfiguration = new Configuration();
         }
 
         /// <summary>

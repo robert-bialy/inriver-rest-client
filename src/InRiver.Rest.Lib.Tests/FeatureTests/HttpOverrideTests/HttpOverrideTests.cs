@@ -1,8 +1,7 @@
 ﻿using System.Net;
-using FluentAssertions;
 using InRiver.Rest.Lib.Client;
 using InRiver.Rest.Lib.Model;
-using JustEat.HttpClientInterception;
+using InRiver.Rest.Lib.Tests.UnitTests.Client;
 using NUnit.Framework;
 
 namespace InRiver.Rest.Lib.Tests.FeatureTests.HttpOverrideTests
@@ -16,25 +15,19 @@ namespace InRiver.Rest.Lib.Tests.FeatureTests.HttpOverrideTests
             //Arrange
             const string host = "apieuw.productmarketingcloud.com";
             const string apiKey = "11";
-            var options = new HttpClientInterceptorOptions();
-            var builder = new HttpRequestInterceptionBuilder();
-            builder
-                .Requests()
-                .ForPost()
-                .ForHttps()
-                .ForHost(host)
-                .ForPath("/api/v1.0.0/entities:createnew")
-                .Responds()
-                .WithStatus(HttpStatusCode.Created)
-                .RegisterWith(options);
-            using var httpClient = options.CreateHttpClient();
+            using var httpClient = new HttpClient(new ApiClientTests.Handler((request, _) =>
+            {
+                Assert.That(request.Method, Is.EqualTo(HttpMethod.Post));
+                Assert.That(request.RequestUri, Is.EqualTo(new Uri($"https://{host}/api/v1.0.1/entities:createnew")));
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Created));
+            }));
             var client = new InRiverRestClient(apiKey, $"https://{host}", httpClient);
 
             //Act
             var response = await client.EntityApi.CreateEntityAsyncWithHttpInfo(new EntityCreationModel("Item"));
 
             //Assert
-            response.StatusCode.Should().Be((int)HttpStatusCode.Created);
+            Assert.That(response.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
         }
 
         [Test]
@@ -43,18 +36,12 @@ namespace InRiver.Rest.Lib.Tests.FeatureTests.HttpOverrideTests
             //Arrange
             const string host = "apieuw.productmarketingcloud.com";
             const string apiKey = "11";
-            var options = new HttpClientInterceptorOptions();
-            var builder = new HttpRequestInterceptionBuilder();
-            builder
-                .Requests()
-                .ForPost()
-                .ForHttps()
-                .ForHost(host)
-                .ForPath("/api/v1.0.0/entities:createnew")
-                .Responds()
-                .WithStatus(HttpStatusCode.Created)
-                .RegisterWith(options);
-            using var httpClient = options.CreateHttpClient();
+            using var httpClient = new HttpClient(new ApiClientTests.Handler((request, _) =>
+            {
+                Assert.That(request.Method, Is.EqualTo(HttpMethod.Post));
+                Assert.That(request.RequestUri, Is.EqualTo(new Uri($"https://{host}/api/v1.0.1/entities:createnew")));
+                return Task.FromResult(new HttpResponseMessage(HttpStatusCode.Created));
+            }));
             var client = new InRiverRestClient(apiKey, $"https://{host}", httpClient);
 
             //Act
@@ -63,8 +50,8 @@ namespace InRiver.Rest.Lib.Tests.FeatureTests.HttpOverrideTests
             await Task.WhenAll(request1, request2);
 
             //Assert
-            request1.Result.StatusCode.Should().Be((int)HttpStatusCode.Created);
-            request2.Result.StatusCode.Should().Be((int)HttpStatusCode.Created);
+            Assert.That(request1.Result.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
+            Assert.That(request2.Result.StatusCode, Is.EqualTo((int)HttpStatusCode.Created));
         }
     }
 }

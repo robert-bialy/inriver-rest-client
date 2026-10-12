@@ -1,0 +1,27 @@
+        #region $name
+$docs
+        public $result $name($args)
+        {
+            var localVarResponse = $info_name($call);$return_data
+        }
+
+$docs
+        public ApiResponse<$typ> $info_name($args)
+        {
+$setup
+            return _apiClient.CallApi<$typ>(localVarPath, HttpMethod.$verb, localVarQueryParams, localVarPostBody);
+        }
+
+$async_docs
+        public async $task ${name}Async($async_args)
+        {
+            var localVarResponse = await ${name}AsyncWithHttpInfo($async_call).ConfigureAwait(false);$return_data
+        }
+
+$async_docs
+        public async Task<ApiResponse<$typ>> ${name}AsyncWithHttpInfo($async_args)
+        {
+$setup
+            return await _apiClient.CallApiAsync<$typ>(localVarPath, HttpMethod.$verb, localVarQueryParams, localVarPostBody, cancellationToken).ConfigureAwait(false);
+        }
+        #endregion

@@ -1,32 +1,33 @@
-﻿using InRiver.Rest.Lib.Services;
+using InRiver.Rest.Lib.Client;
+using InRiver.Rest.Lib.Services;
+using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using RestSharp;
 
 namespace InRiver.Rest.Lib.Tests.UnitTests.Services
 {
     internal class SerializerTests
     {
-        private Serializer _serializer = null!;
-
-        [SetUp]
-        public void Setup()
+        [TestCase("42", typeof(int), 42)]
+        [TestCase("\"hello\"", typeof(string), "hello")]
+        [TestCase("true", typeof(bool), true)]
+        public void JsonScalars_AreDecoded(string json, Type type, object expected)
         {
-            _serializer = new Serializer();
+            Assert.That(new Serializer().Deserialize(json, type), Is.EqualTo(expected));
         }
 
         [Test]
-        public void Deserialize_WithByteType_ReturnsRawBytes()
+        public void DynamicValues_PreserveDateStringsAndNestedObjects()
         {
-            // Arrange
-            byte[] expected = { 1, 2, 3 };
-            var response = new RestResponse { RawBytes = expected };
-            var type = typeof(byte[]);
+            var result = (JObject)new Serializer().Deserialize("{\"date\":\"2026-01-01T00:00:00Z\",\"nested\":{\"en\":\"hello\"}}", typeof(object));
+            Assert.That(result["date"]!.Type, Is.EqualTo(JTokenType.String));
+            Assert.That((string?)result["nested"]!["en"], Is.EqualTo("hello"));
+        }
 
-            // Act
-            var result = _serializer.Deserialize(response, type);
-
-            // Assert
-            Assert.AreEqual(expected, result);
+        [Test]
+        public void UntypedPlainText_IsReturnedAsText()
+        {
+            Assert.That(new Serializer().Deserialize("extension passed", typeof(object), "text/plain"), Is.EqualTo("extension passed"));
+            Assert.Throws<ApiException>(() => new Serializer().Deserialize("invalid json", typeof(object), "application/json"));
         }
     }
 }

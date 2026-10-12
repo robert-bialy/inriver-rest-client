@@ -1,5 +1,4 @@
-﻿using FluentAssertions;
-using InRiver.Rest.Lib.Client;
+﻿using InRiver.Rest.Lib.Client;
 using NUnit.Framework;
 
 namespace InRiver.Rest.Lib.Tests.UnitTests
@@ -18,11 +17,11 @@ namespace InRiver.Rest.Lib.Tests.UnitTests
 
             if(shouldThrow)
             {
-                sut.Should().Throw<InvalidDataException>();
+                Assert.That(() => sut(), Throws.InstanceOf<InvalidDataException>());
             }
             else
             {
-                sut.Should().NotThrow<InvalidDataException>();
+                Assert.That(() => sut(), Throws.Nothing);
             }
         }
 
@@ -41,11 +40,11 @@ namespace InRiver.Rest.Lib.Tests.UnitTests
 
             if(shouldThrow)
             {
-                sut.Should().Throw<InvalidDataException>();
+                Assert.That(() => sut(), Throws.InstanceOf<InvalidDataException>());
             }
             else
             {
-                sut.Should().NotThrow<InvalidDataException>();
+                Assert.That(() => sut(), Throws.Nothing);
             }
         }
 
@@ -62,11 +61,11 @@ namespace InRiver.Rest.Lib.Tests.UnitTests
 
             if(shouldThrow)
             {
-                sut.Should().Throw<InvalidDataException>();
+                Assert.That(() => sut(), Throws.InstanceOf<InvalidDataException>());
             }
             else
             {
-                sut.Should().NotThrow<InvalidDataException>();
+                Assert.That(() => sut(), Throws.Nothing);
             }
         }
 
@@ -87,11 +86,11 @@ namespace InRiver.Rest.Lib.Tests.UnitTests
 
             if(shouldThrow)
             {
-                sut.Should().Throw<InvalidDataException>();
+                Assert.That(() => sut(), Throws.InstanceOf<InvalidDataException>());
             }
             else
             {
-                sut.Should().NotThrow<InvalidDataException>();
+                Assert.That(() => sut(), Throws.Nothing);
             }
         }
     }

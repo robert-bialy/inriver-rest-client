@@ -1,0 +1,1340 @@
+[
+  {
+    "tag": "Channel",
+    "method": "GetChannelsForEntityId",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels"
+  },
+  {
+    "tag": "Channel",
+    "method": "EntityTypes",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/entitytypes"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetByLinkEntityType",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/entitylist"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetByEntityType",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/entities/{entityId}/links"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelStructureEntities",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/entities/{entityId}/structureentities"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelNodes",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/nodes"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelNodeTree",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/nodetree"
+  },
+  {
+    "tag": "Channel",
+    "method": "ChannelContent",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/content/{path}"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelMessages",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/queue"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelMessageCount",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/queue/count"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelEntities",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/entityIds/{entityTypeId}"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetRebuildChannelState",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/rebuildchannelstate"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelSnapshotTag",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/{channelId}/snapshottag"
+  },
+  {
+    "tag": "Channel",
+    "method": "SetChannelSnapshotTag",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/channels/{channelId}/snapshottag"
+  },
+  {
+    "tag": "Channel",
+    "method": "GetChannelSnapshotTags",
+    "verb": "GET",
+    "path": "/api/v1.0.0/channels/snapshottags"
+  },
+  {
+    "tag": "DSA",
+    "method": "GetDSAInsights",
+    "verb": "POST",
+    "path": "/api/v1.0.0/dsa/insights"
+  },
+  {
+    "tag": "Entity",
+    "method": "FetchData",
+    "verb": "POST",
+    "path": "/api/v1.0.1/entities:fetchdata"
+  },
+  {
+    "tag": "Entity",
+    "method": "Upsert",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities:upsert"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetEntitySummary",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/summary"
+  },
+  {
+    "tag": "Entity",
+    "method": "DeleteEntity",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/entities/{entityId}"
+  },
+  {
+    "tag": "Entity",
+    "method": "CreateEntity",
+    "verb": "POST",
+    "path": "/api/v1.0.1/entities:createnew"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetEmptyEntity",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities:getempty"
+  },
+  {
+    "tag": "Entity",
+    "method": "MapUniqueValues",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities:mapuniquevalues"
+  },
+  {
+    "tag": "Entity",
+    "method": "CompletenessDetails",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/completenessdetails"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetFields",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/summary/fields"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetFieldValues",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/fieldvalues"
+  },
+  {
+    "tag": "Entity",
+    "method": "SetFieldValues",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/entities/{entityId}/fieldvalues"
+  },
+  {
+    "tag": "Entity",
+    "method": "FieldHistory",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/fieldvalues/{fieldTypeId}/revisions"
+  },
+  {
+    "tag": "Entity",
+    "method": "SetFieldSet",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/entities/{entityId}/fieldset"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetSpecificationSummary",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/summary/specification"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetSpecificationValues",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/specificationvalues"
+  },
+  {
+    "tag": "Entity",
+    "method": "UpdateSpecificationValues",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/entities/{entityId}/specificationvalues"
+  },
+  {
+    "tag": "Entity",
+    "method": "SetSpecificationTemplate",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/entities/{entityId}/specificationtemplate"
+  },
+  {
+    "tag": "Entity",
+    "method": "SetSegment",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/entities/{entityId}/segment"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetLinksForEntity",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/links"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetEntityBundle",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/linksandfields"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetAllMedia",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/media"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetMediaDetails",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/mediadetails"
+  },
+  {
+    "tag": "Entity",
+    "method": "UploadBase64File",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities/{entityId}/media:uploadbase64"
+  },
+  {
+    "tag": "Entity",
+    "method": "UploadMediaFromUrl",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities/{entityId}/media:uploadfromurl"
+  },
+  {
+    "tag": "Entity",
+    "method": "AddExternalUrl",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities/{entityId}/media:addexternalurl"
+  },
+  {
+    "tag": "Entity",
+    "method": "Comments",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/comments"
+  },
+  {
+    "tag": "Entity",
+    "method": "CreateComment",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities/{entityId}/comments"
+  },
+  {
+    "tag": "Entity",
+    "method": "DeleteComment",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/entities/{entityId}/comments/{commentId}"
+  },
+  {
+    "tag": "Entity",
+    "method": "StarredEntities",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/starred"
+  },
+  {
+    "tag": "Entity",
+    "method": "UpdateStarredEntities",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/entities/starred"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetAllSegments",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/segments"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetChannelIdsForEntity",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/channels"
+  },
+  {
+    "tag": "Entity",
+    "method": "CreateSnapshot",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetSnapshotByTag",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetWorkingCopyDiff",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots/workingcopydiff"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetSnapshot",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots/{snapshotId}"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetSnapshotHistoryFilters",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots/history/filters"
+  },
+  {
+    "tag": "Entity",
+    "method": "GetLatestSnapshot",
+    "verb": "GET",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots/latest"
+  },
+  {
+    "tag": "Entity",
+    "method": "CreateRestoredSnapshot",
+    "verb": "POST",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots/{snapshotId}/restorations"
+  },
+  {
+    "tag": "Entity",
+    "method": "SetSnapshotTags",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/entities/{entityId}/snapshots/{snapshotId}/tags"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetAllExtensions",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions"
+  },
+  {
+    "tag": "Extension",
+    "method": "AddExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetExtension",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteExtension",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/{extensionId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "SetExtensionApiKet",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/extensions/{extensionId}/apikey"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetExtensionSettings",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}/settings"
+  },
+  {
+    "tag": "Extension",
+    "method": "AddOrUpdateExtensionSetting",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/extensions/{extensionId}/settings"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetExtensionEventStats",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}/statistics"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteExtensionSetting",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/{extensionId}/settings/{key}"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetExtensionSetting",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}/settings/{key}"
+  },
+  {
+    "tag": "Extension",
+    "method": "ApplyDefaultExtensionSettings",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}/settings:applydefaults"
+  },
+  {
+    "tag": "Extension",
+    "method": "ReloadSettingsForExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}/settings:reload"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetExtensionStatus",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}/status"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetAllFilterTypes",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}/filtertypes"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetAllFilterConfigurations",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}/filterconfigurations"
+  },
+  {
+    "tag": "Extension",
+    "method": "UpdateFilterConfigurations",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/extensions/{extensionId}/filterconfigurations"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetFilterConfiguration",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}/filterconfigurations/{filterTypeName}"
+  },
+  {
+    "tag": "Extension",
+    "method": "EnableExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}:enable"
+  },
+  {
+    "tag": "Extension",
+    "method": "DisableExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}:disable"
+  },
+  {
+    "tag": "Extension",
+    "method": "ResumeExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}:resume"
+  },
+  {
+    "tag": "Extension",
+    "method": "PauseExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}:pause"
+  },
+  {
+    "tag": "Extension",
+    "method": "RunExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}:run"
+  },
+  {
+    "tag": "Extension",
+    "method": "TestExtension",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/{extensionId}:test"
+  },
+  {
+    "tag": "Extension",
+    "method": "ExtensionIsRunning",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/{extensionId}:isrunning"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetQueuedConnectMessages",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/queue"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteAllConnectMessages",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/queue"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetQueuedConnectMessagesCount",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/queue/count"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteQueuedConnectMessages",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/queue/{extensionId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetErrorConnectMessages",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/error"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteAllErrorConnectMessages",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/error"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteErrorConnectMessages",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/error/{extensionId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetQueuedConnectMessagesSummary",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/queue-summary"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetAllConnectorStates",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/connectorstates"
+  },
+  {
+    "tag": "Extension",
+    "method": "AddConnectorState",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensions/connectorstates"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteAllConnectorStates",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/connectorstates"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetAllConnectorStatesByConnectorId",
+    "verb": "GET",
+    "path": "/api/v1.0.0/extensions/connectorstates/{connectorId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "UpdateConnectorState",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/extensions/connectorstates/{id}"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteConnectorState",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/connectorstates/{id}"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeleteConnectorStateForConnector",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/extensions/connectorstates/connector/{connectorId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "RestartServicePut",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/extensionmanager:restartservice"
+  },
+  {
+    "tag": "Extension",
+    "method": "RestartService",
+    "verb": "POST",
+    "path": "/api/v1.0.0/extensionmanager:restartservice"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetAllPackages",
+    "verb": "GET",
+    "path": "/api/v1.0.0/packages"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetPackage",
+    "verb": "GET",
+    "path": "/api/v1.0.0/packages/{packageId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "DeletePackage",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/packages/{packageId}"
+  },
+  {
+    "tag": "Extension",
+    "method": "GetPackageContent",
+    "verb": "GET",
+    "path": "/api/v1.0.0/packages/{packageId}/content"
+  },
+  {
+    "tag": "Extension",
+    "method": "UploadPackage",
+    "verb": "POST",
+    "path": "/api/v1.0.0/packages:uploadbase64"
+  },
+  {
+    "tag": "Extension",
+    "method": "UpdatePackage",
+    "verb": "POST",
+    "path": "/api/v1.0.0/packages/{packageId}:uploadandreplacebase64"
+  },
+  {
+    "tag": "HtmlTemplate",
+    "method": "GetAllHtmlTemplates",
+    "verb": "GET",
+    "path": "/api/v1.0.0/HtmlTemplate"
+  },
+  {
+    "tag": "HtmlTemplate",
+    "method": "AddHtmlTemplate",
+    "verb": "POST",
+    "path": "/api/v1.0.0/HtmlTemplate"
+  },
+  {
+    "tag": "HtmlTemplate",
+    "method": "UpdateHtmlTemplate",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/HtmlTemplate"
+  },
+  {
+    "tag": "HtmlTemplate",
+    "method": "DeleteAllHtmlTemplates",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/HtmlTemplate"
+  },
+  {
+    "tag": "HtmlTemplate",
+    "method": "GetHtmlTemplate",
+    "verb": "GET",
+    "path": "/api/v1.0.0/HtmlTemplate/{id}"
+  },
+  {
+    "tag": "HtmlTemplate",
+    "method": "DeleteHtmlTemplate",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/HtmlTemplate/{id}"
+  },
+  {
+    "tag": "HtmlTemplate",
+    "method": "GetHtmlTemplatesByTypes",
+    "verb": "GET",
+    "path": "/api/v1.0.0/HtmlTemplate/type"
+  },
+  {
+    "tag": "Link",
+    "method": "GetLink",
+    "verb": "GET",
+    "path": "/api/v1.0.0/links/{linkId}"
+  },
+  {
+    "tag": "Link",
+    "method": "DeleteLink",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/links/{linkId}"
+  },
+  {
+    "tag": "Link",
+    "method": "CreateLink",
+    "verb": "POST",
+    "path": "/api/v1.0.0/links"
+  },
+  {
+    "tag": "Link",
+    "method": "UpdateLink",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/links/sortorder"
+  },
+  {
+    "tag": "Link",
+    "method": "DeleteAllLinksForLinkType",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/links/{entityId}/{linkTypeId}/{direction}"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "GetAllLinkRuleDefinitions",
+    "verb": "GET",
+    "path": "/api/v1.0.0/linkrules"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "DeleteLinkRules",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/linkrules"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "GetLinkRuleDefinitionsForEntity",
+    "verb": "GET",
+    "path": "/api/v1.0.0/linkrules/{entityId}"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "CreateLinkRuleDefinitionsForEntity",
+    "verb": "POST",
+    "path": "/api/v1.0.0/linkrules/{entityId}"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "UpdateLinkRuleDefinitionsForEntity",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/linkrules/{entityId}"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "DeleteLinkRuleDefinitionsForEntity",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/linkrules/{entityId}"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "DisableLinkRules",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/linkrules/disable"
+  },
+  {
+    "tag": "LinkRule",
+    "method": "EnableLinkRules",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/linkrules/enable"
+  },
+  {
+    "tag": "Logs",
+    "method": "GetLogs",
+    "verb": "GET",
+    "path": "/api/v1.0.0/logs"
+  },
+  {
+    "tag": "Media",
+    "method": "UploadBase64File",
+    "verb": "POST",
+    "path": "/api/v1.0.0/media:uploadbase64"
+  },
+  {
+    "tag": "Media",
+    "method": "UploadMediaFromUrl",
+    "verb": "POST",
+    "path": "/api/v1.0.0/media:uploadfromurl"
+  },
+  {
+    "tag": "Media",
+    "method": "AddExternalUrl",
+    "verb": "POST",
+    "path": "/api/v1.0.0/media:addexternalurl"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllEntityTypesV101",
+    "verb": "GET",
+    "path": "/api/v1.0.1/model/entitytypes"
+  },
+  {
+    "tag": "Model",
+    "method": "AddEntityType",
+    "verb": "POST",
+    "path": "/api/v1.0.1/model/entitytypes"
+  },
+  {
+    "tag": "Model",
+    "method": "GetEntityType",
+    "verb": "GET",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "UpdateEntityType",
+    "verb": "PUT",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteEntityType",
+    "verb": "DELETE",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetEntityTypeExpressions",
+    "verb": "GET",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/expressions"
+  },
+  {
+    "tag": "Model",
+    "method": "SetEntityTypeExpressions",
+    "verb": "PUT",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/expressions"
+  },
+  {
+    "tag": "Model",
+    "method": "GetUnusedFieldTypes",
+    "verb": "GET",
+    "path": "/api/v1.0.1/model/unusedfieldtypes"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllFieldTypesForEntityType",
+    "verb": "GET",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/fieldtypes"
+  },
+  {
+    "tag": "Model",
+    "method": "AddFieldType",
+    "verb": "POST",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/fieldtypes"
+  },
+  {
+    "tag": "Model",
+    "method": "GetFieldType",
+    "verb": "GET",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/fieldtypes/{fieldTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "UpdateFieldType",
+    "verb": "PUT",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/fieldtypes/{fieldTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteFieldType",
+    "verb": "DELETE",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/fieldtypes/{fieldTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetInvalidCvlValueByFieldType",
+    "verb": "GET",
+    "path": "/api/v1.0.1/model/entitytypes/{entityTypeId}/fieldtypes/{fieldTypeId}/invalidcvlvalues"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllLanguages",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/languages"
+  },
+  {
+    "tag": "Model",
+    "method": "AddLanguage",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/languages"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteLanguage",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/languages/{languageCode}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllFieldSets",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/fieldsets"
+  },
+  {
+    "tag": "Model",
+    "method": "AddFieldSet",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/fieldsets"
+  },
+  {
+    "tag": "Model",
+    "method": "UpdateFieldSet",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/model/fieldsets/{fieldsetId}"
+  },
+  {
+    "tag": "Model",
+    "method": "AddFieldTypeToFieldSet",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/model/fieldsets/{fieldSetId}/{fieldTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteFieldTypeFromFieldSet",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/fieldsets/{fieldSetId}/{fieldTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteFieldSet",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/fieldsets/{fieldSetId}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllCategories",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/category"
+  },
+  {
+    "tag": "Model",
+    "method": "AddCategory",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/category"
+  },
+  {
+    "tag": "Model",
+    "method": "GetCategory",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/category/{categoryId}"
+  },
+  {
+    "tag": "Model",
+    "method": "UpdateCategory",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/model/category/{categoryId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteCategory",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/category/{categoryId}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllCvls",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/cvls"
+  },
+  {
+    "tag": "Model",
+    "method": "AddCvl",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/cvls"
+  },
+  {
+    "tag": "Model",
+    "method": "GetCvl",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}"
+  },
+  {
+    "tag": "Model",
+    "method": "UpdateCvl",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteCvl",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllCvlValues",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}/values"
+  },
+  {
+    "tag": "Model",
+    "method": "CreateCvlValue",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}/values"
+  },
+  {
+    "tag": "Model",
+    "method": "GetCvlValue",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}/values/{key}"
+  },
+  {
+    "tag": "Model",
+    "method": "UpdateCvlValue",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}/values/{key}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteCvlValue",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/cvls/{cvlId}/values/{key}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllSpecificationTemplates",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/specificationtemplates"
+  },
+  {
+    "tag": "Model",
+    "method": "GetSpecificationTemplatesields",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/specificationtemplates/{templateId}/fieldtypes"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllRestrictedFieldPermission",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/restrictedfields"
+  },
+  {
+    "tag": "Model",
+    "method": "AddRestrictedFieldPermission",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/restrictedfields"
+  },
+  {
+    "tag": "Model",
+    "method": "GetRestrictedFieldPermission",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/restrictedfields/{restrictedFieldId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteRestrictedFieldPermission",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/restrictedfields/{restrictedFieldId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteRestrictedFieldPermissionByFieldType",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/restrictedfields:byfieldtype"
+  },
+  {
+    "tag": "Model",
+    "method": "GetAllLinkTypes",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/linktype"
+  },
+  {
+    "tag": "Model",
+    "method": "UpdateLinkType",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/model/linktype"
+  },
+  {
+    "tag": "Model",
+    "method": "AddLinkType",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/linktype"
+  },
+  {
+    "tag": "Model",
+    "method": "GetLinkType",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/linktype/{linkTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "DeleteLinkType",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/model/linktype/{linkTypeId}"
+  },
+  {
+    "tag": "Model",
+    "method": "GetSnapshotTags",
+    "verb": "GET",
+    "path": "/api/v1.0.0/model/snapshots/tags"
+  },
+  {
+    "tag": "Model",
+    "method": "CreateSnapshotTag",
+    "verb": "POST",
+    "path": "/api/v1.0.0/model/snapshots/tags"
+  },
+  {
+    "tag": "Query",
+    "method": "Query",
+    "verb": "POST",
+    "path": "/api/v1.0.0/query"
+  },
+  {
+    "tag": "Syndicate",
+    "method": "Syndications",
+    "verb": "GET",
+    "path": "/api/v1.0.0/syndications"
+  },
+  {
+    "tag": "Syndicate",
+    "method": "RunSyndicate",
+    "verb": "POST",
+    "path": "/api/v1.0.0/syndications/{syndicationId}:run"
+  },
+  {
+    "tag": "System",
+    "method": "GetAllImageConfigurations",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/imageconfigurations"
+  },
+  {
+    "tag": "System",
+    "method": "GetImageConfigurationDetails",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/imageconfigurationdetails"
+  },
+  {
+    "tag": "System",
+    "method": "GetServerSettings",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/serversettings"
+  },
+  {
+    "tag": "System",
+    "method": "UpdateServerSetting",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/serversetting"
+  },
+  {
+    "tag": "System",
+    "method": "Roles",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/roles"
+  },
+  {
+    "tag": "System",
+    "method": "Segments",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/segments"
+  },
+  {
+    "tag": "System",
+    "method": "SetUserRolesForSegment",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/segments/{segmentId}:setuserroles"
+  },
+  {
+    "tag": "System",
+    "method": "AddUserRoleForSegment",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/segments/{segmentId}:adduserrole"
+  },
+  {
+    "tag": "System",
+    "method": "RemoveUserRoleForSegment",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/segments/{segmentId}:removeuserrole"
+  },
+  {
+    "tag": "System",
+    "method": "GetUsers",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/users"
+  },
+  {
+    "tag": "System",
+    "method": "ProvisionUser",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/users:provision"
+  },
+  {
+    "tag": "System",
+    "method": "GetUser",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/users/{username}"
+  },
+  {
+    "tag": "System",
+    "method": "UpdateUser",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/system/users/{username}"
+  },
+  {
+    "tag": "System",
+    "method": "DeleteUser",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/system/users/{username}"
+  },
+  {
+    "tag": "System",
+    "method": "GetEnvironmentContext",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/environmentcontext"
+  },
+  {
+    "tag": "System",
+    "method": "GetLanguageAccessStatus",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/languageaccess/status"
+  },
+  {
+    "tag": "System",
+    "method": "GetAllLanguageRoles",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/languageroles"
+  },
+  {
+    "tag": "System",
+    "method": "CreateLanguageRole",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/languageroles"
+  },
+  {
+    "tag": "System",
+    "method": "GetLanguageRole",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/languageroles/{id}"
+  },
+  {
+    "tag": "System",
+    "method": "UpdateLanguageRole",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/system/languageroles/{id}"
+  },
+  {
+    "tag": "System",
+    "method": "DeleteLanguageRole",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/system/languageroles/{id}"
+  },
+  {
+    "tag": "System",
+    "method": "GetUserLanguageRoles",
+    "verb": "GET",
+    "path": "/api/v1.0.0/system/users/{username}/languageroles"
+  },
+  {
+    "tag": "System",
+    "method": "SetUserLanguageRoles",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/system/users/{username}/languageroles"
+  },
+  {
+    "tag": "System",
+    "method": "AddUserLanguageRole",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/users/{username}/languageroles:add"
+  },
+  {
+    "tag": "System",
+    "method": "RemoveUserLanguageRole",
+    "verb": "POST",
+    "path": "/api/v1.0.0/system/users/{username}/languageroles:remove"
+  },
+  {
+    "tag": "Workarea",
+    "method": "WorkareaFolders",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafolders"
+  },
+  {
+    "tag": "Workarea",
+    "method": "WorkareaFolderQuery",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafolderquery"
+  },
+  {
+    "tag": "Workarea",
+    "method": "WorkareaFolderQueryById",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafolderquery/{id}"
+  },
+  {
+    "tag": "Workarea",
+    "method": "WorkareaFolderTree",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafoldertree"
+  },
+  {
+    "tag": "Workarea",
+    "method": "WorkareaQueryResult",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafolder/{workareaFolderId}/entitylist"
+  },
+  {
+    "tag": "Workarea",
+    "method": "UpdateWorkareaQuery",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/workareafolder/{workareaFolderId}/query"
+  },
+  {
+    "tag": "Workarea",
+    "method": "GetWorkareaFolderEntityIds",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafolder/{workareaFolderId}/entityIds"
+  },
+  {
+    "tag": "Workarea",
+    "method": "SetWorkareaFolderEntityIds",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/workareafolder/{workareaFolderId}/entityIds"
+  },
+  {
+    "tag": "Workarea",
+    "method": "UpdateWorkarea",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/workareafolder/{workareaFolderId}"
+  },
+  {
+    "tag": "Workarea",
+    "method": "DeleteWorkarea",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/workareafolder/{workareaFolderId}"
+  },
+  {
+    "tag": "Workarea",
+    "method": "CreateWorkarea",
+    "verb": "POST",
+    "path": "/api/v1.0.0/workareafolder:createnew"
+  },
+  {
+    "tag": "Workarea",
+    "method": "WorkAreaTopNode",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafolder/topnode"
+  },
+  {
+    "tag": "Workarea",
+    "method": "CreateTopNodeWorkArea",
+    "verb": "POST",
+    "path": "/api/v1.0.0/workareafolder/topnode"
+  },
+  {
+    "tag": "Workarea",
+    "method": "WorkAreaTopNodeById",
+    "verb": "GET",
+    "path": "/api/v1.0.0/workareafolder/topnode/{workareaFolderId}"
+  },
+  {
+    "tag": "Workarea",
+    "method": "UpdateTopNodeWorkArea",
+    "verb": "PUT",
+    "path": "/api/v1.0.0/workareafolder/topnode/{workareaFolderId}"
+  },
+  {
+    "tag": "Workarea",
+    "method": "DeleteWorkAreaTopNodeById",
+    "verb": "DELETE",
+    "path": "/api/v1.0.0/workareafolder/topnode/{workareaFolderId}"
+  }
+]

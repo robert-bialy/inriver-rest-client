@@ -1,0 +1,27 @@
+using System;
+using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading;
+using System.Threading.Tasks;
+using InRiver.Rest.Lib.Client;
+using InRiver.Rest.Lib.Helpers;
+using InRiver.Rest.Lib.Model;
+
+namespace InRiver.Rest.Lib.Api
+{
+    /// <summary>Functions for the $tag API endpoints.</summary>
+    internal sealed class ${tag}Api : I${tag}Api
+    {
+        private readonly ApiClient _apiClient;
+
+        public ${tag}Api(ApiClient apiClient, Configuration configuration)
+        {
+            _apiClient = apiClient ?? throw new ArgumentNullException(nameof(apiClient));
+            Configuration = configuration ?? throw new ArgumentNullException(nameof(configuration));
+        }
+
+        public Configuration Configuration { get; }
+
+$methods
+    }
+}
