@@ -13,7 +13,7 @@ dotnet test src/InRiver.Rest.Lib.Tests --filter "FullyQualifiedName~HttpOverride
 dotnet run --project tools/FrameworkSmoke --configuration Release  # Windows + net472 targeting pack
 ```
 
-CI (`build.yml`) also runs SonarCloud via `dotnet sonarscanner` + `dotnet-coverage` — not needed for local work.
+CI (`build.yml`) checks generated output, builds and tests on Linux, and verifies .NET Framework consumption on Windows.
 
 ## Architecture
 
